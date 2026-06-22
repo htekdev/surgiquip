@@ -1,0 +1,65 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Hero from '~/components/Hero.astro';
+import StatBar from '~/components/StatBar.astro';
+import ServicesGrid from '~/components/ServicesGrid.astro';
+import PartnerLogos from '~/components/PartnerLogos.astro';
+import { site } from '~/data/site';
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'MedicalBusiness'],
+  '@id': `${site.url}#organization`,
+  name: site.brand,
+  alternateName: site.short,
+  url: site.url,
+  logo: `${site.url}/favicon.svg`,
+  description: 'Houston-based medical equipment sales and service. 43 years serving hospitals, surgical centers, and healthcare facilities across Texas. Authorized Skytron dealer for Southeast Texas.',
+  foundingDate: '1983',
+  telephone: site.phoneE164,
+  faxNumber: '+17139578355',
+  email: site.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  openingHours: site.hoursSchema,
+  areaServed: [
+    { '@type': 'State', name: 'Texas' },
+    { '@type': 'City', name: 'Houston' },
+  ],
+  sameAs: [site.social.linkedin, site.social.youtube],
+  slogan: site.tagline,
+  knowsAbout: [
+    'Skytron Surgical Tables',
+    'Hybrid Operating Room Installation',
+    'Surgical Equipment Repair',
+    'OR Integration',
+    'Preventive Maintenance for Medical Devices',
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${site.url}#website`,
+  url: site.url,
+  name: site.brand,
+  publisher: { '@id': `${site.url}#organization` },
+  inLanguage: 'en-US',
+};
+---
+<BaseLayout
+  title={`${site.brand} | Medical Equipment Sales & Service in Houston, TX`}
+  description="Surgiquip Solutions has provided medical equipment sales, service, OR installation, and preventive maintenance to Texas healthcare facilities for 43 years. Authorized Skytron dealer for Southeast Texas."
+  schema={[orgSchema, websiteSchema]}
+>
+  <Hero />
+  <StatBar />
+  <ServicesGrid />
+  <PartnerLogos />
+</BaseLayout>

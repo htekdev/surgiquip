@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0a2c5e;
+  --color-navy-dark: #061e42;
+  --color-blue: #1e6fd9;
+  --color-blue-light: #3a8aee;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f7f9fc;
+  --color-text: #0f1729;
+  --color-text-muted: #5b6b85;
+  --color-border: #e5e9f0;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body { background: var(--color-surface); }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    color: var(--color-navy);
+    letter-spacing: -0.01em;
+  }
+  a { color: var(--color-blue); }
+  a:hover { color: var(--color-blue-light); }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 font-semibold text-white transition;
+    background: var(--color-blue);
+  }
+  .btn-primary:hover { background: var(--color-blue-light); color: white; }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 font-semibold text-white/90 underline-offset-4 hover:underline transition;
+  }
+
+  .container-x {
+    @apply mx-auto max-w-7xl px-6 lg:px-8;
+  }
+}

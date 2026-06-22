@@ -1,0 +1,33 @@
+---
+import { services } from '~/data/site';
+const iconMap: Record<string, string> = {
+  cart: '<path d="M3 5h2l2.6 11.4a2 2 0 002 1.6h7.2a2 2 0 002-1.6L20 8H6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="10" cy="20" r="1.5" fill="currentColor"/><circle cx="17" cy="20" r="1.5" fill="currentColor"/>',
+  wrench: '<path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-3 3-2.4-2.4 3-3z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>',
+  gear: '<circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+  shield: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+};
+---
+<section id="services" class="bg-[var(--color-surface-alt)] py-20">
+  <div class="container-x">
+    <div class="text-center mb-12">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)]">Our Services</div>
+      <h2 class="text-3xl md:text-4xl font-bold mt-3 text-[var(--color-navy)]">Comprehensive Solutions. Dependable Results.</h2>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {services.map((s) => (
+        <a href={`/services/${s.slug}`} class="block bg-white rounded-lg border border-[var(--color-border)] p-6 hover:shadow-lg hover:border-[var(--color-blue)] transition group">
+          <div class="w-12 h-12 rounded-full bg-[var(--color-surface-alt)] flex items-center justify-center text-[var(--color-navy)] mb-5 group-hover:bg-[var(--color-blue)] group-hover:text-white transition">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" set:html={iconMap[s.icon]} />
+          </div>
+          <h3 class="text-lg font-bold text-[var(--color-navy)] mb-2">{s.title}</h3>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">{s.blurb}</p>
+          <span class="inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-blue)]">
+            Learn More
+            <svg class="w-3 h-3" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
