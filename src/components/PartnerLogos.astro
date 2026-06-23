@@ -1,20 +1,58 @@
 ---
-import { partners } from '~/data/site';
+// PartnerLogos — visual brand representations matching wireframe
 ---
 <section class="bg-white border-t border-[var(--color-border)]">
   <div class="container-x py-14">
     <div class="text-center text-xs font-bold tracking-widest uppercase text-[var(--color-text-muted)] mb-8">Our Partners</div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 items-center">
-      {partners.map((p) => (
-        <div class="text-center">
-          <div class="inline-block px-3 sm:px-6 py-3 sm:py-4 border border-[var(--color-border)] rounded font-display font-bold text-sm sm:text-base md:text-lg text-[var(--color-navy)] text-center leading-snug">
-            {p.label}
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+
+      <!-- Skytron — teal S-arrow wordmark -->
+      <a href="/products/skytron" class="flex items-center gap-2 group opacity-80 hover:opacity-100 transition">
+        <svg viewBox="0 0 48 48" class="w-10 h-10 flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 10 C18 10 12 16 16 22 C19 26 29 23 33 28 C37 33 31 38 19 38" stroke="#0078ae" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+          <path d="M24 33 L19 38 L26 42" stroke="#0078ae" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <div class="font-black text-[17px] tracking-[0.12em] text-[#0078ae] leading-none">SKYTRON</div>
+          <div class="text-[10px] text-[#0078ae] tracking-wide">®</div>
+        </div>
+      </a>
+
+      <!-- HSI — orange/red box grid logo -->
+      <a href="/products/hsi" class="flex items-center gap-2 group opacity-80 hover:opacity-100 transition">
+        <div class="bg-[#c0392b] text-white rounded px-2.5 py-2 flex items-center gap-2">
+          <svg viewBox="0 0 28 28" class="w-7 h-7 flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="11" height="11" rx="1" fill="white" opacity="0.35"/>
+            <rect x="15" y="2" width="11" height="11" rx="1" fill="white" opacity="0.35"/>
+            <rect x="2" y="15" width="11" height="11" rx="1" fill="white" opacity="0.35"/>
+            <rect x="15" y="15" width="11" height="11" rx="1" fill="white" opacity="0.35"/>
+          </svg>
+          <div>
+            <div class="font-black text-[18px] tracking-wide leading-none">HSI</div>
+            <div class="text-[8px] tracking-wide leading-snug opacity-90">Hospital Systems, Inc.</div>
           </div>
         </div>
-      ))}
+      </a>
+
+      <!-- Knight HC — bold wordmark with badge -->
+      <a href="/products/knight" class="flex items-center gap-1.5 group opacity-80 hover:opacity-100 transition">
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-black text-[17px] tracking-[0.08em] text-gray-800">KNIGHT</span>
+            <span class="bg-[#f5a623] text-white text-[10px] font-black px-1.5 py-0.5 rounded leading-none">HC</span>
+          </div>
+          <div class="text-[9px] text-gray-500 tracking-wider uppercase mt-0.5">We Make Instrument Cleaning Easy</div>
+        </div>
+      </a>
+
+      <!-- BBB Accredited Business seal -->
+      <div class="flex items-center gap-2 border-2 border-[#003f87] text-[#003f87] px-4 py-2 rounded opacity-80 hover:opacity-100 transition">
+        <div class="font-black text-[26px] leading-none tracking-tight">BBB</div>
+        <div class="text-[9px] font-bold uppercase tracking-wide leading-tight border-l border-[#003f87] pl-2">
+          Accredited<br/>Business<br/><span class="text-[8px] font-normal normal-case tracking-normal opacity-80">Since 1983</span>
+        </div>
+      </div>
+
     </div>
-    <p class="text-center text-xs text-[var(--color-text-muted)] mt-6 italic">
-      Logos shown represent partnerships and accreditations. Replace with official partner marks once licensed assets are received.
-    </p>
   </div>
 </section>

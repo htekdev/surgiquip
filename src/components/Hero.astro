@@ -2,48 +2,89 @@
 import { site } from '~/data/site';
 const currentYear = new Date().getFullYear();
 ---
-<section class="relative bg-[var(--color-navy)] text-white overflow-hidden">
-  <div class="absolute inset-y-0 right-0 w-full lg:w-1/2 opacity-30 lg:opacity-100" aria-hidden="true">
+<section class="bg-[var(--color-navy)] text-white overflow-hidden">
+
+  <!-- ─── MOBILE: full-bleed image on top, then text below ─── -->
+  <!-- Image block: full width, proportional height, with gentle bottom fade into navy -->
+  <div class="relative lg:hidden h-[52vw] min-h-[220px] max-h-[340px]" aria-hidden="true">
     <img
       src="/images/hero/hero-or-suite.png"
       alt="Modern operating room with premium surgical equipment"
-      class="w-full h-full object-cover"
+      class="w-full h-full object-cover object-center"
       loading="eager"
       decoding="async"
     />
+    <!-- Very subtle darkening at top for contrast, transparent middle, fades to navy at bottom -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-[var(--color-navy)]"></div>
   </div>
-  <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-navy)] via-[var(--color-navy)]/95 to-transparent lg:to-[var(--color-navy)]/30" aria-hidden="true"></div>
 
-  <div class="container-x relative py-16 lg:py-28">
-    <div class="max-w-2xl">
-      <h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.05] text-white tracking-tight">
-        Medical Equipment Sales &amp; Service —<br/>
-        <span class="text-white">Dedicated to Excellence Since {site.established}</span>
-      </h1>
-      <p class="mt-6 text-base sm:text-lg text-white/85 max-w-xl">
-        Proudly partnered with Skytron to provide innovative, reliable solutions for healthcare facilities.
-      </p>
-      <div class="mt-8 flex flex-wrap items-center gap-4 sm:gap-5">
-        <a href="/quote" class="btn-primary">
-          Get a Quote
-          <svg class="w-4 h-4" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-        </a>
-        <a href="#services" class="btn-ghost">
-          Explore Our Services
-          <svg class="w-4 h-4" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-        </a>
-      </div>
+  <!-- ─── DESKTOP: classic split layout (image right, text left) ─── -->
+  <div class="relative">
+    <!-- Desktop-only: image on right 60%, full opacity, pushed slightly left for better coverage -->
+    <div class="hidden lg:block absolute inset-y-0 right-0 w-[60%]" aria-hidden="true">
+      <img
+        src="/images/hero/hero-or-suite.png"
+        alt=""
+        class="w-full h-full object-cover"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+    <!-- Desktop-only: lighter gradient so image shows clearly on the right -->
+    <div class="hidden lg:block absolute inset-0 bg-gradient-to-r from-[var(--color-navy)] from-[28%] via-[var(--color-navy)]/45 via-[48%] to-transparent" aria-hidden="true"></div>
 
-      <div class="mt-10 sm:mt-12 inline-flex items-center gap-3 bg-white/10 backdrop-blur rounded-full px-5 py-3 border border-white/20">
-        <div class="w-14 h-14 rounded-full bg-white text-[var(--color-navy)] flex flex-col items-center justify-center font-display font-bold leading-none">
-          <span class="text-xl">{site.yearsInBusiness}</span>
-          <span class="text-[8px] tracking-wider">YEARS</span>
+    <!-- ─── Content: shared across all breakpoints ─── -->
+    <div class="container-x relative py-8 lg:py-28">
+      <div class="max-w-2xl">
+        <h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.05] text-white tracking-tight">
+          Medical Equipment Sales &amp; Service —<br/>
+          <span class="text-white">Dedicated to Excellence Since {site.established}</span>
+        </h1>
+        <p class="mt-6 text-base sm:text-lg text-white/85 max-w-xl">
+          Proudly partnered with Skytron to provide innovative, reliable solutions for healthcare facilities.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-4 sm:gap-5">
+          <a href="/quote" class="btn-primary">
+            Get a Quote
+            <svg class="w-4 h-4" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+          </a>
+          <a href="#services" class="btn-ghost">
+            Explore Our Services
+            <svg class="w-4 h-4" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+          </a>
         </div>
-        <div class="text-sm">
-          <div class="font-bold">{site.established} — {currentYear}</div>
-          <div class="text-xs text-white/80 italic">Surgiquip Solutions, Inc.</div>
+
+        <!-- Anniversary Seal — ribbon banners + circular medallion matching brand visual -->
+        <div class="mt-10 sm:mt-12">
+          <svg viewBox="0 0 300 92" class="h-[76px] w-auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{site.yearsInBusiness} Years — {site.established} to {currentYear}">
+            <!-- Left ribbon banner: slightly lighter navy + white stroke so it stands out from hero bg -->
+            <path d="M2 28 L120 28 L132 46 L120 64 L2 64 L12 46 Z" fill="#1a50a0" stroke="rgba(255,255,255,0.25)" stroke-width="0.75"/>
+            <text x="64" y="51" text-anchor="middle" fill="white" font-family="Georgia,serif" font-size="13" font-weight="700" letter-spacing="1">{site.established}</text>
+            <!-- Right ribbon banner -->
+            <path d="M298 28 L180 28 L168 46 L180 64 L298 64 L288 46 Z" fill="#1a50a0" stroke="rgba(255,255,255,0.25)" stroke-width="0.75"/>
+            <text x="236" y="51" text-anchor="middle" fill="white" font-family="Georgia,serif" font-size="13" font-weight="700" letter-spacing="1">{currentYear}</text>
+            <!-- Outer shadow circle -->
+            <circle cx="150" cy="46" r="43" fill="#06192e" opacity="0.45"/>
+            <!-- Main navy circle -->
+            <circle cx="150" cy="46" r="42" fill="#0c3878"/>
+            <!-- Decorative dashed ring -->
+            <circle cx="150" cy="46" r="36" fill="none" stroke="white" stroke-width="1.2" stroke-dasharray="3.5 3" opacity="0.6"/>
+            <!-- Inner white circle -->
+            <circle cx="150" cy="46" r="28" fill="white"/>
+            <!-- Years number — navy on white -->
+            <text x="150" y="50" text-anchor="middle" fill="#0c3878" font-family="Georgia,serif" font-size="27" font-weight="900">{site.yearsInBusiness}</text>
+            <!-- YEARS label — navy on white, inside inner circle -->
+            <text x="150" y="62" text-anchor="middle" fill="#0c3878" font-family="Georgia,serif" font-size="6.5" font-weight="700" letter-spacing="2.5">YEARS</text>
+            <!-- ANNIVERSARY text on outer navy ring -->
+            <text x="150" y="80" text-anchor="middle" fill="rgba(255,255,255,0.65)" font-family="Georgia,serif" font-size="5.5" font-weight="600" letter-spacing="2">ANNIVERSARY</text>
+            <!-- Decorative dots at top/bottom of outer ring -->
+            <circle cx="150" cy="5" r="1.8" fill="rgba(255,255,255,0.45)"/>
+            <circle cx="150" cy="87" r="1.8" fill="rgba(255,255,255,0.45)"/>
+          </svg>
+          <div class="mt-1 text-xs text-white/55 italic pl-1">Surgiquip Solutions, Inc. · Houston, TX</div>
         </div>
       </div>
     </div>
   </div>
+
 </section>
