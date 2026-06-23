@@ -4,10 +4,10 @@ import { partners } from '~/data/site';
 <section class="bg-white border-t border-[var(--color-border)]">
   <div class="container-x py-14">
     <div class="text-center text-xs font-bold tracking-widest uppercase text-[var(--color-text-muted)] mb-8">Our Partners</div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 items-center">
       {partners.map((p) => (
         <div class="text-center">
-          <div class="inline-block px-6 py-4 border border-[var(--color-border)] rounded font-display font-bold text-lg text-[var(--color-navy)]">
+          <div class="inline-block px-3 sm:px-6 py-3 sm:py-4 border border-[var(--color-border)] rounded font-display font-bold text-sm sm:text-base md:text-lg text-[var(--color-navy)] text-center leading-snug">
             {p.label}
           </div>
         </div>

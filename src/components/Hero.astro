@@ -1,5 +1,6 @@
 ---
 import { site } from '~/data/site';
+const currentYear = new Date().getFullYear();
 ---
 <section class="relative bg-[var(--color-navy)] text-white overflow-hidden">
   <div class="absolute inset-y-0 right-0 w-full lg:w-1/2 opacity-30 lg:opacity-100" aria-hidden="true">
@@ -13,16 +14,16 @@ import { site } from '~/data/site';
   </div>
   <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-navy)] via-[var(--color-navy)]/95 to-transparent lg:to-[var(--color-navy)]/30" aria-hidden="true"></div>
 
-  <div class="container-x relative py-20 lg:py-28">
+  <div class="container-x relative py-16 lg:py-28">
     <div class="max-w-2xl">
-      <h1 class="font-display text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.05] text-white tracking-tight">
+      <h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.05] text-white tracking-tight">
         Medical Equipment Sales &amp; Service —<br/>
         <span class="text-white">Dedicated to Excellence Since {site.established}</span>
       </h1>
-      <p class="mt-6 text-lg text-white/85 max-w-xl">
+      <p class="mt-6 text-base sm:text-lg text-white/85 max-w-xl">
         Proudly partnered with Skytron to provide innovative, reliable solutions for healthcare facilities.
       </p>
-      <div class="mt-8 flex flex-wrap items-center gap-5">
+      <div class="mt-8 flex flex-wrap items-center gap-4 sm:gap-5">
         <a href="/quote" class="btn-primary">
           Get a Quote
           <svg class="w-4 h-4" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
@@ -33,13 +34,13 @@ import { site } from '~/data/site';
         </a>
       </div>
 
-      <div class="mt-12 inline-flex items-center gap-3 bg-white/10 backdrop-blur rounded-full px-5 py-3 border border-white/20">
+      <div class="mt-10 sm:mt-12 inline-flex items-center gap-3 bg-white/10 backdrop-blur rounded-full px-5 py-3 border border-white/20">
         <div class="w-14 h-14 rounded-full bg-white text-[var(--color-navy)] flex flex-col items-center justify-center font-display font-bold leading-none">
-          <span class="text-xl">40</span>
+          <span class="text-xl">{site.yearsInBusiness}</span>
           <span class="text-[8px] tracking-wider">YEARS</span>
         </div>
         <div class="text-sm">
-          <div class="font-bold">1983 — 2023</div>
+          <div class="font-bold">{site.established} — {currentYear}</div>
           <div class="text-xs text-white/80 italic">Surgiquip Solutions, Inc.</div>
         </div>
       </div>
