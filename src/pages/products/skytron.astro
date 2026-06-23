@@ -1,9 +1,77 @@
 ---
-import StubPage from '~/layouts/StubPage.astro';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { site } from '~/data/site';
+
+const products = [
+  {
+    name: 'Surgical Tables',
+    description: 'Precision-engineered operating tables with multi-articulation, memory positioning, and radiolucent tabletops. Built to support complex surgical procedures for 20+ years.',
+    image: '/images/products/surgical-table.png',
+  },
+  {
+    name: 'Surgical Lights',
+    description: 'Advanced LED overhead lighting systems with adjustable color temperature, shadow management, and integrated camera systems for the modern OR.',
+    image: '/images/products/surgical-light.png',
+  },
+  {
+    name: 'Equipment Booms',
+    description: 'Ceiling-mounted equipment management arms with integrated gas, electrical, and data connections. Keep your OR floor clear and workflow efficient.',
+    image: '/images/products/equipment-boom.png',
+  },
+  {
+    name: 'OR Integration',
+    description: 'Complete hybrid operating room solutions combining tables, lights, booms, and AV integration into one seamless surgical environment.',
+    image: '/images/products/or-integration.png',
+  },
+];
 ---
-<StubPage
-  title="Skytron Equipment"
+<BaseLayout
+  title="Skytron Equipment | Surgiquip Solutions"
   description="Authorized Skytron dealer for Southeast Texas. Surgical tables, lights, booms, and OR integration solutions."
-  eyebrow="Skytron"
-  heading="Authorized Skytron Dealer for Southeast Texas"
-/>
+>
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70">Products</div>
+      <h1 class="font-display text-4xl md:text-5xl font-bold mt-3 text-white">Authorized Skytron Dealer for Southeast Texas</h1>
+      <p class="mt-4 text-lg text-white/80 max-w-2xl">
+        As Skytron's exclusive authorized dealer for Southeast Texas, we provide the full product line — sales, installation, training, and ongoing service support.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-x py-16">
+    <div class="grid gap-12 md:gap-16">
+      {products.map((product, i) => (
+        <div class={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12`}>
+          <div class="w-full md:w-1/2">
+            <img
+              src={product.image}
+              alt={product.name}
+              class="w-full rounded-lg shadow-lg"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="w-full md:w-1/2">
+            <h2 class="text-2xl md:text-3xl font-bold text-[var(--color-navy)]">{product.name}</h2>
+            <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">{product.description}</p>
+            <a href="/quote" class="inline-flex items-center gap-2 mt-6 btn-primary">
+              Request Quote
+              <svg class="w-4 h-4" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-[var(--color-navy)]">Need Help Choosing the Right Equipment?</h2>
+      <p class="mt-4 text-[var(--color-text-muted)] max-w-xl mx-auto">Our team can assess your facility's needs and recommend the ideal Skytron configuration. 43 years of expertise at your service.</p>
+      <a href={`tel:${site.phoneE164}`} class="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-md border border-[var(--color-border)] font-semibold text-[var(--color-navy)] hover:border-[var(--color-navy)] transition">
+        📞 {site.phone}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

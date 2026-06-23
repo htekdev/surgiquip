@@ -1,0 +1,40 @@
+---
+const equipment = [
+  { name: 'Surgical Tables', image: '/images/products/surgical-table.png', href: '/products/skytron' },
+  { name: 'Surgical Lights', image: '/images/products/surgical-light.png', href: '/products/skytron' },
+  { name: 'Equipment Booms', image: '/images/products/equipment-boom.png', href: '/products/skytron' },
+  { name: 'OR Integration', image: '/images/products/or-integration.png', href: '/products/skytron' },
+];
+---
+<section class="py-20 bg-white">
+  <div class="container-x">
+    <div class="text-center mb-12">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)]">Skytron Equipment</div>
+      <h2 class="text-3xl md:text-4xl font-bold mt-3 text-[var(--color-navy)]">Premium Surgical Equipment</h2>
+      <p class="mt-4 text-[var(--color-text-muted)] max-w-xl mx-auto">Authorized Skytron dealer for Southeast Texas — innovative solutions engineered for the modern operating room.</p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {equipment.map((item) => (
+        <a href={item.href} class="group block rounded-lg overflow-hidden border border-[var(--color-border)] hover:shadow-lg hover:border-[var(--color-blue)] transition">
+          <div class="aspect-[3/2] overflow-hidden bg-[var(--color-surface-alt)]">
+            <img
+              src={item.image}
+              alt={item.name}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-[var(--color-navy)]">{item.name}</h3>
+            <span class="inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-blue)] mt-1">
+              View Details
+              <svg class="w-3 h-3" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

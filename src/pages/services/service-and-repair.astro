@@ -1,9 +1,45 @@
 ---
-import StubPage from '~/layouts/StubPage.astro';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { site } from '~/data/site';
 ---
-<StubPage
-  title="Service & Repair"
+<BaseLayout
+  title="Service & Repair | Surgiquip Solutions"
   description="Factory-trained technicians providing fast, reliable repair and support for surgical and medical equipment."
-  eyebrow="Service & Repair"
-  heading="24-Hour Response from Factory-Trained Technicians"
-/>
+>
+  <section class="relative bg-[var(--color-navy)] text-white overflow-hidden">
+    <div class="absolute inset-0 opacity-20" aria-hidden="true">
+      <img src="/images/services/service-repair-hero.png" alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="absolute inset-0 bg-[var(--color-navy)]/80" aria-hidden="true"></div>
+    <div class="container-x relative py-20">
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70">Service & Repair</div>
+      <h1 class="font-display text-4xl md:text-5xl font-bold mt-3 text-white">24-Hour Response from Factory-Trained Technicians</h1>
+      <p class="mt-4 text-lg text-white/80 max-w-2xl">
+        When your equipment goes down, every minute counts. Our factory-certified technicians respond within 24 hours — keeping your OR running.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-x py-16">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <img src="/images/services/service-repair-hero.png" alt="Technician servicing surgical equipment" class="w-full rounded-lg shadow-lg" loading="lazy" decoding="async" />
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-[var(--color-navy)]">What We Service</h2>
+        <ul class="mt-6 space-y-4 text-[var(--color-text-muted)]">
+          <li class="flex gap-3"><span class="text-[var(--color-blue)] font-bold">✓</span> Skytron surgical tables, lights, and booms</li>
+          <li class="flex gap-3"><span class="text-[var(--color-blue)] font-bold">✓</span> HSI hospital systems and accessories</li>
+          <li class="flex gap-3"><span class="text-[var(--color-blue)] font-bold">✓</span> Knight instrument cleaning systems</li>
+          <li class="flex gap-3"><span class="text-[var(--color-blue)] font-bold">✓</span> Multi-vendor OR integration equipment</li>
+        </ul>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="/quote" class="btn-primary">Request Service</a>
+          <a href={`tel:${site.phoneE164}`} class="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-[var(--color-border)] font-semibold text-[var(--color-navy)] hover:border-[var(--color-navy)] transition">
+            📞 {site.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
