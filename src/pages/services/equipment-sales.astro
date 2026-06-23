@@ -1,9 +1,43 @@
 ---
-import StubPage from '~/layouts/StubPage.astro';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { site } from '~/data/site';
 ---
-<StubPage
-  title="Equipment Sales"
+<BaseLayout
+  title="Equipment Sales | Surgiquip Solutions"
   description="Premium medical equipment from industry-leading manufacturers, including Skytron, HSI, and Knight."
-  eyebrow="Equipment Sales"
-  heading="Premium Equipment from Trusted Manufacturers"
-/>
+>
+  <section class="relative bg-[var(--color-navy)] text-white overflow-hidden">
+    <div class="absolute inset-0 opacity-20" aria-hidden="true">
+      <img src="/images/services/equipment-sales-hero.png" alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="absolute inset-0 bg-[var(--color-navy)]/80" aria-hidden="true"></div>
+    <div class="container-x relative py-20">
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70">Services</div>
+      <h1 class="font-display text-4xl md:text-5xl font-bold mt-3 text-white">Premium Equipment from Trusted Manufacturers</h1>
+      <p class="mt-4 text-lg text-white/80 max-w-2xl">
+        We partner with industry-leading manufacturers to bring you the most reliable, innovative medical equipment on the market.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-x py-16">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <img src="/images/services/equipment-sales-hero.png" alt="Medical equipment showroom" class="w-full rounded-lg shadow-lg" loading="lazy" decoding="async" />
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-[var(--color-navy)]">Why Buy Through Surgiquip?</h2>
+        <ul class="mt-6 space-y-4 text-[var(--color-text-muted)]">
+          <li class="flex gap-3"><span class="text-[var(--color-blue)] font-bold">✓</span> Factory-authorized dealer with direct manufacturer relationships</li>
+          <li class="flex gap-3"><span class="text-[var(--color-blue)] font-bold">✓</span> Complete installation and in-service training included</li>
+          <li class="flex gap-3"><span class="text-[var(--color-blue)] font-bold">✓</span> Ongoing preventive maintenance and 24-hour emergency repair</li>
+          <li class="flex gap-3"><span class="text-[var(--color-blue)] font-bold">✓</span> 43 years of trusted service across Texas healthcare facilities</li>
+        </ul>
+        <a href="/quote" class="inline-flex items-center gap-2 mt-8 btn-primary">
+          Get a Quote
+          <svg class="w-4 h-4" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
