@@ -20,7 +20,7 @@ const currentYear = new Date().getFullYear();
 
   <!-- ─── DESKTOP: classic split layout (image right, text left) ─── -->
   <div class="relative">
-    <!-- Desktop-only: image on right 60%, full opacity, pushed slightly left for better coverage -->
+    <!-- Desktop-only: image on right 60% with seamless left-edge fade baked in -->
     <div class="hidden lg:block absolute inset-y-0 right-0 w-[60%]" aria-hidden="true">
       <img
         src="/images/hero/hero-or-suite.png"
@@ -29,9 +29,11 @@ const currentYear = new Date().getFullYear();
         loading="eager"
         decoding="async"
       />
+      <!-- Left-edge fade on the image itself: navy → transparent eliminates hard seam at 40% mark -->
+      <div class="absolute inset-y-0 left-0 w-[55%] bg-gradient-to-r from-[var(--color-navy)] via-[var(--color-navy)]/70 via-[40%] to-transparent" aria-hidden="true"></div>
     </div>
-    <!-- Desktop-only: lighter gradient so image shows clearly on the right -->
-    <div class="hidden lg:block absolute inset-0 bg-gradient-to-r from-[var(--color-navy)] from-[28%] via-[var(--color-navy)]/45 via-[48%] to-transparent" aria-hidden="true"></div>
+    <!-- Desktop-only: secondary overlay for text-side contrast guarantee -->
+    <div class="hidden lg:block absolute inset-0 bg-gradient-to-r from-[var(--color-navy)] from-[38%] to-transparent to-[65%]" aria-hidden="true"></div>
 
     <!-- ─── Content: shared across all breakpoints ─── -->
     <div class="container-x relative py-8 lg:py-28">
