@@ -1,9 +1,65 @@
 ---
-import StubPage from '~/layouts/StubPage.astro';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
 ---
-<StubPage
-  title="Our Story"
-  description="From 1983 to today — the 43-year story of Surgiquip Solutions and its commitment to Texas healthcare."
-  eyebrow="Our Story"
-  heading="43 Years of Service to Texas Healthcare"
-/>
+<BaseLayout
+  title="Our Story | Surgiquip Solutions — 43 Years of Houston Healthcare"
+  description="The 43-year story of Surgiquip Solutions, Inc. — from a small Houston equipment dealer in 1983 to Southeast Texas's trusted Skytron partner and leading OR installation company."
+>
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/about" class="hover:text-white/90">About</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">Our Story</span>
+      </nav>
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Our Story</div>
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-white leading-tight max-w-2xl">
+        43 Years of Service to Texas Healthcare
+      </h1>
+      <p class="mt-5 text-lg text-white/85 max-w-xl">
+        From a small Houston equipment dealer to Southeast Texas's most trusted OR partner — this is our story.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-x py-16 max-w-3xl">
+    <div class="prose prose-lg max-w-none text-[var(--color-text-muted)]">
+      <p class="text-xl text-[var(--color-text)] leading-relaxed">
+        In 1983, Surgiquip Solutions, Inc. opened its doors in Houston, Texas. The team was small, the mission was simple: bring quality surgical equipment and honest service to Texas healthcare facilities.
+      </p>
+      <p class="mt-6 leading-relaxed">
+        Houston was — and remains — the medical capital of Texas. The Texas Medical Center, the world's largest medical complex, is practically our backyard. From our first days, we were surrounded by hospitals that needed reliable partners, not just vendors who disappeared after a check cleared.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        We built relationships one facility at a time. An administrator at Houston Methodist. A biomedical director at a regional hospital in Beaumont. An OR manager at a surgery center in the Woodlands. Each one became a long-term client. Each one introduced us to someone else. That's how you grow in healthcare — not through advertising, but through trust built over decades.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        Our partnership with Skytron — one of the industry's leading manufacturers of surgical tables, lights, and OR integration systems — became the cornerstone of our equipment business. When Skytron designated us as their exclusive authorized dealer for Southeast Texas, it validated everything we'd built: a service-first organization with the technical depth to represent the best brands in the market.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        Over the decades, the operating room evolved. Hybrid ORs. Advanced imaging integration. 4K surgical video. Each new technology brought new complexity — and new opportunities for a team willing to invest in staying current. Our technicians attend factory training. We maintain updated tooling and parts inventories. We track manufacturer service bulletins so our clients don't have to.
+      </p>
+      <p class="mt-4 leading-relaxed">
+        Today, {site.yearsInBusiness} years after our founding, we've served over 500 healthcare facilities across Texas. We've managed OR builds ranging from $30,000 single-room refreshes to $2 million hybrid OR installations. We've responded to emergency service calls at 3 AM and delivered PM certificates that cleared Joint Commission surveys on the morning of the visit.
+      </p>
+      <p class="mt-6 text-xl font-display font-semibold text-[var(--color-navy)]">
+        The tagline we've used since the beginning — "Dedicated to Excellence" — isn't marketing copy. It's a commitment we've renewed every single day for over four decades. And it's one we intend to keep.
+      </p>
+    </div>
+    <div class="mt-10 flex flex-wrap gap-4">
+      <a href="/about" class="btn-primary">Learn More About Us</a>
+      <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-[var(--color-border)] font-semibold text-[var(--color-navy)] hover:border-[var(--color-navy)] transition">Get in Touch</a>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Ready to Work With a Partner Who Will Still Be Here in 20 Years?"
+    subhead="Surgiquip has served Texas healthcare for 43 years. Let us show you why hundreds of facilities trust us with their most critical equipment."
+    primaryLabel="Contact Our Team"
+    primaryHref="/contact"
+  />
+</BaseLayout>

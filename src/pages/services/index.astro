@@ -1,9 +1,128 @@
 ---
-import StubPage from '~/layouts/StubPage.astro';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site, services } from '~/data/site';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Surgiquip Solutions Services',
+  url: `${site.url}/services`,
+  itemListElement: services.map((s, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `${site.url}/services/${s.slug}`,
+    name: s.title,
+  })),
+};
+
+const iconMap: Record<string, string> = {
+  cart: '<path d="M3 5h2l2.6 11.4a2 2 0 002 1.6h7.2a2 2 0 002-1.6L20 8H6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="10" cy="20" r="1.5" fill="currentColor"/><circle cx="17" cy="20" r="1.5" fill="currentColor"/>',
+  wrench: '<path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-3 3-2.4-2.4 3-3z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>',
+  gear: '<circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+  shield: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+};
+
+const serviceExtended = [
+  {
+    slug: 'equipment-sales',
+    title: 'Equipment Sales',
+    eyebrow: 'Authorized Skytron Dealer',
+    desc: 'The full Skytron product line — surgical tables, lights, booms, and OR integration systems — plus HSI and Knight equipment. Factory-authorized pricing and expert application consulting.',
+    icon: 'cart',
+    cta: 'View Equipment Sales',
+  },
+  {
+    slug: 'service-and-repair',
+    title: 'Service & Repair',
+    eyebrow: '24-Hour Response',
+    desc: 'Factory-trained technicians with a stocked parts inventory. Emergency line available 24/7. OEM procedures, compliance documentation, and Skytron-authorized parts on every job.',
+    icon: 'wrench',
+    cta: 'View Service & Repair',
+  },
+  {
+    slug: 'or-installation',
+    title: 'OR Installation',
+    eyebrow: 'Turnkey Projects',
+    desc: 'Complete OR builds from planning through go-live. We coordinate with your GC and architect, manage the installation schedule around your OR calendar, and deliver survey-ready documentation.',
+    icon: 'gear',
+    cta: 'View OR Installation',
+  },
+  {
+    slug: 'preventive-maintenance',
+    title: 'Preventive Maintenance',
+    eyebrow: 'PM Programs',
+    desc: 'Scheduled maintenance programs that keep your OR equipment at specification, extend asset life, and ensure your compliance records are always current. Priority dispatch included.',
+    icon: 'shield',
+    cta: 'View Preventive Maintenance',
+  },
+];
 ---
-<StubPage
-  title="Services"
-  description="Equipment sales, service & repair, OR installation, and preventive maintenance for Texas healthcare facilities."
-  eyebrow="Our Services"
-  heading="Comprehensive Solutions. Dependable Results."
-/>
+<BaseLayout
+  title="Services | Surgiquip Solutions Houston TX"
+  description="Medical equipment sales, service & repair, OR installation, and preventive maintenance for Texas healthcare facilities. Authorized Skytron dealer since 1983."
+  schema={serviceSchema}
+>
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Services</div>
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-3xl">
+        Comprehensive Solutions.<br/>Dependable Results.
+      </h1>
+      <p class="mt-6 text-xl text-white/85 max-w-2xl leading-relaxed">
+        From a single equipment repair to a complete hybrid OR build — Surgiquip covers the full spectrum of medical equipment services for Texas healthcare facilities.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-x py-16">
+    <div class="space-y-8">
+      {serviceExtended.map((svc, i) => (
+        <div class={`grid gap-8 lg:grid-cols-[1fr_2fr] items-center p-8 rounded-xl border border-[var(--color-border)] hover:shadow-md transition ${i % 2 === 0 ? 'bg-white' : 'bg-[var(--color-surface-alt)]'}`}>
+          <div class="flex items-start gap-5">
+            <div class="w-14 h-14 rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center shrink-0">
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" set:html={iconMap[svc.icon]} />
+            </div>
+            <div>
+              <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-1">{svc.eyebrow}</div>
+              <h2 class="font-display text-2xl font-bold text-[var(--color-navy)]">{svc.title}</h2>
+            </div>
+          </div>
+          <div>
+            <p class="text-[var(--color-text-muted)] leading-relaxed">{svc.desc}</p>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <a href={`/services/${svc.slug}`} class="btn-primary text-sm px-5 py-2.5">{svc.cta}</a>
+              <a href="/quote" class="inline-flex items-center gap-2 text-sm px-5 py-2.5 rounded-md border border-[var(--color-border)] font-semibold text-[var(--color-navy)] hover:border-[var(--color-navy)] transition">Request Quote</a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x">
+      <div class="text-center mb-10">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Why Surgiquip</div>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">One Team. Full Lifecycle.</h2>
+        <p class="mt-4 text-[var(--color-text-muted)] max-w-2xl mx-auto">
+          Most equipment vendors hand you off to a third-party service team after the sale. We don't. The same company that sells your equipment installs it, services it, and maintains it — for decades if you want.
+        </p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
+        {[
+          ['One Call', 'Sales, service, repair, PM — one phone number, one account, one relationship.'],
+          ['Zero Learning Curve', 'Our service techs installed your equipment. They know every component.'],
+          ['43 Years of Accountability', 'We\'re still here for clients we first served in the 1980s. We intend to be here for you too.'],
+        ].map(([title, desc]) => (
+          <div class="bg-white p-6 rounded-lg border border-[var(--color-border)] text-center">
+            <div class="font-display font-bold text-xl text-[var(--color-navy)] mb-2">{title}</div>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>
