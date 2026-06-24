@@ -1,43 +1,176 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
 import { site } from '~/data/site';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Medical Equipment Sales',
+  provider: { '@id': `${site.url}#organization` },
+  description: 'Authorized medical equipment sales including Skytron surgical tables, lights, booms, and OR integration. Serving Texas healthcare facilities since 1983.',
+  areaServed: [{ '@type': 'State', name: 'Texas' }],
+  serviceType: 'Medical Equipment Sales',
+  url: `${site.url}/services/equipment-sales`,
+};
+
+const offerings = [
+  {
+    icon: '<path d="M3 9h18M3 9a2 2 0 012-2h14a2 2 0 012 2M3 9v9a2 2 0 002 2h14a2 2 0 002-2V9M9 13h6M12 11v4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
+    title: 'Skytron Surgical Tables',
+    desc: 'The full Skytron line — multi-articulating tables with memory positioning, radiolucent tops, and C-arm compatibility for the complexity of modern surgical procedures.',
+  },
+  {
+    icon: '<circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 2v2M12 14v8M5 8H3M21 8h-2M7 5l-1.5-1.5M17 5l1.5-1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+    title: 'Surgical Lighting Systems',
+    desc: 'Advanced LED surgical lights with adjustable color temperature (3,500–5,000K), shadow management, and optional integrated camera for documentation and remote viewing.',
+  },
+  {
+    icon: '<rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M9 9h6M9 12h6M9 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+    title: 'Equipment Booms & Pendants',
+    desc: 'Ceiling-mounted surgical booms with integrated gas, electrical, and data connections — freeing your OR floor and streamlining workflow for every case.',
+  },
+  {
+    icon: '<rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+    title: 'OR Integration Systems',
+    desc: 'Complete hybrid OR packages — AV switching, 4K displays, room integration, and unified control of all room systems in one seamless surgical environment.',
+  },
+  {
+    icon: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    title: 'HSI & Knight Lines',
+    desc: 'Hospital Systems Inc. products and Knight instrument cleaning equipment — a complete portfolio covering every stage of surgical suite setup and maintenance.',
+  },
+  {
+    icon: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+    title: 'BBB A+ Trusted Partner',
+    desc: 'Every purchase is backed by a BBB A+ accredited business with 43 years of Houston healthcare relationships and no-compromise quality standards.',
+  },
+];
+
+const processSteps = [
+  ['Needs Assessment', "We review your procedure volume, room dimensions, and surgeon preferences."],
+  ['Equipment Specification', "We recommend the right model and accessories — no overselling."],
+  ['Pricing & Procurement', "Direct factory pricing with transparent, itemized quotes. No surprises."],
+  ['Installation', "Factory-certified installation coordinated around your OR schedule."],
+  ['Training & Go-Live', "Staff orientation included. We don't leave until your team is confident."],
+  ['Ongoing Service', "PM programs and rapid repair from the same team, long-term."],
+];
+
+const whyItems = [
+  'Authorized Skytron dealer — direct factory support and pricing',
+  'Factory-trained application specialists for product selection',
+  'Full lifecycle coverage: sales, install, training, ongoing service',
+  'Relationships with Texas hospital networks built over 43 years',
+  'No-pressure consultation — we match equipment to your needs',
+  'Same team handles your install and future service calls',
+];
 ---
 <BaseLayout
-  title="Equipment Sales | Surgiquip Solutions"
-  description="Premium medical equipment from industry-leading manufacturers, including Skytron, HSI, and Knight."
+  title="Medical Equipment Sales | Surgiquip Solutions Houston TX"
+  description="Authorized Skytron dealer for Southeast Texas. Surgical tables, lights, booms, OR integration, HSI, and Knight equipment. 43 years serving Texas healthcare."
+  schema={serviceSchema}
 >
-  <section class="relative bg-[var(--color-navy)] text-white overflow-hidden">
-    <div class="absolute inset-0 opacity-20" aria-hidden="true">
-      <img src="/images/services/equipment-sales-hero.png" alt="" class="w-full h-full object-cover" />
-    </div>
-    <div class="absolute inset-0 bg-[var(--color-navy)]/80" aria-hidden="true"></div>
-    <div class="container-x relative py-20">
-      <div class="text-xs font-bold tracking-widest uppercase text-white/70">Services</div>
-      <h1 class="font-display text-4xl md:text-5xl font-bold mt-3 text-white">Premium Equipment from Trusted Manufacturers</h1>
-      <p class="mt-4 text-lg text-white/80 max-w-2xl">
-        We partner with industry-leading manufacturers to bring you the most reliable, innovative medical equipment on the market.
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/services" class="hover:text-white/90">Services</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">Equipment Sales</span>
+      </nav>
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Services</div>
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-3xl">
+        Medical Equipment Sales
+      </h1>
+      <p class="mt-6 text-xl text-white/85 max-w-2xl leading-relaxed">
+        Authorized dealer for Skytron — the gold standard in surgical technology — plus HSI, Knight, and 43 years of Houston healthcare expertise. We don't just sell equipment; we build operating rooms that last.
       </p>
-    </div>
-  </section>
-
-  <section class="container-x py-16">
-    <div class="grid md:grid-cols-2 gap-8 items-center">
-      <div>
-        <img src="/images/services/equipment-sales-hero.png" alt="Medical equipment showroom" class="w-full rounded-lg shadow-lg" loading="lazy" decoding="async" />
-      </div>
-      <div>
-        <h2 class="text-2xl font-bold text-[var(--color-navy)]">Why Buy Through Surgiquip?</h2>
-        <ul class="mt-6 space-y-4 text-[var(--color-text-muted)]">
-          <li class="flex gap-3"><span class="text-[var(--color-blue)] font-bold">✓</span> Factory-authorized dealer with direct manufacturer relationships</li>
-          <li class="flex gap-3"><span class="text-[var(--color-blue)] font-bold">✓</span> Complete installation and in-service training included</li>
-          <li class="flex gap-3"><span class="text-[var(--color-blue)] font-bold">✓</span> Ongoing preventive maintenance and 24-hour emergency repair</li>
-          <li class="flex gap-3"><span class="text-[var(--color-blue)] font-bold">✓</span> 43 years of trusted service across Texas healthcare facilities</li>
-        </ul>
-        <a href="/quote" class="inline-flex items-center gap-2 mt-8 btn-primary">
-          Get a Quote
-          <svg class="w-4 h-4" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="/quote" class="btn-primary px-7 py-3.5">Request Equipment Quote</a>
+        <a href={`tel:${site.phoneE164}`} class="inline-flex items-center gap-2 px-7 py-3.5 rounded-md border border-white/40 font-semibold text-white hover:bg-white/10 transition">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1l-2.3 2.3z"/></svg>
+          Call {site.phone}
         </a>
       </div>
     </div>
   </section>
+
+  <section class="container-x py-16">
+    <div class="max-w-3xl">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">What We Offer</div>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-[var(--color-navy)]">
+        The Right Equipment, Expertly Specified
+      </h2>
+      <p class="mt-4 text-lg text-[var(--color-text-muted)] leading-relaxed">
+        For {site.yearsInBusiness} years, Surgiquip Solutions has equipped Texas hospitals, surgery centers, and specialty clinics with the instruments and room systems their surgical teams depend on. Our Skytron partnership as the exclusive authorized dealer for Southeast Texas means direct factory expertise — not a commodity reseller.
+      </p>
+      <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+        We work with your biomedical team, OR committee, and facilities staff to evaluate your surgical volume, procedure mix, and facility constraints before recommending any equipment. Your needs drive the specification.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x">
+      <div class="text-center mb-12">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Product Lines</div>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Equipment We Sell and Support</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {offerings.map((item) => (
+          <div class="bg-white rounded-lg border border-[var(--color-border)] p-6 hover:shadow-md hover:border-[var(--color-blue)] transition">
+            <div class="w-12 h-12 rounded-full bg-[var(--color-surface-alt)] flex items-center justify-center text-[var(--color-navy)] mb-4">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" set:html={item.icon} />
+            </div>
+            <h3 class="font-bold text-lg text-[var(--color-navy)] mb-2">{item.title}</h3>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container-x py-16">
+    <div class="grid gap-12 lg:grid-cols-2 items-start">
+      <div>
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Why Surgiquip</div>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">
+          More Than a Vendor — A Long-Term Partner
+        </h2>
+        <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+          When you purchase equipment through Surgiquip, you're establishing a service relationship with the same team that installs it, trains your staff, and maintains it for the life of the equipment.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {whyItems.map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[var(--color-blue)] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="text-[var(--color-text-muted)] text-sm">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="bg-[var(--color-surface-alt)] rounded-xl p-8 border border-[var(--color-border)]">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-text-muted)] mb-5">Our Process</div>
+        <ol class="space-y-5">
+          {processSteps.map(([step, desc], i) => (
+            <li class="flex gap-4">
+              <div class="shrink-0 w-8 h-8 rounded-full bg-[var(--color-blue)] text-white flex items-center justify-center text-sm font-bold">{i + 1}</div>
+              <div>
+                <div class="font-semibold text-[var(--color-navy)]">{step}</div>
+                <div class="text-sm text-[var(--color-text-muted)] mt-0.5">{desc}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Ready to Spec Your Next OR?"
+    subhead="Our team will walk through your facility's needs, recommend the right equipment, and provide a transparent quote — no obligation."
+  />
 </BaseLayout>

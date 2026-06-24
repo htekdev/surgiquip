@@ -20,7 +20,7 @@ import { site } from '~/data/site';
         <span class="text-white">Dedicated to Excellence Since {site.established}</span>
       </h1>
       <p class="mt-6 text-lg text-white/85 max-w-xl">
-        Proudly partnered with Skytron to provide innovative, reliable solutions for healthcare facilities.
+        Houston's trusted partner for surgical equipment, OR installation, and preventive maintenance — serving Texas healthcare facilities for over four decades.
       </p>
       <div class="mt-8 flex flex-wrap items-center gap-5">
         <a href="/quote" class="btn-primary">
@@ -35,12 +35,12 @@ import { site } from '~/data/site';
 
       <div class="mt-12 inline-flex items-center gap-3 bg-white/10 backdrop-blur rounded-full px-5 py-3 border border-white/20">
         <div class="w-14 h-14 rounded-full bg-white text-[var(--color-navy)] flex flex-col items-center justify-center font-display font-bold leading-none">
-          <span class="text-xl">40</span>
+          <span class="text-xl">{site.yearsInBusiness}</span>
           <span class="text-[8px] tracking-wider">YEARS</span>
         </div>
         <div class="text-sm">
-          <div class="font-bold">1983 — 2023</div>
-          <div class="text-xs text-white/80 italic">Surgiquip Solutions, Inc.</div>
+          <div class="font-bold">{site.established} — {new Date().getFullYear()}</div>
+          <div class="text-xs text-white/80 italic">{site.brand}</div>
         </div>
       </div>
     </div>

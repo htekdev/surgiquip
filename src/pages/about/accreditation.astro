@@ -1,9 +1,115 @@
 ---
-import StubPage from '~/layouts/StubPage.astro';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
 ---
-<StubPage
-  title="Accreditation"
-  description="BBB A+ Accredited Business. Authorized Skytron dealer. 43 years of trusted service to hospitals and surgical centers."
-  eyebrow="Accreditation"
-  heading="Accredited. Authorized. Trusted."
-/>
+<BaseLayout
+  title="Accreditation & Authorizations | Surgiquip Solutions"
+  description="BBB A+ Accredited Business. Authorized Skytron dealer for Southeast Texas. Factory-certified technicians. 43 years of trusted medical equipment service."
+>
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/about" class="hover:text-white/90">About</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">Accreditation</span>
+      </nav>
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Trust & Credentials</div>
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-white leading-tight max-w-2xl">
+        Accredited. Authorized. Trusted.
+      </h1>
+      <p class="mt-5 text-lg text-white/85 max-w-xl">
+        Our credentials aren't wall decorations — they represent operational standards that protect every facility and patient we serve.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-x py-16">
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {[
+        {
+          icon: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+          badge: 'BBB A+',
+          title: 'Better Business Bureau — A+ Accredited',
+          body: 'Surgiquip Solutions, Inc. is an A+ rated, BBB Accredited Business. This designation is earned — not purchased. It reflects our track record of transparent business practices, responsiveness to concerns, and commitment to resolving any issues that arise. Zero unresolved complaints.',
+        },
+        {
+          icon: '<path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
+          badge: 'Authorized',
+          title: 'Authorized Skytron Dealer — Southeast Texas',
+          body: 'Skytron designates only a small number of exclusive authorized dealers per market. Our authorization covers Southeast Texas and means we operate under direct factory oversight: certified technicians, current parts inventories, and access to manufacturer technical support that independent dealers cannot access.',
+        },
+        {
+          icon: '<path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-3 3-2.4-2.4 3-3z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>',
+          badge: 'Certified',
+          title: 'Factory-Trained & Certified Technicians',
+          body: 'Our service technicians complete Skytron factory training programs and maintain current certifications. This means every repair follows OEM procedures, uses manufacturer-approved parts, and produces documentation acceptable for regulatory compliance review.',
+        },
+        {
+          icon: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+          badge: 'Authorized',
+          title: 'HSI Hospital Systems — Authorized Dealer',
+          body: 'We hold authorized dealer status with Hospital Systems Inc. (HSI), extending our product and service capabilities beyond Skytron to a broader portfolio of hospital equipment.',
+        },
+        {
+          icon: '<rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+          badge: 'Authorized',
+          title: 'Knight Equipment — Authorized Dealer',
+          body: 'Authorized dealer for Knight instrument cleaning and sterilization equipment — rounding out a comprehensive product portfolio for fully equipped surgical suites.',
+        },
+        {
+          icon: '<rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+          badge: '43 Years',
+          title: 'In Business Since 1983',
+          body: 'Longevity in healthcare services is a credential of its own. Companies that don\'t operate with integrity don\'t serve the same market for 43 years. Our history is the strongest testimony to the standards we maintain.',
+        },
+      ].map((item) => (
+        <div class="bg-white rounded-xl border border-[var(--color-border)] p-6 hover:shadow-md transition">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 rounded-full bg-[var(--color-surface-alt)] flex items-center justify-center text-[var(--color-navy)] shrink-0">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" set:html={item.icon} />
+            </div>
+            <div>
+              <span class="inline-block px-2 py-0.5 text-xs font-bold rounded bg-[var(--color-blue)] text-white mb-1">{item.badge}</span>
+              <h2 class="font-bold text-[var(--color-navy)] text-base leading-tight">{item.title}</h2>
+            </div>
+          </div>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x max-w-3xl text-center">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Compliance Documentation</div>
+      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Survey-Ready Documentation, Every Time</h2>
+      <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+        Every service visit, PM completion, and installation generates documentation formatted for Joint Commission, DNV GL, and CMS requirements. Our clients don't scramble during surveys — their records are organized and current.
+      </p>
+      <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        {[
+          ['Joint Commission', 'EC.02.04.01 compliance'],
+          ['DNV GL', 'Healthcare accreditation'],
+          ['CMS', 'Conditions of Participation'],
+          ['NFPA 99', 'Medical gas compliance'],
+        ].map(([org, note]) => (
+          <div class="p-4 bg-white rounded-lg border border-[var(--color-border)]">
+            <div class="font-bold text-[var(--color-navy)] text-sm">{org}</div>
+            <div class="text-xs text-[var(--color-text-muted)] mt-1">{note}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Questions About Our Credentials?"
+    subhead={`Call us at ${site.phone} or send an email to ${site.email}. We're happy to provide reference letters, authorization documentation, or BBB verification.`}
+    primaryLabel="Contact Us"
+    primaryHref="/contact"
+    secondaryLabel={`Call ${site.phone}`}
+  />
+</BaseLayout>
