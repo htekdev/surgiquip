@@ -4,10 +4,10 @@ subtitle: "Skytron ceiling-mount equipment boom installation with medical gas ou
 type: "Boom System Install"
 facility: "Houston ambulatory surgery center"
 location: "Houston, TX"
-value: "$180K"
-year: 2023
+value: "ASC-scale"
 status: "Completed"
 featured: false
+disclaimer: "Representative project summary — details protected by client NDA"
 equipment:
   - "Skytron Hercules Ceiling-Mount Equipment Boom (2)"
   - "Medical Gas Outlet Manifolds"
@@ -52,6 +52,6 @@ Surgiquip Solutions served as the equipment boom subcontractor for the project, 
 
 ## Outcome
 
-Both boom systems passed commissioning and NFPA 99 gas outlet certification. The OR rooms went live on schedule. The facility subsequently engaged Surgiquip for surgical table procurement for the same two rooms.
+Both boom systems passed commissioning and NFPA 99 gas outlet certification. The OR rooms went live on schedule.
 
 *[Contact us](/contact) to discuss a boom installation for your new OR or renovation project.*

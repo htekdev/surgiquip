@@ -28,6 +28,7 @@ const {
   scope,
   seoTitle,
   seoDescription,
+  disclaimer,
 } = entry.data;
 
 const pageTitle = seoTitle ?? `${title} | Surgiquip Solutions`;
@@ -57,7 +58,7 @@ const schema = {
     name: site.brand,
     url: site.url,
   },
-  datePublished: `${year}-01-01`,
+  ...(year != null ? { datePublished: `${year}-01-01` } : {}),
   url: canonicalUrl,
   mainEntityOfPage: canonicalUrl,
   about: {
@@ -140,10 +141,12 @@ const breadcrumbSchema = {
           <span class="block text-xs uppercase tracking-widest text-white/50 mb-1">Project Value</span>
           <span class="text-white/90 font-medium">{value}</span>
         </div>
-        <div>
-          <span class="block text-xs uppercase tracking-widest text-white/50 mb-1">Year</span>
-          <span class="text-white/90 font-medium">{year}</span>
-        </div>
+        {year != null && (
+          <div>
+            <span class="block text-xs uppercase tracking-widest text-white/50 mb-1">Year</span>
+            <span class="text-white/90 font-medium">{year}</span>
+          </div>
+        )}
       </div>
     </div>
   </section>
@@ -154,6 +157,11 @@ const breadcrumbSchema = {
 
       {/* Case study body */}
       <article class="project-body">
+        {disclaimer && (
+          <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-8 text-sm text-amber-800">
+            <strong>Note:</strong> {disclaimer}. <a href="/contact" class="underline hover:text-amber-900">Contact us</a> for client references and detailed project specifications.
+          </div>
+        )}
         <Content />
       </article>
 
