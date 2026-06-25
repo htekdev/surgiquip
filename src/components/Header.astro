@@ -62,7 +62,18 @@ import Logo from './Logo.astro';
   <div id="mobile-menu" class="hidden lg:hidden border-t border-[var(--color-border)] bg-white" role="navigation" aria-label="Mobile navigation">
     <nav class="container-x py-4 flex flex-col gap-1">
       {nav.map((item) => (
-        <a href={item.href} class="py-2.5 px-3 rounded font-medium hover:bg-[var(--color-surface-alt)]">{item.label}</a>
+        <div>
+          <a href={item.href} class="block py-2.5 px-3 rounded font-medium hover:bg-[var(--color-surface-alt)]">{item.label}</a>
+          {item.children && (
+            <div class="pl-4 flex flex-col gap-0.5 mt-0.5 mb-1">
+              {item.children.map((child) => (
+                <a href={child.href} class="block py-2 px-3 rounded text-sm text-[var(--color-text-muted)] hover:bg-[var(--color-surface-alt)] hover:text-[var(--color-blue)]">
+                  {child.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
       ))}
       <a href="/quote" class="btn-primary mt-3 justify-center">Request Quote</a>
       <a href={`tel:${site.phoneE164}`} class="text-center py-3 font-semibold text-[var(--color-navy)]">📞 {site.phone}</a>
