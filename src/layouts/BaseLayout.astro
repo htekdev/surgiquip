@@ -35,7 +35,12 @@ const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <link rel="canonical" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 
+    {/* Favicon package */}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#0a2c5e" />
 
     <meta property="og:type" content="website" />
@@ -55,6 +60,19 @@ const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     {schemaArray.map((s) => (
       <script type="application/ld+json" set:html={JSON.stringify(s)} />
     ))}
+
+    {/* GA4 — activated by PUBLIC_GA4_ID env var (set in Vercel before launch) */}
+    {import.meta.env.PUBLIC_GA4_ID && (
+      <Fragment>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA4_ID}`} />
+        <script define:vars={{ _gaId: import.meta.env.PUBLIC_GA4_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', _gaId);
+        </script>
+      </Fragment>
+    )}
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />
