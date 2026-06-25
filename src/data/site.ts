@@ -45,6 +45,7 @@ export const nav = [
     ],
   },
   { label: 'Projects', href: '/projects' },
+  { label: 'Blog', href: '/blog' },
   {
     label: 'About',
     href: '/about',
