@@ -16,9 +16,11 @@ export interface Props {
   image?: string;
   schema?: object | object[];
   noindex?: boolean;
+  /** Absolute path to preload as LCP image hint (e.g. "/images/hero/hero-or-suite.png") */
+  preloadImage?: string;
 }
 
-const { title, description, canonical, image = '/og-default.png', schema, noindex = false } = Astro.props;
+const { title, description, canonical, image = '/og-default.png', schema, noindex = false, preloadImage } = Astro.props;
 
 const fullTitle = title.includes(site.short) ? title : `${title} | ${site.brand}`;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site.url).toString();
@@ -57,6 +59,11 @@ const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 
     <meta name="generator" content={Astro.generator} />
 
+    {/* Preload LCP hero image when provided — improves Largest Contentful Paint */}
+    {preloadImage && (
+      <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
+    )}
+
     {schemaArray.map((s) => (
       <script type="application/ld+json" set:html={JSON.stringify(s)} />
     ))}
@@ -75,8 +82,15 @@ const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     )}
   </head>
   <body class="min-h-screen flex flex-col">
+    {/* Skip-to-content: critical for keyboard navigation and Lighthouse a11y */}
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:rounded focus:bg-[var(--color-navy)] focus:text-white focus:font-semibold focus:shadow-lg"
+    >
+      Skip to main content
+    </a>
     <Header />
-    <main class="flex-1">
+    <main id="main-content" class="flex-1" tabindex="-1">
       <slot />
     </main>
     <Footer />

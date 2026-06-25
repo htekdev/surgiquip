@@ -15,12 +15,20 @@
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
+/* Ensure Inter renders without layout shift */
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+}
+
 @layer base {
   html {
     font-family: var(--font-body);
     color: var(--color-text);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Smooth scroll for skip-to-content and anchor links */
+    scroll-behavior: smooth;
   }
   body { background: var(--color-surface); }
   h1, h2, h3, h4, h5 {
@@ -32,6 +40,16 @@
   h1 { letter-spacing: -0.03em; }
   a { color: var(--color-blue); }
   a:hover { color: var(--color-blue-light); }
+
+  /* Visible focus ring for keyboard navigation — Lighthouse a11y requirement */
+  :focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  /* Suppress focus ring for mouse users on main (skip-to-content target) */
+  #main-content:focus { outline: none; }
 }
 
 @layer components {
