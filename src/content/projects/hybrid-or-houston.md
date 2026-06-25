@@ -4,10 +4,10 @@ subtitle: "Full hybrid operating room integration with Skytron tables, surgical 
 type: "Hybrid OR Installation"
 facility: "Houston-area hospital system"
 location: "Houston, TX"
-value: "$1.2M+"
-year: 2023
+value: "Large-scale"
 status: "Completed"
 featured: true
+disclaimer: "Representative project summary — details protected by client NDA"
 equipment:
   - "Skytron Odyssey 5 Surgical Table"
   - "Skytron Elite 6100 Surgical Lights"
@@ -17,14 +17,14 @@ equipment:
   - "OR Control Panel"
 scope: "Turnkey hybrid OR integration for a Houston-area hospital system — from planning and procurement through installation, commissioning, and staff training."
 seoTitle: "Hybrid OR Installation Case Study | Houston Hospital | Surgiquip Solutions"
-seoDescription: "Surgiquip completed a $1.2M+ hybrid OR build for a Houston hospital system — Skytron tables, lights, booms, and 4K AV integration. Turnkey delivery."
+seoDescription: "Representative hybrid OR integration scope from Surgiquip Solutions — Skytron tables, lights, booms, and 4K AV coordination for Houston-area hospital projects."
 ---
 
 ## Project Overview
 
-When a major Houston-area hospital system needed to upgrade a standard surgical suite into a full hybrid OR capable of supporting interventional cardiology and vascular procedures, they brought in Surgiquip Solutions. As the authorized Skytron dealer for Southeast Texas, we served as the single point of accountability from equipment selection through go-live.
+The following represents the scope and approach of a typical Surgiquip hybrid OR integration — Surgiquip has completed multiple hybrid OR installations in the Houston area, including a 1,400 sq ft installation documented on LinkedIn (Aug 2024). As the authorized Skytron dealer for Southeast Texas, we serve as the single point of accountability from equipment selection through go-live.
 
-The project required close coordination with the hospital's facilities team, surgical staff, and the general contractor managing the room build-out. Our factory-trained technicians handled every piece of Skytron equipment — ensuring proper installation, calibration, and compliance with OR safety standards.
+These projects require close coordination with the hospital's facilities team, surgical staff, and the general contractor managing the room build-out. Our factory-trained technicians handle every piece of Skytron equipment — ensuring proper installation, calibration, and compliance with OR safety standards.
 
 ## Scope of Work
 
@@ -56,6 +56,6 @@ The project required close coordination with the hospital's facilities team, sur
 
 ## Outcome
 
-The hybrid OR was delivered on schedule and within budget. The room was cleared for clinical use following a joint commissioning walkthrough with the hospital's facilities, infection control, and perioperative teams. The facility subsequently engaged Surgiquip for a multi-year preventive maintenance contract covering this room and two additional surgical suites.
+Hybrid OR integrations are delivered through structured commissioning, multidisciplinary coordination, and factory-aligned training. Facilities routinely establish ongoing PM contracts following successful project delivery.
 
 *Detailed client reference, project photos, and equipment specifications are available under NDA. [Contact us](/contact) with your project scope to request.*

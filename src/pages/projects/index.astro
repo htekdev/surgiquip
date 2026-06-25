@@ -6,11 +6,11 @@ import { site } from '~/data/site';
 
 // Fetch all projects from content collection
 const allProjects = await getCollection('projects');
-// Sort: featured first, then by year descending
+// Sort: featured first, then by year descending when available
 const projects = allProjects.sort((a, b) => {
   if (a.data.featured && !b.data.featured) return -1;
   if (!a.data.featured && b.data.featured) return 1;
-  return b.data.year - a.data.year;
+  return (b.data.year ?? 0) - (a.data.year ?? 0);
 });
 
 const pageSchema = {
@@ -99,7 +99,9 @@ const statusClasses = (status: string) =>
           <div class="flex items-center justify-between text-xs text-[var(--color-text-muted)] border-t border-[var(--color-border)] pt-4 mt-auto">
             <div>
               <span class="block">{project.data.facility}</span>
-              <span class="block">{project.data.location} · {project.data.year}</span>
+              <span class="block">
+                {project.data.location}{project.data.year ? ` · ${project.data.year}` : ''}
+              </span>
             </div>
             <span class="font-semibold text-[var(--color-navy)] text-sm">{project.data.value}</span>
           </div>

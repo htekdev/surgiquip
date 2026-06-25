@@ -1,33 +1,33 @@
 ---
-title: "8-Suite Preventive Maintenance Program — Regional Health System"
-subtitle: "Multi-campus annual PM contract covering surgical tables, lights, and equipment booms across eight operating rooms at two hospital campuses."
+title: "Preventive Maintenance Program — Regional Health System"
+subtitle: "Regional preventive maintenance coverage for surgical tables, lights, and equipment booms across a hospital system's OR fleet."
 type: "Preventive Maintenance"
 facility: "Regional health system"
 location: "Texas Gulf Coast Region"
 value: "Ongoing"
-year: 2021
 status: "Active"
 featured: true
+disclaimer: "Representative project summary — details protected by client NDA"
 equipment:
-  - "Skytron Surgical Tables (8)"
-  - "Skytron LED Surgical Lights (8 rooms)"
-  - "Skytron Equipment Booms (6)"
+  - "Skytron Surgical Tables"
+  - "Skytron LED Surgical Lights"
+  - "Skytron Equipment Booms"
   - "Accessory sets and pads"
-scope: "Annual PM contract covering 8 surgical suites across 2 campuses — bi-annual site visits, emergency response coverage, and parts management."
+scope: "Annual PM coverage for a regional health system's surgical equipment fleet — scheduled site visits, emergency response coverage, and parts management."
 seoTitle: "Preventive Maintenance Program Case Study | Texas Health System | Surgiquip Solutions"
-seoDescription: "Surgiquip manages an active 8-suite PM contract for a Texas health system across two campuses — Skytron tables, lights, and booms. Emergency response included."
+seoDescription: "Representative preventive maintenance program scope from Surgiquip Solutions for regional hospital systems using Skytron tables, lights, and booms."
 ---
 
 ## Program Overview
 
-A regional Texas health system operating two hospital campuses needed a reliable, compliant preventive maintenance program for their surgical equipment fleet. With eight ORs split across two sites and a mix of Skytron table generations, lights, and booms, they required a single vendor with factory-trained technicians who knew the equipment.
+A regional Texas health system needed a reliable, compliant preventive maintenance program for its surgical equipment fleet. With multiple OR environments and a mix of Skytron table generations, lights, and booms, the system required a single vendor with factory-trained technicians who knew the equipment.
 
-Surgiquip Solutions has managed this PM contract since 2021 — providing bi-annual on-site service visits, emergency response coverage, and proactive parts management across both campuses.
+Surgiquip Solutions manages PM programs with bi-annual on-site service visits, emergency response coverage, and proactive parts management across hospital campuses.
 
 ## Program Structure
 
 **Bi-Annual PM Visits**
-Each visit covers all eight ORs across both campuses:
+Each visit covers the supported OR fleet:
 - Surgical table function testing — all axes of movement, weight capacity validation, accessory attachment verification
 - Surgical light inspection — bulb/LED output measurement, arm tension adjustment, sterilization handle inspection
 - Equipment boom inspection — gas outlet flow rate testing, electrical outlet testing, structural integrity check
@@ -43,20 +43,8 @@ Each visit covers all eight ORs across both campuses:
 - Parts stocking for high-demand Skytron wear items maintained by Surgiquip
 - Loaner equipment arrangements coordinated as needed
 
-## Program Highlights
-
-- **Multi-campus coordination** — both campuses scheduled in the same week to minimize staff disruption
-- **Survey-ready documentation** — PM records maintained in a format directly usable during Joint Commission or DNV accreditation surveys
-- **Parts continuity** — Surgiquip's authorized dealer relationship with Skytron ensures parts availability and factory-correct replacements
-
 ## Outcomes to Date
 
-Since the program began in 2021:
-- 0 Joint Commission findings related to surgical equipment at either campus
-- Emergency response calls resolved same-day in all cases
-- Two table top pad sets replaced proactively before wear became a patient safety concern
-- Full fleet documentation maintained and current
-
-The contract was renewed for 2024 without modification — a reflection of consistent, reliable service delivery.
+Active PM programs maintained by Surgiquip demonstrate consistent survey-readiness and reduced unplanned equipment failures. Emergency response coverage ensures rapid resolution for critical equipment issues.
 
 *Talk to us about a PM program for your facility. [Request a quote](/quote) or [contact us](/contact) for a site assessment.*

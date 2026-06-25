@@ -26,6 +26,7 @@ const {
   status,
   equipment,
   scope,
+  disclaimer,
   seoTitle,
   seoDescription,
 } = entry.data;
@@ -42,7 +43,7 @@ const statusColor =
     : 'bg-[var(--color-surface-alt)] text-[var(--color-text-muted)]';
 
 // JSON-LD — Article schema for case study
-const schema = {
+const schema: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: title,
@@ -57,7 +58,7 @@ const schema = {
     name: site.brand,
     url: site.url,
   },
-  datePublished: `${year}-01-01`,
+  ...(year ? { datePublished: `${year}-01-01` } : {}),
   url: canonicalUrl,
   mainEntityOfPage: canonicalUrl,
   about: {
@@ -140,10 +141,18 @@ const breadcrumbSchema = {
           <span class="block text-xs uppercase tracking-widest text-white/50 mb-1">Project Value</span>
           <span class="text-white/90 font-medium">{value}</span>
         </div>
-        <div>
-          <span class="block text-xs uppercase tracking-widest text-white/50 mb-1">Year</span>
-          <span class="text-white/90 font-medium">{year}</span>
-        </div>
+        {year && (
+          <div>
+            <span class="block text-xs uppercase tracking-widest text-white/50 mb-1">Year</span>
+            <span class="text-white/90 font-medium">{year}</span>
+          </div>
+        )}
+        {disclaimer && (
+          <div class="max-w-sm">
+            <span class="block text-xs uppercase tracking-widest text-white/50 mb-1">Note</span>
+            <span class="text-white/90 font-medium">{disclaimer}</span>
+          </div>
+        )}
       </div>
     </div>
   </section>

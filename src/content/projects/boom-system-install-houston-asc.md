@@ -1,26 +1,26 @@
 ---
 title: "Equipment Boom Installation — Houston Ambulatory Surgery Center"
-subtitle: "Skytron ceiling-mount equipment boom installation with medical gas outlets, electrical service, and data runs across two new ORs."
+subtitle: "Skytron ceiling-mount equipment boom installation with medical gas outlets, electrical service, and data runs for ASC OR expansion work."
 type: "Boom System Install"
 facility: "Houston ambulatory surgery center"
 location: "Houston, TX"
-value: "$180K"
-year: 2023
+value: "ASC-scale"
 status: "Completed"
 featured: false
+disclaimer: "Representative project summary — details protected by client NDA"
 equipment:
   - "Skytron Hercules Ceiling-Mount Equipment Boom (2)"
   - "Medical Gas Outlet Manifolds"
   - "Electrical Service Drop (20A dedicated circuits)"
   - "AV/Data Conduit"
-scope: "Two-room equipment boom installation for a new ambulatory surgery center build-out, including gas, electrical, and data service integration."
+scope: "Equipment boom installation for an ambulatory surgery center build-out, including gas, electrical, and data service integration."
 seoTitle: "Boom System Installation Case Study | Houston ASC | Surgiquip Solutions"
-seoDescription: "Surgiquip installed Skytron Hercules equipment booms in two new ORs at a Houston ambulatory surgery center — including gas, electrical, and AV service."
+seoDescription: "Representative equipment boom installation scope from Surgiquip Solutions for Houston-area ambulatory surgery center projects."
 ---
 
 ## Project Overview
 
-A new Houston ambulatory surgery center was completing construction on two addition ORs designed for high-acuity outpatient procedures. The facility required ceiling-mount equipment booms with medical gas, electrical, and AV/data integration — specification-critical infrastructure that had to be installed and commissioned before the rooms could receive OR furniture and light systems.
+A Houston ambulatory surgery center expansion required ceiling-mount equipment booms with medical gas, electrical, and AV/data integration — specification-critical infrastructure that had to be installed and commissioned before the rooms could receive OR furniture and light systems.
 
 Surgiquip Solutions served as the equipment boom subcontractor for the project, coordinating with the general contractor and MEP teams throughout the construction schedule.
 
@@ -52,6 +52,6 @@ Surgiquip Solutions served as the equipment boom subcontractor for the project, 
 
 ## Outcome
 
-Both boom systems passed commissioning and NFPA 99 gas outlet certification. The OR rooms went live on schedule. The facility subsequently engaged Surgiquip for surgical table procurement for the same two rooms.
+Equipment boom installations are commissioned, tested, and handed off in coordination with the facility's broader construction schedule so new OR environments can come online as planned.
 
 *[Contact us](/contact) to discuss a boom installation for your new OR or renovation project.*
