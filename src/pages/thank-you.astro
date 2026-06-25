@@ -1,11 +1,111 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+
+const steps = [
+  {
+    step: '01',
+    title: 'Review',
+    body: 'Our team reviews your request and matches it to the right specialist — equipment sales, service, or installation.',
+  },
+  {
+    step: '02',
+    title: 'Response',
+    body: 'You\'ll receive a response within one business day with details, availability, or a request for more information.',
+  },
+  {
+    step: '03',
+    title: 'Solution',
+    body: 'We walk through your options — no pressure, no upselling — and build the right plan for your facility.',
+  },
+];
 ---
-<BaseLayout title="Thank You" description="Thanks for reaching out — we'll respond within one business day." noindex>
-  <section class="container-x py-24 text-center">
-    <div class="text-6xl mb-4">✅</div>
-    <h1 class="text-4xl font-bold text-[var(--color-navy)]">Thank You</h1>
-    <p class="mt-4 text-lg text-[var(--color-text-muted)] max-w-xl mx-auto">Your message is on its way to our team. We respond within one business day.</p>
-    <a href="/" class="btn-primary mt-8 inline-flex">Back to Home</a>
+<BaseLayout
+  title="Thank You | Surgiquip Solutions"
+  description="Your quote request has been received. Surgiquip Solutions will respond within one business day."
+  noindex
+>
+  <!-- GA4 Conversion Event (fires on page load after form submit) -->
+  <script is:inline>
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_lead', {
+        event_category: 'Form',
+        event_label: 'Quote Request Submitted',
+        value: 1,
+      });
+    }
+  </script>
+
+  <!-- Hero confirmation -->
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20 text-center">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/10 border border-white/20 mb-6" aria-hidden="true">
+        <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+      </div>
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-white">Request Received</h1>
+      <p class="mt-4 text-lg text-white/85 max-w-xl mx-auto">
+        Your message is on its way to our team. We'll respond within one business day.
+      </p>
+    </div>
   </section>
+
+  <!-- What happens next -->
+  <section class="container-x py-16">
+    <div class="text-center mb-12">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)]">Next Steps</div>
+      <h2 class="text-3xl font-bold text-[var(--color-navy)] mt-3">What Happens Next</h2>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-3">
+      {steps.map((s) => (
+        <div class="text-center p-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)]">
+          <div class="font-display text-5xl font-bold text-[var(--color-blue)]/20 mb-4">{s.step}</div>
+          <h3 class="text-xl font-bold text-[var(--color-navy)] mb-2">{s.title}</h3>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{s.body}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Actions -->
+    <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="/" class="btn-primary">Back to Home</a>
+      <a
+        href={`tel:${site.phoneE164}`}
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-[var(--color-border)] font-semibold text-[var(--color-navy)] hover:border-[var(--color-navy)] transition"
+      >
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1l-2.3 2.3z"/>
+        </svg>
+        Call {site.phone}
+      </a>
+    </div>
+
+    <!-- Explore more -->
+    <div class="mt-12 pt-10 border-t border-[var(--color-border)]">
+      <p class="text-center text-sm text-[var(--color-text-muted)] mb-6">While you wait, explore what we do</p>
+      <div class="grid gap-4 sm:grid-cols-3 max-w-2xl mx-auto text-center">
+        <a href="/services/or-installation" class="block p-4 rounded-lg border border-[var(--color-border)] hover:border-[var(--color-blue)] hover:bg-[var(--color-surface-alt)] transition text-sm font-semibold text-[var(--color-navy)]">
+          OR Installation →
+        </a>
+        <a href="/products/skytron" class="block p-4 rounded-lg border border-[var(--color-border)] hover:border-[var(--color-blue)] hover:bg-[var(--color-surface-alt)] transition text-sm font-semibold text-[var(--color-navy)]">
+          Skytron Equipment →
+        </a>
+        <a href="/projects" class="block p-4 rounded-lg border border-[var(--color-border)] hover:border-[var(--color-blue)] hover:bg-[var(--color-surface-alt)] transition text-sm font-semibold text-[var(--color-navy)]">
+          Case Studies →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Need Urgent Service?"
+    subhead="Equipment down? Don't wait for email — call us directly for fastest response."
+    primaryLabel={`Call ${site.phone}`}
+    primaryHref={`tel:${site.phoneE164}`}
+    secondaryLabel="Email Us"
+    secondaryHref={`mailto:${site.email}`}
+  />
 </BaseLayout>
