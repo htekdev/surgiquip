@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://surgiquipsolutions.com',
+  site: 'https://surgiquip.com',
   output: 'static',
   adapter: vercel({
     webAnalytics: { enabled: false },
