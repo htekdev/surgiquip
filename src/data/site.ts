@@ -21,7 +21,7 @@ export const site = {
     linkedin: 'https://www.linkedin.com/company/surgiquip-solutions-inc-',
     youtube: 'https://www.youtube.com/@surgiquip',
   },
-  url: 'https://surgiquipsolutions.com',
+  url: 'https://surgiquip.com',
 } as const;
 
 export const nav = [
@@ -50,6 +50,7 @@ export const nav = [
     href: '/about',
     children: [
       { label: 'Our Story', href: '/about/our-story' },
+      { label: 'Our Team', href: '/about/team' },
       { label: 'Accreditation', href: '/about/accreditation' },
     ],
   },

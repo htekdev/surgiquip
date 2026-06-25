@@ -1,9 +1,143 @@
 ---
-import StubPage from '~/layouts/StubPage.astro';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+
+const products = [
+  {
+    name: 'Instrument Washers',
+    description: 'Automated surgical instrument cleaning systems that meet AAMI and AORN standards. Reduce manual handling, improve throughput, and ensure consistent decontamination results.',
+  },
+  {
+    name: 'Ultrasonic Cleaners',
+    description: 'High-frequency ultrasonic technology for effective removal of soil from complex instrument geometries — box locks, lumens, and serrations included.',
+  },
+  {
+    name: 'Sterile Processing Support',
+    description: 'Accessories, baskets, detergents, and workflow consulting to optimize your Central Sterile Processing Department. Knight makes instrument cleaning easy — we make it work for your OR.',
+  },
+];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Knight Instrument Cleaning Equipment — Surgiquip Solutions Houston TX',
+  description: 'Knight sterile processing and instrument cleaning equipment. Authorized dealer in Southeast Texas. Sales, installation, and service by Surgiquip Solutions.',
+  url: `${site.url}/products/knight`,
+  provider: {
+    '@type': 'LocalBusiness',
+    '@id': `${site.url}#organization`,
+    name: site.brand,
+    areaServed: 'Southeast Texas',
+  },
+  itemListElement: products.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Product',
+      name: p.name,
+      description: p.description,
+      brand: { '@type': 'Brand', name: 'Knight' },
+      offers: {
+        '@type': 'Offer',
+        seller: { '@id': `${site.url}#organization` },
+        areaServed: 'Southeast Texas',
+        availability: 'https://schema.org/InStock',
+        priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'USD' },
+      },
+    },
+  })),
+};
 ---
-<StubPage
-  title="Knight Instrument Cleaning"
-  description='Knight — "We make instrument cleaning easy." Sterile processing equipment for surgical centers.'
-  eyebrow="Knight"
-  heading="Knight Instrument Cleaning Equipment"
-/>
+<BaseLayout
+  title="Knight Instrument Cleaning Equipment | Surgiquip Solutions Houston TX"
+  description="Knight sterile processing and instrument cleaning systems for surgical centers. Authorized dealer in Southeast Texas. Contact Surgiquip Solutions for quotes and service."
+  schema={productSchema}
+>
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/products" class="hover:text-white/90">Products</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">Knight</span>
+      </nav>
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Products</div>
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-white max-w-2xl leading-tight">
+        Knight® Instrument Cleaning Equipment
+      </h1>
+      <p class="mt-5 text-lg text-white/85 max-w-2xl leading-relaxed">
+        Knight makes instrument cleaning easy. Surgiquip Solutions is an authorized Knight dealer for Southeast Texas — supplying automated washers, ultrasonic cleaners, and sterile processing solutions for surgical facilities.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="/quote" class="btn-primary">Request a Quote</a>
+        <a href={`tel:${site.phoneE164}`} class="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-white/30 text-white font-semibold hover:bg-white/10 transition text-sm">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1l-2.3 2.3z"/></svg>
+          {site.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Sterile Processing Matters -->
+  <section class="bg-[var(--color-surface-alt)] border-b border-[var(--color-border)]">
+    <div class="container-x py-6">
+      <div class="flex flex-wrap items-center gap-6 text-sm text-[var(--color-text-muted)]">
+        <div class="flex items-center gap-2 font-semibold text-[var(--color-navy)]">
+          <svg class="w-5 h-5 text-[var(--color-blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke-linecap="round"/></svg>
+          AAMI/AORN Standards
+        </div>
+        <div class="w-px h-4 bg-[var(--color-border)] hidden sm:block" aria-hidden="true"></div>
+        <span>Automated decontamination cycles</span>
+        <div class="w-px h-4 bg-[var(--color-border)] hidden sm:block" aria-hidden="true"></div>
+        <span>Joint Commission compliance support</span>
+        <div class="w-px h-4 bg-[var(--color-border)] hidden sm:block" aria-hidden="true"></div>
+        <span>Instrument longevity protection</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-x py-16">
+    <div class="max-w-2xl mb-12">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Product Line</div>
+      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Knight Sterile Processing Solutions</h2>
+      <p class="mt-3 text-[var(--color-text-muted)] leading-relaxed">
+        Proper instrument decontamination is a patient safety issue, not just a compliance checkbox. Knight systems are engineered to meet the demanding requirements of modern surgical facilities — and Surgiquip provides installation, training, and ongoing service.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-3">
+      {products.map((product) => (
+        <div class="bg-white rounded-xl border border-[var(--color-border)] p-6 hover:shadow-md transition flex flex-col">
+          <div class="w-10 h-10 rounded-lg bg-[var(--color-surface-alt)] flex items-center justify-center text-[var(--color-navy)] mb-4">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-bold text-[var(--color-navy)] mb-2">{product.name}</h3>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed flex-1">{product.description}</p>
+          <a href="/quote" class="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-[var(--color-blue)] hover:underline">
+            Request Quote
+            <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 p-6 bg-[var(--color-surface-alt)] rounded-xl border border-[var(--color-border)] max-w-2xl">
+      <div class="font-bold text-[var(--color-navy)] mb-2">Sterile Processing Assessment Available</div>
+      <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
+        Not sure what Knight solution is right for your facility? Our team can review your current sterile processing workflow and recommend the optimal configuration — from single-room ASCs to multi-OR hospital systems.
+      </p>
+      <a href="/contact" class="inline-flex items-center gap-2 mt-4 btn-primary text-sm">Schedule a Consultation</a>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Upgrade Your Sterile Processing Department"
+    subhead="Knight equipment, Surgiquip service. We'll help you specify, install, and maintain the right system for your facility's volume and instrument mix."
+    primaryLabel="Request a Quote"
+    primaryHref="/quote"
+    secondaryLabel={`Call ${site.phone}`}
+    secondaryHref={`tel:${site.phoneE164}`}
+  />
+</BaseLayout>
