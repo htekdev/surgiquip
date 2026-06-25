@@ -5,8 +5,8 @@ type: "Preventive Maintenance"
 facility: "Regional health system"
 location: "Texas Gulf Coast Region"
 value: "Ongoing"
-year: 2021
 status: "Active"
+disclaimer: "Representative project summary — details protected by client NDA"
 featured: true
 equipment:
   - "Skytron Surgical Tables (8)"
@@ -22,7 +22,7 @@ seoDescription: "Surgiquip manages an active 8-suite PM contract for a Texas hea
 
 A regional Texas health system operating two hospital campuses needed a reliable, compliant preventive maintenance program for their surgical equipment fleet. With eight ORs split across two sites and a mix of Skytron table generations, lights, and booms, they required a single vendor with factory-trained technicians who knew the equipment.
 
-Surgiquip Solutions has managed this PM contract since 2021 — providing bi-annual on-site service visits, emergency response coverage, and proactive parts management across both campuses.
+Surgiquip Solutions manages this PM contract — providing bi-annual on-site service visits, emergency response coverage, and proactive parts management across both campuses.
 
 ## Program Structure
 
@@ -51,12 +51,9 @@ Each visit covers all eight ORs across both campuses:
 
 ## Outcomes to Date
 
-Since the program began in 2021:
-- 0 Joint Commission findings related to surgical equipment at either campus
-- Emergency response calls resolved same-day in all cases
-- Two table top pad sets replaced proactively before wear became a patient safety concern
-- Full fleet documentation maintained and current
-
-The contract was renewed for 2024 without modification — a reflection of consistent, reliable service delivery.
+Active PM programs maintained by Surgiquip demonstrate consistent survey-readiness and reduced unplanned equipment failures:
+- Surgical equipment maintained in survey-ready condition across all covered facilities
+- Emergency response coverage ensures rapid resolution for critical equipment issues
+- Proactive parts management reduces unplanned downtime
 
 *Talk to us about a PM program for your facility. [Request a quote](/quote) or [contact us](/contact) for a site assessment.*
