@@ -66,4 +66,56 @@
   .container-x {
     @apply mx-auto max-w-7xl px-6 lg:px-8;
   }
+
+  /* Project case study body — styled markdown from content collection */
+  .project-body h2 {
+    font-family: var(--font-display);
+    color: var(--color-navy);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+  .project-body h3 {
+    font-family: var(--font-display);
+    color: var(--color-navy);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .project-body p {
+    color: var(--color-text);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+    font-size: 1.0625rem;
+  }
+  .project-body ul {
+    margin-bottom: 1.25rem;
+    padding-left: 1.25rem;
+  }
+  .project-body ul li {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 0.35rem;
+    list-style-type: disc;
+  }
+  .project-body strong {
+    color: var(--color-navy);
+    font-weight: 600;
+  }
+  .project-body a {
+    color: var(--color-blue);
+    text-underline-offset: 3px;
+    text-decoration: underline;
+  }
+  .project-body a:hover { color: var(--color-blue-light); }
+  .project-body em {
+    color: var(--color-text-muted);
+    font-style: italic;
+    font-size: 0.9375rem;
+  }
 }
