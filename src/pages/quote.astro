@@ -1,114 +1,280 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+
+const quoteSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${site.url}/quote`,
+    name: 'Request a Quote — Surgiquip Solutions',
+    url: `${site.url}/quote`,
+    description:
+      'Request a quote for surgical equipment, OR installation, service & repair, or preventive maintenance from Surgiquip Solutions in Houston, TX.',
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+        { '@type': 'ListItem', position: 2, name: 'Request a Quote', item: `${site.url}/quote` },
+      ],
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Medical Equipment Quote Request',
+    provider: {
+      '@type': 'LocalBusiness',
+      '@id': `${site.url}#organization`,
+      name: site.brand,
+    },
+    areaServed: {
+      '@type': 'State',
+      name: 'Texas',
+    },
+  },
+];
+
+const trustPoints = [
+  {
+    icon: '🏥',
+    title: '43 Years of Excellence',
+    body: 'In business since 1983, serving Texas hospitals, ASCs, and surgical facilities.',
+  },
+  {
+    icon: '⚙️',
+    title: 'Factory-Trained Technicians',
+    body: 'Skytron-certified and factory-trained on every product line we sell and service.',
+  },
+  {
+    icon: '📞',
+    title: 'Same-Day Response (When Available)',
+    body: 'Equipment down? We prioritize urgent service calls across Southeast Texas.',
+  },
+  {
+    icon: '🏅',
+    title: 'BBB A+ Accredited',
+    body: 'Over four decades of integrity, earning the highest rating from the Better Business Bureau.',
+  },
+  {
+    icon: '📍',
+    title: 'Houston-Based, Southeast Texas Focus',
+    body: 'Local team, local accountability — not a national chain that doesn\'t know your facility.',
+  },
+];
 ---
 <BaseLayout
-  title="Request a Quote"
-  description="Request a quote for medical equipment, service, repair, or OR installation. Response within one business day."
+  title="Request a Quote | Surgiquip Solutions Houston"
+  description="Request a quote for surgical equipment, OR installation, service, or preventive maintenance from Surgiquip Solutions — Houston's trusted Skytron dealer since 1983."
+  schema={quoteSchema}
 >
+  <!-- Hero -->
   <section class="bg-[var(--color-navy)] text-white">
     <div class="container-x py-16">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Home</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">Request a Quote</span>
+      </nav>
       <div class="text-xs font-bold tracking-widest uppercase text-white/70">Request Quote</div>
       <h1 class="font-display text-4xl md:text-5xl font-bold mt-3 text-white">Get a Quote</h1>
-      <p class="mt-4 text-lg text-white/85 max-w-2xl">Tell us what you need. We respond within one business day.</p>
+      <p class="mt-4 text-lg text-white/85 max-w-2xl">
+        Tell us what you need — equipment, installation, or service. Our team responds within one business day.
+      </p>
     </div>
   </section>
 
-  <section class="container-x py-16 max-w-2xl">
-    <form action="/api/quote-request" method="POST" class="space-y-5">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div class="space-y-1">
-          <label for="quote-name" class="block text-sm font-semibold text-[var(--color-navy)]">
-            Full Name <span class="text-red-500" aria-hidden="true">*</span>
-          </label>
-          <input
-            type="text"
-            id="quote-name"
-            name="name"
-            required
-            autocomplete="name"
-            placeholder="Jane Smith"
-            class="w-full rounded-md border border-[var(--color-border)] px-4 py-3 focus:border-[var(--color-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)]/20"
-          />
+  <!-- Two-column layout: Form + Trust -->
+  <section class="container-x py-16">
+    <div class="grid gap-14 lg:grid-cols-[1fr_360px]">
+
+      <!-- Quote Form -->
+      <div>
+        <h2 class="text-2xl font-bold text-[var(--color-navy)] mb-2">Tell Us About Your Project</h2>
+        <p class="text-sm text-[var(--color-text-muted)] mb-8">All fields marked <span class="text-red-500">*</span> are required. We respond within one business day.</p>
+
+        <form action="/api/quote-request" method="POST" class="space-y-5" novalidate>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+              <label for="quote-name" class="block text-sm font-medium text-[var(--color-navy)] mb-1">
+                Full Name <span class="text-red-500" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="quote-name"
+                name="name"
+                required
+                autocomplete="name"
+                placeholder="Jane Smith"
+                class="w-full rounded-md border border-[var(--color-border)] px-4 py-3 focus:border-[var(--color-blue)] focus:outline-none text-[var(--color-text)]"
+              />
+            </div>
+            <div>
+              <label for="quote-email" class="block text-sm font-medium text-[var(--color-navy)] mb-1">
+                Email Address <span class="text-red-500" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="quote-email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="jane@hospital.org"
+                class="w-full rounded-md border border-[var(--color-border)] px-4 py-3 focus:border-[var(--color-blue)] focus:outline-none text-[var(--color-text)]"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+              <label for="quote-organization" class="block text-sm font-medium text-[var(--color-navy)] mb-1">
+                Facility / Organization <span class="text-red-500" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="quote-organization"
+                name="organization"
+                required
+                autocomplete="organization"
+                placeholder="Memorial Hermann Hospital"
+                class="w-full rounded-md border border-[var(--color-border)] px-4 py-3 focus:border-[var(--color-blue)] focus:outline-none text-[var(--color-text)]"
+              />
+            </div>
+            <div>
+              <label for="quote-phone" class="block text-sm font-medium text-[var(--color-navy)] mb-1">
+                Phone <span class="text-[var(--color-text-muted)] font-normal">(optional)</span>
+              </label>
+              <input
+                type="tel"
+                id="quote-phone"
+                name="phone"
+                autocomplete="tel"
+                placeholder="(713) 555-0100"
+                class="w-full rounded-md border border-[var(--color-border)] px-4 py-3 focus:border-[var(--color-blue)] focus:outline-none text-[var(--color-text)]"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="quote-interest" class="block text-sm font-medium text-[var(--color-navy)] mb-1">
+              Area of Interest <span class="text-red-500" aria-hidden="true">*</span>
+            </label>
+            <select
+              id="quote-interest"
+              name="interest"
+              required
+              class="w-full rounded-md border border-[var(--color-border)] px-4 py-3 focus:border-[var(--color-blue)] focus:outline-none text-[var(--color-text)] bg-white"
+            >
+              <option value="">Select one…</option>
+              <option value="equipment-skytron">Equipment Sales — Skytron (Tables, Lights, Booms)</option>
+              <option value="equipment-hsi">Equipment Sales — HSI Hospital Systems</option>
+              <option value="equipment-knight">Equipment Sales — Knight (Sterile Processing)</option>
+              <option value="equipment-other">Equipment Sales — Other / Not Sure</option>
+              <option value="service-repair">Service &amp; Repair</option>
+              <option value="or-installation">OR Installation / Integration</option>
+              <option value="preventive-maintenance">Preventive Maintenance Program</option>
+              <option value="other">General Inquiry / Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="quote-timeline" class="block text-sm font-medium text-[var(--color-navy)] mb-1">
+              Timeline <span class="text-[var(--color-text-muted)] font-normal">(optional)</span>
+            </label>
+            <select
+              id="quote-timeline"
+              name="timeline"
+              class="w-full rounded-md border border-[var(--color-border)] px-4 py-3 focus:border-[var(--color-blue)] focus:outline-none text-[var(--color-text)] bg-white"
+            >
+              <option value="">Select if known…</option>
+              <option value="urgent">Urgent — Equipment Down</option>
+              <option value="30days">Within 30 Days</option>
+              <option value="90days">1–3 Months</option>
+              <option value="planning">Planning Phase (3–12 months)</option>
+              <option value="exploring">Exploring / No Timeline Yet</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="quote-message" class="block text-sm font-medium text-[var(--color-navy)] mb-1">
+              Project Details <span class="text-red-500" aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="quote-message"
+              name="message"
+              required
+              rows="6"
+              placeholder="Tell us about your project, facility type, number of ORs, equipment of interest, or service needs…"
+              class="w-full rounded-md border border-[var(--color-border)] px-4 py-3 focus:border-[var(--color-blue)] focus:outline-none text-[var(--color-text)]"
+            ></textarea>
+          </div>
+
+          <!-- Hidden fields -->
+          <input type="hidden" name="source" value="quote" />
+          <!-- Honeypot -->
+          <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
+          <div class="flex flex-col sm:flex-row items-start gap-4">
+            <button type="submit" class="btn-primary">
+              Submit Quote Request
+              <svg class="w-4 h-4" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+            </button>
+            <p class="text-xs text-[var(--color-text-muted)] pt-1">
+              Or call us directly: <a href={`tel:${site.phoneE164}`} class="font-semibold text-[var(--color-blue)] hover:underline">{site.phone}</a>
+            </p>
+          </div>
+
+          <p class="text-xs text-[var(--color-text-muted)]">
+            By submitting, you agree to our <a href="/privacy" class="underline hover:text-[var(--color-navy)]">Privacy Policy</a>. We never share your information.
+          </p>
+        </form>
+      </div>
+
+      <!-- Trust Sidebar -->
+      <aside class="space-y-6">
+        <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-6">
+          <h2 class="text-lg font-bold text-[var(--color-navy)] mb-4">Why Surgiquip?</h2>
+          <ul class="space-y-5">
+            {trustPoints.map((pt) => (
+              <li class="flex gap-3">
+                <span class="text-2xl shrink-0 mt-0.5" aria-hidden="true">{pt.icon}</span>
+                <div>
+                  <div class="font-semibold text-[var(--color-navy)] text-sm">{pt.title}</div>
+                  <div class="text-xs text-[var(--color-text-muted)] mt-0.5 leading-relaxed">{pt.body}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div class="space-y-1">
-          <label for="quote-email" class="block text-sm font-semibold text-[var(--color-navy)]">
-            Email Address <span class="text-red-500" aria-hidden="true">*</span>
-          </label>
-          <input
-            type="email"
-            id="quote-email"
-            name="email"
-            required
-            autocomplete="email"
-            placeholder="jane@hospital.org"
-            class="w-full rounded-md border border-[var(--color-border)] px-4 py-3 focus:border-[var(--color-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)]/20"
-          />
+
+        <!-- Direct Contact -->
+        <div class="rounded-xl border border-[var(--color-blue)]/30 bg-[var(--color-navy)] text-white p-6">
+          <div class="text-sm font-bold uppercase tracking-widest text-white/60 mb-3">Prefer to Call?</div>
+          <a
+            href={`tel:${site.phoneE164}`}
+            class="flex items-center gap-3 text-white hover:text-white/80 transition"
+          >
+            <svg class="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1l-2.3 2.3z"/>
+            </svg>
+            <div>
+              <div class="text-xl font-bold">{site.phone}</div>
+              <div class="text-xs text-white/70">{site.hours}</div>
+            </div>
+          </a>
+          <p class="mt-4 text-xs text-white/60">For urgent equipment failures, calling is the fastest path to a same-day technician.</p>
         </div>
-      </div>
-      <div class="space-y-1">
-        <label for="quote-organization" class="block text-sm font-semibold text-[var(--color-navy)]">
-          Facility / Organization <span class="text-red-500" aria-hidden="true">*</span>
-        </label>
-        <input
-          type="text"
-          id="quote-organization"
-          name="organization"
-          required
-          autocomplete="organization"
-          placeholder="Memorial Hermann Hospital"
-          class="w-full rounded-md border border-[var(--color-border)] px-4 py-3 focus:border-[var(--color-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)]/20"
-        />
-      </div>
-      <div class="space-y-1">
-        <label for="quote-phone" class="block text-sm font-semibold text-[var(--color-navy)]">
-          Phone <span class="text-xs font-normal text-[var(--color-text-muted)]">(optional)</span>
-        </label>
-        <input
-          type="tel"
-          id="quote-phone"
-          name="phone"
-          autocomplete="tel"
-          placeholder="(713) 555-0100"
-          class="w-full rounded-md border border-[var(--color-border)] px-4 py-3 focus:border-[var(--color-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)]/20"
-        />
-      </div>
-      <div class="space-y-1">
-        <label for="quote-interest" class="block text-sm font-semibold text-[var(--color-navy)]">
-          Area of Interest <span class="text-red-500" aria-hidden="true">*</span>
-        </label>
-        <select
-          id="quote-interest"
-          name="interest"
-          required
-          class="w-full rounded-md border border-[var(--color-border)] px-4 py-3 focus:border-[var(--color-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)]/20"
-        >
-          <option value="">Select one…</option>
-          <option>Equipment Sales — Skytron</option>
-          <option>Equipment Sales — Other</option>
-          <option>Service &amp; Repair</option>
-          <option>OR Installation / Integration</option>
-          <option>Preventive Maintenance Program</option>
-          <option>Other / Not Sure</option>
-        </select>
-      </div>
-      <div class="space-y-1">
-        <label for="quote-message" class="block text-sm font-semibold text-[var(--color-navy)]">
-          Project Details <span class="text-red-500" aria-hidden="true">*</span>
-        </label>
-        <textarea
-          id="quote-message"
-          name="message"
-          required
-          rows="6"
-          placeholder="Tell us about your project, timeline, and any equipment specifics…"
-          class="w-full rounded-md border border-[var(--color-border)] px-4 py-3 focus:border-[var(--color-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)]/20"
-        ></textarea>
-      </div>
-      <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
-      <button type="submit" class="btn-primary w-full md:w-auto">Submit Request</button>
-      <p class="text-xs text-[var(--color-text-muted)]">
-        By submitting, you agree to our <a href="/privacy">Privacy Policy</a>. We respond within one business day.
-      </p>
-    </form>
+      </aside>
+    </div>
   </section>
+
+  <CTASection
+    heading="Have a Quick Question?"
+    subhead="Not ready for a full quote? Reach us by phone or email — no forms required."
+    primaryLabel={`Call ${site.phone}`}
+    primaryHref={`tel:${site.phoneE164}`}
+    secondaryLabel="Email Us"
+    secondaryHref={`mailto:${site.email}`}
+  />
 </BaseLayout>

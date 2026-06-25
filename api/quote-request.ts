@@ -19,6 +19,7 @@ function buildEmailHtml(p: {
   organization: string;
   phone: string;
   interest: string;
+  timeline: string;
   message: string;
   source: string;
   ts: string;
@@ -57,6 +58,7 @@ function buildEmailHtml(p: {
       ${row('Facility', p.organization)}
       ${row('Phone', p.phone)}
       ${row('Interest', p.interest)}
+      ${row('Timeline', p.timeline)}
       <tr>
         <td style="padding:16px 0 8px;font-size:12px;font-weight:bold;text-transform:uppercase;color:#5b6b85;vertical-align:top">Message</td>
         <td style="padding:16px 0 8px;color:#0f1729;white-space:pre-wrap">${p.message.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</td>
@@ -93,6 +95,7 @@ export default async function handler(request: Request): Promise<Response> {
       organization: String(form.get('organization') ?? '').trim(),
       phone:        String(form.get('phone')        ?? '').trim(),
       interest:     String(form.get('interest')     ?? '').trim(),
+      timeline:     String(form.get('timeline')     ?? '').trim(),
       message:      String(form.get('message')      ?? '').trim(),
       source:       String(form.get('source')       ?? 'quote').trim(),
       ts:           new Date().toISOString(),
