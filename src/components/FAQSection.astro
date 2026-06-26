@@ -1,0 +1,94 @@
+---
+/**
+ * FAQSection.astro
+ * Accordion FAQ section for homepage + select service pages.
+ * Uses native <details>/<summary> — zero JS, fully accessible, SEO-friendly.
+ * Matching FAQPage JSON-LD must be added to the parent page's `schema` prop.
+ *
+ * Props:
+ *  - heading  (string)   — section headline
+ *  - eyebrow  (string)   — small uppercase label above headline
+ *  - items    (FAQ[])    — array of { q: string; a: string }
+ *  - bg       ('white' | 'alt') — section background; defaults to 'alt'
+ */
+
+export interface FAQ {
+  q: string;
+  a: string;
+}
+
+export interface Props {
+  heading?: string;
+  eyebrow?: string;
+  items: FAQ[];
+  bg?: 'white' | 'alt';
+}
+
+const {
+  heading = 'Frequently Asked Questions',
+  eyebrow = 'FAQ',
+  items,
+  bg = 'alt',
+} = Astro.props;
+
+const bgClass = bg === 'white' ? 'bg-white' : 'bg-[var(--color-surface-alt)]';
+---
+
+<section class={`${bgClass} py-16`} aria-labelledby="faq-heading">
+  <div class="container-x">
+    <div class="max-w-3xl mx-auto">
+
+      {/* Section header */}
+      <div class="text-center mb-10">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">
+          {eyebrow}
+        </div>
+        <h2
+          id="faq-heading"
+          class="font-display text-3xl md:text-4xl font-bold text-[var(--color-navy)]"
+        >
+          {heading}
+        </h2>
+      </div>
+
+      {/* Accordion items */}
+      <div class="space-y-3">
+        {items.map((item, i) => (
+          <details
+            class="group border border-[var(--color-border)] rounded-xl bg-white overflow-hidden"
+            name="faq-group"
+          >
+            <summary
+              class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none select-none
+                     font-semibold text-[var(--color-navy)] text-base leading-snug
+                     hover:bg-[var(--color-surface-alt)] transition-colors
+                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-blue)] focus-visible:ring-inset"
+              aria-label={item.q}
+            >
+              <span>{item.q}</span>
+
+              {/* Chevron icon — rotates on open via group-open */}
+              <svg
+                class="w-5 h-5 shrink-0 text-[var(--color-blue)] transition-transform duration-200 group-open:rotate-180"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </summary>
+
+            <div class="px-6 pb-6 pt-2 text-[var(--color-text-muted)] leading-relaxed text-sm md:text-base border-t border-[var(--color-border)]">
+              <p set:html={item.a} />
+            </div>
+          </details>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
