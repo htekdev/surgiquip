@@ -14,6 +14,16 @@ const serviceSchema = {
   url: `${site.url}/services/preventive-maintenance`,
 };
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${site.url}/services` },
+    { '@type': 'ListItem', position: 3, name: 'Preventive Maintenance', item: `${site.url}/services/preventive-maintenance` },
+  ],
+};
+
 const pmIncludes = [
   {
     icon: '<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
@@ -59,7 +69,7 @@ const complianceItems = [
 <BaseLayout
   title="Preventive Maintenance for Medical Equipment | Surgiquip Solutions"
   description="Planned maintenance programs for surgical tables, lights, and OR equipment in Texas. Compliance documentation included. Authorized Skytron service."
-  schema={serviceSchema}
+  schema={[serviceSchema, breadcrumbSchema]}
 >
   <section class="bg-[var(--color-navy)] text-white overflow-hidden">
     <div class="container-x py-20">

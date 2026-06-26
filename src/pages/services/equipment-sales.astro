@@ -14,6 +14,16 @@ const serviceSchema = {
   url: `${site.url}/services/equipment-sales`,
 };
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${site.url}/services` },
+    { '@type': 'ListItem', position: 3, name: 'Equipment Sales', item: `${site.url}/services/equipment-sales` },
+  ],
+};
+
 const offerings = [
   {
     icon: '<path d="M3 9h18M3 9a2 2 0 012-2h14a2 2 0 012 2M3 9v9a2 2 0 002 2h14a2 2 0 002-2V9M9 13h6M12 11v4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
@@ -68,7 +78,7 @@ const whyItems = [
 <BaseLayout
   title="Medical Equipment Sales | Surgiquip Solutions Houston TX"
   description="Authorized Skytron dealer for Southeast Texas. Surgical tables, lights, booms, OR integration, HSI, and Knight equipment. 43 years serving Texas healthcare."
-  schema={serviceSchema}
+  schema={[serviceSchema, breadcrumbSchema]}
 >
   <section class="bg-[var(--color-navy)] text-white overflow-hidden">
     <div class="container-x py-20">

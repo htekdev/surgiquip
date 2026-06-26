@@ -56,11 +56,20 @@ const productListSchema = {
     },
   })),
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: `${site.url}/products` },
+  ],
+};
 ---
 <BaseLayout
   title="Medical Equipment Houston — Skytron Dealer | Surgiquip Solutions"
   description="Authorized Skytron dealer for Southeast Texas. Surgical tables, lights, equipment booms, and OR integration. HSI, Knight equipment also available."
-  schema={productListSchema}
+  schema={[productListSchema, breadcrumbSchema]}
 >
   <section class="bg-[var(--color-navy)] text-white">
     <div class="container-x py-20">
