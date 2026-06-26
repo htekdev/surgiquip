@@ -76,7 +76,21 @@ function formatDate(date: Date) {
     ) : (
       <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
-          <article class="group flex flex-col rounded-xl border border-[var(--color-border)] bg-white hover:border-[var(--color-blue)] hover:shadow-md transition overflow-hidden">
+          <article class="group flex flex-col rounded-xl border border-[var(--color-border)] bg-white hover:border-[var(--color-blue)] hover:shadow-lg transition overflow-hidden">
+            {/* Hero image */}
+            {post.data.image && (
+              <div class="overflow-hidden aspect-[16/9] bg-[var(--color-surface-alt)]">
+                <img
+                  src={post.data.image}
+                  alt={post.data.title}
+                  width="768"
+                  height="432"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            )}
             <div class="p-6 flex flex-col flex-1">
               {/* Tags */}
               {post.data.tags.length > 0 && (

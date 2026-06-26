@@ -2,6 +2,7 @@
 title: "Medical Equipment Suppliers in Houston, TX: What Hospital Administrators Need to Know"
 description: "A guide for Houston-area hospital administrators evaluating surgical equipment suppliers — from authorized dealer status and service capabilities to post-sale support."
 publishDate: 2026-06-01
+image: "/images/blog/surgical-equipment-suppliers-hero.png"
 tags: ["surgical equipment", "Houston TX", "hospital equipment", "medical suppliers"]
 ---
 
