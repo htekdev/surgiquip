@@ -60,6 +60,9 @@ const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 
     <meta name="generator" content={Astro.generator} />
 
+    {/* RSS feed autodiscovery — search engines and feed readers pick this up automatically */}
+    <link rel="alternate" type="application/rss+xml" title={`${site.brand} — Surgical Equipment Insights`} href="/rss.xml" />
+
     {/* Preload LCP hero image when provided — improves Largest Contentful Paint */}
     {preloadImage && (
       <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
