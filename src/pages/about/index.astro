@@ -41,13 +41,13 @@ const values = [
   },
   {
     icon: '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
-    title: '24-Hour Accountability',
-    desc: 'We don\'t disappear after the sale. Rapid response is part of who we are — not a premium add-on.',
+    title: 'Accountability',
+    desc: 'We don\'t disappear after the sale. Rapid response during business hours is part of who we are — not a premium add-on.',
   },
   {
     icon: '<path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
     title: 'BBB A+ Integrity',
-    desc: 'Our A+ Better Business Bureau accreditation reflects how we operate: transparent pricing, honest assessments, and zero unresolved complaints.',
+    desc: 'Our A+ Better Business Bureau accreditation reflects how we operate: transparent pricing and honest assessments.',
   },
 ];
 ---
@@ -79,7 +79,7 @@ const values = [
           Surgiquip Solutions, Inc. was founded in Houston in 1983 with a simple purpose: help Texas hospitals and surgery centers get the best surgical equipment and keep it running. Over four decades, that purpose hasn't changed — only our capabilities have grown.
         </p>
         <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
-          Today, we're the exclusive authorized Skytron dealer for Southeast Texas — the gold standard partnership in the surgical equipment industry. Our team has installed and serviced equipment across 500+ healthcare facilities, from single-room surgery centers to major Houston hospital systems.
+          Today, we're the exclusive authorized Skytron dealer for South Texas and Southeast Texas — the gold standard partnership in the surgical equipment industry. Our team has installed and serviced equipment across 500+ healthcare facilities, from single-room surgery centers to major Houston hospital systems.
         </p>
         <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
           Our clients don't come to us for transactions. They come because when something goes wrong at 5:00 AM before a scheduled OR day, they know we'll answer. That trust is the foundation of everything we do.
@@ -89,7 +89,6 @@ const values = [
             [site.yearsInBusiness + '+', 'Years in business'],
             ['500+', 'Facilities served'],
             ['A+', 'BBB rating'],
-            ['24hr', 'Response time'],
           ].map(([val, label]) => (
             <div class="text-center">
               <div class="font-display text-3xl font-bold text-[var(--color-navy)]">{val}</div>
@@ -147,9 +146,8 @@ const values = [
         </p>
         <ul class="mt-6 space-y-4">
           {[
-            ['Skytron®', 'Exclusive authorized dealer for Southeast Texas. Full product line: tables, lights, booms, OR integration.'],
+            ['Skytron®', 'Exclusive authorized dealer for South Texas and Southeast Texas. Full product line: tables, lights, booms, OR integration.'],
             ['HSI Hospital Systems, Inc.', 'Authorized dealer for hospital systems and accessories.'],
-            ['Knight®', 'Authorized dealer for instrument cleaning and sterilization equipment.'],
             ['BBB Accredited Business (A+)', 'Voluntarily meets BBB accreditation standards. A+ rating maintained since accreditation.'],
           ].map(([partner, desc]) => (
             <li class="flex gap-4 p-4 bg-[var(--color-surface-alt)] rounded-lg border border-[var(--color-border)]">
@@ -179,10 +177,6 @@ const values = [
           <div class="flex items-start gap-3">
             <svg class="w-5 h-5 text-[var(--color-blue)] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1l-2.3 2.3z"/></svg>
             <a href={`tel:${site.phoneE164}`} class="text-[var(--color-blue)] hover:underline font-medium">{site.phone}</a>
-          </div>
-          <div class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-[var(--color-blue)] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <a href={`mailto:${site.email}`} class="text-[var(--color-blue)] hover:underline">{site.email}</a>
           </div>
           <div class="flex items-start gap-3">
             <svg class="w-5 h-5 text-[var(--color-blue)] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
