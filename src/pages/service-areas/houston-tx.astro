@@ -171,8 +171,55 @@ const houstonStats = [
     </div>
   </section>
 
-  <!-- Facility types -->
+  <!-- Service Territory Map -->
   <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x">
+      <div class="grid gap-10 lg:grid-cols-2 items-center">
+        <div>
+          <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Service Territory</div>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-[var(--color-navy)]">
+            Greater Houston &amp; Southeast Texas
+          </h2>
+          <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+            Surgiquip Solutions maintains an authorized Skytron dealer territory covering Greater Houston and Southeast Texas — one of the most healthcare-dense markets in the United States. Our Houston-based technicians provide rapid response across the entire service territory.
+          </p>
+          <ul class="mt-6 space-y-3">
+            {[
+              ['Harris County', 'Houston and all surrounding districts'],
+              ['Fort Bend County', 'Sugar Land, Missouri City, Richmond'],
+              ['Montgomery County', 'The Woodlands, Conroe, Kingwood'],
+              ['Brazoria County', 'Pearland, Lake Jackson, Alvin'],
+              ['Southeast Texas', 'Jefferson, Orange, Hardin, Jasper counties'],
+            ].map(([county, cities]) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 mt-0.5 shrink-0 text-[var(--color-blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="12" cy="9" r="2.5" stroke-linecap="round"/>
+                </svg>
+                <div>
+                  <span class="font-semibold text-[var(--color-navy)]">{county}</span>
+                  <span class="text-[var(--color-text-muted)] text-sm ml-2">{cities}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-xl overflow-hidden border border-[var(--color-border)] shadow-md">
+          <img
+            src="/images/service-areas/houston-service-area.png"
+            alt="Surgiquip Solutions service territory map — Greater Houston and Southeast Texas"
+            width="1024"
+            height="1024"
+            loading="lazy"
+            class="w-full h-auto"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facility types -->
+  <section class="py-16">
     <div class="container-x">
       <div class="text-center mb-12">
         <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Facilities We Serve</div>
