@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import CTASection from '~/components/CTASection.astro';
+import FAQSection from '~/components/FAQSection.astro';
 import { site } from '~/data/site';
 
 const serviceSchema = {
@@ -12,6 +13,40 @@ const serviceSchema = {
   areaServed: [{ '@type': 'State', name: 'Texas' }],
   serviceType: 'Operating Room Installation',
   url: `${site.url}/services/or-installation`,
+};
+
+// OR Installation FAQ — 4 questions specific to this service page.
+// Matching FAQPage JSON-LD below enables Google FAQ rich results for this page.
+const orFAQs = [
+  {
+    q: 'What is included in a turnkey OR installation by Surgiquip?',
+    a: 'A Surgiquip turnkey OR installation covers the full project lifecycle: facility assessment and planning, equipment selection, coordination with your architect and GC, delivery staging, certified installation of surgical tables, lights, and booms, AV system commissioning for hybrid ORs, as-built documentation, and staff training. We manage every phase so your team can focus on clinical preparation.',
+  },
+  {
+    q: 'How long does an operating room installation take?',
+    a: 'Project timelines vary based on scope. A single-room surgical table and light installation can be completed in one to three days. A full hybrid OR build — including AV integration, multiple boom systems, and documentation packages — typically spans four to twelve weeks depending on construction schedule, equipment lead times, and facility access windows. We provide a detailed schedule at project kickoff.',
+  },
+  {
+    q: 'Does Surgiquip coordinate with our architects and general contractors?',
+    a: 'Yes. Coordinating with your architect, GC, and biomedical engineering team is a standard part of how we manage OR installations. We participate in construction coordination meetings, submit equipment packages for architectural review, and align installation milestones with your overall construction schedule — so nothing is left to last-minute improvisation.',
+  },
+  {
+    q: 'Do you service equipment after installation is complete?',
+    a: `Absolutely. Surgiquip provides ongoing service and repair, and preventive maintenance programs for all equipment we install. As the authorized Skytron dealer for Southeast Texas, our factory-trained technicians know every component of your surgical suite. Call us at <a href="tel:${site.phoneE164}" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">${site.phone}</a> or <a href="/services/preventive-maintenance" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">learn about our PM programs</a>.`,
+  },
+];
+
+const orFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: orFAQs.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a.replace(/<[^>]+>/g, ''),
+    },
+  })),
 };
 
 const deliverables = [
@@ -60,7 +95,7 @@ const projectPhases = [
 <BaseLayout
   title="OR Installation & Hybrid OR Integration | Surgiquip Solutions"
   description="Turnkey operating room installation in Texas. Surgical tables, lights, booms, and hybrid OR AV integration. Factory-certified installation by Surgiquip Solutions."
-  schema={serviceSchema}
+  schema={[serviceSchema, orFaqSchema]}
 >
   <section class="bg-[var(--color-navy)] text-white overflow-hidden">
     <div class="container-x py-20">
@@ -179,6 +214,12 @@ const projectPhases = [
     </div>
   </section>
 
+  <FAQSection
+    eyebrow="OR Installation FAQ"
+    heading="Questions About Our OR Installation Services"
+    items={orFAQs}
+    bg="white"
+  />
   <CTASection
     heading="Planning an OR Build or Renovation?"
     subhead="Tell us about your project. We'll provide a scope and timeline within one business day — no commitment required."
