@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
-const { title, description, publishDate, updatedDate, tags } = entry.data;
+const { title, description, publishDate, updatedDate, tags, image } = entry.data;
 
 const slug = entry.id;
 const canonicalUrl = `${site.url}/blog/${slug}`;
@@ -35,6 +35,7 @@ const articleSchema = {
   dateModified: (updatedDate ?? publishDate).toISOString(),
   url: canonicalUrl,
   mainEntityOfPage: canonicalUrl,
+  ...(image ? { image: `${site.url}${image}` } : {}),
   author: {
     '@type': 'Organization',
     name: site.brand,
@@ -77,11 +78,12 @@ const breadcrumbSchema = {
   title={pageTitle}
   description={description}
   canonical={canonicalUrl}
+  image={image}
   schema={[articleSchema, breadcrumbSchema]}
 >
   {/* Post hero */}
   <section class="bg-[var(--color-navy)] text-white">
-    <div class="container-x py-20">
+    <div class="container-x py-16 md:py-20">
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" class="mb-6">
         <ol class="flex items-center gap-2 text-sm text-white/60">
@@ -124,6 +126,22 @@ const breadcrumbSchema = {
       </div>
     </div>
   </section>
+
+  {/* Hero image — full-width banner below the dark header */}
+  {image && (
+    <div class="w-full overflow-hidden bg-[var(--color-surface-alt)]" style="max-height: 480px;">
+      <img
+        src={image}
+        alt={title}
+        width="1536"
+        height="1024"
+        loading="eager"
+        decoding="async"
+        class="w-full object-cover"
+        style="max-height: 480px;"
+      />
+    </div>
+  )}
 
   {/* Article body + sidebar */}
   <section class="container-x py-16">
