@@ -8,6 +8,7 @@ import '@fontsource/inter/800.css';
 import '~/styles/global.css';
 import Header from '~/components/Header.astro';
 import Footer from '~/components/Footer.astro';
+import StickyMobileCTA from '~/components/StickyMobileCTA.astro';
 
 export interface Props {
   title: string;
@@ -81,7 +82,7 @@ const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
       </Fragment>
     )}
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col pb-14 lg:pb-0">
     {/* Skip-to-content: critical for keyboard navigation and Lighthouse a11y */}
     <a
       href="#main-content"
@@ -94,5 +95,6 @@ const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
       <slot />
     </main>
     <Footer />
+    <StickyMobileCTA />
   </body>
 </html>
