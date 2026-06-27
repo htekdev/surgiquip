@@ -18,7 +18,7 @@ const serviceAreaSchema = {
   '@id': `${site.url}#organization`,
   name: site.brand,
   description:
-    'Authorized Skytron dealer for Southeast Texas — OR equipment sales, installation, service, and preventive maintenance for hospitals and surgery centers.',
+    'Authorized Skytron dealer for Southeast Texas and South Texas — OR equipment sales, installation, service, and preventive maintenance for hospitals and surgery centers across Houston, San Antonio, Corpus Christi, Beaumont, and the Gulf Coast.',
   url: site.url,
   telephone: site.phone,
   address: {
@@ -49,6 +49,14 @@ const areas = [
     badge: 'Full Territory',
     icon: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
   },
+  {
+    href: '/service-areas/san-antonio-tx',
+    title: 'San Antonio, TX',
+    subtitle: 'Bexar · Comal · Guadalupe · Medina · Atascosa · Wilson Counties',
+    desc: "South Texas's largest healthcare market — University Health, Methodist Healthcare, CHRISTUS Santa Rosa, Baptist Health, and the Hill Country region. Authorized Skytron service for Bexar County and surrounding communities.",
+    badge: 'South Texas',
+    icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
+  },
 ];
 
 const cityLinks = [
@@ -64,6 +72,9 @@ const cityLinks = [
   { city: 'Sugar Land', href: '/service-areas/houston-tx' },
   { city: 'The Woodlands', href: '/service-areas/houston-tx' },
   { city: 'Pasadena', href: '/service-areas/houston-tx' },
+  { city: 'San Antonio', href: '/service-areas/san-antonio-tx' },
+  { city: 'New Braunfels', href: '/service-areas/san-antonio-tx' },
+  { city: 'Seguin', href: '/service-areas/san-antonio-tx' },
 ];
 ---
 
@@ -86,7 +97,7 @@ const cityLinks = [
         Serving Southeast Texas Healthcare
       </h1>
       <p class="mt-6 text-xl text-white/85 max-w-2xl leading-relaxed">
-        Surgiquip Solutions is headquartered in Houston and operates as the authorized Skytron dealer for Southeast Texas — serving hospitals, surgery centers, and specialty clinics across the region since 1983.
+        Surgiquip Solutions is headquartered in Houston and operates as the authorized Skytron dealer for Southeast Texas and South Texas — serving hospitals, surgery centers, and specialty clinics across the region since 1983.
       </p>
       <div class="mt-8 flex flex-wrap gap-4">
         <a href="/quote" class="btn-primary px-7 py-3.5">Request a Quote</a>
@@ -109,7 +120,7 @@ const cityLinks = [
         Select a region to learn more about Surgiquip's presence, capabilities, and response times in your area.
       </p>
     </div>
-    <div class="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+    <div class="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
       {areas.map((a) => (
         <a href={a.href} class="group relative block bg-white border border-[var(--color-border)] rounded-xl p-8 hover:border-[var(--color-blue)] hover:shadow-lg transition">
           <div class="absolute top-4 right-4">
