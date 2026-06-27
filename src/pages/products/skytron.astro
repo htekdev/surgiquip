@@ -7,25 +7,25 @@ const products = [
   {
     name: 'Surgical Tables',
     description: 'Precision-engineered operating tables with multi-articulation, memory positioning, and radiolucent tabletops. Built to support complex surgical procedures for 20+ years.',
-    image: '/images/products/surgical-table.png',
+    image: '/images/products/surgical-table.webp',
     keywords: 'Skytron surgical table, OR table, operating table Houston',
   },
   {
     name: 'Surgical Lights',
     description: 'Advanced LED overhead lighting systems with adjustable color temperature, shadow management, and integrated camera systems for the modern OR.',
-    image: '/images/products/surgical-light.png',
+    image: '/images/products/surgical-light.webp',
     keywords: 'Skytron surgical light, OR light, LED surgical light Houston',
   },
   {
     name: 'Equipment Booms',
     description: 'Ceiling-mounted equipment management arms with integrated gas, electrical, and data connections. Keep your OR floor clear and workflow efficient.',
-    image: '/images/products/equipment-boom.png',
+    image: '/images/products/equipment-boom.webp',
     keywords: 'Skytron equipment boom, OR boom, ceiling boom Houston',
   },
   {
     name: 'OR Integration',
     description: 'Complete hybrid operating room solutions combining tables, lights, booms, and AV integration into one seamless surgical environment.',
-    image: '/images/products/or-integration.png',
+    image: '/images/products/or-integration.webp',
     keywords: 'hybrid OR integration, OR AV system, operating room integration Houston',
   },
 ];
@@ -76,6 +76,7 @@ const breadcrumbSchema = {
   title="Skytron Surgical Equipment | Authorized Dealer Houston TX | Surgiquip"
   description="Authorized Skytron dealer for Southeast Texas. Surgical tables, lights, booms, and complete OR integration solutions. Sales, installation, and service."
   schema={[productSchema, breadcrumbSchema]}
+  preloadImage="/images/products/skytron-hero.webp"
 >
   <section class="bg-[var(--color-navy)] text-white overflow-hidden">
     <div class="container-x py-20">
@@ -107,7 +108,7 @@ const breadcrumbSchema = {
         </div>
         <div class="hidden lg:block">
           <img
-            src="/images/products/skytron-hero.png"
+            src="/images/products/skytron-hero.webp"
             alt="Premium Skytron surgical suite — OR lights, equipment booms, and surgical table setup"
             class="rounded-2xl shadow-2xl object-cover w-full aspect-[4/3]"
             loading="eager"
