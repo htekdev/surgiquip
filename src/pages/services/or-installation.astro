@@ -49,6 +49,16 @@ const orFaqSchema = {
   })),
 };
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${site.url}/services` },
+    { '@type': 'ListItem', position: 3, name: 'OR Installation', item: `${site.url}/services/or-installation` },
+  ],
+};
+
 const deliverables = [
   {
     icon: '<path d="M9 20H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v3M9 12h2M9 16h2M13 12h6M13 16h6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
@@ -95,7 +105,7 @@ const projectPhases = [
 <BaseLayout
   title="OR Installation & Hybrid OR Integration | Surgiquip Solutions"
   description="Turnkey operating room installation in Texas. Surgical tables, lights, booms, and hybrid OR AV integration. Factory-certified installation by Surgiquip Solutions."
-  schema={[serviceSchema, orFaqSchema]}
+  schema={[serviceSchema, orFaqSchema, breadcrumbSchema]}
 >
   <section class="bg-[var(--color-navy)] text-white overflow-hidden">
     <div class="container-x py-20">

@@ -2,10 +2,21 @@
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import CTASection from '~/components/CTASection.astro';
 import { site } from '~/data/site';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'About', item: `${site.url}/about` },
+    { '@type': 'ListItem', position: 3, name: 'Our Story', item: `${site.url}/about/our-story` },
+  ],
+};
 ---
 <BaseLayout
   title="Our Story | Surgiquip Solutions — 43 Years of Houston Healthcare"
   description="The 43-year story of Surgiquip Solutions, Inc. — from a small Houston equipment dealer in 1983 to Southeast Texas's trusted Skytron partner and leading OR installation company."
+  schema={breadcrumbSchema}
 >
   <section class="bg-[var(--color-navy)] text-white">
     <div class="container-x py-20">

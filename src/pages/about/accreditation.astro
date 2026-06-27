@@ -2,10 +2,21 @@
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import CTASection from '~/components/CTASection.astro';
 import { site } from '~/data/site';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'About', item: `${site.url}/about` },
+    { '@type': 'ListItem', position: 3, name: 'Accreditation', item: `${site.url}/about/accreditation` },
+  ],
+};
 ---
 <BaseLayout
   title="Accreditation & Authorizations | Surgiquip Solutions"
   description="BBB A+ Accredited Business. Authorized Skytron dealer for Southeast Texas. Factory-certified technicians. 43 years of trusted medical equipment service."
+  schema={breadcrumbSchema}
 >
   <section class="bg-[var(--color-navy)] text-white">
     <div class="container-x py-20">
