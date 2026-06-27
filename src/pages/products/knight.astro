@@ -48,11 +48,21 @@ const productSchema = {
     },
   })),
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: `${site.url}/products` },
+    { '@type': 'ListItem', position: 3, name: 'Knight', item: `${site.url}/products/knight` },
+  ],
+};
 ---
 <BaseLayout
   title="Knight Instrument Cleaning Equipment | Surgiquip Solutions Houston TX"
   description="Knight sterile processing and instrument cleaning systems for surgical centers. Authorized dealer in Southeast Texas. Contact Surgiquip Solutions for quotes and service."
-  schema={productSchema}
+  schema={[productSchema, breadcrumbSchema]}
 >
   <section class="bg-[var(--color-navy)] text-white overflow-hidden">
     <div class="container-x py-20">

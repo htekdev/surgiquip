@@ -12,6 +12,16 @@ const teamSchema = {
   mainEntity: { '@id': `${site.url}#organization` },
 };
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'About', item: `${site.url}/about` },
+    { '@type': 'ListItem', position: 3, name: 'Our Team', item: `${site.url}/about/team` },
+  ],
+};
+
 const pillars = [
   {
     title: 'Factory-Trained Technicians',
@@ -38,7 +48,7 @@ const pillars = [
 <BaseLayout
   title="Our Team | Surgiquip Solutions — Houston, TX"
   description="The Surgiquip Solutions team — factory-trained technicians, experienced sales professionals, and 43 years of medical equipment expertise serving Southeast Texas."
-  schema={teamSchema}
+  schema={[teamSchema, breadcrumbSchema]}
 >
   <section class="bg-[var(--color-navy)] text-white">
     <div class="container-x py-20">
