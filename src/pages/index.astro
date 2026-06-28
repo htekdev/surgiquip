@@ -64,7 +64,16 @@ const orgSchema = {
     postalCode: site.address.postalCode,
     addressCountry: site.address.country,
   },
-  openingHours: site.hoursSchema,
+  // Full OpeningHoursSpecification object (richer than plain string — enables
+  // Google Business-style hours display in Knowledge Panel and SERP rich results)
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '07:30',
+      closes: '16:30',
+    },
+  ],
   areaServed: [
     { '@type': 'State', name: 'Texas' },
     { '@type': 'City', name: 'Houston' },
