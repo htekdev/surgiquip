@@ -30,6 +30,7 @@ export const nav = [
     children: [
       { label: 'Skytron', href: '/products/skytron' },
       { label: 'HSI', href: '/products/hsi' },
+      { label: 'Knight', href: '/products/knight' },
     ],
   },
   {
