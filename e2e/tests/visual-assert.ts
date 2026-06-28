@@ -234,6 +234,31 @@ export async function expectTitle(page: Page, title: string | RegExp, label?: st
 }
 
 /**
+ * Assert JSON-LD schema exists on the page and every block is valid JSON.
+ *
+ * NOTE: <script type="application/ld+json"> tags live in <head> and are never
+ * "visible" in Playwright's sense — toBeVisible() always fails for them.
+ * This helper checks existence + parseability instead, then shows a green
+ * phase label so the assertion is clearly visible in recorded videos.
+ */
+export async function expectJsonLd(page: Page, label = 'JSON-LD Schema') {
+  const schemas = page.locator('script[type="application/ld+json"]');
+  const count = await schemas.count();
+  expect(count).toBeGreaterThan(0);
+  for (let i = 0; i < count; i++) {
+    const content = await schemas.nth(i).textContent();
+    expect(() => JSON.parse(content!)).not.toThrow();
+  }
+  const c = incrementCount(page);
+  await updateAssertionCounter(page, c);
+  await showPhaseLabel(
+    page,
+    `✅ ${label}: ${count} schema block${count > 1 ? 's' : ''} found & valid`,
+    1500,
+  );
+}
+
+/**
  * Visual pause with a large phase label overlay — marks test phases in the video.
  * Shows in top-right corner with dark background.
  */

@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { expectVisible, expectText, expectURL, showPhaseLabel } from './visual-assert';
+import { expectVisible, expectText, expectURL, showPhaseLabel, expectJsonLd } from './visual-assert';
 
 test.describe('Service Area Pages', () => {
   test('should load service areas index', async ({ page }) => {
@@ -29,7 +29,7 @@ test.describe('Service Area Pages', () => {
   test('should have JSON-LD schema on service area pages', async ({ page }) => {
     await page.goto('/service-areas/houston-tx');
     await showPhaseLabel(page, '🔍 Schema Check');
-    const jsonLd = page.locator('script[type="application/ld+json"]').first();
-    await expectVisible(jsonLd, 'JSON-LD present');
+    // Houston TX page injects LocalBusiness JSON-LD via BaseLayout
+    await expectJsonLd(page, 'Service Area JSON-LD');
   });
 });

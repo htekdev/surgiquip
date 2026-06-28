@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { expectVisible, expectText, showPhaseLabel } from './visual-assert';
+import { expectVisible, expectText, showPhaseLabel, expectJsonLd } from './visual-assert';
 
 test.describe('Contact Page', () => {
   test.beforeEach(async ({ page }) => {
@@ -43,7 +43,7 @@ test.describe('Contact Page', () => {
 
   test('should have JSON-LD schema', async ({ page }) => {
     await showPhaseLabel(page, '🔍 Schema Check');
-    const jsonLd = page.locator('script[type="application/ld+json"]').first();
-    await expectVisible(jsonLd, 'JSON-LD present');
+    // Contact page injects ContactPage + LocalBusiness JSON-LD via BaseLayout
+    await expectJsonLd(page, 'Contact JSON-LD');
   });
 });

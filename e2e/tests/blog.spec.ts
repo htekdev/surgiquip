@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { expectVisible, expectText, expectURL, showPhaseLabel } from './visual-assert';
+import { expectVisible, expectText, expectURL, showPhaseLabel, expectJsonLd } from './visual-assert';
 
 test.describe('Blog Pages', () => {
   test('should load blog index page', async ({ page }) => {
@@ -29,7 +29,7 @@ test.describe('Blog Pages', () => {
   test('should have JSON-LD schema on blog articles', async ({ page }) => {
     await page.goto('/blog/skytron-authorized-dealer-southeast-texas');
     await showPhaseLabel(page, '🔍 Schema Check');
-    const jsonLd = page.locator('script[type="application/ld+json"]').first();
-    await expectVisible(jsonLd, 'JSON-LD present');
+    // Blog articles include an Article JSON-LD block via BaseLayout
+    await expectJsonLd(page, 'Blog Article JSON-LD');
   });
 });

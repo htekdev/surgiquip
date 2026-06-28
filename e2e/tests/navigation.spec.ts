@@ -60,8 +60,9 @@ test.describe('Navigation — Mobile', () => {
     await menuBtn.click();
     await page.waitForTimeout(500);
 
-    // After opening, nav links should be visible
-    const servicesLink = page.locator('a[href="/services"], a:has-text("Services")').first();
+    // Scope to #mobile-menu — the desktop nav (<nav class="hidden lg:flex">) is
+    // display:none at mobile viewport, so its links fail toBeVisible().
+    const servicesLink = page.locator('#mobile-menu a[href="/services"]').first();
     await expectVisible(servicesLink, 'Services in mobile menu');
   });
 });

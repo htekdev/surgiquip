@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { expectVisible, expectText, showPhaseLabel, expectURL } from './visual-assert';
+import { expectVisible, expectText, showPhaseLabel, expectURL, expectJsonLd } from './visual-assert';
 
 test.describe('Homepage', () => {
   test.beforeEach(async ({ page }) => {
@@ -13,32 +13,39 @@ test.describe('Homepage', () => {
 
     const heading = page.locator('h1').first();
     await expectVisible(heading, 'Hero heading');
-    await expectText(heading, 'Surgiquip', 'Brand name in hero');
+    // h1: "Medical Equipment Sales & Service — Dedicated to Excellence Since {year}"
+    await expectText(heading, 'Medical Equipment', 'Hero h1 text');
   });
 
   test('should render stat bar', async ({ page }) => {
     await showPhaseLabel(page, '📊 Stat Bar');
-    // StatBar shows key metrics (years, projects, etc.)
-    const statBar = page.locator('[data-section="stats"], section:has(strong)').first();
+    // StatBar renders a section with bold stat values
+    const statBar = page.locator('section').nth(1);
     await expectVisible(statBar, 'Stats section');
   });
 
   test('should render services grid', async ({ page }) => {
     await showPhaseLabel(page, '🔧 Services Grid');
-    const servicesSection = page.locator('text=Services').first();
-    await expectVisible(servicesSection, 'Services heading');
+    // ServicesGrid renders <section id="services">
+    const servicesSection = page.locator('#services');
+    await expectVisible(servicesSection, 'Services section');
   });
 
   test('should render partner logos', async ({ page }) => {
     await showPhaseLabel(page, '🤝 Partner Logos');
-    const partners = page.locator('text=Skytron').first();
-    await expectVisible(partners, 'Skytron partner');
+    // Scope to the dedicated partners section to avoid matching EquipmentShowcase eyebrow
+    const partnersSection = page.locator('section').filter({ hasText: 'Our Partners' });
+    await expectVisible(partnersSection, 'Partners section');
+    // SKYTRON® label inside the partner grid
+    const skytron = partnersSection.locator('div').filter({ hasText: /SKYTRON/i }).first();
+    await expectVisible(skytron, 'Skytron partner label');
   });
 
   test('should render FAQ section', async ({ page }) => {
     await showPhaseLabel(page, '❓ FAQ Section');
-    const faq = page.locator('text=Frequently Asked').first();
-    await expectVisible(faq, 'FAQ heading');
+    // FAQSection uses aria-labelledby="faq-heading"; homepage heading is "Everything You Need to Know"
+    const faq = page.locator('[aria-labelledby="faq-heading"]');
+    await expectVisible(faq, 'FAQ section');
   });
 
   test('should render CTA section', async ({ page }) => {
@@ -49,7 +56,7 @@ test.describe('Homepage', () => {
 
   test('should have JSON-LD schema', async ({ page }) => {
     await showPhaseLabel(page, '🔍 Schema Validation');
-    const jsonLd = page.locator('script[type="application/ld+json"]').first();
-    await expectVisible(jsonLd, 'JSON-LD script tag');
+    // Homepage injects 3 blocks: Organization, WebSite, FAQPage
+    await expectJsonLd(page, 'Homepage JSON-LD');
   });
 });

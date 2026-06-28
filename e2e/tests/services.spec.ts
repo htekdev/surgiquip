@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { expectVisible, expectText, expectURL, showPhaseLabel } from './visual-assert';
+import { expectVisible, expectText, expectURL, showPhaseLabel, expectJsonLd } from './visual-assert';
 
 test.describe('Service Pages', () => {
   test('should load services index page', async ({ page }) => {
@@ -45,7 +45,7 @@ test.describe('Service Pages', () => {
   test('should have JSON-LD schema on service pages', async ({ page }) => {
     await page.goto('/services/or-installation');
     await showPhaseLabel(page, '🔍 Schema Check');
-    const jsonLd = page.locator('script[type="application/ld+json"]').first();
-    await expectVisible(jsonLd, 'JSON-LD present');
+    // OR Installation page injects a Service JSON-LD block via BaseLayout
+    await expectJsonLd(page, 'Service JSON-LD');
   });
 });
