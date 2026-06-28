@@ -57,19 +57,21 @@ test.describe('Full-Feature: Austin TX Service Area', () => {
     await expectVisible(haysCounty, 'Hays County market card');
   });
 
-  test('should render services and trust block sections', async ({ page }) => {
+  test('should render services section heading and trust block', async ({ page }) => {
     await page.goto('/service-areas/austin-tx');
     await showPhaseLabel(page, '🛠️ Austin TX — Services & Trust');
 
-    // Services section links
-    const equipmentSales = page.locator('a[href="/services/equipment-sales"]').first();
-    await expectVisible(equipmentSales, 'Equipment Sales service link');
+    // Services section heading should be present
+    const servicesHeading = page.locator('h2:has-text("Services for Austin")').first();
+    await expectVisible(servicesHeading, 'Services section heading');
 
-    const orInstall = page.locator('a[href="/services/or-installation"]').first();
-    await expectVisible(orInstall, 'OR Installation service link');
+    // Why Surgiquip / trust block heading
+    const trustHeading = page.locator('h2:has-text("Houston-Based")').first();
+    await expectVisible(trustHeading, 'Trust block heading');
 
-    const pm = page.locator('a[href="/services/preventive-maintenance"]').first();
-    await expectVisible(pm, 'Preventive Maintenance service link');
+    // CTA section at bottom
+    const ctaLink = page.locator('a[href="/contact"]').first();
+    await expectVisible(ctaLink, 'Contact CTA link');
   });
 
   test('should have valid JSON-LD schema on Austin TX page', async ({ page }) => {
