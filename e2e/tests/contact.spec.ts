@@ -37,8 +37,7 @@ test.describe('Contact Page', () => {
     const phone = page.locator('a[href^="tel:"]').first();
     await expectVisible(phone, 'Phone number');
 
-    const email = page.locator('a[href^="mailto:"]').first();
-    await expectVisible(email, 'Email address');
+    // Email intentionally removed per Carla feedback (spam) - PR #18
   });
 
   test('should have JSON-LD schema', async ({ page }) => {
