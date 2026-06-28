@@ -18,7 +18,7 @@ const serviceAreaSchema = {
   '@id': `${site.url}#organization`,
   name: site.brand,
   description:
-    'Authorized Skytron dealer for Southeast Texas and South Texas — OR equipment sales, installation, service, and preventive maintenance for hospitals and surgery centers across Houston, San Antonio, Corpus Christi, Beaumont, and the Gulf Coast.',
+    'Authorized Skytron dealer serving Texas statewide — OR equipment sales, installation, service, and preventive maintenance for hospitals and surgery centers across Houston, San Antonio, Corpus Christi, Lubbock, and the Gulf Coast.',
   url: site.url,
   telephone: site.phone,
   address: {
@@ -47,7 +47,9 @@ const areas = [
     subtitle: 'Jefferson, Orange & Hardin Counties — Golden Triangle',
     desc: 'Dedicated landing page for Golden Triangle hospitals and ASCs — Beaumont, Port Arthur, and Orange. Factory-authorized Skytron service in Southeast Texas.',
     badge: 'Golden Triangle',
-  },\n  {\n    href: '/service-areas/corpus-christi-tx',
+  },
+  {
+    href: '/service-areas/corpus-christi-tx',
     title: 'Corpus Christi, TX',
     subtitle: 'Nueces, San Patricio, Aransas & Kleberg Counties — Coastal Bend',
     desc: 'Dedicated coverage for Coastal Bend hospitals and ASCs — CHRISTUS Spohn, Driscoll Health, and the growing South Texas market. Factory-authorized Skytron service.',
@@ -77,6 +79,14 @@ const areas = [
     badge: 'South Texas',
     icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
   },
+  {
+    href: '/service-areas/lubbock-tx',
+    title: 'Lubbock, TX',
+    subtitle: 'South Plains — Lubbock · Hale · Lynn · Garza · Crosby Counties',
+    desc: "West Texas's healthcare hub — UMC Health System (Level 1 Trauma), Covenant Health (CommonSpirit), and Texas Tech University Health Sciences Center. Authorized Skytron sales, OR installation, and service for the South Plains region.",
+    badge: 'West Texas',
+    icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
+  },
 ];
 
 const cityLinks = [
@@ -100,12 +110,15 @@ const cityLinks = [
   { city: 'San Antonio', href: '/service-areas/san-antonio-tx' },
   { city: 'New Braunfels', href: '/service-areas/san-antonio-tx' },
   { city: 'Seguin', href: '/service-areas/san-antonio-tx' },
+  { city: 'Lubbock', href: '/service-areas/lubbock-tx' },
+  { city: 'Plainview', href: '/service-areas/lubbock-tx' },
+  { city: 'Levelland', href: '/service-areas/lubbock-tx' },
 ];
 ---
 
 <BaseLayout
-  title="Service Areas — Surgical Equipment for Southeast Texas | Surgiquip Solutions"
-  description="Surgiquip Solutions serves hospitals and surgery centers across Southeast Texas — Houston, Beaumont, Galveston, Victoria, and the Gulf Coast. Authorized Skytron dealer since 1983."
+  title="Service Areas — Surgical Equipment Across Texas | Surgiquip Solutions"
+  description="Surgiquip Solutions serves hospitals and surgery centers across Texas — Houston, Beaumont, Galveston, Victoria, San Antonio, Lubbock, and beyond. Authorized Skytron dealer since 1983."
   schema={[serviceAreaSchema, breadcrumbSchema]}
   canonical={`${site.url}/service-areas`}
 >
@@ -119,10 +132,10 @@ const cityLinks = [
       </nav>
       <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Service Areas</div>
       <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-3xl">
-        Serving Southeast Texas Healthcare
+        Serving Texas Healthcare — Houston to Lubbock
       </h1>
       <p class="mt-6 text-xl text-white/85 max-w-2xl leading-relaxed">
-        Surgiquip Solutions is headquartered in Houston and operates as the authorized Skytron dealer for Southeast Texas and South Texas — serving hospitals, surgery centers, and specialty clinics across the region since 1983.
+        Surgiquip Solutions is headquartered in Houston and operates as the authorized Skytron dealer for Texas — serving hospitals, surgery centers, and specialty clinics across Southeast Texas, South Texas, West Texas, and beyond since 1983.
       </p>
       <div class="mt-8 flex flex-wrap gap-4">
         <a href="/quote" class="btn-primary px-7 py-3.5">Request a Quote</a>
@@ -192,10 +205,10 @@ const cityLinks = [
     <div class="max-w-3xl mx-auto text-center">
       <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Why Surgiquip</div>
       <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">
-        Local to Southeast Texas. Backed by 43 Years.
+        Local to Texas. Backed by 43 Years.
       </h2>
       <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
-        Surgiquip Solutions isn't a national company with a regional rep. We're a Houston-based business — founded in 1983, BBB A+ accredited, and staffed by factory-trained technicians who live in the region. When you need service, you get a team that knows your facility and your equipment.
+        Surgiquip Solutions isn't a national company with a regional rep. We're a Houston-based business — founded in 1983, BBB A+ accredited, and staffed by factory-trained technicians who live and work in Texas. When you need service, you get a team that knows your facility and your equipment.
       </p>
       <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
@@ -214,7 +227,7 @@ const cityLinks = [
   </section>
 
   <CTASection
-    heading="Have a Facility in Southeast Texas?"
+    heading="Have a Facility in Texas?"
     subhead="Tell us where you are and what you need — we'll confirm coverage and respond within one business day."
     primaryLabel="Contact Our Team"
     primaryHref="/contact"
