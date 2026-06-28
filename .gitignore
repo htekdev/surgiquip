@@ -25,3 +25,8 @@ Thumbs.db
 
 # Misc
 *.tsbuildinfo
+
+# E2E Test outputs
+e2e/results/
+playwright-report/
+test-results/

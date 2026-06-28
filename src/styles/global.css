@@ -11,11 +11,17 @@
   --color-text-muted: #5b6b85;
   --color-border: #e5e9f0;
 
-  --font-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Playfair Display — premium serif for display headlines (h1, h2) */
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  /* Inter — clean sans-serif for body, UI, and smaller headings (h3–h5) */
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-/* Ensure Inter renders without layout shift */
+/* Ensure fonts render without layout shift */
+@font-face {
+  font-family: "Playfair Display";
+  font-display: swap;
+}
 @font-face {
   font-family: "Inter";
   font-display: swap;
@@ -31,13 +37,23 @@
     scroll-behavior: smooth;
   }
   body { background: var(--color-surface); }
-  h1, h2, h3, h4, h5 {
+
+  /* H1 + H2 — Playfair Display (premium serif, editorial display headlines) */
+  h1, h2 {
     font-family: var(--font-display);
     color: var(--color-navy);
-    letter-spacing: -0.02em;
     font-weight: 700;
+    letter-spacing: -0.02em;
   }
-  h1 { letter-spacing: -0.03em; }
+  h1 { letter-spacing: -0.025em; }
+
+  /* H3–H5 — Inter (clean sans-serif for UI subheadings, card titles, nav labels) */
+  h3, h4, h5 {
+    font-family: var(--font-body);
+    color: var(--color-navy);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
   a { color: var(--color-blue); }
   a:hover { color: var(--color-blue-light); }
 
@@ -50,6 +66,21 @@
 
   /* Suppress focus ring for mouse users on main (skip-to-content target) */
   #main-content:focus { outline: none; }
+}
+
+/* Respect user's motion preferences — WCAG 2.3.3 (AAA) + Lighthouse best practice */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @layer components {

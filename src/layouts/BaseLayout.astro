@@ -1,10 +1,15 @@
 ---
 import { site } from '~/data/site';
+// Playfair Display — display/headline font (spec: Playfair Display for H1/H2 headlines)
+import '@fontsource/playfair-display/600.css';
+import '@fontsource/playfair-display/700.css';
+import '@fontsource/playfair-display/800.css';
+import '@fontsource/playfair-display/400-italic.css';
+// Inter — body + UI font
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/600.css';
 import '@fontsource/inter/700.css';
-import '@fontsource/inter/800.css';
 import '~/styles/global.css';
 import Header from '~/components/Header.astro';
 import Footer from '~/components/Footer.astro';
@@ -17,7 +22,7 @@ export interface Props {
   image?: string;
   schema?: object | object[];
   noindex?: boolean;
-  /** Absolute path to preload as LCP image hint (e.g. "/images/hero/hero-or-suite.png") */
+  /** Absolute path to preload as LCP image hint (e.g. "/images/hero/hero-or-suite.webp") */
   preloadImage?: string;
 }
 
@@ -59,6 +64,13 @@ const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <meta name="twitter:image" content={imageUrl} />
 
     <meta name="generator" content={Astro.generator} />
+
+    {/* Resource hints — reduce connection latency for 3rd-party origins */}
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    {import.meta.env.PUBLIC_GA4_ID && (
+      <link rel="preconnect" href="https://www.googletagmanager.com" />
+    )}
 
     {/* RSS feed autodiscovery — search engines and feed readers pick this up automatically */}
     <link rel="alternate" type="application/rss+xml" title={`${site.brand} — Surgical Equipment Insights`} href="/rss.xml" />

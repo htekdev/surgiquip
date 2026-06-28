@@ -1,0 +1,344 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'MedicalBusiness'],
+  '@id': `${site.url}#organization`,
+  name: site.brand,
+  alternateName: 'Surgiquip Solutions',
+  description:
+    'Authorized Skytron dealer serving Beaumont, TX and the Golden Triangle — OR equipment sales, installation, service, and preventive maintenance for hospitals and surgery centers in Jefferson, Orange, and Hardin counties.',
+  url: `${site.url}/service-areas/beaumont-tx`,
+  telephone: site.phone,
+  email: site.email,
+  foundingDate: '1983',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 30.0802,
+    longitude: -94.1266,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '07:30',
+    closes: '16:30',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Beaumont', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'City', name: 'Port Arthur', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'City', name: 'Orange', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'County', name: 'Jefferson County', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'County', name: 'Orange County', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'County', name: 'Hardin County', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'County', name: 'Jasper County', containedInPlace: { '@type': 'State', name: 'Texas' } },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'OR Equipment & Services — Beaumont, TX',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Surgical Equipment Sales' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'OR Installation & Integration' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Equipment Service & Repair' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Preventive Maintenance Programs' } },
+    ],
+  },
+  sameAs: [site.social.linkedin, site.social.youtube],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: `${site.url}/service-areas` },
+    { '@type': 'ListItem', position: 3, name: 'Beaumont, TX', item: `${site.url}/service-areas/beaumont-tx` },
+  ],
+};
+
+const services = [
+  {
+    href: '/services/equipment-sales',
+    title: 'Surgical Equipment Sales',
+    blurb:
+      'Authorized Skytron dealer for Beaumont and the Golden Triangle. Surgical tables, OR lights, and equipment booms for hospitals and ASCs in Jefferson, Orange, and Hardin counties.',
+  },
+  {
+    href: '/services/or-installation',
+    title: 'OR Installation & Integration',
+    blurb:
+      'Turnkey OR installations across Southeast Texas — from project coordination with your GC and architect through commissioning, staff training, and go-live support.',
+  },
+  {
+    href: '/services/service-and-repair',
+    title: 'Service & Repair',
+    blurb:
+      'Factory-trained technicians serving Beaumont, Port Arthur, Orange, and surrounding areas. Emergency and scheduled service for Skytron and other major OR equipment brands.',
+  },
+  {
+    href: '/services/preventive-maintenance',
+    title: 'Preventive Maintenance',
+    blurb:
+      'Structured PM programs for surgical tables, overhead lights, and ceiling booms — with documentation formatted for Joint Commission and DNV GL survey readiness.',
+  },
+];
+
+const beauStats = [
+  { value: '40+ Years', label: 'Southeast Texas service', sub: 'Since the 1980s' },
+  { value: '4 Counties', label: 'Golden Triangle territory', sub: 'Jefferson · Orange · Hardin · Jasper' },
+  { value: '24hr', label: 'Emergency response', sub: 'For critical equipment' },
+  { value: 'Factory', label: 'Certified technicians', sub: 'Skytron authorized' },
+];
+
+const markets = [
+  {
+    city: 'Beaumont',
+    county: 'Jefferson County',
+    desc:
+      'Southeast Texas anchor market. Serving Baptist Hospitals of Southeast Texas, CHRISTUS Health Southeast Texas, and surgery centers across the city.',
+  },
+  {
+    city: 'Port Arthur',
+    county: 'Jefferson County',
+    desc:
+      'Serving Medical Center of Southeast Texas, Port Arthur ASCs, and specialty clinics in the southern Golden Triangle.',
+  },
+  {
+    city: 'Orange',
+    county: 'Orange County',
+    desc:
+      'Serving Memorial Hermann Baptist Orange and medical facilities across Orange County near the Louisiana border.',
+  },
+  {
+    city: 'Lufkin / Nacogdoches',
+    county: 'Angelina & Nacogdoches Counties',
+    desc:
+      'East Texas reach into the Piney Woods region — serving Woodland Heights Medical Center and regional healthcare facilities.',
+  },
+];
+---
+
+<BaseLayout
+  title="Surgical Equipment Sales & Service — Beaumont, TX | Surgiquip Solutions"
+  description="Surgiquip Solutions serves hospitals and surgery centers in Beaumont, TX and the Golden Triangle. Authorized Skytron dealer — OR equipment sales, installation, repair, and preventive maintenance."
+  schema={[localBusinessSchema, breadcrumbSchema]}
+  canonical={`${site.url}/service-areas/beaumont-tx`}
+>
+  <!-- Hero -->
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/service-areas" class="hover:text-white/90">Service Areas</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">Beaumont, TX</span>
+      </nav>
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Service Area</div>
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-3xl">
+        Surgical Equipment Sales &amp; Service in Beaumont, TX
+      </h1>
+      <p class="mt-6 text-xl text-white/85 max-w-2xl leading-relaxed">
+        Surgiquip Solutions has served Golden Triangle hospitals, surgery centers, and specialty clinics for over four decades. Authorized Skytron dealer for Southeast Texas — factory-trained, locally accountable.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="/quote" class="btn-primary px-7 py-3.5">Request a Quote</a>
+        <a
+          href={`tel:${site.phoneE164}`}
+          class="inline-flex items-center gap-2 px-7 py-3.5 rounded-md border border-white/40 font-semibold text-white hover:bg-white/10 transition"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1l-2.3 2.3z" />
+          </svg>
+          {site.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats bar -->
+  <section class="bg-[#061e42] text-white">
+    <div class="container-x py-6">
+      <dl class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {beauStats.map((s) => (
+          <div>
+            <dt class="sr-only">{s.label}</dt>
+            <dd class="font-display text-2xl md:text-3xl font-bold">{s.value}</dd>
+            <p class="text-xs text-white/70 mt-1 leading-snug">
+              {s.label}<br /><span class="text-white/50">{s.sub}</span>
+            </p>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="container-x py-16">
+    <div class="max-w-3xl">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Serving the Golden Triangle</div>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-[var(--color-navy)]">
+        Beaumont's OR Equipment Partner
+      </h2>
+      <p class="mt-4 text-lg text-[var(--color-text-muted)] leading-relaxed">
+        The Golden Triangle — Beaumont, Port Arthur, and Orange — is home to a concentrated network of acute care hospitals, surgical centers, and specialty clinics. Surgiquip Solutions has been the OR equipment partner of choice for facilities across Jefferson, Orange, and Hardin counties for decades.
+      </p>
+      <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+        As the authorized Skytron dealer for Southeast Texas, we supply and service the full Skytron line — surgical tables, overhead lights, and ceiling-mount equipment booms — alongside HSI Hospital Systems and Knight instrument cleaning equipment. Our Houston-based technicians serve the Beaumont market with the same factory-level expertise available to major Texas Medical Center facilities.
+      </p>
+      <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+        Whether you're planning a new OR suite, replacing aging Skytron equipment, or establishing a Joint Commission–compliant preventive maintenance program, our team brings manufacturer-level expertise and a 43-year service history to your project.
+      </p>
+    </div>
+  </section>
+
+  <!-- Markets grid -->
+  <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Coverage</div>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-[var(--color-navy)] mb-10">
+        Golden Triangle &amp; East Texas Markets
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {markets.map((m) => (
+          <div class="bg-white rounded-xl border border-[var(--color-border)] p-6">
+            <div class="flex items-start gap-4">
+              <div class="mt-0.5 flex-shrink-0">
+                <svg
+                  class="w-6 h-6 text-[var(--color-blue)]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  aria-hidden="true"
+                >
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="12" cy="9" r="2.5" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-[var(--color-navy)] text-lg leading-tight">{m.city}</h3>
+                <p class="text-xs font-semibold text-[var(--color-blue)] uppercase tracking-wide mt-0.5 mb-2">{m.county}</p>
+                <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{m.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="container-x py-16">
+    <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">What We Do</div>
+    <h2 class="font-display text-3xl md:text-4xl font-bold text-[var(--color-navy)] mb-10">
+      OR Equipment Services for Beaumont Facilities
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {services.map((s) => (
+        <a
+          href={s.href}
+          class="group bg-white rounded-xl border border-[var(--color-border)] p-6 hover:border-[var(--color-blue)] hover:shadow-md transition"
+        >
+          <h3 class="font-bold text-[var(--color-navy)] text-lg mb-2 group-hover:text-[var(--color-blue)] transition">
+            {s.title}
+          </h3>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{s.blurb}</p>
+          <div class="mt-4 text-xs font-semibold text-[var(--color-blue)] flex items-center gap-1">
+            Learn more
+            <svg class="w-3 h-3 transition group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Why Surgiquip -->
+  <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x">
+      <div class="max-w-3xl">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Why Surgiquip</div>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-[var(--color-navy)] mb-6">
+          Factory Authorization in a Regional Market
+        </h2>
+        <div class="space-y-4 text-[var(--color-text-muted)] leading-relaxed">
+          <p>
+            Beaumont-area hospitals and ASCs have historically had limited options for authorized Skytron service — the nearest competing dealer footprint was always Houston-centric. Surgiquip Solutions bridges that gap: our factory certifications and local familiarity with Southeast Texas healthcare make us the practical choice for Golden Triangle facilities.
+          </p>
+          <p>
+            We understand the operational realities of the Beaumont healthcare market — the tight staffing, the capital budget cycles, the TJC survey preparation that drives PM program priority. We bring the same equipment expertise that serves the Texas Medical Center to facilities in Jefferson, Orange, and Hardin counties.
+          </p>
+          <p>
+            Our service model is straightforward: factory-trained technicians, OEM parts, documented service records, and a response time commitment that respects your OR schedule.
+          </p>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="/quote" class="btn-primary px-6 py-3">Get a Quote for Your Facility</a>
+          <a href="/about/accreditation" class="inline-flex items-center px-6 py-3 rounded-md border border-[var(--color-navy)] text-[var(--color-navy)] font-semibold text-sm hover:bg-[var(--color-navy)] hover:text-white transition">
+            Our Accreditations
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related resources -->
+  <section class="container-x py-16">
+    <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Resources</div>
+    <h2 class="font-display text-2xl md:text-3xl font-bold text-[var(--color-navy)] mb-8">
+      Helpful for Beaumont Facility Teams
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {[
+        {
+          href: '/blog/or-installation-planning-guide-texas',
+          label: 'Blog Article',
+          title: 'OR Installation Planning Guide',
+          desc: 'What Texas hospitals need to know before breaking ground — equipment scope, sequencing, and compliance documentation.',
+        },
+        {
+          href: '/blog/preventive-maintenance-or-equipment-texas',
+          label: 'Blog Article',
+          title: 'PM for OR Equipment: A Texas Hospital Guide',
+          desc: 'How a structured PM program for surgical tables, lights, and booms reduces downtime and protects TJC compliance.',
+        },
+        {
+          href: '/projects',
+          label: 'Case Studies',
+          title: 'Southeast Texas Projects',
+          desc: 'Hybrid OR installations, multi-suite upgrades, and boom system installs across the region.',
+        },
+      ].map((r) => (
+        <a
+          href={r.href}
+          class="group bg-white rounded-xl border border-[var(--color-border)] p-6 hover:border-[var(--color-blue)] hover:shadow-md transition"
+        >
+          <div class="text-xs font-bold uppercase tracking-widest text-[var(--color-blue)] mb-2">{r.label}</div>
+          <h3 class="font-bold text-[var(--color-navy)] mb-2 group-hover:text-[var(--color-blue)] transition">{r.title}</h3>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{r.desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <CTASection
+    heading="Serving Beaumont, TX Since the 1980s"
+    subhead="Get expert OR equipment sales, installation, and service from Surgiquip Solutions — the authorized Skytron dealer for Southeast Texas."
+    primaryLabel="Request a Quote"
+    primaryHref="/quote"
+    secondaryLabel="Call (713) 681-6362"
+    secondaryHref="tel:+17136816362"
+  />
+</BaseLayout>
