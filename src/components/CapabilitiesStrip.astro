@@ -1,0 +1,72 @@
+---
+/**
+ * CapabilitiesStrip.astro
+ * A compact 4-icon "What We Handle" visual strip for the homepage.
+ * Positioned between StatBar and EquipmentShowcase to add visual depth
+ * and communicate core equipment/service categories at a glance.
+ */
+
+const capabilities = [
+  {
+    label: 'Surgical Lighting',
+    image: '/images/icons/icon-surgical-light.png',
+    href: '/products/skytron',
+    description: 'Skytron overhead surgical lights',
+  },
+  {
+    label: 'OR Tables',
+    image: '/images/icons/icon-or-table.png',
+    href: '/products/skytron',
+    description: 'Motorized surgical tables',
+  },
+  {
+    label: 'Sterilization',
+    image: '/images/icons/icon-sterilization.png',
+    href: '/products/knight',
+    description: 'Sterile processing equipment',
+  },
+  {
+    label: 'Service & Repair',
+    image: '/images/icons/icon-service-tech.png',
+    href: '/services/service-and-repair',
+    description: 'Biomedical equipment service',
+  },
+];
+---
+
+<section class="bg-white py-14 border-b border-[var(--color-border)]">
+  <div class="container-x">
+    <div class="text-center mb-10">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)]">What We Handle</div>
+      <h2 class="text-2xl md:text-3xl font-bold mt-2 text-[var(--color-navy)]">Equipment We Sell & Service</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      {capabilities.map((cap) => (
+        <a
+          href={cap.href}
+          class="group flex flex-col items-center text-center gap-4 p-5 rounded-xl border border-transparent hover:border-[var(--color-border)] hover:shadow-md transition-all"
+        >
+          <div class="w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-sm group-hover:shadow-md transition-shadow flex-shrink-0">
+            <img
+              src={cap.image}
+              alt={cap.description}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+              decoding="async"
+              width="96"
+              height="96"
+            />
+          </div>
+          <div>
+            <div class="font-bold text-sm md:text-base text-[var(--color-navy)] group-hover:text-[var(--color-blue)] transition-colors">
+              {cap.label}
+            </div>
+            <div class="text-xs text-[var(--color-text-muted)] mt-1 leading-snug hidden md:block">
+              {cap.description}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
