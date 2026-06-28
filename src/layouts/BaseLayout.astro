@@ -65,6 +65,13 @@ const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 
     <meta name="generator" content={Astro.generator} />
 
+    {/* Resource hints — reduce connection latency for 3rd-party origins */}
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    {import.meta.env.PUBLIC_GA4_ID && (
+      <link rel="preconnect" href="https://www.googletagmanager.com" />
+    )}
+
     {/* RSS feed autodiscovery — search engines and feed readers pick this up automatically */}
     <link rel="alternate" type="application/rss+xml" title={`${site.brand} — Surgical Equipment Insights`} href="/rss.xml" />
 
