@@ -86,8 +86,21 @@ const areas = [
     desc: "West Texas's healthcare hub — UMC Health System (Level 1 Trauma), Covenant Health (CommonSpirit), and Texas Tech University Health Sciences Center. Authorized Skytron sales, OR installation, and service for the South Plains region.",
     badge: 'West Texas',
     icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
-  },
-  {
+  },  {
+    href: '/service-areas/austin-tx',
+    title: 'Austin, TX',
+    subtitle: 'Travis · Williamson · Hays · Bastrop Counties',
+    desc: "Central Texas's fastest-growing healthcare market — Dell Seton, St. David's HealthCare, Ascension Seton, and Baylor Scott & White. Authorized Skytron dealer for OR equipment sales, hybrid OR installation, and service across Travis County and the I-35 corridor.",
+    badge: 'Central Texas',
+    icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" stroke="currentColor" stroke-width="0.5" fill="none"/>',
+  },  {
+    href: '/service-areas/rio-grande-valley-tx',
+    title: 'Rio Grande Valley, TX',
+    subtitle: 'Hidalgo · Cameron · Starr · Willacy Counties',
+    desc: "One of Texas's fastest-growing healthcare markets — DHR Health, South Texas Health System, Valley Baptist Medical Center, and Doctors Hospital at Renaissance. Authorized Skytron OR equipment sales and service for McAllen, Harlingen, Brownsville, and the entire Valley.",
+    badge: 'Rio Grande Valley',
+    icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
+  },  {
     href: '/service-areas/dallas-fort-worth-tx',
     title: 'Dallas-Fort Worth, TX',
     subtitle: 'Tarrant · Dallas · Collin · Denton Counties — North Texas',
@@ -121,6 +134,14 @@ const cityLinks = [
   { city: 'Lubbock', href: '/service-areas/lubbock-tx' },
   { city: 'Plainview', href: '/service-areas/lubbock-tx' },
   { city: 'Levelland', href: '/service-areas/lubbock-tx' },
+  { city: 'Austin', href: '/service-areas/austin-tx' },
+  { city: 'Round Rock', href: '/service-areas/austin-tx' },
+  { city: 'Georgetown', href: '/service-areas/austin-tx' },
+  { city: 'Cedar Park', href: '/service-areas/austin-tx' },
+  { city: 'McAllen', href: '/service-areas/rio-grande-valley-tx' },
+  { city: 'Harlingen', href: '/service-areas/rio-grande-valley-tx' },
+  { city: 'Brownsville', href: '/service-areas/rio-grande-valley-tx' },
+  { city: 'Edinburg', href: '/service-areas/rio-grande-valley-tx' },
   { city: 'Dallas', href: '/service-areas/dallas-fort-worth-tx' },
   { city: 'Fort Worth', href: '/service-areas/dallas-fort-worth-tx' },
   { city: 'Arlington', href: '/service-areas/dallas-fort-worth-tx' },
@@ -146,12 +167,9 @@ const cityLinks = [
       </nav>
       <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Service Areas</div>
       <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-3xl">
-        Serving Texas Healthcare — Houston to Dallas
-      </h1>
+        Serving Texas Healthcare — Houston to Dallas</h1>
       <p class="mt-6 text-xl text-white/85 max-w-2xl leading-relaxed">
-        Surgiquip Solutions is headquartered in Houston and operates as the authorized Skytron dealer for Texas —
-        serving hospitals, surgery centers, and specialty clinics across Houston, Dallas-Fort Worth, San Antonio,
-        Austin, the Gulf Coast, and beyond since 1983.
+        Surgiquip Solutions is headquartered in Houston and operates as the authorized Skytron dealer for Texas — serving hospitals, surgery centers, and specialty clinics across Southeast Texas, South Texas, West Texas, and beyond since 1983.
       </p>
       <div class="mt-8 flex flex-wrap gap-4">
         <a href="/quote" class="btn-primary px-7 py-3.5">Request a Quote</a>
@@ -221,14 +239,14 @@ const cityLinks = [
     <div class="max-w-3xl mx-auto text-center">
       <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Why Surgiquip</div>
       <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">
-        Texas-Based. Statewide Reach. 43 Years Strong.
+        Local to Texas. Backed by 43 Years.
       </h2>
       <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
-        Surgiquip Solutions isn't a national company with a regional rep. We're a Houston-based business — founded in 1983, BBB A+ accredited, and staffed by factory-trained technicians serving Texas from the Gulf Coast to North Texas. When you need service, you get a team that knows your facility and your equipment.
+        Surgiquip Solutions isn't a national company with a regional rep. We're a Houston-based business — founded in 1983, BBB A+ accredited, and staffed by factory-trained technicians who live and work in Texas. When you need service, you get a team that knows your facility and your equipment.
       </p>
       <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
-          ['43 Years', 'In Texas ORs'],
+          ['43 Years', 'In Southeast Texas'],
           ['500+', 'Facilities Served'],
           ['A+ BBB', 'Accredited Business'],
           ['Skytron', 'Authorized Dealer'],
