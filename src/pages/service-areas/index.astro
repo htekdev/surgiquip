@@ -18,7 +18,7 @@ const serviceAreaSchema = {
   '@id': `${site.url}#organization`,
   name: site.brand,
   description:
-    'Authorized Skytron dealer serving Texas statewide — OR equipment sales, installation, service, and preventive maintenance for hospitals and surgery centers across Houston, San Antonio, Corpus Christi, Lubbock, and the Gulf Coast.',
+    'Authorized Skytron dealer serving Texas statewide — OR equipment sales, installation, service, and preventive maintenance for hospitals and surgery centers across Houston, San Antonio, El Paso, Lubbock, Corpus Christi, Beaumont, and the Gulf Coast.',
   url: site.url,
   telephone: site.phone,
   address: {
@@ -87,6 +87,14 @@ const areas = [
     badge: 'West Texas',
     icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
   },
+  {
+    href: '/service-areas/el-paso-tx',
+    title: 'El Paso, TX',
+    subtitle: 'El Paso County — Borderland & Far West Texas',
+    desc: "The Borderland's major healthcare market — The Hospitals of Providence (TENET), UMC Health System (Level 1 Trauma), Del Sol Medical Center, Las Palmas, and El Paso Children's Hospital. Authorized Skytron OR equipment sales, installation, and service for El Paso County and surrounding communities.",
+    badge: 'Far West Texas',
+    icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" stroke="currentColor" stroke-width="0.5" fill="none"/>',
+  },
 ];
 
 const cityLinks = [
@@ -113,6 +121,9 @@ const cityLinks = [
   { city: 'Lubbock', href: '/service-areas/lubbock-tx' },
   { city: 'Plainview', href: '/service-areas/lubbock-tx' },
   { city: 'Levelland', href: '/service-areas/lubbock-tx' },
+  { city: 'El Paso', href: '/service-areas/el-paso-tx' },
+  { city: 'Socorro', href: '/service-areas/el-paso-tx' },
+  { city: 'Horizon City', href: '/service-areas/el-paso-tx' },
 ];
 ---
 
