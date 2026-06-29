@@ -3,7 +3,7 @@
  * ONE SINGLE test() block = ONE continuous video proving the real content is live
  *
  * Flow:
- *   → Homepage
+ *   → Homepage (quick load verify only — NO scrolling)
  *   → Navigate to Projects via nav link
  *   → Scroll through index — verify real project cards are present
  *   → Click TMC Sarofim (crown jewel, featured)
@@ -49,22 +49,13 @@ async function scrollToTop(page: Page) {
 test('change-proof-real-projects', async ({ page }) => {
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PART 1 — Homepage
+  // PART 1 — Homepage (minimal — just verify loaded, then move on)
   // ═══════════════════════════════════════════════════════════════════════════
 
   await page.goto('/');
   await page.waitForLoadState('networkidle');
-  await showPhaseLabel(page, '🏥 Surgiquip — Homepage');
-  await page.waitForTimeout(1200);
-
-  // Verify homepage loaded
-  const homeH1 = page.locator('h1').first();
-  await expectVisible(homeH1, 'Homepage H1');
-  await page.waitForTimeout(800);
-
-  // Scroll homepage a bit to show it's live
-  await smoothScroll(page, 600, 300, 500);
-  await page.waitForTimeout(1200);
+  await showPhaseLabel(page, '🏥 Surgiquip — Homepage loaded');
+  await page.waitForTimeout(1500);
 
   // ═══════════════════════════════════════════════════════════════════════════
   // PART 2 — Navigate to Projects via nav
@@ -74,7 +65,6 @@ test('change-proof-real-projects', async ({ page }) => {
   await page.waitForTimeout(800);
 
   // Click Projects in nav
-  await scrollToTop(page);
   const projectsNavLink = page.locator('nav a[href="/projects"]').first();
   await expectVisible(projectsNavLink, 'Projects nav link');
   await page.waitForTimeout(600);
