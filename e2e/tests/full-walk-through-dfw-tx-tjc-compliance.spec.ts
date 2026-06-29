@@ -16,17 +16,20 @@ test('full-walk-through-dfw-tx-tjc-compliance', async ({ page }) => {
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('text=Dallas-Fort Worth')).toBeVisible();
 
-  // 3. Scroll through service areas index
-  for (let i = 0; i < 6; i++) {
+  // 3. Scroll through service areas index (partial — just to show the page)
+  for (let i = 0; i < 3; i++) {
     await page.mouse.wheel(0, 300);
     await page.waitForTimeout(500);
   }
 
-  // 4. Verify DFW city links are present
-  await expect(page.locator('a[href="/service-areas/dallas-fort-worth-tx"]').first()).toBeVisible();
+  // 4. Find and scroll to DFW city link
+  const dfwCardLink = page.locator('a[href="/service-areas/dallas-fort-worth-tx"]').first();
+  await dfwCardLink.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
+  await expect(dfwCardLink).toBeVisible();
 
   // 5. Click into Dallas-Fort Worth TX page
-  await page.click('a[href="/service-areas/dallas-fort-worth-tx"]');
+  await dfwCardLink.click();
   await page.waitForTimeout(1200);
 
   // 6. Verify DFW hero section
@@ -46,17 +49,16 @@ test('full-walk-through-dfw-tx-tjc-compliance', async ({ page }) => {
   await page.click('a[href="/blog"]');
   await page.waitForTimeout(1000);
 
-  // Verify Joint Commission / TJC article appears
-  await expect(page.locator('text=Joint Commission').or(page.locator('text=TJC').or(page.locator('text=compliance')))).toBeVisible();
-
   // 10. Scroll through blog index
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 3; i++) {
     await page.mouse.wheel(0, 300);
     await page.waitForTimeout(500);
   }
 
-  // 11. Click into the TJC compliance blog post
+  // 11. Find and click into the TJC compliance blog post
   const tjcLink = page.locator('a[href*="joint-commission"]').first();
+  await tjcLink.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
   await expect(tjcLink).toBeVisible();
   await tjcLink.click();
   await page.waitForTimeout(1200);
@@ -81,12 +83,10 @@ test('full-walk-through-dfw-tx-tjc-compliance', async ({ page }) => {
   await page.click('a[href="/service-areas"]');
   await page.waitForTimeout(1000);
 
-  // 17. Scroll to verify DFW card visible
-  for (let i = 0; i < 4; i++) {
-    await page.mouse.wheel(0, 300);
-    await page.waitForTimeout(500);
-  }
-
-  await expect(page.locator('text=Dallas-Fort Worth, TX')).toBeVisible();
+  // 17. Find and scroll to DFW card to verify listing
+  const dfwFinalCard = page.locator('a[href="/service-areas/dallas-fort-worth-tx"]').first();
+  await dfwFinalCard.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
+  await expect(dfwFinalCard).toBeVisible();
   await expect(page.locator('text=North Texas')).toBeVisible();
 });
