@@ -21,6 +21,9 @@ import {
   expectJsonLd,
 } from './visual-assert';
 
+// Long-running demo test — extend timeout to 6 minutes
+test.setTimeout(360000);
+
 // ─── Scroll helper — smooth natural scrolling like a real user ────────────────
 
 async function smoothScroll(page: Page, totalPx = 2000, stepPx = 280, delayMs = 380) {
@@ -143,10 +146,10 @@ test('full-walk-through — Lubbock TX service area + ASC Equipment Guide blog',
   // 2a. Scroll to resources section and click ASC Guide link
   await scrollToTop(page);
   await showPhaseLabel(page, '🏙️ Lubbock TX — Finding Resource Link');
-  await page.waitForTimeout(800);
-  await smoothScroll(page, 2800, 280, 360);
+  await page.waitForTimeout(600);
+  await smoothScroll(page, 2000, 300, 300);
   await showPhaseLabel(page, '📚 Resources Section — Internal Links');
-  await page.waitForTimeout(800);
+  await page.waitForTimeout(600);
 
   const ascLink = page.locator('a[href*="ambulatory-surgery-center"]').first();
   await expectVisible(ascLink, 'ASC Equipment Guide link');
