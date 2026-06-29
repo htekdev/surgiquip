@@ -59,8 +59,8 @@ test('full-walk-through — El Paso TX service area + OR Suite Renovation Planni
   await expectText(h1, 'El Paso', 'El Paso in heading');
   await expectURL(page, /\/service-areas\/el-paso-tx/);
 
-  const badge = page.locator('text=Far West Texas').first();
-  await expectVisible(badge, 'Far West Texas badge');
+  const badge = page.locator('text=West Texas').first();
+  await expectVisible(badge, 'West Texas · Borderland badge');
 
   await showPhaseLabel(page, '🏥 El Paso Markets — Hospitals of Providence, UMC, Del Sol');
   await smoothScroll(page, 700, 260, 400);
