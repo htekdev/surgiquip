@@ -16,7 +16,7 @@ import {
 
 test.setTimeout(360000);
 
-async function smoothScroll(page: Page, totalPx = 2000, stepPx = 280, delayMs = 380) {
+async function smoothScroll(page: Page, totalPx = 2000, stepPx = 280, delayMs = 500) {
   await page.mouse.move(760, 400);
   const steps = Math.ceil(totalPx / stepPx);
   for (let i = 0; i < steps; i++) {
@@ -30,7 +30,7 @@ test('full-walk-through — El Paso TX service area + OR Suite Renovation Planni
   await page.goto('/');
   await showPhaseLabel(page, '🏥 Surgiquip — Homepage');
   await page.waitForTimeout(1200);
-  await smoothScroll(page, 600, 280, 420);
+  await smoothScroll(page, 600, 280, 500);
 
   await page.goto('/service-areas');
   await page.waitForLoadState('networkidle');
@@ -44,7 +44,7 @@ test('full-walk-through — El Paso TX service area + OR Suite Renovation Planni
 
   const elPasoCard = page.locator('a[href="/service-areas/el-paso-tx"]').first();
   await elPasoCard.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(elPasoCard, 'El Paso TX card');
   await expectText(elPasoCard, 'El Paso', 'El Paso on card');
 
@@ -67,7 +67,7 @@ test('full-walk-through — El Paso TX service area + OR Suite Renovation Planni
 
   const umc = page.locator('text=Providence').or(page.locator('text=UMC')).first();
   await umc.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(umc, 'Hospitals of Providence / UMC');
 
   await smoothScroll(page, 700, 260, 400);
@@ -75,22 +75,22 @@ test('full-walk-through — El Paso TX service area + OR Suite Renovation Planni
 
   const trustSection = page.locator('text=Why Surgiquip').first();
   await trustSection.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(trustSection, 'Why Surgiquip section');
   await showPhaseLabel(page, '⭐ Why Surgiquip — Texas-Based, Factory-Authorized');
   await smoothScroll(page, 600, 260, 400);
 
   await expectJsonLd(page, 'El Paso TX LocalBusiness + BreadcrumbList JSON-LD');
-  await page.waitForTimeout(800);
+  await page.waitForTimeout(1200);
 
   await page.goto('/blog');
   await page.waitForLoadState('networkidle');
   await showPhaseLabel(page, '📰 Blog Index — OR Suite Renovation Article');
-  await smoothScroll(page, 400, 260, 380);
+  await smoothScroll(page, 400, 260, 500);
 
   const renovationLink = page.locator('a[href*="renovation"]').first();
   await renovationLink.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(renovationLink, 'OR Suite Renovation Planning Guide link');
 
   await showPhaseLabel(page, '🔗 Clicking → OR Suite Renovation Planning Guide');
@@ -108,14 +108,14 @@ test('full-walk-through — El Paso TX service area + OR Suite Renovation Planni
   await expectVisible(articleBody, 'Article body');
 
   await showPhaseLabel(page, '📄 Scrolling OR Suite Renovation Guide...');
-  await smoothScroll(page, 900, 260, 380);
-  await smoothScroll(page, 900, 260, 380);
-  await smoothScroll(page, 900, 260, 380);
-  await smoothScroll(page, 900, 260, 380);
+  await smoothScroll(page, 900, 260, 500);
+  await smoothScroll(page, 900, 260, 500);
+  await smoothScroll(page, 900, 260, 500);
+  await smoothScroll(page, 900, 260, 500);
 
   await showPhaseLabel(page, '✅ 6-Phase Renovation Guide — Complete Coverage');
   await expectJsonLd(page, 'OR Renovation Article + BreadcrumbList JSON-LD');
-  await page.waitForTimeout(600);
+  await page.waitForTimeout(1000);
 
   await page.goto('/service-areas');
   await page.waitForLoadState('networkidle');
@@ -128,7 +128,7 @@ test('full-walk-through — El Paso TX service area + OR Suite Renovation Planni
 
   const elPasoFinal = page.locator('a[href="/service-areas/el-paso-tx"]').first();
   await elPasoFinal.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(elPasoFinal, 'El Paso TX card in listing');
   await expectText(elPasoFinal, 'El Paso', 'El Paso confirmed');
 
