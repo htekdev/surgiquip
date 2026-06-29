@@ -1,49 +1,135 @@
-import { test, expect } from '@playwright/test';
+/**
+ * Full-Walk-Through E2E Spec — Cycle 32: Dallas-Fort Worth TX + TJC Compliance Blog
+ * ONE SINGLE test() block = ONE continuous video for Hector to review
+ *
+ * Proof keyword: full-walk-through
+ */
 
-test('full-walk-through-dfw-tx-tjc-compliance', async ({ page }) => {
-  // 1. Start at homepage
+import { test, type Page } from '@playwright/test';
+import {
+  expectVisible,
+  expectText,
+  expectURL,
+  showPhaseLabel,
+  expectJsonLd,
+} from './visual-assert';
+
+test.setTimeout(360000);
+
+async function smoothScroll(page: Page, totalPx = 2000, stepPx = 280, delayMs = 380) {
+  await page.mouse.move(760, 400);
+  const steps = Math.ceil(totalPx / stepPx);
+  for (let i = 0; i < steps; i++) {
+    await page.mouse.wheel(0, stepPx);
+    await page.waitForTimeout(delayMs);
+  }
+}
+
+test('full-walk-through — Dallas-Fort Worth TX service area + TJC OR Equipment Compliance blog', async ({ page }) => {
+
   await page.goto('/');
+  await showPhaseLabel(page, '🏥 Surgiquip — Homepage');
   await page.waitForTimeout(1200);
+  await smoothScroll(page, 600, 280, 420);
 
-  // Verify homepage hero loads
-  await expect(page.locator('h1').first()).toBeVisible();
-
-  // 2. Navigate to Service Areas via nav
-  await page.click('a[href="/service-areas"]');
+  await page.goto('/service-areas');
+  await page.waitForLoadState('networkidle');
+  await showPhaseLabel(page, '🗺️ Service Areas — Texas Statewide Coverage');
   await page.waitForTimeout(1000);
 
-  // Verify Service Areas index with DFW card
-  await expect(page.locator('h1')).toBeVisible();
-  await expect(page.locator('text=Dallas-Fort Worth')).toBeVisible();
+  const indexH1 = page.locator('h1').first();
+  await expectVisible(indexH1, 'Service Areas H1');
+  await smoothScroll(page, 600, 260, 420);
+  await showPhaseLabel(page, '📍 Spotting Dallas-Fort Worth TX — New!');
 
-  // 3. Scroll through service areas index (partial — just to show the page)
-  for (let i = 0; i < 3; i++) {
-    await page.mouse.wheel(0, 300);
-    await page.waitForTimeout(500);
-  }
+  const dfwCard = page.locator('a[href="/service-areas/dallas-fort-worth-tx"]').first();
+  await dfwCard.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);
+  await expectVisible(dfwCard, 'DFW TX card');
+  await expectText(dfwCard, 'Dallas', 'Dallas on card');
 
-  // 4. Find and scroll to DFW city link
-  const dfwCardLink = page.locator('a[href="/service-areas/dallas-fort-worth-tx"]').first();
-  await dfwCardLink.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(500);
-  await expect(dfwCardLink).toBeVisible();
+  await showPhaseLabel(page, '🔗 Clicking → Dallas-Fort Worth TX');
+  await dfwCard.click();
+  await page.waitForLoadState('networkidle');
+  await showPhaseLabel(page, '🏙️ Dallas-Fort Worth TX — New Service Area Page');
+  await page.waitForTimeout(1000);
 
-  // 5. Click into Dallas-Fort Worth TX page
-  await dfwCardLink.click();
-  await page.waitForTimeout(1200);
+  const h1 = page.locator('h1').first();
+  await expectVisible(h1, 'DFW TX H1');
+  await expectText(h1, 'Dallas', 'Dallas in heading');
+  await expectURL(page, /\/service-areas\/dallas-fort-worth-tx/);
 
-  // 6. Verify DFW hero section
-  await expect(page.locator('h1')).toContainText('Dallas');
-  await expect(page.locator('text=Tarrant').or(page.locator('text=Dallas County'))).toBeVisible();
+  await showPhaseLabel(page, '🏥 DFW Markets — Baylor, UT Southwestern, Parkland');
+  await smoothScroll(page, 700, 260, 400);
 
-  // 7. Scroll through DFW page (full content review)
-  for (let i = 0; i < 12; i++) {
-    await page.mouse.wheel(0, 300);
-    await page.waitForTimeout(500);
-  }
+  const baylor = page.locator('text=Baylor').or(page.locator('text=UT Southwestern')).first();
+  await expectVisible(baylor, 'Baylor / UT Southwestern');
 
-  // 8. Verify key hospital/healthcare content on DFW page
-  await expect(page.locator('text=Baylor').or(page.locator('text=UT Southwestern').or(page.locator('text=North Texas')))).toBeVisible();
+  await smoothScroll(page, 700, 260, 400);
+  await smoothScroll(page, 700, 260, 400);
+
+  const trustBlock = page.locator('h2').filter({ hasText: /Why Surgiquip|43 Year|Houston/i }).first();
+  await expectVisible(trustBlock, 'Why Surgiquip trust block');
+  await showPhaseLabel(page, '⭐ Why Surgiquip — Houston-Based, 43 Years');
+  await smoothScroll(page, 600, 260, 400);
+
+  await expectJsonLd(page, 'DFW TX LocalBusiness + BreadcrumbList JSON-LD');
+  await page.waitForTimeout(800);
+
+  await page.goto('/blog');
+  await page.waitForLoadState('networkidle');
+  await showPhaseLabel(page, '📰 Blog Index — TJC Compliance Article');
+  await smoothScroll(page, 400, 260, 380);
+
+  const tjcLink = page.locator('a[href*="joint-commission"]').first();
+  await tjcLink.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);
+  await expectVisible(tjcLink, 'TJC Compliance Guide link');
+
+  await showPhaseLabel(page, '🔗 Clicking → TJC OR Equipment Compliance Guide');
+  await tjcLink.click();
+  await page.waitForLoadState('networkidle');
+  await showPhaseLabel(page, '📖 TJC Compliance Guide — New Blog Article');
+  await page.waitForTimeout(1000);
+
+  const articleH1 = page.locator('h1').first();
+  await expectVisible(articleH1, 'Article H1');
+  await expectURL(page, /\/blog\/joint-commission/);
+
+  const articleBody = page.locator('article, main, .prose, [class*="prose"]').first();
+  await expectVisible(articleBody, 'Article body');
+
+  await showPhaseLabel(page, '📄 Scrolling TJC Compliance Guide...');
+  await smoothScroll(page, 900, 260, 380);
+  await smoothScroll(page, 900, 260, 380);
+  await smoothScroll(page, 900, 260, 380);
+
+  await expectJsonLd(page, 'TJC Compliance Article + BreadcrumbList JSON-LD');
+  await page.waitForTimeout(600);
+
+  await page.goto('/service-areas');
+  await page.waitForLoadState('networkidle');
+  await showPhaseLabel(page, '🗺️ Service Areas Index — Confirming DFW TX');
+  await page.waitForTimeout(1000);
+
+  const indexH1Final = page.locator('h1').first();
+  await expectVisible(indexH1Final, 'Service Areas H1');
+  await smoothScroll(page, 600, 260, 420);
+
+  const dfwFinal = page.locator('a[href="/service-areas/dallas-fort-worth-tx"]').first();
+  await dfwFinal.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);
+  await expectVisible(dfwFinal, 'DFW TX card in listing');
+  await expectText(dfwFinal, 'Dallas', 'DFW confirmed');
+
+  const northBadge = page.locator('text=North Texas').first();
+  await expectVisible(northBadge, 'North Texas badge');
+
+  await showPhaseLabel(page, '✅ Dallas-Fort Worth TX Live — Cycle 32 Complete!');
+  await page.waitForTimeout(1500);
+  await expectJsonLd(page, 'Service Areas Index JSON-LD');
+});
+
 
   // 9. Navigate to Blog via nav
   await page.click('a[href="/blog"]');
