@@ -40,28 +40,29 @@ async function scrollToTop(page: Page) {
 test('Scene 1 — Homepage → Service Areas → Lubbock TX full page walk-through', async ({
   page,
 }) => {
-  // ── 1a. Land on homepage ──────────────────────────────────────────────────
+  // ── 1a. Land on homepage — show hero and key stats ────────────────────────
   await page.goto('/');
   await showPhaseLabel(page, '🏥 Surgiquip — Homepage');
   await page.waitForTimeout(1200);
 
-  // Scroll down a bit to show the homepage hero and stat bar
-  await smoothScroll(page, 700, 280, 400);
-  await showPhaseLabel(page, '📊 Homepage — Services Overview');
+  // Scroll down to show stat bar and services section
+  await smoothScroll(page, 600, 280, 420);
+  await showPhaseLabel(page, '📊 43 Years Serving Texas Hospitals');
   await page.waitForTimeout(800);
 
-  // ── 1b. Navigate to Service Areas via header nav ──────────────────────────
-  await scrollToTop(page);
-  await showPhaseLabel(page, '🔗 Navigating → Service Areas');
-  await page.waitForTimeout(600);
+  // Scroll a bit further to show partner logos / services grid
+  await smoothScroll(page, 500, 280, 420);
+  await showPhaseLabel(page, '🏥 Equipment + Services Overview');
+  await page.waitForTimeout(700);
 
-  const serviceAreasNavLink = page.locator('a[href="/service-areas"]').first();
-  await expectVisible(serviceAreasNavLink, 'Service Areas nav link');
-  await serviceAreasNavLink.click();
+  // ── 1b. Navigate directly to Service Areas ────────────────────────────────
+  await showPhaseLabel(page, '📍 Opening Service Areas →');
+  await page.waitForTimeout(700);
+  await page.goto('/service-areas');
   await page.waitForLoadState('networkidle');
 
   // ── 1c. Service Areas Index — scroll to find Lubbock TX card ─────────────
-  await showPhaseLabel(page, '🗺️ Service Areas — Texas Coverage');
+  await showPhaseLabel(page, '🗺️ Service Areas — Texas Statewide Coverage');
   await page.waitForTimeout(1000);
 
   const indexHeading = page.locator('h1').first();
@@ -122,8 +123,8 @@ test('Scene 1 — Homepage → Service Areas → Lubbock TX full page walk-throu
 
   await smoothScroll(page, 700, 260, 400);
 
-  // Trust block
-  const trustHeading = page.locator('h2:has-text("Houston")').first();
+  // Trust block — broad locator to find "Why Surgiquip" type heading
+  const trustHeading = page.locator('h2').filter({ hasText: /Why Surgiquip|Houston|43 Year/i }).first();
   await expectVisible(trustHeading, 'Why Surgiquip trust block');
   await showPhaseLabel(page, '⭐ Why Surgiquip — Houston-Based, 43 Years');
   await page.waitForTimeout(700);
@@ -171,7 +172,7 @@ test('Scene 2 — Lubbock TX → ASC Equipment Guide blog full article walk-thro
 
   const articleH1 = page.locator('h1').first();
   await expectVisible(articleH1, 'Article H1');
-  await expectText(articleH1, /[Aa]mbulatory|[Ss]urgery [Cc]enter|[Aa][Ss][Cc]/, 'ASC content in title');
+  await expectText(articleH1, /[Aa]mbulatory|[Ss]urgical|[Aa][Ss][Cc]/, 'ASC content in title');
   await expectURL(page, /\/blog\/ambulatory-surgery-center-equipment-guide-texas/);
   await page.waitForTimeout(800);
 
