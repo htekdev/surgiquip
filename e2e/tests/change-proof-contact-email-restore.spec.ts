@@ -1,49 +1,92 @@
-import { test, expect } from '@playwright/test';
+/**
+ * Change Proof E2E Spec — Contact Email Mailto Restore
+ * ONE SINGLE test() block = ONE continuous video proving the fix
+ *
+ * Flow:
+ *   → Homepage
+ *   → Navigate to Contact page
+ *   → Scroll to contact info — verify email mailto link is present
+ *   → Scroll to form — verify form present
+ *   → Back to email — confirm fix is live
+ *
+ * Proof keyword: change-proof
+ */
+
+import { test, type Page } from '@playwright/test';
+import {
+  expectVisible,
+  expectText,
+  expectAttribute,
+  showPhaseLabel,
+} from './visual-assert';
+
+test.setTimeout(180000);
+
+async function smoothScroll(page: Page, totalPx = 1000, stepPx = 250, delayMs = 380) {
+  await page.mouse.move(760, 400);
+  const steps = Math.ceil(totalPx / stepPx);
+  for (let i = 0; i < steps; i++) {
+    await page.mouse.wheel(0, stepPx);
+    await page.waitForTimeout(delayMs);
+  }
+}
 
 test('change-proof-contact-email-restore', async ({ page }) => {
-  // 1. Start at homepage
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 1 — Homepage → Navigate to Contact
+  // ═══════════════════════════════════════════════════════════════════════════
+
   await page.goto('/');
-  await page.waitForTimeout(1200);
-
-  // Verify homepage loads
-  await expect(page.locator('h1').first()).toBeVisible();
-
-  // 2. Navigate to Contact via nav
-  await page.click('a[href="/contact"]');
+  await showPhaseLabel(page, '🏥 Surgiquip — Homepage');
   await page.waitForTimeout(1000);
 
-  // 3. Verify contact page heading
-  await expect(page.locator('h1')).toBeVisible();
+  await showPhaseLabel(page, '📞 Opening Contact Page →');
+  await page.waitForTimeout(600);
+  await page.goto('/contact');
+  await page.waitForLoadState('networkidle');
 
-  // 4. Scroll slowly to find contact info
-  for (let i = 0; i < 3; i++) {
-    await page.mouse.wheel(0, 250);
-    await page.waitForTimeout(600);
-  }
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 2 — Contact Page — verify email mailto link (the fix)
+  // ═══════════════════════════════════════════════════════════════════════════
 
-  // 5. Verify the email mailto link exists (the fix: it was missing after PR #18)
-  const emailLink = page.locator('a[href^="mailto:"]').first();
-  await emailLink.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(500);
-  await expect(emailLink).toBeVisible();
-  await expect(emailLink).toHaveAttribute('href', /mailto:/);
-
-  // 6. Verify email label is present
-  await expect(page.locator('text=Email').first()).toBeVisible();
-
-  // 7. Scroll down to see the contact form
-  for (let i = 0; i < 3; i++) {
-    await page.mouse.wheel(0, 300);
-    await page.waitForTimeout(500);
-  }
-
-  // 8. Verify contact form is present
-  await expect(page.locator('form').first()).toBeVisible();
-
-  // 9. Scroll back up to confirm email link still accessible
-  await page.mouse.wheel(0, -900);
+  await showPhaseLabel(page, '📋 Contact Page — Info Section');
   await page.waitForTimeout(800);
 
-  // 10. Final verify: email link still visible/accessible on page
-  await expect(page.locator('a[href^="mailto:"]').first()).toBeAttached();
+  const h1 = page.locator('h1').first();
+  await expectVisible(h1, 'Contact page H1');
+
+  await smoothScroll(page, 400, 200, 400);
+  await showPhaseLabel(page, '📧 Email Contact Info — Testing Fix');
+  await page.waitForTimeout(600);
+
+  // The key fix: email mailto link must be present
+  const emailLink = page.locator('a[href^="mailto:"]').first();
+  await emailLink.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);
+
+  await expectVisible(emailLink, 'Email mailto link — RESTORED');
+  await expectAttribute(emailLink, 'href', /mailto:/, 'mailto: href present');
+
+  await showPhaseLabel(page, '✅ Email Link Found — Fix Confirmed');
+  await page.waitForTimeout(800);
+
+  const emailLabel = page.locator('text=Email').first();
+  await expectVisible(emailLabel, 'Email label visible');
+  await page.waitForTimeout(600);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 3 — Contact Form — confirm rest of page is intact
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  await smoothScroll(page, 600, 250, 380);
+  await showPhaseLabel(page, '📝 Contact Form — Still Present After Fix');
+  await page.waitForTimeout(600);
+
+  const form = page.locator('form').first();
+  await expectVisible(form, 'Contact form');
+
+  await showPhaseLabel(page, '✅ Contact Page Complete — Email + Form Verified');
+  await page.waitForTimeout(1200);
 });
+
