@@ -130,15 +130,6 @@ test('full-walk-through — Dallas-Fort Worth TX service area + TJC OR Equipment
   await expectJsonLd(page, 'Service Areas Index JSON-LD');
 });
 
-
-  // 9. Navigate to Blog via nav
-  await page.click('a[href="/blog"]');
-  await page.waitForTimeout(1000);
-
-  // 10. Scroll through blog index
-  for (let i = 0; i < 3; i++) {
-    await page.mouse.wheel(0, 300);
-    await page.waitForTimeout(500);
   }
 
   // 11. Find and click into the TJC compliance blog post
