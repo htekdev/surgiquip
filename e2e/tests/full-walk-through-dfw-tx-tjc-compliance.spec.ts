@@ -58,12 +58,14 @@ test('full-walk-through -- DFW TX service area + TJC OR Equipment Compliance blo
   await smoothScroll(page, 700, 260, 400);
 
   const baylor = page.locator('text=Baylor').or(page.locator('text=UT Southwestern')).first();
+  await baylor.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);
   await expectVisible(baylor, 'Baylor or UT Southwestern');
 
   await smoothScroll(page, 700, 260, 400);
   await smoothScroll(page, 700, 260, 400);
 
-  const trustBlock = page.locator('h2').filter({ hasText: /Why Surgiquip|43 Year|Houston/i }).first();
+  const trustBlock = page.locator('h2').filter({ hasText: /Texas-Based|Statewide|Why Surgiquip|43 Year/i }).first();
   await expectVisible(trustBlock, 'Why Surgiquip trust block');
   await smoothScroll(page, 600, 260, 400);
 
