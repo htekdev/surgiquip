@@ -18,7 +18,7 @@ const serviceAreaSchema = {
   '@id': `${site.url}#organization`,
   name: site.brand,
   description:
-    'Authorized Skytron dealer serving Texas statewide — OR equipment sales, installation, service, and preventive maintenance for hospitals and surgery centers across Houston, San Antonio, Corpus Christi, Lubbock, and the Gulf Coast.',
+    'Authorized Skytron dealer for Texas — OR equipment sales, installation, service, and preventive maintenance for hospitals and surgery centers across Houston, Dallas-Fort Worth, San Antonio, Austin, Corpus Christi, Beaumont, Victoria, Rio Grande Valley, and the Gulf Coast.',
   url: site.url,
   telephone: site.phone,
   address: {
@@ -86,6 +86,27 @@ const areas = [
     desc: "West Texas's healthcare hub — UMC Health System (Level 1 Trauma), Covenant Health (CommonSpirit), and Texas Tech University Health Sciences Center. Authorized Skytron sales, OR installation, and service for the South Plains region.",
     badge: 'West Texas',
     icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
+  },  {
+    href: '/service-areas/austin-tx',
+    title: 'Austin, TX',
+    subtitle: 'Travis · Williamson · Hays · Bastrop Counties',
+    desc: "Central Texas's fastest-growing healthcare market — Dell Seton, St. David's HealthCare, Ascension Seton, and Baylor Scott & White. Authorized Skytron dealer for OR equipment sales, hybrid OR installation, and service across Travis County and the I-35 corridor.",
+    badge: 'Central Texas',
+    icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" stroke="currentColor" stroke-width="0.5" fill="none"/>',
+  },  {
+    href: '/service-areas/rio-grande-valley-tx',
+    title: 'Rio Grande Valley, TX',
+    subtitle: 'Hidalgo · Cameron · Starr · Willacy Counties',
+    desc: "One of Texas's fastest-growing healthcare markets — DHR Health, South Texas Health System, Valley Baptist Medical Center, and Doctors Hospital at Renaissance. Authorized Skytron OR equipment sales and service for McAllen, Harlingen, Brownsville, and the entire Valley.",
+    badge: 'Rio Grande Valley',
+    icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
+  },  {
+    href: '/service-areas/dallas-fort-worth-tx',
+    title: 'Dallas-Fort Worth, TX',
+    subtitle: 'Tarrant · Dallas · Collin · Denton Counties — North Texas',
+    desc: "Texas's largest healthcare market and one of the fastest-growing in the U.S. — Baylor Scott & White, Texas Health Resources, UT Southwestern, Parkland, Children's Health, Methodist Health, and a rapidly expanding suburban ASC corridor across Collin and Denton counties.",
+    badge: 'North Texas',
+    icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
   },
 ];
 
@@ -113,12 +134,26 @@ const cityLinks = [
   { city: 'Lubbock', href: '/service-areas/lubbock-tx' },
   { city: 'Plainview', href: '/service-areas/lubbock-tx' },
   { city: 'Levelland', href: '/service-areas/lubbock-tx' },
+  { city: 'Austin', href: '/service-areas/austin-tx' },
+  { city: 'Round Rock', href: '/service-areas/austin-tx' },
+  { city: 'Georgetown', href: '/service-areas/austin-tx' },
+  { city: 'Cedar Park', href: '/service-areas/austin-tx' },
+  { city: 'McAllen', href: '/service-areas/rio-grande-valley-tx' },
+  { city: 'Harlingen', href: '/service-areas/rio-grande-valley-tx' },
+  { city: 'Brownsville', href: '/service-areas/rio-grande-valley-tx' },
+  { city: 'Edinburg', href: '/service-areas/rio-grande-valley-tx' },
+  { city: 'Dallas', href: '/service-areas/dallas-fort-worth-tx' },
+  { city: 'Fort Worth', href: '/service-areas/dallas-fort-worth-tx' },
+  { city: 'Arlington', href: '/service-areas/dallas-fort-worth-tx' },
+  { city: 'Plano', href: '/service-areas/dallas-fort-worth-tx' },
+  { city: 'Frisco', href: '/service-areas/dallas-fort-worth-tx' },
+  { city: 'McKinney', href: '/service-areas/dallas-fort-worth-tx' },
 ];
 ---
 
 <BaseLayout
   title="Service Areas — Surgical Equipment Across Texas | Surgiquip Solutions"
-  description="Surgiquip Solutions serves hospitals and surgery centers across Texas — Houston, Beaumont, Galveston, Victoria, San Antonio, Lubbock, and beyond. Authorized Skytron dealer since 1983."
+  description="Surgiquip Solutions serves hospitals and surgery centers statewide — Houston, Dallas-Fort Worth, San Antonio, Austin, Corpus Christi, Beaumont, Victoria, Rio Grande Valley, and beyond. Authorized Skytron dealer since 1983."
   schema={[serviceAreaSchema, breadcrumbSchema]}
   canonical={`${site.url}/service-areas`}
 >
@@ -132,8 +167,7 @@ const cityLinks = [
       </nav>
       <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Service Areas</div>
       <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-3xl">
-        Serving Texas Healthcare — Houston to Lubbock
-      </h1>
+        Serving Texas Healthcare — Houston to Dallas</h1>
       <p class="mt-6 text-xl text-white/85 max-w-2xl leading-relaxed">
         Surgiquip Solutions is headquartered in Houston and operates as the authorized Skytron dealer for Texas — serving hospitals, surgery centers, and specialty clinics across Southeast Texas, South Texas, West Texas, and beyond since 1983.
       </p>
