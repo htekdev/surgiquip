@@ -66,14 +66,18 @@ test('full-walk-through — El Paso TX service area + OR Suite Renovation Planni
   await smoothScroll(page, 700, 260, 400);
 
   const umc = page.locator('text=Providence').or(page.locator('text=UMC')).first();
+  await umc.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);
   await expectVisible(umc, 'Hospitals of Providence / UMC');
 
   await smoothScroll(page, 700, 260, 400);
   await smoothScroll(page, 700, 260, 400);
 
-  const trustBlock = page.locator('h2').filter({ hasText: /Why Surgiquip|43 Year|Houston/i }).first();
-  await expectVisible(trustBlock, 'Why Surgiquip trust block');
-  await showPhaseLabel(page, '⭐ Why Surgiquip — Houston-Based, 43 Years');
+  const trustSection = page.locator('text=Why Surgiquip').first();
+  await trustSection.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);
+  await expectVisible(trustSection, 'Why Surgiquip section');
+  await showPhaseLabel(page, '⭐ Why Surgiquip — Texas-Based, Factory-Authorized');
   await smoothScroll(page, 600, 260, 400);
 
   await expectJsonLd(page, 'El Paso TX LocalBusiness + BreadcrumbList JSON-LD');
