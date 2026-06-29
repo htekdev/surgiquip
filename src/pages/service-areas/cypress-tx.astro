@@ -1,0 +1,151 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'MedicalBusiness'],
+  '@id': `${site.url}#organization`,
+  name: site.brand,
+  description:
+    'Authorized Skytron dealer serving Cypress, TX hospitals and surgery centers since 1983. OR equipment sales, installation, service, and preventive maintenance in northwest Harris County.',
+  url: `${site.url}/service-areas/cypress-tx`,
+  telephone: site.phone,
+  email: site.email,
+  foundingDate: '1983',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 29.9691,
+    longitude: -95.6972,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '07:30',
+    closes: '16:30',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Cypress', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'County', name: 'Harris County', containedInPlace: { '@type': 'State', name: 'Texas' } },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'OR Equipment & Services — Cypress, TX',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Surgical Equipment Sales' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'OR Installation & Integration' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Equipment Service & Repair' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Preventive Maintenance Programs' } },
+    ],
+  },
+  sameAs: [site.social.linkedin, site.social.youtube],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: `${site.url}/service-areas` },
+    { '@type': 'ListItem', position: 3, name: 'Cypress, TX', item: `${site.url}/service-areas/cypress-tx` },
+  ],
+};
+---
+<BaseLayout
+  title="Surgical Equipment — Cypress, TX | Surgiquip Solutions"
+  description="Surgiquip Solutions serves Cypress, TX — authorized Skytron dealer for northwest Houston. OR equipment sales, SkyVision integration, service and preventive maintenance. North Cypress Medical Center reference site."
+  schema={[localBusinessSchema, breadcrumbSchema]}
+>
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/service-areas" class="hover:text-white/90">Service Areas</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">Cypress, TX</span>
+      </nav>
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Northwest Houston · Harris County</div>
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-white leading-tight max-w-2xl">
+        Surgical Equipment Service — Cypress, TX
+      </h1>
+      <p class="mt-5 text-lg text-white/85 max-w-xl">
+        Authorized Skytron dealer serving northwest Houston and Cypress-area healthcare facilities since 1983.
+        OR equipment, SkyVision integration, and stainless steel storage — proven at North Cypress Medical Center.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="/quote" class="inline-flex items-center gap-2 bg-[var(--color-blue)] hover:bg-[var(--color-blue-light)] text-white font-semibold px-6 py-3 rounded-lg transition">
+          Request Quote
+        </a>
+        <a href={`tel:${site.phone}`} class="inline-flex items-center gap-2 border border-white/30 hover:border-white text-white font-semibold px-6 py-3 rounded-lg transition">
+          {site.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Reference Installation ─────────────────────────────────────────────── -->
+  <section class="bg-[var(--color-surface-alt)] py-14 border-b border-[var(--color-border)]">
+    <div class="container-x">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Reference Installation</div>
+        <h2 class="font-display text-2xl md:text-3xl font-bold text-[var(--color-navy)] mb-4">
+          North Cypress Medical Center
+        </h2>
+        <p class="text-[var(--color-text-muted)] leading-relaxed">
+          Surgiquip Solutions outfitted North Cypress Medical Center with Center Mount Booms, Stellar OR lights,
+          dual monitor arms, SkyVision integration, and stainless steel storage cabinets across 6 operating rooms.
+          The full-suite project at this northwest Houston campus demonstrates Surgiquip's ability to deliver
+          complete OR packages — from lighting and boom infrastructure through documentation centers and storage.
+        </p>
+        <div class="mt-6 grid grid-cols-3 gap-4 max-w-sm">
+          {[['6', 'Operating Rooms'], ['1', 'SkyVision Suite'], ['Full', 'OR Package']].map(([n, l]) => (
+            <div class="bg-white rounded-lg border border-[var(--color-border)] p-4 text-center">
+              <div class="font-display text-2xl font-bold text-[var(--color-navy)]">{n}</div>
+              <div class="text-xs text-[var(--color-text-muted)] mt-1">{l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Markets Grid ───────────────────────────────────────────────────────── -->
+  <section class="container-x py-16">
+    <div class="text-center mb-10">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Why Surgiquip</div>
+      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Cypress Healthcare Market</h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {[
+        { name: 'Hospitals', desc: 'OR equipment programs for Cypress-area acute care facilities in northwest Harris County.' },
+        { name: 'SkyVision Integration', desc: 'Ceiling-mount AV integration and OR visualization systems for surgical teams.' },
+        { name: 'Surgery Centers', desc: 'Efficient OR packages for northwest Houston ambulatory surgery centers.' },
+        { name: 'Service & PM', desc: 'Preventive maintenance and repair for Skytron and multi-brand equipment in the Cypress corridor.' },
+      ].map((m) => (
+        <div class="bg-[var(--color-surface-alt)] rounded-xl border border-[var(--color-border)] p-6">
+          <h3 class="font-bold text-[var(--color-navy)] mb-2">{m.name}</h3>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{m.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CTASection
+    heading="Serving Cypress & Northwest Houston"
+    subhead={`Contact Surgiquip Solutions at ${site.phone} — authorized Skytron dealer for Southeast Texas since 1983.`}
+    primaryLabel="Request a Quote"
+    primaryHref="/quote"
+    secondaryLabel="Contact Us"
+    secondaryHref="/contact"
+  />
+</BaseLayout>

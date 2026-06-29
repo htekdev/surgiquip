@@ -1,0 +1,189 @@
+/**
+ * Change Proof E2E Spec — Cycle 41: Houston Suburb Service Areas (Proven Presence)
+ * ONE SINGLE test() block = ONE continuous video
+ *
+ * PR-specific: visits ALL 8 new service area pages added by this PR.
+ * NO generic homepage tour — 90% of video time on new pages.
+ *
+ * New pages demonstrated:
+ *   /service-areas/sugar-land-tx    — Methodist Sugar Land (18 OR + 2 Hybrid + Siemens Zeego)
+ *   /service-areas/pearland-tx      — Memorial Hermann Pearland
+ *   /service-areas/webster-tx       — Clear Lake Regional (10 OR + 3 C-Section + 6 LDRP)
+ *   /service-areas/humble-tx        — Memorial Hermann Northeast (hybrid OR, Philips)
+ *   /service-areas/cypress-tx       — North Cypress Medical Center (6 OR + SkyVision)
+ *   /service-areas/the-woodlands-tx — Memorial Hermann Woodlands (34 LDRP wand lights)
+ *   /service-areas/league-city-tx   — UTMB Victory Lakes (4 OR)
+ *   /service-areas/galveston-tx     — UTMB John Sealy (32 OR + 360-degree boom)
+ *
+ * Proof keyword: change-proof
+ * Pacing: 500ms scroll step, 1000ms between major actions
+ */
+import { test, type Page } from '@playwright/test';
+import {
+  expectVisible,
+  expectText,
+  expectURL,
+  expectJsonLd,
+  showPhaseLabel,
+} from './visual-assert';
+
+test.setTimeout(600000);
+
+async function smoothScroll(page: Page, totalPx = 1200, stepPx = 300, delayMs = 500) {
+  await page.mouse.move(760, 400);
+  const steps = Math.ceil(totalPx / stepPx);
+  for (let i = 0; i < steps; i++) {
+    await page.mouse.wheel(0, stepPx);
+    await page.waitForTimeout(delayMs);
+  }
+}
+
+async function scrollToTop(page: Page) {
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  await page.waitForTimeout(600);
+}
+
+async function visitServiceArea(page: Page, slug: string, label: string, verifyText: string) {
+  await showPhaseLabel(page, `📍 ${label}`);
+  await page.waitForTimeout(800);
+
+  await page.goto(`/service-areas/${slug}`);
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(1000);
+
+  await expectURL(page, new RegExp(`/service-areas/${slug}`), `${label} URL`);
+
+  const h1 = page.locator('h1').first();
+  await expectVisible(h1, `${label} H1`);
+  await page.waitForTimeout(600);
+
+  await expectJsonLd(page, `${label} Schema`);
+  await page.waitForTimeout(600);
+
+  const refText = page.locator(`text=${verifyText}`).first();
+  await refText.scrollIntoViewIfNeeded();
+  await expectVisible(refText, `${label} — real content: "${verifyText}"`);
+  await page.waitForTimeout(600);
+
+  await smoothScroll(page, 1500, 300, 500);
+  await page.waitForTimeout(1000);
+}
+
+test('change-proof-houston-suburbs-service-areas', async ({ page }) => {
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 1 — Homepage (2s orientation)
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  await page.goto('/');
+  await page.waitForLoadState('networkidle');
+  await showPhaseLabel(page, '🏥 Surgiquip — Homepage');
+  await page.waitForTimeout(1000);
+
+  const homeH1 = page.locator('h1').first();
+  await expectVisible(homeH1, 'Homepage H1');
+  await page.waitForTimeout(600);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 2 — Sugar Land (crown jewel — Methodist Sugar Land 18 OR + 2 Hybrid)
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  await visitServiceArea(page, 'sugar-land-tx', 'Sugar Land TX — 18 OR + Hybrid OR', 'Houston Methodist Sugar Land Hospital');
+
+  await showPhaseLabel(page, '🏥 Sugar Land — 18 OR + 4 CV + 2 Hybrid (Siemens Zeego)');
+  await page.waitForTimeout(800);
+
+  const hybridCard = page.locator('text=Hybrid ORs').first();
+  await hybridCard.scrollIntoViewIfNeeded();
+  await expectVisible(hybridCard, 'Hybrid ORs stat card');
+  await page.waitForTimeout(600);
+
+  const orCount = page.locator('text=18').first();
+  await orCount.scrollIntoViewIfNeeded();
+  await expectVisible(orCount, '18 Standard ORs stat');
+  await page.waitForTimeout(800);
+
+  await scrollToTop(page);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 3 — Galveston (UTMB John Sealy — 32 OR + 360-degree boom)
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  await visitServiceArea(page, 'galveston-tx', 'Galveston TX — UTMB John Sealy 32 OR', 'UTMB John Sealy Hospital');
+
+  await showPhaseLabel(page, '🏥 Galveston — 32 ORs + 360-degree Boom + Cath Lab');
+  await page.waitForTimeout(800);
+
+  const boomText = page.locator('text=360').first();
+  await boomText.scrollIntoViewIfNeeded();
+  await expectVisible(boomText, '360-degree boom solution');
+  await page.waitForTimeout(600);
+
+  await scrollToTop(page);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 4 — Webster/Clear Lake (10 OR + C-Section + LDRP)
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  await visitServiceArea(page, 'webster-tx', 'Webster/Clear Lake TX — 10 OR + LDRP', 'Clear Lake Regional Medical Center');
+
+  const cSectionStat = page.locator('text=C-Section Rooms').first();
+  await cSectionStat.scrollIntoViewIfNeeded();
+  await expectVisible(cSectionStat, 'C-Section Rooms stat');
+  await page.waitForTimeout(600);
+
+  await scrollToTop(page);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 5 — The Woodlands (34 LDRP — wand-controlled lights)
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  await visitServiceArea(page, 'the-woodlands-tx', 'The Woodlands TX — 34 LDRP Suites', 'Memorial Hermann The Woodlands');
+
+  const wandText = page.locator('text=wand-controlled').first();
+  await wandText.scrollIntoViewIfNeeded();
+  await expectVisible(wandText, 'Wand-controlled lights mentioned');
+  await page.waitForTimeout(800);
+
+  await scrollToTop(page);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 6 — Humble (Hybrid OR — Memorial Hermann Northeast + Philips)
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  await visitServiceArea(page, 'humble-tx', 'Humble TX — Hybrid OR (Philips)', 'Memorial Hermann Northeast');
+  await scrollToTop(page);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 7 — Cypress (North Cypress Medical + SkyVision)
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  await visitServiceArea(page, 'cypress-tx', 'Cypress TX — North Cypress Medical', 'North Cypress Medical Center');
+  await scrollToTop(page);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 8 — Pearland + League City (quick passes)
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  await visitServiceArea(page, 'pearland-tx', 'Pearland TX — Memorial Hermann Pearland', 'Memorial Hermann Pearland');
+  await scrollToTop(page);
+
+  await visitServiceArea(page, 'league-city-tx', 'League City TX — UTMB Victory Lakes', 'UTMB Specialty Care Center at Victory Lakes');
+  await scrollToTop(page);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // FINAL — Back to service areas index
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  await showPhaseLabel(page, '📋 Service Areas Index — All Proven Markets');
+  await page.waitForTimeout(800);
+
+  await page.goto('/service-areas');
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(1000);
+
+  await smoothScroll(page, 1200, 300, 500);
+  await page.waitForTimeout(1000);
+
+  await showPhaseLabel(page, '✅ Cycle 41 Complete — 8 Proven Houston Suburb Markets Live');
+  await page.waitForTimeout(2000);
+});

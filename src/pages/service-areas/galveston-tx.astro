@@ -1,0 +1,160 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'MedicalBusiness'],
+  '@id': `${site.url}#organization`,
+  name: site.brand,
+  description:
+    'Authorized Skytron dealer serving Galveston, TX hospitals since 1983. OR equipment sales, installation, service, and preventive maintenance at UTMB Health. Authorized Skytron dealer for Southeast Texas.',
+  url: `${site.url}/service-areas/galveston-tx`,
+  telephone: site.phone,
+  email: site.email,
+  foundingDate: '1983',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 29.2988,
+    longitude: -94.7977,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '07:30',
+    closes: '16:30',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Galveston', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'County', name: 'Galveston County', containedInPlace: { '@type': 'State', name: 'Texas' } },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'OR Equipment & Services — Galveston, TX',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Surgical Equipment Sales' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'OR Installation & Integration' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Equipment Service & Repair' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Preventive Maintenance Programs' } },
+    ],
+  },
+  sameAs: [site.social.linkedin, site.social.youtube],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: `${site.url}/service-areas` },
+    { '@type': 'ListItem', position: 3, name: 'Galveston, TX', item: `${site.url}/service-areas/galveston-tx` },
+  ],
+};
+---
+<BaseLayout
+  title="Surgical Equipment — Galveston, TX | Surgiquip Solutions"
+  description="Surgiquip Solutions serves Galveston, TX — authorized Skytron dealer at UTMB Health. 32 ORs, 1 cath lab, and 23 LDRP suites equipped at UTMB John Sealy Hospital. The largest Surgiquip installation in Southeast Texas."
+  schema={[localBusinessSchema, breadcrumbSchema]}
+>
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/service-areas" class="hover:text-white/90">Service Areas</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">Galveston, TX</span>
+      </nav>
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Galveston Island · UTMB Health</div>
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-white leading-tight max-w-2xl">
+        Surgical Equipment Service — Galveston, TX
+      </h1>
+      <p class="mt-5 text-lg text-white/85 max-w-xl">
+        Authorized Skytron dealer for Southeast Texas, serving UTMB Health and Galveston-area facilities
+        since 1983. UTMB John Sealy Hospital — 32 ORs, 1 cath lab, 23 LDRP suites — is one of the
+        largest single-campus Surgiquip installations in the region.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="/quote" class="inline-flex items-center gap-2 bg-[var(--color-blue)] hover:bg-[var(--color-blue-light)] text-white font-semibold px-6 py-3 rounded-lg transition">
+          Request Quote
+        </a>
+        <a href={`tel:${site.phone}`} class="inline-flex items-center gap-2 border border-white/30 hover:border-white text-white font-semibold px-6 py-3 rounded-lg transition">
+          {site.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Reference Installation ─────────────────────────────────────────────── -->
+  <section class="bg-[var(--color-surface-alt)] py-14 border-b border-[var(--color-border)]">
+    <div class="container-x">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Flagship Reference Installation</div>
+        <h2 class="font-display text-2xl md:text-3xl font-bold text-[var(--color-navy)] mb-4">
+          UTMB John Sealy Hospital — Galveston
+        </h2>
+        <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+          Surgiquip Solutions delivered a comprehensive 360-degree boom and equipment solution at UTMB John Sealy
+          Hospital — the flagship academic medical center of the University of Texas Medical Branch in Galveston.
+          The project outfitted 32 operating rooms, 1 catheterization laboratory, and 23 LDRP suites with
+          Center Mount Booms in a unique 360-degree ceiling configuration, Stellar and AR24 lighting systems,
+          and the full range of Skytron surgical table series (3000, 3600, 6000, 6500, 6600, and 6700).
+          The breadth of table models reflects UTMB's diverse procedural requirements across neurosurgery,
+          orthopedics, general surgery, cardiac, and women's services.
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            ['32', 'Operating Rooms'],
+            ['1', 'Cath Lab'],
+            ['23', 'LDRP Suites'],
+            ['360°', 'Boom Solution'],
+          ].map(([num, label]) => (
+            <div class="bg-white rounded-lg border border-[var(--color-border)] p-4 text-center">
+              <div class="font-display text-2xl font-bold text-[var(--color-navy)]">{num}</div>
+              <div class="text-xs text-[var(--color-text-muted)] mt-1">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Markets Grid ───────────────────────────────────────────────────────── -->
+  <section class="container-x py-16">
+    <div class="text-center mb-10">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Why Surgiquip</div>
+      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Galveston Healthcare Market</h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {[
+        { name: 'Academic Medical Centers', desc: 'Full-campus OR programs for UTMB and academic hospital environments requiring multi-department coordination.' },
+        { name: 'LDRP Suites', desc: 'Ceiling birthing lights and LDRP suite equipment for Galveston-area obstetric programs.' },
+        { name: 'Cath Labs', desc: 'Equipment carrier and boom solutions engineered around bi-plane cardiac catheterization imaging.' },
+        { name: 'Service & PM', desc: 'Preventive maintenance and repair for the full Skytron table series at UTMB and Galveston County facilities.' },
+      ].map((m) => (
+        <div class="bg-[var(--color-surface-alt)] rounded-xl border border-[var(--color-border)] p-6">
+          <h3 class="font-bold text-[var(--color-navy)] mb-2">{m.name}</h3>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{m.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CTASection
+    heading="Serving Galveston & UTMB Health"
+    subhead={`Contact Surgiquip Solutions at ${site.phone} — authorized Skytron dealer for Southeast Texas since 1983.`}
+    primaryLabel="Request a Quote"
+    primaryHref="/quote"
+    secondaryLabel="Contact Us"
+    secondaryHref="/contact"
+  />
+</BaseLayout>

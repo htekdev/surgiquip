@@ -1,0 +1,156 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'MedicalBusiness'],
+  '@id': `${site.url}#organization`,
+  name: site.brand,
+  description:
+    'Authorized Skytron dealer serving The Woodlands, TX hospitals and medical centers since 1983. OR equipment sales, LDRP suite installation, service and preventive maintenance in Montgomery County.',
+  url: `${site.url}/service-areas/the-woodlands-tx`,
+  telephone: site.phone,
+  email: site.email,
+  foundingDate: '1983',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 30.1658,
+    longitude: -95.4613,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '07:30',
+    closes: '16:30',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'The Woodlands', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'County', name: 'Montgomery County', containedInPlace: { '@type': 'State', name: 'Texas' } },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'OR Equipment & Services — The Woodlands, TX',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Surgical Equipment Sales' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'LDRP Suite Installation' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Equipment Service & Repair' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Preventive Maintenance Programs' } },
+    ],
+  },
+  sameAs: [site.social.linkedin, site.social.youtube],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: `${site.url}/service-areas` },
+    { '@type': 'ListItem', position: 3, name: 'The Woodlands, TX', item: `${site.url}/service-areas/the-woodlands-tx` },
+  ],
+};
+---
+<BaseLayout
+  title="Surgical Equipment — The Woodlands, TX | Surgiquip Solutions"
+  description="Surgiquip Solutions serves The Woodlands, TX — authorized Skytron dealer for Montgomery County. LDRP suite installations, OR equipment, service and preventive maintenance. Memorial Hermann Woodlands reference site."
+  schema={[localBusinessSchema, breadcrumbSchema]}
+>
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/service-areas" class="hover:text-white/90">Service Areas</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">The Woodlands, TX</span>
+      </nav>
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Montgomery County</div>
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-white leading-tight max-w-2xl">
+        Surgical Equipment Service — The Woodlands, TX
+      </h1>
+      <p class="mt-5 text-lg text-white/85 max-w-xl">
+        Authorized Skytron dealer serving Montgomery County healthcare facilities since 1983.
+        34 LDRP suites equipped at Memorial Hermann Woodlands — including the wand-controlled ceiling
+        birthing lights that solved the dust and jamming problems of the previous system.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="/quote" class="inline-flex items-center gap-2 bg-[var(--color-blue)] hover:bg-[var(--color-blue-light)] text-white font-semibold px-6 py-3 rounded-lg transition">
+          Request Quote
+        </a>
+        <a href={`tel:${site.phone}`} class="inline-flex items-center gap-2 border border-white/30 hover:border-white text-white font-semibold px-6 py-3 rounded-lg transition">
+          {site.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Reference Installation ─────────────────────────────────────────────── -->
+  <section class="bg-[var(--color-surface-alt)] py-14 border-b border-[var(--color-border)]">
+    <div class="container-x">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Reference Installation</div>
+        <h2 class="font-display text-2xl md:text-3xl font-bold text-[var(--color-navy)] mb-4">
+          Memorial Hermann The Woodlands
+        </h2>
+        <p class="text-[var(--color-text-muted)] leading-relaxed">
+          Surgiquip Solutions equipped 34 LDRP suites at Memorial Hermann The Woodlands with
+          wand-controlled ceiling birthing lights. The previous vendor's door-mounted system had
+          created persistent problems — hinges that caused doors to stick and light fixtures that
+          jammed and harbored dust bunnies, creating infection control concerns. Surgiquip replaced
+          them with a ceiling-mounted solution that eliminated both issues while delivering superior
+          light positioning for obstetric teams. The project is also the sister installation to the
+          Memorial Hermann Memorial City wand-light project (26 LDRP suites).
+        </p>
+        <div class="mt-6">
+          <div class="bg-white rounded-lg border border-[var(--color-border)] p-4 inline-flex items-center gap-4">
+            <div class="font-display text-3xl font-bold text-[var(--color-navy)]">34</div>
+            <div>
+              <div class="font-bold text-[var(--color-navy)] text-sm">LDRP Suites</div>
+              <div class="text-xs text-[var(--color-text-muted)]">Wand-controlled ceiling birthing lights</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Markets Grid ───────────────────────────────────────────────────────── -->
+  <section class="container-x py-16">
+    <div class="text-center mb-10">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Why Surgiquip</div>
+      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">The Woodlands Healthcare Market</h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {[
+        { name: 'LDRP Suites', desc: 'Labor, delivery, recovery, and postpartum suite equipment — ceiling lights and birthing fixtures that stay clean and jam-free.' },
+        { name: 'Hospitals', desc: 'OR equipment programs for The Woodlands medical center campus and Montgomery County hospitals.' },
+        { name: 'Surgery Centers', desc: 'Efficient OR packages for Woodlands-area ambulatory surgery centers.' },
+        { name: 'Service & PM', desc: 'Preventive maintenance and repair for Skytron equipment across Montgomery County facilities.' },
+      ].map((m) => (
+        <div class="bg-[var(--color-surface-alt)] rounded-xl border border-[var(--color-border)] p-6">
+          <h3 class="font-bold text-[var(--color-navy)] mb-2">{m.name}</h3>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{m.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CTASection
+    heading="Serving The Woodlands & Montgomery County"
+    subhead={`Contact Surgiquip Solutions at ${site.phone} — authorized Skytron dealer for Southeast Texas since 1983.`}
+    primaryLabel="Request a Quote"
+    primaryHref="/quote"
+    secondaryLabel="Contact Us"
+    secondaryHref="/contact"
+  />
+</BaseLayout>
