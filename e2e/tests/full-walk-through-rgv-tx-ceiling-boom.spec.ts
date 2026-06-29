@@ -127,8 +127,6 @@ test('full-walk-through — Rio Grande Valley TX service area + Ceiling Boom Sys
   await expectJsonLd(page, 'Service Areas Index JSON-LD');
 });
 
-  // 11. Find and click into the ceiling boom systems guide
-  const boomLink = page.locator('a[href*="ceiling-boom"]').first();
   await boomLink.scrollIntoViewIfNeeded();
   await page.waitForTimeout(500);
   await expect(boomLink).toBeVisible();
