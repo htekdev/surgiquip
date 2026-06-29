@@ -12,11 +12,54 @@ const breadcrumbSchema = {
     { '@type': 'ListItem', position: 3, name: 'Accreditation', item: `${site.url}/about/accreditation` },
   ],
 };
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  '@id': `${site.url}/#organization`,
+  name: site.brand,
+  url: site.url,
+  award: [
+    'BBB Torch Award for Ethics 2014',
+    'BBB Torch Award for Ethics 2015',
+    'BBB Torch Award for Ethics 2016',
+    'BBB Torch Award for Ethics 2017',
+    'BBB Torch Award for Ethics 2018',
+    'BBB A+ Rating — 16 consecutive years',
+  ],
+  hasCredential: [
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'license',
+      name: 'Texas DSHS Device Distributor License',
+      recognizedBy: { '@type': 'Organization', name: 'Texas Department of State Health Services' },
+    },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'license',
+      name: 'Texas DSHS Salvage Establishment License',
+      recognizedBy: { '@type': 'Organization', name: 'Texas Department of State Health Services' },
+    },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'certification',
+      name: 'Texas Certified HUB Vendor',
+      recognizedBy: { '@type': 'Organization', name: 'Texas Comptroller of Public Accounts' },
+    },
+  ],
+  memberOf: [
+    {
+      '@type': 'Organization',
+      name: 'Memorial Hermann Integrated Delivery Network',
+      description: 'Vital Affiliate — Memorial Hermann IDN',
+    },
+  ],
+};
 ---
 <BaseLayout
-  title="Accreditation & Authorizations | Surgiquip Solutions"
-  description="BBB A+ Accredited Business. Authorized Skytron dealer for Southeast Texas. Factory-certified technicians. 43 years of trusted medical equipment service."
-  schema={breadcrumbSchema}
+  title="Accreditation & Awards | Surgiquip Solutions"
+  description="BBB A+ rated. Torch Award for Ethics 2014-2018 (5 consecutive years). Texas Certified HUB Vendor. DSHS-licensed distributor. Authorized Skytron dealer. Factory-certified for Skytron, Midmark, Tuttnauer."
+  schema={[breadcrumbSchema, organizationSchema]}
 >
   <section class="bg-[var(--color-navy)] text-white">
     <div class="container-x py-20">
@@ -32,60 +75,102 @@ const breadcrumbSchema = {
         Accredited. Authorized. Trusted.
       </h1>
       <p class="mt-5 text-lg text-white/85 max-w-xl">
-        Our credentials aren't wall decorations — they represent operational standards that protect every facility and patient we serve.
+        Our credentials are earned, not purchased. They represent 43 years of operating to the standards
+        that hospitals, surgery centers, and healthcare networks require.
       </p>
     </div>
   </section>
 
+  <!-- ── BBB Torch Award Feature ─────────────────────────────────────────────── -->
+  <section class="bg-[var(--color-surface-alt)] py-16 border-b border-[var(--color-border)]">
+    <div class="container-x">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-center gap-8">
+          <div class="shrink-0 flex items-center justify-center w-24 h-24 rounded-full bg-[var(--color-navy)] text-white text-2xl font-display font-bold">
+            BBB
+          </div>
+          <div>
+            <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-2">Highest BBB Honor</div>
+            <h2 class="font-display text-2xl md:text-3xl font-bold text-[var(--color-navy)] mb-3">
+              Torch Award for Ethics — Five Consecutive Years
+            </h2>
+            <p class="text-[var(--color-text-muted)] leading-relaxed mb-4">
+              The BBB Torch Award for Ethics is the highest honor the Better Business Bureau grants to businesses
+              in the Greater Houston area. It recognizes companies that demonstrate exceptional standards of ethics,
+              integrity, and trust in all business dealings. Surgiquip Solutions earned this distinction five years
+              in a row — a record that reflects consistent character, not a one-time result.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {['2014', '2015', '2016', '2017', '2018'].map((year) => (
+                <span class="inline-flex items-center px-4 py-1.5 rounded-full bg-[var(--color-navy)] text-white text-sm font-bold">
+                  Torch Award {year}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Credentials Grid ────────────────────────────────────────────────────── -->
   <section class="container-x py-16">
+    <div class="text-center mb-10">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Authorizations & Licenses</div>
+      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Every Credential That Matters</h2>
+    </div>
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {[
         {
-          icon: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
           badge: 'BBB A+',
           title: 'Better Business Bureau — A+ Accredited',
-          body: 'Surgiquip Solutions, Inc. is an A+ rated, BBB Accredited Business. This designation is earned — not purchased. It reflects our track record of transparent business practices, responsiveness to concerns, and commitment to resolving any issues that arise. Zero unresolved complaints.',
+          body: 'Surgiquip Solutions holds an A+ rating with the BBB — the highest possible grade, maintained for 16 consecutive years. Zero unresolved complaints. This rating reflects our track record of transparent business practices and our commitment to resolving any issues that arise.',
         },
         {
-          icon: '<path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
           badge: 'Authorized',
           title: 'Authorized Skytron Dealer — Southeast Texas',
-          body: 'Skytron designates only a small number of exclusive authorized dealers per market. Our authorization covers Southeast Texas and means we operate under direct factory oversight: certified technicians, current parts inventories, and access to manufacturer technical support that independent dealers cannot access.',
+          body: 'Skytron grants exclusive dealerships to a small number of partners per region. Our authorization for Southeast Texas means direct factory oversight: certified technicians, manufacturer parts, and technical support unavailable to independent distributors.',
         },
         {
-          icon: '<path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-3 3-2.4-2.4 3-3z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>',
           badge: 'Certified',
-          title: 'Factory-Trained & Certified Technicians',
-          body: 'Our service technicians complete Skytron factory training programs and maintain current certifications. This means every repair follows OEM procedures, uses manufacturer-approved parts, and produces documentation acceptable for regulatory compliance review.',
+          title: 'Factory-Certified Technicians',
+          body: 'Our service team holds factory certifications from Skytron, Midmark, and Tuttnauer — three distinct manufacturer programs. Each certification requires ongoing training and renewal. Every repair follows OEM procedures with documentation acceptable for Joint Commission surveys.',
         },
         {
-          icon: '<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+          badge: 'Texas HUB',
+          title: 'Texas Certified HUB Vendor',
+          body: 'Surgiquip Solutions is a Texas-certified Historically Underutilized Business (HUB) vendor. This state certification allows Texas public health systems, university medical centers, and government hospitals to count Surgiquip toward their HUB procurement goals — expanding our reach in public sector healthcare.',
+        },
+        {
+          badge: 'DSHS Licensed',
+          title: 'Texas DSHS: Device Distributor License',
+          body: 'Licensed by the Texas Department of State Health Services as a medical device distributor. This state-level license verifies that our distribution operations meet DSHS standards for handling, storing, and delivering regulated medical equipment across Texas facilities.',
+        },
+        {
+          badge: 'DSHS Licensed',
+          title: 'Texas DSHS: Salvage Establishment License',
+          body: 'DSHS-licensed salvage establishment — authorizing us to handle, refurbish, and resell medical equipment within Texas regulatory guidelines. This license is critical for used equipment programs and decommissioning services we provide to healthcare facilities.',
+        },
+        {
           badge: 'Authorized',
           title: 'HSI Hospital Systems — Authorized Dealer',
-          body: 'We hold authorized dealer status with Hospital Systems Inc. (HSI), extending our product and service capabilities beyond Skytron to a broader portfolio of hospital equipment.',
+          body: 'Authorized dealer status with Hospital Systems Inc. (HSI) extends our product and service capabilities beyond Skytron to a broader portfolio of hospital-grade equipment, including patient care and general facility solutions.',
         },
         {
-          icon: '<rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
           badge: 'Authorized',
           title: 'Knight Equipment — Authorized Dealer',
-          body: 'Authorized dealer for Knight instrument cleaning and sterilization equipment — rounding out a comprehensive product portfolio for fully equipped surgical suites.',
+          body: 'Authorized dealer for Knight instrument cleaning and sterilization equipment — completing a comprehensive product portfolio for fully equipped surgical suites and sterile processing departments.',
         },
         {
-          icon: '<rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
-          badge: '43 Years',
-          title: 'In Business Since 1983',
-          body: 'Longevity in healthcare services is a credential of its own. Companies that don\'t operate with integrity don\'t serve the same market for 43 years. Our history is the strongest testimony to the standards we maintain.',
+          badge: 'Network Affiliate',
+          title: 'Vital Affiliate — Memorial Hermann IDN',
+          body: 'Surgiquip Solutions holds Vital Affiliate status within the Memorial Hermann Integrated Delivery Network — the largest health system in Southeast Texas. This affiliation reflects a multi-decade, multi-facility supply relationship across more than 10 Memorial Hermann facilities throughout Greater Houston.',
         },
       ].map((item) => (
         <div class="bg-white rounded-xl border border-[var(--color-border)] p-6 hover:shadow-md transition">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="w-12 h-12 rounded-full bg-[var(--color-surface-alt)] flex items-center justify-center text-[var(--color-navy)] shrink-0">
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" set:html={item.icon} />
-            </div>
-            <div>
-              <span class="inline-block px-2 py-0.5 text-xs font-bold rounded bg-[var(--color-blue)] text-white mb-1">{item.badge}</span>
-              <h2 class="font-bold text-[var(--color-navy)] text-base leading-tight">{item.title}</h2>
-            </div>
+          <div class="mb-4">
+            <span class="inline-block px-2 py-0.5 text-xs font-bold rounded bg-[var(--color-blue)] text-white mb-2">{item.badge}</span>
+            <h3 class="font-bold text-[var(--color-navy)] text-base leading-tight">{item.title}</h3>
           </div>
           <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.body}</p>
         </div>
@@ -118,7 +203,7 @@ const breadcrumbSchema = {
 
   <CTASection
     heading="Questions About Our Credentials?"
-    subhead={`Call us at ${site.phone} or send an email to ${site.email}. We're happy to provide reference letters, authorization documentation, or BBB verification.`}
+    subhead={`Call us at ${site.phone} or send an email to ${site.email}. We can provide reference letters, authorization documentation, or BBB verification on request.`}
     primaryLabel="Contact Us"
     primaryHref="/contact"
     secondaryLabel={`Call ${site.phone}`}
