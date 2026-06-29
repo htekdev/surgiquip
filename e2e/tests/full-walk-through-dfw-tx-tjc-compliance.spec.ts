@@ -10,7 +10,7 @@ import {
 // Long-running demo test -- extend timeout to 6 minutes
 test.setTimeout(360000);
 
-async function smoothScroll(page: Page, totalPx = 2000, stepPx = 280, delayMs = 380) {
+async function smoothScroll(page: Page, totalPx = 2000, stepPx = 280, delayMs = 500) {
   await page.mouse.move(760, 400);
   const steps = Math.ceil(totalPx / stepPx);
   for (let i = 0; i < steps; i++) {
@@ -25,7 +25,7 @@ test('full-walk-through -- DFW TX service area + TJC OR Equipment Compliance blo
   await page.goto('/');
   await showPhaseLabel(page, 'Surgiquip -- Homepage');
   await page.waitForTimeout(1200);
-  await smoothScroll(page, 600, 280, 420);
+  await smoothScroll(page, 600, 280, 500);
 
   await page.goto('/service-areas');
   await page.waitForLoadState('networkidle');
@@ -39,7 +39,7 @@ test('full-walk-through -- DFW TX service area + TJC OR Equipment Compliance blo
 
   const dfwCard = page.locator('a[href="/service-areas/dallas-fort-worth-tx"]').first();
   await dfwCard.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(dfwCard, 'DFW TX card');
   await expectText(dfwCard, 'Dallas', 'Dallas on card');
 
@@ -59,28 +59,30 @@ test('full-walk-through -- DFW TX service area + TJC OR Equipment Compliance blo
 
   const baylor = page.locator('text=Baylor').or(page.locator('text=UT Southwestern')).first();
   await baylor.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(baylor, 'Baylor or UT Southwestern');
 
   await smoothScroll(page, 700, 260, 400);
   await smoothScroll(page, 700, 260, 400);
 
-  const trustBlock = page.locator('h2').filter({ hasText: /Texas-Based|Statewide|Why Surgiquip|43 Year/i }).first();
+  const trustBlock = page.locator('text=Why Surgiquip').first();
+  await trustBlock.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(1200);
   await expectVisible(trustBlock, 'Why Surgiquip trust block');
   await smoothScroll(page, 600, 260, 400);
 
   await expectJsonLd(page, 'DFW TX LocalBusiness JSON-LD');
-  await page.waitForTimeout(800);
+  await page.waitForTimeout(1200);
 
   // PART 2 - TJC Compliance blog
   await page.goto('/blog');
   await page.waitForLoadState('networkidle');
   await showPhaseLabel(page, 'Blog Index -- TJC Compliance Article');
-  await smoothScroll(page, 400, 260, 380);
+  await smoothScroll(page, 400, 260, 500);
 
   const tjcLink = page.locator('a[href*="joint-commission"]').first();
   await tjcLink.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(tjcLink, 'TJC Compliance Guide link');
 
   await showPhaseLabel(page, 'Clicking into TJC OR Equipment Compliance Guide');
@@ -97,12 +99,12 @@ test('full-walk-through -- DFW TX service area + TJC OR Equipment Compliance blo
   await expectVisible(articleBody, 'Article body');
 
   await showPhaseLabel(page, 'Scrolling TJC Compliance Guide...');
-  await smoothScroll(page, 900, 260, 380);
-  await smoothScroll(page, 900, 260, 380);
-  await smoothScroll(page, 900, 260, 380);
+  await smoothScroll(page, 900, 260, 500);
+  await smoothScroll(page, 900, 260, 500);
+  await smoothScroll(page, 900, 260, 500);
 
   await expectJsonLd(page, 'TJC Compliance Article JSON-LD');
-  await page.waitForTimeout(600);
+  await page.waitForTimeout(1000);
 
   // PART 3 - Back to Service Areas to confirm DFW
   await page.goto('/service-areas');
@@ -116,7 +118,7 @@ test('full-walk-through -- DFW TX service area + TJC OR Equipment Compliance blo
 
   const dfwFinal = page.locator('a[href="/service-areas/dallas-fort-worth-tx"]').first();
   await dfwFinal.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(dfwFinal, 'DFW TX card in listing');
   await expectText(dfwFinal, 'Dallas', 'DFW confirmed');
 
