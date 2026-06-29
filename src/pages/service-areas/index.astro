@@ -87,6 +87,14 @@ const areas = [
     badge: 'West Texas',
     icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
   },
+  {
+    href: '/service-areas/waco-tx',
+    title: 'Waco, TX',
+    subtitle: 'Heart of Texas — McLennan · Falls · Coryell · Hill · Limestone Counties',
+    desc: "Central Texas's growing healthcare corridor — Baylor Scott & White Medical Center Hillcrest, Ascension Providence, and regional ASCs. Authorized Skytron sales, OR installation, and service for the Heart of Texas region.",
+    badge: 'Central Texas',
+    icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
+  },
 ];
 
 const cityLinks = [
@@ -113,12 +121,15 @@ const cityLinks = [
   { city: 'Lubbock', href: '/service-areas/lubbock-tx' },
   { city: 'Plainview', href: '/service-areas/lubbock-tx' },
   { city: 'Levelland', href: '/service-areas/lubbock-tx' },
+  { city: 'Waco', href: '/service-areas/waco-tx' },
+  { city: 'Hewitt', href: '/service-areas/waco-tx' },
+  { city: 'Hillsboro', href: '/service-areas/waco-tx' },
 ];
 ---
 
 <BaseLayout
   title="Service Areas — Surgical Equipment Across Texas | Surgiquip Solutions"
-  description="Surgiquip Solutions serves hospitals and surgery centers across Texas — Houston, Beaumont, Galveston, Victoria, San Antonio, Lubbock, and beyond. Authorized Skytron dealer since 1983."
+  description="Surgiquip Solutions serves hospitals and surgery centers across Texas — Houston, Beaumont, Galveston, Victoria, San Antonio, Lubbock, Waco, and beyond. Authorized Skytron dealer since 1983."
   schema={[serviceAreaSchema, breadcrumbSchema]}
   canonical={`${site.url}/service-areas`}
 >
