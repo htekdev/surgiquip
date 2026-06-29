@@ -58,13 +58,17 @@ test('full-walk-through -- RGV TX service area + Ceiling Boom Systems Guide blog
   await smoothScroll(page, 700, 260, 400);
 
   const dhr = page.locator('text=DHR').or(page.locator('text=Valley Baptist')).first();
+  await dhr.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);
   await expectVisible(dhr, 'DHR Health or Valley Baptist');
 
   await smoothScroll(page, 700, 260, 400);
   await smoothScroll(page, 700, 260, 400);
 
-  const trustBlock = page.locator('h2').filter({ hasText: /Why Surgiquip|43 Year|Houston/i }).first();
-  await expectVisible(trustBlock, 'Why Surgiquip trust block');
+  const trustSection = page.locator('text=Why Surgiquip').first();
+  await trustSection.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);
+  await expectVisible(trustSection, 'Why Surgiquip section');
   await smoothScroll(page, 600, 260, 400);
 
   await expectJsonLd(page, 'RGV TX LocalBusiness JSON-LD');
@@ -95,9 +99,11 @@ test('full-walk-through -- RGV TX service area + Ceiling Boom Systems Guide blog
   await expectVisible(articleBody, 'Article body');
 
   await showPhaseLabel(page, 'Scrolling Ceiling Boom Systems Guide...');
-  await smoothScroll(page, 900, 260, 380);
-  await smoothScroll(page, 900, 260, 380);
-  await smoothScroll(page, 900, 260, 380);
+  await smoothScroll(page, 800, 260, 380);
+  await page.waitForTimeout(500);
+  await smoothScroll(page, 800, 260, 380);
+  await page.waitForTimeout(500);
+  await smoothScroll(page, 800, 260, 380);
 
   await expectJsonLd(page, 'Ceiling Boom Article JSON-LD');
   await page.waitForTimeout(600);
