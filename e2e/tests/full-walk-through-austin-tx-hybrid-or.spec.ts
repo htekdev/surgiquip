@@ -24,7 +24,7 @@ import {
 
 test.setTimeout(360000);
 
-async function smoothScroll(page: Page, totalPx = 2000, stepPx = 280, delayMs = 380) {
+async function smoothScroll(page: Page, totalPx = 2000, stepPx = 280, delayMs = 500) {
   await page.mouse.move(760, 400);
   const steps = Math.ceil(totalPx / stepPx);
   for (let i = 0; i < steps; i++) {
@@ -35,7 +35,7 @@ async function smoothScroll(page: Page, totalPx = 2000, stepPx = 280, delayMs = 
 
 async function scrollToTop(page: Page) {
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  await page.waitForTimeout(600);
+  await page.waitForTimeout(1000);
 }
 
 test('full-walk-through — Austin TX service area + Hybrid OR Planning Guide blog', async ({ page }) => {
@@ -48,12 +48,12 @@ test('full-walk-through — Austin TX service area + Hybrid OR Planning Guide bl
   await showPhaseLabel(page, '🏥 Surgiquip — Homepage');
   await page.waitForTimeout(1200);
 
-  await smoothScroll(page, 600, 280, 420);
+  await smoothScroll(page, 600, 280, 500);
   await showPhaseLabel(page, '📊 43 Years Serving Texas Hospitals');
-  await page.waitForTimeout(800);
+  await page.waitForTimeout(1200);
 
   await showPhaseLabel(page, '📍 Opening Service Areas →');
-  await page.waitForTimeout(600);
+  await page.waitForTimeout(1000);
   await page.goto('/service-areas');
   await page.waitForLoadState('networkidle');
 
@@ -65,14 +65,14 @@ test('full-walk-through — Austin TX service area + Hybrid OR Planning Guide bl
 
   await smoothScroll(page, 600, 260, 420);
   await showPhaseLabel(page, '📍 Spotting Austin TX — New!');
-  await page.waitForTimeout(800);
+  await page.waitForTimeout(1200);
 
   const austinCard = page.locator('a[href="/service-areas/austin-tx"]').first();
   await austinCard.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(austinCard, 'Austin TX card');
   await expectText(austinCard, 'Austin', 'Austin on card');
-  await page.waitForTimeout(600);
+  await page.waitForTimeout(1000);
 
   await showPhaseLabel(page, '🔗 Clicking → Austin TX');
   await page.waitForTimeout(500);
@@ -89,7 +89,7 @@ test('full-walk-through — Austin TX service area + Hybrid OR Planning Guide bl
 
   const badge = page.locator('text=Central Texas').first();
   await expectVisible(badge, 'Central Texas badge');
-  await page.waitForTimeout(800);
+  await page.waitForTimeout(1200);
 
   await showPhaseLabel(page, '📍 Markets — Dell Seton, St. David\'s, Ascension Seton');
   await smoothScroll(page, 700, 260, 400);
@@ -113,10 +113,10 @@ test('full-walk-through — Austin TX service area + Hybrid OR Planning Guide bl
   const contactCta = page.locator('a[href="/contact"]').first();
   await expectVisible(contactCta, 'Contact CTA');
   await showPhaseLabel(page, '📞 Austin TX CTA — Ready to Serve Central Texas');
-  await page.waitForTimeout(800);
+  await page.waitForTimeout(1200);
 
   await expectJsonLd(page, 'Austin TX LocalBusiness + BreadcrumbList JSON-LD');
-  await page.waitForTimeout(800);
+  await page.waitForTimeout(1200);
 
   // ═══════════════════════════════════════════════════════════════════════════
   // PART 2 — Blog Index → Hybrid OR Planning Guide full scroll
@@ -128,13 +128,13 @@ test('full-walk-through — Austin TX service area + Hybrid OR Planning Guide bl
   await page.waitForLoadState('networkidle');
 
   await showPhaseLabel(page, '📰 Blog Index — Hybrid OR Article');
-  await page.waitForTimeout(800);
+  await page.waitForTimeout(1200);
 
-  await smoothScroll(page, 400, 260, 380);
+  await smoothScroll(page, 400, 260, 500);
 
   const hybridOrLink = page.locator('a[href*="hybrid-or"]').first();
   await hybridOrLink.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(hybridOrLink, 'Hybrid OR Planning Guide link');
 
   await showPhaseLabel(page, '🔗 Clicking → Hybrid OR Planning Guide');
@@ -149,20 +149,20 @@ test('full-walk-through — Austin TX service area + Hybrid OR Planning Guide bl
   await expectVisible(articleH1, 'Article H1');
   await expectText(articleH1, /[Hh]ybrid|[Pp]lanning|[Oo]perating/, 'Hybrid OR in title');
   await expectURL(page, /\/blog\/hybrid-or/);
-  await page.waitForTimeout(800);
+  await page.waitForTimeout(1200);
 
   const articleBody = page.locator('article, main, .prose, [class*="prose"]').first();
   await expectVisible(articleBody, 'Article body');
 
   await showPhaseLabel(page, '📄 Scrolling Hybrid OR Article...');
-  await smoothScroll(page, 900, 260, 380);
-  await smoothScroll(page, 900, 260, 380);
-  await smoothScroll(page, 900, 260, 380);
+  await smoothScroll(page, 900, 260, 500);
+  await smoothScroll(page, 900, 260, 500);
+  await smoothScroll(page, 900, 260, 500);
   await showPhaseLabel(page, '✅ Hybrid OR Article — Complete');
   await page.waitForTimeout(700);
 
   await expectJsonLd(page, 'Hybrid OR Article + BreadcrumbList JSON-LD');
-  await page.waitForTimeout(600);
+  await page.waitForTimeout(1000);
 
   // ═══════════════════════════════════════════════════════════════════════════
   // PART 3 — Back to Service Areas Index → Austin TX card confirmed
@@ -183,7 +183,7 @@ test('full-walk-through — Austin TX service area + Hybrid OR Planning Guide bl
 
   const austinFinal = page.locator('a[href="/service-areas/austin-tx"]').first();
   await austinFinal.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(austinFinal, 'Austin TX card in listing');
   await expectText(austinFinal, 'Austin', 'Austin confirmed');
 
@@ -193,6 +193,6 @@ test('full-walk-through — Austin TX service area + Hybrid OR Planning Guide bl
   await page.waitForTimeout(1500);
 
   await expectJsonLd(page, 'Service Areas Index JSON-LD');
-  await page.waitForTimeout(600);
+  await page.waitForTimeout(1000);
 });
 
