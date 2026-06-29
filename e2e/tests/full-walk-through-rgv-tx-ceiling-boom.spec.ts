@@ -10,7 +10,7 @@ import {
 // Long-running demo test -- extend timeout to 6 minutes
 test.setTimeout(360000);
 
-async function smoothScroll(page: Page, totalPx = 2000, stepPx = 280, delayMs = 380) {
+async function smoothScroll(page: Page, totalPx = 2000, stepPx = 280, delayMs = 500) {
   await page.mouse.move(760, 400);
   const steps = Math.ceil(totalPx / stepPx);
   for (let i = 0; i < steps; i++) {
@@ -25,7 +25,7 @@ test('full-walk-through -- RGV TX service area + Ceiling Boom Systems Guide blog
   await page.goto('/');
   await showPhaseLabel(page, 'Surgiquip -- Homepage');
   await page.waitForTimeout(1200);
-  await smoothScroll(page, 600, 280, 420);
+  await smoothScroll(page, 600, 280, 500);
 
   await page.goto('/service-areas');
   await page.waitForLoadState('networkidle');
@@ -39,7 +39,7 @@ test('full-walk-through -- RGV TX service area + Ceiling Boom Systems Guide blog
 
   const rgvCard = page.locator('a[href="/service-areas/rio-grande-valley-tx"]').first();
   await rgvCard.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(rgvCard, 'RGV TX card');
   await expectText(rgvCard, 'Rio Grande Valley', 'RGV on card');
 
@@ -59,7 +59,7 @@ test('full-walk-through -- RGV TX service area + Ceiling Boom Systems Guide blog
 
   const dhr = page.locator('text=DHR').or(page.locator('text=Valley Baptist')).first();
   await dhr.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(dhr, 'DHR Health or Valley Baptist');
 
   await smoothScroll(page, 700, 260, 400);
@@ -67,22 +67,22 @@ test('full-walk-through -- RGV TX service area + Ceiling Boom Systems Guide blog
 
   const trustSection = page.locator('text=Why Surgiquip').first();
   await trustSection.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(trustSection, 'Why Surgiquip section');
   await smoothScroll(page, 600, 260, 400);
 
   await expectJsonLd(page, 'RGV TX LocalBusiness JSON-LD');
-  await page.waitForTimeout(800);
+  await page.waitForTimeout(1200);
 
   // PART 2 - Ceiling Boom Systems Guide blog
   await page.goto('/blog');
   await page.waitForLoadState('networkidle');
   await showPhaseLabel(page, 'Blog Index -- Ceiling Boom Systems Article');
-  await smoothScroll(page, 400, 260, 380);
+  await smoothScroll(page, 400, 260, 500);
 
   const boomLink = page.locator('a[href*="ceiling-boom"]').first();
   await boomLink.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(boomLink, 'Ceiling Boom Systems Guide link');
 
   await showPhaseLabel(page, 'Clicking into Ceiling Boom Systems Guide');
@@ -99,14 +99,14 @@ test('full-walk-through -- RGV TX service area + Ceiling Boom Systems Guide blog
   await expectVisible(articleBody, 'Article body');
 
   await showPhaseLabel(page, 'Scrolling Ceiling Boom Systems Guide...');
-  await smoothScroll(page, 800, 260, 380);
+  await smoothScroll(page, 800, 260, 500);
   await page.waitForTimeout(500);
-  await smoothScroll(page, 800, 260, 380);
+  await smoothScroll(page, 800, 260, 500);
   await page.waitForTimeout(500);
-  await smoothScroll(page, 800, 260, 380);
+  await smoothScroll(page, 800, 260, 500);
 
   await expectJsonLd(page, 'Ceiling Boom Article JSON-LD');
-  await page.waitForTimeout(600);
+  await page.waitForTimeout(1000);
 
   // PART 3 - Back to Service Areas to confirm RGV
   await page.goto('/service-areas');
@@ -120,7 +120,7 @@ test('full-walk-through -- RGV TX service area + Ceiling Boom Systems Guide blog
 
   const rgvFinal = page.locator('a[href="/service-areas/rio-grande-valley-tx"]').first();
   await rgvFinal.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(1200);
   await expectVisible(rgvFinal, 'RGV TX card in listing');
   await expectText(rgvFinal, 'Rio Grande Valley', 'RGV confirmed');
 
