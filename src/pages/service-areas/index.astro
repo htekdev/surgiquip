@@ -87,6 +87,14 @@ const areas = [
     badge: 'West Texas',
     icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
   },
+  {
+    href: '/service-areas/tyler-tx',
+    title: 'Tyler, TX',
+    subtitle: 'Piney Woods — Smith · Cherokee · Gregg · Rusk · Henderson Counties',
+    desc: "East Texas's healthcare hub — UT Health East Texas (flagship academic medical system), Christus Trinity Mother Frances, and regional surgery centers across the Piney Woods. Authorized Skytron sales, OR installation, and service for East Texas.",
+    badge: 'East Texas',
+    icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
+  },
 ];
 
 const cityLinks = [
@@ -113,12 +121,16 @@ const cityLinks = [
   { city: 'Lubbock', href: '/service-areas/lubbock-tx' },
   { city: 'Plainview', href: '/service-areas/lubbock-tx' },
   { city: 'Levelland', href: '/service-areas/lubbock-tx' },
+  { city: 'Tyler', href: '/service-areas/tyler-tx' },
+  { city: 'Longview', href: '/service-areas/tyler-tx' },
+  { city: 'Jacksonville', href: '/service-areas/tyler-tx' },
+  { city: 'Henderson', href: '/service-areas/tyler-tx' },
 ];
 ---
 
 <BaseLayout
   title="Service Areas — Surgical Equipment Across Texas | Surgiquip Solutions"
-  description="Surgiquip Solutions serves hospitals and surgery centers across Texas — Houston, Beaumont, Galveston, Victoria, San Antonio, Lubbock, and beyond. Authorized Skytron dealer since 1983."
+  description="Surgiquip Solutions serves hospitals and surgery centers across Texas — Houston, Beaumont, Galveston, Victoria, San Antonio, Lubbock, Tyler, and beyond. Authorized Skytron dealer since 1983."
   schema={[serviceAreaSchema, breadcrumbSchema]}
   canonical={`${site.url}/service-areas`}
 >
@@ -132,10 +144,10 @@ const cityLinks = [
       </nav>
       <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Service Areas</div>
       <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-3xl">
-        Serving Texas Healthcare — Houston to Lubbock
+        Serving Texas Healthcare — Houston to Tyler
       </h1>
       <p class="mt-6 text-xl text-white/85 max-w-2xl leading-relaxed">
-        Surgiquip Solutions is headquartered in Houston and operates as the authorized Skytron dealer for Texas — serving hospitals, surgery centers, and specialty clinics across Southeast Texas, South Texas, West Texas, and beyond since 1983.
+        Surgiquip Solutions is headquartered in Houston and operates as the authorized Skytron dealer for Texas — serving hospitals, surgery centers, and specialty clinics across Southeast Texas, South Texas, West Texas, East Texas, and beyond since 1983.
       </p>
       <div class="mt-8 flex flex-wrap gap-4">
         <a href="/quote" class="btn-primary px-7 py-3.5">Request a Quote</a>

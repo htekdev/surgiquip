@@ -1,0 +1,328 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'MedicalBusiness'],
+  '@id': `${site.url}#organization`,
+  name: site.brand,
+  alternateName: 'Surgiquip Solutions',
+  description:
+    'Authorized Skytron dealer serving Tyler, TX and East Texas — OR equipment sales, installation, service, and preventive maintenance for hospitals and surgery centers in Smith, Cherokee, Gregg, Rusk, and Henderson counties.',
+  url: `${site.url}/service-areas/tyler-tx`,
+  telephone: site.phone,
+  email: site.email,
+  foundingDate: '1983',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 32.3513,
+    longitude: -95.3011,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '07:30',
+    closes: '16:30',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Tyler', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'City', name: 'Longview', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'City', name: 'Jacksonville', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'City', name: 'Henderson', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'County', name: 'Smith County', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'County', name: 'Cherokee County', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'County', name: 'Gregg County', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'County', name: 'Rusk County', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'County', name: 'Henderson County', containedInPlace: { '@type': 'State', name: 'Texas' } },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'OR Equipment & Services — Tyler, TX',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Surgical Equipment Sales' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'OR Installation & Integration' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Equipment Service & Repair' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Preventive Maintenance Programs' } },
+    ],
+  },
+  sameAs: [site.social.linkedin],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: `${site.url}/service-areas` },
+    { '@type': 'ListItem', position: 3, name: 'Tyler, TX', item: `${site.url}/service-areas/tyler-tx` },
+  ],
+};
+
+const services = [
+  {
+    href: '/services/equipment-sales',
+    title: 'Surgical Equipment Sales',
+    blurb:
+      'Authorized Skytron dealer for Tyler and East Texas. Surgical tables, OR lighting systems, and equipment booms for UT Health East Texas, Christus Trinity Mother Frances, and regional ambulatory surgery centers across Smith, Cherokee, Gregg, and Rusk counties.',
+  },
+  {
+    href: '/services/or-installation',
+    title: 'OR Installation & Integration',
+    blurb:
+      'Turnkey OR installations for Tyler-area hospitals and East Texas surgery centers — coordinating with your general contractor and architect through commissioning, staff training, and go-live support for new builds and renovation projects in the Piney Woods region.',
+  },
+  {
+    href: '/services/service-and-repair',
+    title: 'Service & Repair',
+    blurb:
+      'Factory-trained technicians dispatched to Tyler, Longview, Jacksonville, Henderson, and surrounding East Texas communities. Emergency and scheduled service for Skytron and other major OR equipment brands across the Piney Woods region.',
+  },
+  {
+    href: '/services/preventive-maintenance',
+    title: 'Preventive Maintenance',
+    blurb:
+      'Structured PM programs for surgical tables, overhead lights, and ceiling booms — with documentation formatted for Joint Commission, CMS, and AAAHC survey readiness for Tyler-area hospitals and ambulatory surgery centers.',
+  },
+];
+
+const tylerStats = [
+  { value: '43 Years', label: 'Texas OR expertise', sub: 'Since 1983' },
+  { value: '5 Counties', label: 'East Texas territory', sub: 'Smith · Cherokee · Gregg · Rusk · Henderson' },
+  { value: '24hr', label: 'Emergency response', sub: 'For critical equipment' },
+  { value: 'Factory', label: 'Certified technicians', sub: 'Skytron authorized' },
+];
+
+const markets = [
+  {
+    city: 'Tyler / Smith County',
+    county: 'Smith County',
+    desc: "East Texas's dominant healthcare hub. Serving UT Health Tyler (flagship hospital of the UT Health East Texas system — a major academic medical center affiliated with UT Health Science Center), Christus Trinity Mother Frances Tyler (Christus Health flagship for the Piney Woods region), and the growing network of outpatient surgery centers and specialty clinics serving Smith County's 245,000+ residents.",
+  },
+  {
+    city: 'Longview / Gregg County',
+    county: 'Gregg County',
+    desc: "Longview Regional Medical Center and Good Shepherd Medical Center anchor healthcare services in Gregg County. Surgiquip serves Longview-area facilities for OR equipment sales, installation planning, and scheduled preventive maintenance — extending East Texas coverage west of Tyler into the heart of the Piney Woods.",
+  },
+  {
+    city: 'Jacksonville / Cherokee County',
+    county: 'Cherokee County',
+    desc: 'UT Health Jacksonville (part of the UT Health East Texas network) provides acute care and surgical services for Cherokee County. Surgiquip provides capital equipment support, OR installation coordination, and scheduled service for UT Health system facilities across the county.',
+  },
+  {
+    city: 'Henderson · Rusk · Wood Counties',
+    county: 'Henderson · Rusk · Wood Counties',
+    desc: 'UT Health Henderson, UT Health Carthage, and regional critical access facilities serving communities across Rusk, Henderson, and Wood counties. Accessible for service calls, equipment consultations, and OR planning support as part of the broader East Texas service territory.',
+  },
+];
+---
+
+<BaseLayout
+  title="Tyler, TX Surgical Equipment — Sales, Service & OR Installation | Surgiquip Solutions"
+  description="Surgiquip Solutions serves hospitals and surgery centers in Tyler and East Texas — authorized Skytron dealer for surgical tables, OR lighting, equipment booms, service, and preventive maintenance for UT Health East Texas, Christus Trinity Mother Frances, and regional ASCs."
+  schema={[localBusinessSchema, breadcrumbSchema]}
+  canonical={`${site.url}/service-areas/tyler-tx`}
+>
+  <!-- Hero -->
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/service-areas" class="hover:text-white/90">Service Areas</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">Tyler, TX</span>
+      </nav>
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">East Texas</div>
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-3xl">
+        Surgical Equipment for Tyler &amp; East Texas
+      </h1>
+      <p class="mt-6 text-xl text-white/85 max-w-2xl leading-relaxed">
+        Surgiquip Solutions serves hospitals, surgery centers, and specialty clinics across Tyler and the East Texas Piney Woods — authorized Skytron dealer for OR tables, lighting systems, equipment booms, and full-lifecycle service since 1983.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="/quote" class="btn-primary px-7 py-3.5">Request a Quote</a>
+        <a
+          href={`tel:${site.phoneE164}`}
+          class="inline-flex items-center gap-2 px-7 py-3.5 rounded-md border border-white/40 font-semibold text-white hover:bg-white/10 transition"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1l-2.3 2.3z" />
+          </svg>
+          {site.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats bar -->
+  <section class="bg-[var(--color-navy-dark)] text-white">
+    <div class="container-x py-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 divide-y md:divide-y-0 md:divide-x divide-white/10">
+        {tylerStats.map((s) => (
+          <div class="text-center py-2 first:pt-0 last:pb-0 md:py-0">
+            <div class="font-display text-2xl font-bold text-white">{s.value}</div>
+            <div class="text-xs text-white/70 mt-1 leading-tight">{s.label}</div>
+            <div class="text-xs text-white/50 mt-0.5">{s.sub}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Markets grid -->
+  <section class="container-x py-16">
+    <div class="text-center mb-12">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Coverage Area</div>
+      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Tyler &amp; East Texas Markets</h2>
+      <p class="mt-3 text-[var(--color-text-muted)] max-w-xl mx-auto">
+        From Tyler's major health systems to Piney Woods community hospitals and East Texas rural facilities — Surgiquip provides authorized OR equipment service across the region.
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+      {markets.map((m) => (
+        <div class="bg-white border border-[var(--color-border)] rounded-xl p-7">
+          <div class="flex items-start gap-3 mb-3">
+            <div class="w-9 h-9 rounded-full bg-[var(--color-navy)]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-5 h-5 text-[var(--color-navy)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-[var(--color-navy)] text-base">{m.city}</h3>
+              <div class="text-xs text-[var(--color-blue)] font-semibold mt-0.5">{m.county}</div>
+            </div>
+          </div>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{m.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Services in this market -->
+  <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x">
+      <div class="text-center mb-12">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">What We Provide</div>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Services for Tyler-Area Facilities</h2>
+        <p class="mt-3 text-[var(--color-text-muted)] max-w-xl mx-auto">
+          Full-lifecycle OR equipment support for East Texas hospitals and surgery centers — from initial capital equipment procurement through ongoing preventive maintenance.
+        </p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+        {services.map((s) => (
+          <a
+            href={s.href}
+            class="group block bg-white border border-[var(--color-border)] rounded-xl p-7 hover:border-[var(--color-blue)] hover:shadow-md transition"
+          >
+            <h3 class="font-bold text-[var(--color-navy)] text-lg group-hover:text-[var(--color-blue)] transition mb-2">{s.title}</h3>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{s.blurb}</p>
+            <span class="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-[var(--color-blue)]">
+              Learn more
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Surgiquip for Tyler -->
+  <section class="container-x py-16">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3 text-center">Why Surgiquip</div>
+      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)] text-center mb-8">
+        Houston-Based. East Texas Ready.
+      </h2>
+      <div class="grid gap-5 md:grid-cols-3">
+        {[
+          {
+            icon: '<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+            title: 'Authorized Skytron Dealer',
+            desc: 'OEM parts, factory training, and full warranty coverage for Tyler health systems — UT Health East Texas, Christus Trinity Mother Frances, and regional ASCs — not a third-party broker.',
+          },
+          {
+            icon: '<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+            title: '24-Hour Emergency Response',
+            desc: 'When OR equipment fails before a full surgical schedule, you need a service partner who dispatches fast — not a call center routing through a national queue.',
+          },
+          {
+            icon: '<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+            title: 'Survey-Ready Documentation',
+            desc: 'PM records formatted for Joint Commission, CMS, and AAAHC audits — no last-minute paperwork gaps when surveyors arrive at UT Health or Christus facilities.',
+          },
+        ].map((item) => (
+          <div class="bg-[var(--color-surface-alt)] rounded-xl p-6 text-center border border-[var(--color-border)]">
+            <div class="w-12 h-12 rounded-full bg-[var(--color-navy)]/10 flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-[var(--color-navy)]" viewBox="0 0 24 24" fill="none" set:html={item.icon} aria-hidden="true" />
+            </div>
+            <h3 class="font-bold text-[var(--color-navy)] mb-2">{item.title}</h3>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources cross-links -->
+  <section class="bg-[var(--color-surface-alt)] py-12">
+    <div class="container-x">
+      <div class="text-center mb-8">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Resources</div>
+        <h2 class="font-display text-2xl font-bold text-[var(--color-navy)]">Useful for Tyler &amp; East Texas Facilities Teams</h2>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3 max-w-4xl mx-auto">
+        {[
+          {
+            href: '/blog/or-equipment-technology-refresh-texas',
+            title: 'OR Equipment Technology Refresh Guide',
+            desc: 'When to replace vs. repair aging surgical equipment — capital refresh planning, OR technology lifecycle, and what to expect during an upgrade for Texas hospitals.',
+          },
+          {
+            href: '/blog/or-installation-planning-guide-texas',
+            title: 'OR Installation Planning Guide',
+            desc: 'What Texas hospitals and surgery centers need to know before breaking ground on an OR renovation or new build — from design coordination through commissioning.',
+          },
+          {
+            href: '/services/preventive-maintenance',
+            title: 'Preventive Maintenance Programs',
+            desc: 'Structured PM plans for surgical tables, OR lights, and equipment booms — survey documentation included for Joint Commission and CMS readiness.',
+          },
+        ].map((r) => (
+          <a
+            href={r.href}
+            class="group block bg-white border border-[var(--color-border)] rounded-xl p-6 hover:border-[var(--color-blue)] hover:shadow-md transition"
+          >
+            <h3 class="font-bold text-[var(--color-navy)] text-sm group-hover:text-[var(--color-blue)] transition mb-2">{r.title}</h3>
+            <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">{r.desc}</p>
+            <span class="inline-flex items-center gap-1 mt-3 text-xs font-semibold text-[var(--color-blue)]">
+              Read more
+              <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Have an OR Equipment Need in Tyler or East Texas?"
+    subhead="Tell us what you need — we'll confirm coverage and respond within one business day."
+    primaryLabel="Contact Our Team"
+    primaryHref="/contact"
+    secondaryLabel="Request a Quote"
+  />
+</BaseLayout>
