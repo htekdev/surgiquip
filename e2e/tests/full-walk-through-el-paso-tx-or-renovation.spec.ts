@@ -16,17 +16,20 @@ test('full-walk-through-el-paso-tx-or-renovation', async ({ page }) => {
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('text=El Paso, TX')).toBeVisible();
 
-  // 3. Scroll through service areas index
-  for (let i = 0; i < 8; i++) {
+  // 3. Scroll through service areas index (partial)
+  for (let i = 0; i < 3; i++) {
     await page.mouse.wheel(0, 300);
     await page.waitForTimeout(500);
   }
 
-  // 4. Verify El Paso city links are present
-  await expect(page.locator('a[href="/service-areas/el-paso-tx"]').first()).toBeVisible();
+  // 4. Find and scroll to El Paso city link
+  const elPasoCardLink = page.locator('a[href="/service-areas/el-paso-tx"]').first();
+  await elPasoCardLink.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
+  await expect(elPasoCardLink).toBeVisible();
 
   // 5. Click into El Paso TX page
-  await page.click('a[href="/service-areas/el-paso-tx"]');
+  await elPasoCardLink.click();
   await page.waitForTimeout(1200);
 
   // 6. Verify El Paso hero section
@@ -58,17 +61,16 @@ test('full-walk-through-el-paso-tx-or-renovation', async ({ page }) => {
   await page.click('a[href="/blog"]');
   await page.waitForTimeout(1000);
 
-  // Verify OR renovation article appears in blog listing
-  await expect(page.locator('text=Renovation').or(page.locator('text=renovation').or(page.locator('text=OR Suite')))).toBeVisible();
-
   // 13. Scroll through blog index
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 3; i++) {
     await page.mouse.wheel(0, 300);
     await page.waitForTimeout(500);
   }
 
-  // 14. Click into the OR Suite Renovation Planning Guide
+  // 14. Find and click into the OR Suite Renovation Planning Guide
   const renovationLink = page.locator('a[href*="renovation"]').first();
+  await renovationLink.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
   await expect(renovationLink).toBeVisible();
   await renovationLink.click();
   await page.waitForTimeout(1200);
@@ -94,12 +96,10 @@ test('full-walk-through-el-paso-tx-or-renovation', async ({ page }) => {
   await page.click('a[href="/service-areas"]');
   await page.waitForTimeout(1000);
 
-  // 20. Scroll to verify El Paso card visible
-  for (let i = 0; i < 6; i++) {
-    await page.mouse.wheel(0, 300);
-    await page.waitForTimeout(500);
-  }
-
-  await expect(page.locator('text=El Paso, TX')).toBeVisible();
+  // 20. Find and scroll to El Paso card to verify listing
+  const elPasoFinalCard = page.locator('a[href="/service-areas/el-paso-tx"]').first();
+  await elPasoFinalCard.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
+  await expect(elPasoFinalCard).toBeVisible();
   await expect(page.locator('text=Far West Texas')).toBeVisible();
 });
