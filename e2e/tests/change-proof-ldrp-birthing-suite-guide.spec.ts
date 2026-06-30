@@ -137,7 +137,8 @@ test('change-proof-ldrp-birthing-suite-guide', async ({ page }) => {
   await showPhaseLabel(page, '🏥 Woman\'s Hospital of Texas — 35 LDRP Suites');
   await page.waitForTimeout(1000);
 
-  const womansSection = page.locator("text=Woman's Hospital of Texas").first();
+  // Use h3 filter to avoid straight-quote vs. typographic-quote mismatch on "Woman's"
+  const womansSection = page.locator('h3').filter({ hasText: 'Woman' }).first();
   await womansSection.scrollIntoViewIfNeeded();
   await expectVisible(womansSection, "Woman's Hospital of Texas installation");
 
