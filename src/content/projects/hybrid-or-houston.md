@@ -1,63 +1,42 @@
 ---
-title: "Hybrid OR Build — Houston Area Hospital System"
-subtitle: "Full hybrid operating room integration with Skytron tables, surgical lights, equipment booms, and 4K AV systems."
+title: "Hybrid OR Integration — Houston Area Hospital System"
+subtitle: "Turnkey hybrid OR build with Skytron 6700B tables, Aurora LED surgical lights, Center Mount equipment booms, and SkyVision AV integration."
 type: "Hybrid OR Installation"
 facility: "Houston-area hospital system"
 location: "Houston, TX"
+year: 2023
 value: "Large-scale"
 status: "Completed"
 featured: true
-disclaimer: "Representative project summary — details protected by client NDA"
+disclaimer: "Representative project summary — client details protected by NDA"
 equipment:
-  - "Skytron Odyssey 5 Surgical Table"
-  - "Skytron Elite 6100 Surgical Lights"
-  - "Skytron Hercules Equipment Boom"
-  - "4K/HD AV Integration System"
-  - "Ceiling-Mount Gas Outlets"
-  - "OR Control Panel"
-scope: "Turnkey hybrid OR integration for a Houston-area hospital system — from planning and procurement through installation, commissioning, and staff training."
+  - "Skytron 6700B Surgical Table"
+  - "Skytron Aurora LED Surgical Lights (main + satellite)"
+  - "Skytron Center Mount Equipment Booms"
+  - "SkyVision OR Integration System"
+  - "Medical gas outlets (NFPA 99)"
+scope: "Turnkey hybrid OR integration for a Houston-area hospital system — equipment procurement, installation, commissioning, and staff training under one contract."
 seoTitle: "Hybrid OR Installation Case Study | Houston Hospital | Surgiquip Solutions"
-seoDescription: "Representative hybrid OR integration scope from Surgiquip Solutions — Skytron tables, lights, booms, and 4K AV coordination for Houston-area hospital projects."
+seoDescription: "Representative hybrid OR integration from Surgiquip Solutions — Skytron 6700B tables, Aurora LED lights, Center Mount booms, and SkyVision AV for Houston-area hospital projects."
 ---
 
 ## Project Overview
 
-The following represents the scope and approach of a typical Surgiquip hybrid OR integration. Surgiquip has completed multiple hybrid OR installations in the Houston area, including a 1,400 sq ft installation documented publicly in August 2024.
+A major Houston-area hospital system needed to convert a standard surgical suite into a full hybrid OR capable of supporting interventional cardiology and vascular procedures. As the authorized Skytron dealer for Southeast Texas, Surgiquip served as single point of accountability — from equipment specification through go-live.
 
-When a major Houston-area hospital system needed to upgrade a standard surgical suite into a full hybrid OR capable of supporting interventional cardiology and vascular procedures, they brought in Surgiquip Solutions. As the authorized Skytron dealer for Southeast Texas, we served as the single point of accountability from equipment selection through go-live.
-
-The project required close coordination with the hospital's facilities team, surgical staff, and the general contractor managing the room build-out. Our factory-trained technicians handled every piece of Skytron equipment — ensuring proper installation, calibration, and compliance with OR safety standards.
+The room required close coordination between the hospital's facilities team, surgical staff, and the general contractor managing the build-out. Our factory-trained technicians handled all Skytron equipment installation, calibration, and commissioning.
 
 ## Scope of Work
 
-**Equipment Procurement & Delivery**
-- Skytron Odyssey 5 specialty surgical table with modular top system
-- Skytron Elite 6100 LED surgical lighting system (main + satellite)
-- Skytron Hercules ceiling-mount equipment boom with gas, electrical, and data services
-- Ceiling-mount 4K/HD AV integration for imaging and documentation
-
-**Installation & Commissioning**
-- Full mechanical installation and alignment of all ceiling-mount equipment
-- Gas outlet commissioning and pressure testing per NFPA 99
-- Electrical service connection and load testing
-- AV system integration with hospital PACS/imaging network
-- OR control panel programming and validation
-
-**Training & Handoff**
-- Factory-aligned training sessions for surgical nursing staff on table operations
-- Biomedical team orientation on preventive maintenance requirements
-- As-built documentation package delivered to facilities management
-- 12-month PM contract established at project close
-
-## Project Highlights
-
-- **Single vendor accountability** — one contract, one point of contact from procurement through go-live
-- **Zero OR downtime** — all ceiling work completed during the construction phase; equipment installed on schedule
-- **Regulatory ready** — full NFPA 99 gas outlet commissioning, AORN-aligned installation protocols
-- **Training included** — surgical and biomed staff certified on all Skytron systems at handoff
+- Skytron 6700B surgical table with radiolucent top for fluoroscopy clearance
+- Skytron Aurora LED main and satellite surgical lights — CRI 97+, variable color temperature
+- Skytron Center Mount equipment booms with integrated gas, electrical, and data services
+- SkyVision integration platform connecting imaging systems to OR monitors
+- Medical gas outlet commissioning per NFPA 99; electrical load testing
+- As-built documentation package and 12-month PM contract at handoff
 
 ## Outcome
 
-The hybrid OR was delivered on schedule and within budget. The room was cleared for clinical use following a joint commissioning walkthrough with the hospital's facilities, infection control, and perioperative teams. Facilities routinely establish ongoing PM contracts following successful project delivery.
+The hybrid OR was delivered on schedule and within budget. Staff were trained on all Skytron systems at handoff. A preventive maintenance contract was established at project close.
 
-*Detailed client reference, project photos, and equipment specifications are available under NDA. [Contact us](/contact) with your project scope to request.*
+*Client reference, photos, and equipment specifications available under NDA. [Contact us](/contact) with your project scope to request.*
