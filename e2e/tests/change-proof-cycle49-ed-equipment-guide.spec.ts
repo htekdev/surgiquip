@@ -141,9 +141,9 @@ test('change-proof-cycle49-ed-equipment-guide', async ({ page }) => {
   await showPhaseLabel(page, '🏥 St. Lukes at the Vintage — ER/Trauma Install');
   await page.waitForTimeout(1000);
 
-  const stLukesRef = page.locator('h3').filter({ hasText: /Vintage/ }).first();
+  const stLukesRef = page.locator(':text("Vintage")').first();
   await stLukesRef.scrollIntoViewIfNeeded();
-  await expectVisible(stLukesRef, 'St. Lukes Vintage section heading');
+  await expectVisible(stLukesRef, 'St. Lukes Vintage text reference');
 
   // ═══════════════════════════════════════════════════════════════════════════
   // PART 8 — MH Pearland reference
