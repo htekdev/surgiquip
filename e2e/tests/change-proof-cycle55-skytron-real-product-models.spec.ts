@@ -155,12 +155,12 @@ test('change-proof-cycle55-skytron-real-product-models', async ({ page }) => {
   await credH2.scrollIntoViewIfNeeded();
   await expectVisible(credH2, 'Authorized Means Protected h2');
 
-  // CTA
+  // CTA — scope to main to avoid hidden StickyMobileCTA (mobile-only, hidden on desktop)
   await smoothScroll(page, 600, 260, 500);
   await showPhaseLabel(page, '📞 Bottom CTA — Request a Quote');
   await page.waitForTimeout(1000);
 
-  const ctaBtn = page.locator('a[href="/quote"]').last();
+  const ctaBtn = page.locator('main a[href="/quote"]').last();
   await ctaBtn.scrollIntoViewIfNeeded();
   await expectVisible(ctaBtn, 'Request a Quote CTA button');
 
