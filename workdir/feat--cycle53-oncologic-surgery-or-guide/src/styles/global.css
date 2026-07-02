@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0c3878;
+  --color-navy-dark: #082858;
+  --color-blue: #1e6fd9;
+  --color-blue-light: #3a8aee;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f7f9fc;
+  --color-text: #0f1729;
+  --color-text-muted: #5b6b85;
+  --color-border: #e5e9f0;
+
+  /* Playfair Display — premium serif for display headlines (h1, h2) */
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  /* Inter — clean sans-serif for body, UI, and smaller headings (h3–h5) */
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Ensure fonts render without layout shift */
+@font-face {
+  font-family: "Playfair Display";
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Smooth scroll for skip-to-content and anchor links */
+    scroll-behavior: smooth;
+  }
+  body { background: var(--color-surface); }
+
+  /* H1 + H2 — Playfair Display (premium serif, editorial display headlines) */
+  h1, h2 {
+    font-family: var(--font-display);
+    color: var(--color-navy);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  h1 { letter-spacing: -0.025em; }
+
+  /* H3–H5 — Inter (clean sans-serif for UI subheadings, card titles, nav labels) */
+  h3, h4, h5 {
+    font-family: var(--font-body);
+    color: var(--color-navy);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  a { color: var(--color-blue); }
+  a:hover { color: var(--color-blue-light); }
+
+  /* Visible focus ring for keyboard navigation — Lighthouse a11y requirement */
+  :focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  /* Suppress focus ring for mouse users on main (skip-to-content target) */
+  #main-content:focus { outline: none; }
+}
+
+/* Respect user's motion preferences — WCAG 2.3.3 (AAA) + Lighthouse best practice */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 font-semibold text-white transition;
+    background: var(--color-blue);
+  }
+  .btn-primary:hover { background: var(--color-blue-light); color: white; }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 font-semibold text-white/90 underline-offset-4 hover:underline transition;
+  }
+
+  .container-x {
+    @apply mx-auto max-w-7xl px-6 lg:px-8;
+  }
+
+  /* Project case study body — styled markdown from content collection */
+  .project-body h2 {
+    font-family: var(--font-display);
+    color: var(--color-navy);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+  .project-body h3 {
+    font-family: var(--font-display);
+    color: var(--color-navy);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .project-body p {
+    color: var(--color-text);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+    font-size: 1.0625rem;
+  }
+  .project-body ul {
+    margin-bottom: 1.25rem;
+    padding-left: 1.25rem;
+  }
+  .project-body ul li {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 0.35rem;
+    list-style-type: disc;
+  }
+  .project-body strong {
+    color: var(--color-navy);
+    font-weight: 600;
+  }
+  .project-body a {
+    color: var(--color-blue);
+    text-underline-offset: 3px;
+    text-decoration: underline;
+  }
+  .project-body a:hover { color: var(--color-blue-light); }
+  .project-body em {
+    color: var(--color-text-muted);
+    font-style: italic;
+    font-size: 0.9375rem;
+  }
+}

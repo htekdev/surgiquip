@@ -1,0 +1,188 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Preventive Maintenance for Medical Equipment',
+  provider: { '@id': `${site.url}#organization` },
+  description: 'Planned preventive maintenance programs for surgical tables, lights, booms, and OR equipment in Texas. Compliance documentation included.',
+  areaServed: [{ '@type': 'State', name: 'Texas' }],
+  serviceType: 'Preventive Maintenance',
+  url: `${site.url}/services/preventive-maintenance`,
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${site.url}/services` },
+    { '@type': 'ListItem', position: 3, name: 'Preventive Maintenance', item: `${site.url}/services/preventive-maintenance` },
+  ],
+};
+
+const pmIncludes = [
+  {
+    icon: '<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
+    title: 'Scheduled Inspections',
+    desc: 'Semi-annual or annual inspection visits coordinated around your OR schedule — no surprise shutdowns.',
+  },
+  {
+    icon: '<path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-3 3-2.4-2.4 3-3z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>',
+    title: 'Parts Replacement',
+    desc: 'Wear items replaced on a proactive schedule — filters, seals, cables, and hardware — before they become failure points.',
+  },
+  {
+    icon: '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+    title: 'Performance Testing',
+    desc: 'Full functional testing of every table articulation, light intensity level, boom outlet, and AV signal path — documented before we leave.',
+  },
+  {
+    icon: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+    title: 'Compliance Certificates',
+    desc: 'PM completion certificates and service records formatted for Joint Commission, DNV, and CMS survey readiness.',
+  },
+  {
+    icon: '<rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+    title: 'Priority Scheduling',
+    desc: 'PM contract clients receive priority dispatch for service calls — your repairs jump to the front of the queue.',
+  },
+  {
+    icon: '<circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+    title: 'Equipment Lifecycle Planning',
+    desc: 'We track equipment age and condition to provide proactive replacement recommendations — avoiding capital surprises.',
+  },
+];
+
+const complianceItems = [
+  'Joint Commission equipment maintenance standards (EC.02.04.01)',
+  'DNV GL — Healthcare accreditation requirements',
+  'CMS Conditions of Participation for surgical facilities',
+  'NFPA 99 medical gas system testing requirements',
+  'Manufacturer service interval specifications',
+  'Texas Department of Health facility regulations',
+];
+---
+<BaseLayout
+  title="Preventive Maintenance for Medical Equipment | Surgiquip Solutions"
+  description="Planned maintenance programs for surgical tables, lights, and OR equipment in Texas. Compliance documentation included. Authorized Skytron service."
+  schema={[serviceSchema, breadcrumbSchema]}
+>
+          </nav>
+          <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Services</div>
+          <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            Preventive Maintenance
+          </h1>
+          <p class="mt-6 text-xl text-white/85 max-w-xl leading-relaxed">
+            Maximize uptime, extend equipment life, and stay survey-ready with a managed PM program from Surgiquip — the same team that installed and services your OR.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="/quote" class="btn-primary px-7 py-3.5">Request PM Proposal</a>
+            <a href={`tel:${site.phoneE164}`} class="inline-flex items-center gap-2 px-7 py-3.5 rounded-md border border-white/40 font-semibold text-white hover:bg-white/10 transition">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1l-2.3 2.3z"/></svg>
+              Call {site.phone}
+            </a>
+          </div>
+        </div>
+        <div class="hidden lg:block">
+          <img
+            src="/images/services/preventive-maintenance-hero.webp"
+            alt="Surgiquip technician performing preventive maintenance on surgical equipment in Texas"
+            class="rounded-2xl shadow-2xl object-cover w-full aspect-[4/3]"
+            loading="eager"
+            decoding="async"
+            width="768"
+            height="576"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-x py-16">
+    <div class="max-w-3xl">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Why Planned Maintenance</div>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-[var(--color-navy)]">
+        Planned Beats Reactive — Every Time
+      </h2>
+      <p class="mt-4 text-lg text-[var(--color-text-muted)] leading-relaxed">
+        Emergency repairs cost more, take longer, and happen at the worst possible time. A managed PM program with Surgiquip keeps your OR equipment performing at specification, your records survey-ready, and your capital budget predictable.
+      </p>
+      <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+        Our PM programs cover the equipment we sell and install — Skytron tables, surgical lights, equipment booms, and hybrid OR systems — maintained by the same factory-trained technicians who put them in. No learning curve. No guesswork.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x">
+      <div class="text-center mb-12">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Program Inclusions</div>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">What's Included in Every PM Visit</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {pmIncludes.map((item) => (
+          <div class="bg-white rounded-lg border border-[var(--color-border)] p-6 hover:shadow-md hover:border-[var(--color-blue)] transition">
+            <div class="w-12 h-12 rounded-full bg-[var(--color-surface-alt)] flex items-center justify-center text-[var(--color-navy)] mb-4">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" set:html={item.icon} />
+            </div>
+            <h3 class="font-bold text-lg text-[var(--color-navy)] mb-2">{item.title}</h3>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container-x py-16">
+    <div class="grid gap-12 lg:grid-cols-2 items-start">
+      <div>
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Compliance Coverage</div>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">
+          Stay Survey-Ready Year-Round
+        </h2>
+        <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+          Healthcare accreditation surveys don't announce themselves. Our PM documentation is formatted to satisfy the most common compliance frameworks so your biomedical team has exactly what they need — when they need it.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {complianceItems.map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[var(--color-blue)] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="text-[var(--color-text-muted)] text-sm">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="space-y-4">
+        {[
+          ['Reduced Emergency Repairs', 'Proactive part replacement eliminates 80%+ of emergency calls for maintained equipment.'],
+          ['Extended Equipment Life', 'Proper maintenance extends surgical table and light lifespan by 3–5 years beyond typical.'],
+          ['Predictable Budgeting', 'Annual PM costs are a fraction of a single emergency repair or premature replacement.'],
+          ['Staff Confidence', 'Surgeons and OR nurses perform better when they trust the equipment won\'t fail mid-case.'],
+        ].map(([title, desc]) => (
+          <div class="p-5 bg-[var(--color-surface-alt)] rounded-lg border border-[var(--color-border)]">
+            <div class="flex items-start gap-3">
+              <div class="w-2 h-2 rounded-full bg-[var(--color-blue)] mt-2 shrink-0"></div>
+              <div>
+                <div class="font-semibold text-[var(--color-navy)]">{title}</div>
+                <div class="text-sm text-[var(--color-text-muted)] mt-1">{desc}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Protect Your OR Investment"
+    subhead="Get a PM proposal for your facility. We'll inventory your equipment and recommend the right program — annual, semi-annual, or custom."
+    primaryLabel="Request PM Proposal"
+  />
+</BaseLayout>
+

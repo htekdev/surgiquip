@@ -1,0 +1,36 @@
+---
+import { site } from '~/data/site';
+
+export interface Props {
+  heading?: string;
+  subhead?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+const {
+  heading = 'Ready to Upgrade Your Operating Room?',
+  subhead = `Talk to our team today. We respond within one business day. ${site.yearsInBusiness} years of trust — from single-facility repairs to complete hybrid OR builds.`,
+  primaryLabel = 'Request a Quote',
+  primaryHref = '/quote',
+  secondaryLabel = `Call ${site.phone}`,
+  secondaryHref = `tel:${site.phoneE164}`,
+} = Astro.props;
+---
+<section class="bg-[var(--color-navy)] py-20">
+  <div class="container-x text-center">
+    <h2 class="font-display text-3xl md:text-4xl font-bold text-white">{heading}</h2>
+    <p class="mt-4 text-white/80 max-w-2xl mx-auto text-lg">{subhead}</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href={primaryHref} class="btn-primary px-8 py-4 text-base">{primaryLabel}</a>
+      <a href={secondaryHref} class="inline-flex items-center gap-2 px-8 py-4 rounded-md border border-white/40 font-semibold text-white hover:border-white hover:bg-white/10 transition text-base">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1l-2.3 2.3z"/>
+        </svg>
+        {secondaryLabel}
+      </a>
+    </div>
+  </div>
+</section>

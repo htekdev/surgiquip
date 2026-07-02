@@ -1,0 +1,51 @@
+---
+import { site } from '~/data/site';
+---
+<section class="relative bg-[var(--color-navy)] text-white overflow-hidden">
+  <div class="absolute inset-y-0 right-0 w-full lg:w-1/2 opacity-30 lg:opacity-100" aria-hidden="true">
+    <img
+      src="/images/hero/hero-or-suite.webp"
+      alt="Modern operating room with premium surgical equipment"
+      class="w-full h-full object-cover"
+      width="1200"
+      height="800"
+      loading="eager"
+      fetchpriority="high"
+      decoding="sync"
+    />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-navy)] via-[var(--color-navy)]/95 to-transparent lg:to-[var(--color-navy)]/30" aria-hidden="true"></div>
+
+  <div class="container-x relative py-20 lg:py-28">
+    <div class="max-w-2xl">
+      <h1 class="font-display text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.05] text-white tracking-tight">
+        Medical Equipment Sales &amp; Service —<br/>
+        <span class="text-white">Dedicated to Excellence Since {site.established}</span>
+      </h1>
+      <p class="mt-6 text-lg text-white/85 max-w-xl">
+        Houston's trusted partner for surgical equipment, OR installation, and preventive maintenance — serving Texas healthcare facilities for over four decades.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-5">
+        <a href="/quote" class="btn-primary">
+          Get a Quote
+          <svg class="w-4 h-4" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </a>
+        <a href="#services" class="btn-ghost">
+          Explore Our Services
+          <svg class="w-4 h-4" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-12 inline-flex items-center gap-3 bg-white/10 backdrop-blur rounded-full px-5 py-3 border border-white/20">
+        <div class="w-14 h-14 rounded-full bg-white text-[var(--color-navy)] flex flex-col items-center justify-center font-display font-bold leading-none">
+          <span class="text-xl">{site.yearsInBusiness}</span>
+          <span class="text-[8px] tracking-wider">YEARS</span>
+        </div>
+        <div class="text-sm">
+          <div class="font-bold">{site.established} — {new Date().getFullYear()}</div>
+          <div class="text-xs text-white/80 italic">{site.brand}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

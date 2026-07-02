@@ -1,0 +1,272 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import FAQSection from '~/components/FAQSection.astro';
+import { site } from '~/data/site';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Operating Room Installation & Integration',
+  provider: { '@id': `${site.url}#organization` },
+  description: 'Turnkey operating room installation and hybrid OR integration in Texas. Surgical tables, lights, booms, AV systems, and complete OR builds from planning to go-live.',
+  areaServed: [{ '@type': 'State', name: 'Texas' }],
+  serviceType: 'Operating Room Installation',
+  url: `${site.url}/services/or-installation`,
+};
+
+// OR Installation FAQ — 4 questions specific to this service page.
+// Matching FAQPage JSON-LD below enables Google FAQ rich results for this page.
+const orFAQs = [
+  {
+    q: 'What is included in a turnkey OR installation by Surgiquip?',
+    a: 'A Surgiquip turnkey OR installation covers the full project lifecycle: facility assessment and planning, equipment selection, coordination with your architect and GC, delivery staging, certified installation of surgical tables, lights, and booms, AV system commissioning for hybrid ORs, as-built documentation, and staff training. We manage every phase so your team can focus on clinical preparation.',
+  },
+  {
+    q: 'How long does an operating room installation take?',
+    a: 'Project timelines vary based on scope. A single-room surgical table and light installation can be completed in one to three days. A full hybrid OR build — including AV integration, multiple boom systems, and documentation packages — typically spans four to twelve weeks depending on construction schedule, equipment lead times, and facility access windows. We provide a detailed schedule at project kickoff.',
+  },
+  {
+    q: 'Does Surgiquip coordinate with our architects and general contractors?',
+    a: 'Yes. Coordinating with your architect, GC, and biomedical engineering team is a standard part of how we manage OR installations. We participate in construction coordination meetings, submit equipment packages for architectural review, and align installation milestones with your overall construction schedule — so nothing is left to last-minute improvisation.',
+  },
+  {
+    q: 'Do you service equipment after installation is complete?',
+    a: `Absolutely. Surgiquip provides ongoing service and repair, and preventive maintenance programs for all equipment we install. As the authorized Skytron dealer for Southeast Texas, our factory-trained technicians know every component of your surgical suite. Call us at <a href="tel:${site.phoneE164}" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">${site.phone}</a> or <a href="/services/preventive-maintenance" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">learn about our PM programs</a>.`,
+  },
+];
+
+const orFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: orFAQs.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a.replace(/<[^>]+>/g, ''),
+    },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${site.url}/services` },
+    { '@type': 'ListItem', position: 3, name: 'OR Installation', item: `${site.url}/services/or-installation` },
+  ],
+};
+
+const deliverables = [
+  {
+    icon: '<path d="M9 20H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v3M9 12h2M9 16h2M13 12h6M13 16h6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
+    title: 'Facility Assessment & Planning',
+    desc: 'We survey your OR space, review mechanical drawings, and develop a detailed equipment layout — coordinating with your architect, GC, and biomedical team from day one.',
+  },
+  {
+    icon: '<rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M9 9h6M9 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+    title: 'Surgical Table Installation',
+    desc: 'Precision Skytron table placement, anchoring, and commissioning. We test every articulation, verify weight capacity, and certify per manufacturer specifications.',
+  },
+  {
+    icon: '<circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 20h8M12 12v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+    title: 'Surgical Light Systems',
+    desc: 'Ceiling mount installation, cable routing, power connection, and full photometric testing. We ensure the light meets the lux levels your surgical team needs.',
+  },
+  {
+    icon: '<rect x="3" y="8" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 8V5a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+    title: 'Equipment Boom Installation',
+    desc: 'Structural ceiling attachment, service column assembly, and commissioning of all gas, electrical, and data connections per NFPA 99 and facility standards.',
+  },
+  {
+    icon: '<rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+    title: 'Hybrid OR AV Integration',
+    desc: '4K display mounting and commissioning, HDMI/SDI signal routing, AV switching systems, and OR-grade video distribution for procedures and remote viewing.',
+  },
+  {
+    icon: '<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    title: 'Documentation & Commissioning',
+    desc: "As-built drawings, equipment warranties, compliance documentation, and staff training materials — everything for your records and your first Joint Commission survey.",
+  },
+];
+
+const projectPhases = [
+  ['Discovery', 'OR dimensions, procedure volume review, budget alignment, and equipment selection.'],
+  ['Design', 'Equipment layout, MEP coordination, submittal packages for GC and architect.'],
+  ['Pre-Installation', 'Factory order, delivery staging, and pre-installation coordination with GC.'],
+  ['Installation', 'Certified installation with daily progress updates to your facilities team.'],
+  ['Commissioning', 'Full functional testing of all systems — tables, lights, booms, AV, gas outlets.'],
+  ['Training', 'Staff orientation for OR nursing, biomedical, and facilities teams.'],
+  ['Go-Live Support', '30-day go-live period with priority response for any adjustments needed.'],
+];
+
+// HowTo JSON-LD — maps the 7 OR installation phases to schema.org HowToStep items.
+// Google may show numbered-step rich results for queries like "how to install an operating room"
+// or "OR installation process" — directly surfacing Surgiquip as the expert.
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Plan and Execute an Operating Room Installation',
+  description:
+    'A proven 7-phase process for turnkey operating room installation — from initial facility assessment and equipment selection through staff training and 30-day go-live support. Used by Surgiquip Solutions for OR installations across Texas since 1983.',
+  totalTime: 'PT4W',
+  estimatedCost: {
+    '@type': 'MonetaryAmount',
+    currency: 'USD',
+    minValue: 30000,
+    maxValue: 2000000,
+  },
+  tool: [
+    { '@type': 'HowToTool', name: 'Skytron Surgical Table' },
+    { '@type': 'HowToTool', name: 'Surgical Overhead Lights' },
+    { '@type': 'HowToTool', name: 'Ceiling Equipment Booms' },
+    { '@type': 'HowToTool', name: 'Hybrid OR AV Integration System' },
+  ],
+  step: projectPhases.map(([name, text], idx) => ({
+    '@type': 'HowToStep',
+    position: idx + 1,
+    name,
+    text,
+    url: `${site.url}/services/or-installation#phase-${idx + 1}`,
+  })),
+  provider: { '@id': `${site.url}#organization` },
+};
+---
+<BaseLayout
+  title="OR Installation & Hybrid OR Integration | Surgiquip Solutions"
+  description="Turnkey operating room installation in Texas. Surgical tables, lights, booms, and hybrid OR AV integration. Factory-certified installation by Surgiquip Solutions."
+  preloadImage="/images/services/or-installation-hero.webp"
+  schema={[serviceSchema, orFaqSchema, breadcrumbSchema, howToSchema]}
+>
+  <section class="bg-[var(--color-navy)] text-white overflow-hidden">
+    <div class="container-x py-20">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+            <a href="/" class="hover:text-white/90">Home</a>
+            <span class="mx-2">/</span>
+            <a href="/services" class="hover:text-white/90">Services</a>
+            <span class="mx-2">/</span>
+            <span class="text-white/90">OR Installation</span>
+          </nav>
+          <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Services</div>
+          <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            OR Installation & Integration
+          </h1>
+          <p class="mt-6 text-xl text-white/85 max-w-xl leading-relaxed">
+            Turnkey operating room builds from planning through go-live — surgical tables, lights, booms, hybrid OR AV integration, and documentation. {site.yearsInBusiness} years of Houston healthcare installations.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="/quote" class="btn-primary px-7 py-3.5">Plan Your OR Project</a>
+            <a href={`tel:${site.phoneE164}`} class="inline-flex items-center gap-2 px-7 py-3.5 rounded-md border border-white/40 font-semibold text-white hover:bg-white/10 transition">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1l-2.3 2.3z"/></svg>
+              Call {site.phone}
+            </a>
+          </div>
+        </div>
+        <div class="hidden lg:block">
+          <img
+            src="/images/services/or-installation-hero.webp"
+            alt="Surgiquip technician setting up a premium operating room in Houston, TX"
+            class="rounded-2xl shadow-2xl object-cover w-full aspect-[4/3]"
+            loading="eager"
+            decoding="async"
+            width="768"
+            height="576"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-x py-16">
+    <div class="max-w-3xl">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">What We Build</div>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-[var(--color-navy)]">
+        Complete OR Builds. No Shortcuts.
+      </h2>
+      <p class="mt-4 text-lg text-[var(--color-text-muted)] leading-relaxed">
+        A surgical suite is one of the most complex built environments in healthcare. Every component — the table, the lights, the booms, the AV systems — must work as a system. Surgiquip has managed OR builds from $30,000 single-room refreshes to $2M+ hybrid OR installations across Texas hospitals and surgery centers.
+      </p>
+      <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+        We coordinate with your architects, general contractors, and biomedical engineers throughout the project — not just on installation day. The result is a room that works exactly as specified and a team that knows every system in it.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x">
+      <div class="text-center mb-12">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Scope of Work</div>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Everything We Deliver</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {deliverables.map((item) => (
+          <div class="bg-white rounded-lg border border-[var(--color-border)] p-6 hover:shadow-md hover:border-[var(--color-blue)] transition">
+            <div class="w-12 h-12 rounded-full bg-[var(--color-surface-alt)] flex items-center justify-center text-[var(--color-navy)] mb-4">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" set:html={item.icon} />
+            </div>
+            <h3 class="font-bold text-lg text-[var(--color-navy)] mb-2">{item.title}</h3>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container-x py-16">
+    <div class="grid gap-12 lg:grid-cols-2 items-start">
+      <div>
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Project Lifecycle</div>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">
+          A Proven Process for Complex Builds
+        </h2>
+        <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+          OR installations are high-stakes: construction schedules, clinical schedules, and capital budgets all intersect. Our project management approach keeps all three on track with clear milestones and proactive communication.
+        </p>
+        <div class="mt-6 grid grid-cols-2 gap-4">
+          {[
+            ['$30K–$2M+', 'Project range'],
+            [site.yearsInBusiness + ' Years', 'OR build experience'],
+            ['500+', 'Facilities served'],
+            ['Factory', 'Certified installs'],
+          ].map(([val, label]) => (
+            <div class="p-4 bg-[var(--color-surface-alt)] rounded-lg border border-[var(--color-border)] text-center">
+              <div class="font-display text-2xl font-bold text-[var(--color-navy)]">{val}</div>
+              <div class="text-xs text-[var(--color-text-muted)] mt-1">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="bg-[var(--color-surface-alt)] rounded-xl p-8 border border-[var(--color-border)]">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-text-muted)] mb-5">Project Phases</div>
+      {/* id="phase-N" anchors are referenced by HowToStep schema URLs — keeps structured data linkable */}
+      <ol class="space-y-4">
+        {projectPhases.map(([phase, desc], i) => (
+          <li id={`phase-${i + 1}`} class="flex gap-4 scroll-mt-6">
+            <div class="shrink-0 w-8 h-8 rounded-full bg-[var(--color-blue)] text-white flex items-center justify-center text-sm font-bold">{i + 1}</div>
+            <div>
+              <div class="font-semibold text-[var(--color-navy)]">{phase}</div>
+              <div class="text-xs text-[var(--color-text-muted)] mt-0.5">{desc}</div>
+            </div>
+          </li>
+        ))}
+      </ol>
+      </div>
+    </div>
+  </section>
+
+  <FAQSection
+    eyebrow="OR Installation FAQ"
+    heading="Questions About Our OR Installation Services"
+    items={orFAQs}
+    bg="white"
+  />
+  <CTASection
+    heading="Planning an OR Build or Renovation?"
+    subhead="Tell us about your project. We'll provide a scope and timeline within one business day — no commitment required."
+    primaryLabel="Start Your OR Project"
+  />
+</BaseLayout>

@@ -1,0 +1,165 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+
+const teamSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'Surgiquip Solutions Team',
+  url: `${site.url}/about/team`,
+  description: 'The Surgiquip Solutions team — 43 years of medical equipment expertise in Southeast Texas.',
+  mainEntity: { '@id': `${site.url}#organization` },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'About', item: `${site.url}/about` },
+    { '@type': 'ListItem', position: 3, name: 'Our Team', item: `${site.url}/about/team` },
+  ],
+};
+
+const pillars = [
+  {
+    title: 'Factory-Trained Technicians',
+    desc: 'Every service technician on our team holds manufacturer-level certifications for the equipment they service. Skytron training. HSI training. Continuous education as product lines evolve.',
+    icon: '<path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
+  },
+  {
+    title: 'Experienced Sales Team',
+    desc: 'Our sales professionals understand surgical environments because most of them have spent careers inside hospitals and surgery centers. They consult — they don\'t pitch.',
+    icon: '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
+  },
+  {
+    title: 'Houston Roots',
+    desc: 'Our team is Houston-based, Texas-focused. We\'re not dispatched from a regional hub. We live here, we serve here, and we\'re accountable to this community.',
+    icon: '<path d="M12 22C8.13 22 5 18.87 5 15c0-5.25 7-13 7-13s7 7.75 7 13c0 3.87-3.13 7-7 7zm0-9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
+  },
+  {
+    title: '43 Years of Institutional Knowledge',
+    desc: 'When you\'ve been in one market for four decades, you accumulate something no training can replace: pattern recognition. Our team has seen every failure mode, every install challenge, and every client situation imaginable.',
+    icon: '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+  },
+];
+---
+<BaseLayout
+  title="Our Team | Surgiquip Solutions — Houston, TX"
+  description="The Surgiquip Solutions team — factory-trained technicians, experienced sales professionals, and 43 years of medical equipment expertise serving Southeast Texas."
+  schema={[teamSchema, breadcrumbSchema]}
+>
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/about" class="hover:text-white/90">About</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">Our Team</span>
+      </nav>
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Our Team</div>
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-white max-w-2xl leading-tight">
+        The People Behind 43 Years of Excellence
+      </h1>
+      <p class="mt-5 text-lg text-white/85 max-w-2xl leading-relaxed">
+        Surgiquip Solutions is built on expertise — factory-trained technicians, seasoned sales professionals, and a leadership team that has spent decades inside Texas hospital systems.
+      </p>
+    </div>
+  </section>
+
+  <!-- Team Introduction -->
+  <section class="container-x py-16">
+    <div class="grid gap-12 lg:grid-cols-2 items-start">
+      <div>
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">About Our Team</div>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">People You Can Count On</h2>
+        <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+          In medical equipment sales and service, the product is only as good as the people who deliver it. A Skytron table is a Skytron table wherever you buy it. The difference is whether someone shows up at 5 AM when it goes down before a scheduled OR day.
+        </p>
+        <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+          Our team has been built around a single principle: hire people who take accountability seriously. That means factory-certified training, not just general biomedical credentials. It means local presence, not remote dispatch. It means returning calls — including the one at 5 AM.
+        </p>
+        <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+          Detailed team profiles and bios are available upon request. If you'd like to know more about who you'd be working with before starting a project, contact us — we're happy to make introductions.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-4">
+          <a href="/contact" class="btn-primary">Meet the Team</a>
+          <a href="/about" class="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-[var(--color-border)] font-semibold text-[var(--color-navy)] hover:border-[var(--color-navy)] transition text-sm">
+            About Surgiquip
+          </a>
+        </div>
+      </div>
+
+      <!-- Team Stats -->
+      <div class="bg-[var(--color-surface-alt)] rounded-2xl border border-[var(--color-border)] p-8">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-text-muted)] mb-6">By the Numbers</div>
+        <div class="grid grid-cols-2 gap-6">
+          {[
+            [site.yearsInBusiness + '+', 'Years in Operation'],
+            ['500+', 'Facilities Served'],
+            ['A+', 'BBB Rating'],
+            ['24hr', 'Service Response'],
+          ].map(([value, label]) => (
+            <div class="text-center p-4 bg-white rounded-xl border border-[var(--color-border)]">
+              <div class="font-display text-3xl font-bold text-[var(--color-navy)]">{value}</div>
+              <div class="text-xs text-[var(--color-text-muted)] mt-1 leading-tight">{label}</div>
+            </div>
+          ))}
+        </div>
+        <p class="mt-6 text-xs text-[var(--color-text-muted)] text-center leading-relaxed">
+          These numbers represent the people behind them — technicians, project managers, account representatives, and support staff who have delivered on these commitments every single day.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Pillars -->
+  <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x">
+      <div class="text-center mb-12">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">What We Bring</div>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">What Makes Our Team Different</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2">
+        {pillars.map((item) => (
+          <div class="bg-white rounded-xl border border-[var(--color-border)] p-6 hover:shadow-md transition">
+            <div class="flex items-start gap-4">
+              <div class="shrink-0 w-10 h-10 rounded-lg bg-[var(--color-surface-alt)] flex items-center justify-center text-[var(--color-navy)]">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" set:html={item.icon} />
+              </div>
+              <div>
+                <h3 class="font-bold text-[var(--color-navy)] mb-2">{item.title}</h3>
+                <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Careers note -->
+  <section class="container-x py-12">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Careers</div>
+      <h2 class="font-display text-2xl font-bold text-[var(--color-navy)]">Join a Team That Shows Up</h2>
+      <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+        Surgiquip Solutions is always looking for experienced biomedical technicians, surgical equipment specialists, and healthcare sales professionals who share our commitment to excellence.
+      </p>
+      <a href={`mailto:${site.email}?subject=Career Inquiry — Surgiquip Solutions`} class="inline-flex items-center gap-2 mt-6 btn-primary">
+        Inquire About Openings
+      </a>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Want to Know Who You'd Be Working With?"
+    subhead="We're happy to introduce the team before you commit to a project. Call us or send a message and we'll set up a call."
+    primaryLabel="Contact Our Team"
+    primaryHref="/contact"
+    secondaryLabel={`Call ${site.phone}`}
+    secondaryHref={`tel:${site.phoneE164}`}
+  />
+</BaseLayout>
