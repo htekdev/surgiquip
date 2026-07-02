@@ -3,38 +3,153 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import CTASection from '~/components/CTASection.astro';
 import { site } from '~/data/site';
 
-const products = [
+// Real Skytron surgical table models
+const tableModels = [
   {
-    name: 'Surgical Tables',
-    description: 'Precision-engineered operating tables with multi-articulation, memory positioning, and radiolucent tabletops. Built to support complex surgical procedures for 20+ years.',
-    image: '/images/products/surgical-table.webp',
-    keywords: 'Skytron surgical table, OR table, operating table Houston',
+    model: '6700B',
+    badge: 'Flagship',
+    tagline: 'High-capacity multi-specialty table',
+    specs: [
+      { label: 'Weight Capacity', value: '1,000 lb' },
+      { label: 'Lateral Tilt', value: '±20°' },
+      { label: 'Trendelenburg', value: '±30°' },
+      { label: 'Table Top', value: 'Radiolucent carbon fiber' },
+    ],
+    highlights: [
+      'Memory positioning — saves up to 12 surgeon presets',
+      'Full C-arm radiolucency head-to-toe',
+      'Modular section exchange for orthopedic, prone, and lithotomy',
+      'Pendant or tabletop control panel',
+    ],
+    use: 'General, orthopedic, spine, gynecology, bariatric, trauma',
   },
   {
-    name: 'Surgical Lights',
-    description: 'Advanced LED overhead lighting systems with adjustable color temperature, shadow management, and integrated camera systems for the modern OR.',
-    image: '/images/products/surgical-light.webp',
-    keywords: 'Skytron surgical light, OR light, LED surgical light Houston',
+    model: '6701',
+    badge: 'Imaging-Optimized',
+    tagline: 'Column table for C-arm workflows',
+    specs: [
+      { label: 'Column Design', value: 'Pendant / floor column' },
+      { label: 'C-arm Access', value: '360° clearance' },
+      { label: 'Table Top', value: 'Full carbon fiber' },
+      { label: 'Traction', value: 'Optional traction tower' },
+    ],
+    highlights: [
+      'Unobstructed C-arm and O-arm positioning',
+      'Ideal for spine, trauma, and orthopedic imaging workflows',
+      'Integrated traction attachment points',
+      'Flush floor column — no base frame obstruction',
+    ],
+    use: 'Spine, orthopedic trauma, vascular, interventional',
   },
   {
-    name: 'Equipment Booms',
-    description: 'Ceiling-mounted equipment management arms with integrated gas, electrical, and data connections. Keep your OR floor clear and workflow efficient.',
-    image: '/images/products/equipment-boom.webp',
-    keywords: 'Skytron equipment boom, OR boom, ceiling boom Houston',
+    model: '3600 Series',
+    badge: 'Multi-Specialty',
+    tagline: 'Versatile platform for high-volume ORs',
+    specs: [
+      { label: 'Weight Capacity', value: '600 lb' },
+      { label: 'Table Sections', value: '5-section modular' },
+      { label: 'Controls', value: 'Hand pendant + tabletop' },
+      { label: 'Base', value: 'Floor-level low-profile' },
+    ],
+    highlights: [
+      'Interchangeable section design handles most specialties',
+      'Low floor-to-top height for shorter staff comfort',
+      'Compatible with most OR accessory systems',
+      'Cost-effective for high-volume general surgery suites',
+    ],
+    use: 'General surgery, GYN, ENT, urology, outpatient/ASC',
   },
   {
-    name: 'OR Integration',
-    description: 'Complete hybrid operating room solutions combining tables, lights, booms, and AV integration into one seamless surgical environment.',
-    image: '/images/products/or-integration.webp',
-    keywords: 'hybrid OR integration, OR AV system, operating room integration Houston',
+    model: '6000 / 6500 / 6600',
+    badge: 'Legacy Fleet Support',
+    tagline: 'Service and parts for installed Skytron fleets',
+    specs: [
+      { label: 'Support Type', value: 'Full factory parts' },
+      { label: 'Service', value: 'Factory-certified techs' },
+      { label: 'Upgrades', value: 'Section & accessory swaps' },
+      { label: 'PM', value: 'Scheduled programs available' },
+    ],
+    highlights: [
+      'Surgiquip stocks OEM Skytron parts for legacy 6000/6500/6600 tables',
+      'Factory-trained technicians familiar with every generation',
+      'Hydraulic, actuator, and pad replacement available',
+      'PM programs to extend fleet life and maintain TJC compliance',
+    ],
+    use: 'Facilities running multi-generation Skytron fleets',
   },
 ];
 
+// Real Skytron surgical light models
+const lightModels = [
+  {
+    model: 'Aurora LED',
+    badge: 'Primary OR Light',
+    image: '/images/products/surgical-light.webp',
+    tagline: 'High-CRI LED with optional integrated camera',
+    description:
+      'The Aurora LED delivers CRI 97+ and R9 95+ color rendering for accurate tissue differentiation across all surgical specialties. No IR heat at the field. Available with an integrated in-light camera for documentation and remote viewing — no separate camera arm required.',
+    specs: [
+      { label: 'CRI', value: '97+' },
+      { label: 'R9 (Red)', value: '95+' },
+      { label: 'Color Temp', value: '3,500–5,000 K adjustable' },
+      { label: 'IR Heat', value: 'None (LED)' },
+      { label: 'Camera', value: 'Optional in-light integration' },
+    ],
+    use: 'General, orthopedic, oncologic, neuro, GYN, robotic-assist',
+  },
+  {
+    model: 'Stellar LED',
+    badge: 'Standard OR Light',
+    image: '/images/products/surgical-light.webp',
+    tagline: 'Reliable LED performance for general surgery',
+    description:
+      'The Stellar provides high-quality LED surgical lighting with adjustable intensity and color temperature. A cost-effective solution for general OR suites that demand reliable, low-maintenance illumination without the in-light camera option.',
+    specs: [
+      { label: 'Light Type', value: 'LED' },
+      { label: 'Color Temp', value: 'Adjustable' },
+      { label: 'Shadow Mgmt', value: 'Multi-point LED array' },
+      { label: 'Maintenance', value: 'Long-life LED — no bulb changes' },
+    ],
+    use: 'General OR, outpatient, ASC suites',
+  },
+  {
+    model: 'AR24 Birthing Light',
+    badge: 'Women\'s Health',
+    image: '/images/products/surgical-light.webp',
+    tagline: 'Purpose-built for LDRP and birthing suites',
+    description:
+      'The AR24 is designed specifically for labor, delivery, recovery, and postpartum (LDRP) environments. Provides focused exam and delivery lighting without the intensity of a full OR overhead — appropriate for the patient-centered environment of a birthing suite.',
+    specs: [
+      { label: 'Application', value: 'LDRP, delivery, postpartum' },
+      { label: 'Design', value: 'Recessed / ceiling-mount' },
+      { label: 'Control', value: 'Bedside dimming' },
+      { label: 'Environment', value: 'Patient-comfort optimized' },
+    ],
+    use: 'LDRP rooms, birthing suites, women\'s health floors',
+  },
+  {
+    model: 'Mini Argos',
+    badge: 'Exam Light',
+    image: '/images/products/surgical-light.webp',
+    tagline: 'Portable exam and procedure light',
+    description:
+      'The Mini Argos is a compact, portable LED exam light for procedure rooms, patient rooms, and secondary lighting in clinical environments. Bright, focused spot with no shadow artifacts.',
+    specs: [
+      { label: 'Form Factor', value: 'Portable / wall-mount' },
+      { label: 'Light Type', value: 'LED' },
+      { label: 'Application', value: 'Exam, procedure, recovery rooms' },
+    ],
+    use: 'Procedure rooms, patient bays, recovery, secondary OR lighting',
+  },
+];
+
+// Schema.org
 const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'Skytron Surgical Equipment — Authorized Dealer Southeast Texas',
-  description: 'Full line of Skytron surgical tables, lights, booms, and OR integration systems. Sales, installation, and service in Southeast Texas.',
+  description:
+    'Full line of Skytron surgical tables (6700B, 6701, 3600), Aurora LED lights, Center Mount Booms, and SkyVision OR integration. Sales, installation, and service in Southeast Texas.',
   url: `${site.url}/products/skytron`,
   provider: {
     '@type': 'LocalBusiness',
@@ -42,24 +157,56 @@ const productSchema = {
     name: site.brand,
     areaServed: 'Southeast Texas',
   },
-  itemListElement: products.map((p, i) => ({
-    '@type': 'ListItem',
-    position: i + 1,
-    item: {
-      '@type': 'Product',
-      name: `Skytron ${p.name}`,
-      description: p.description,
-      image: `${site.url}${p.image}`,
-      brand: { '@type': 'Brand', name: 'Skytron' },
-      offers: {
-        '@type': 'Offer',
-        seller: { '@id': `${site.url}#organization` },
-        areaServed: 'Southeast Texas',
-        availability: 'https://schema.org/InStock',
-        priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'USD' },
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      item: {
+        '@type': 'Product',
+        name: 'Skytron 6700B Surgical Table',
+        description:
+          'High-capacity multi-specialty surgical table with 1,000 lb capacity, memory positioning, and full radiolucent carbon fiber top.',
+        brand: { '@type': 'Brand', name: 'Skytron' },
+        offers: { '@type': 'Offer', seller: { '@id': `${site.url}#organization` }, areaServed: 'Southeast Texas', availability: 'https://schema.org/InStock', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'USD' } },
       },
     },
-  })),
+    {
+      '@type': 'ListItem',
+      position: 2,
+      item: {
+        '@type': 'Product',
+        name: 'Skytron Aurora LED Surgical Light',
+        description:
+          'High-CRI (97+) LED surgical light with adjustable color temperature and optional integrated in-light camera. No IR heat.',
+        brand: { '@type': 'Brand', name: 'Skytron' },
+        offers: { '@type': 'Offer', seller: { '@id': `${site.url}#organization` }, areaServed: 'Southeast Texas', availability: 'https://schema.org/InStock', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'USD' } },
+      },
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      item: {
+        '@type': 'Product',
+        name: 'Skytron Center Mount Boom System',
+        description:
+          'Ceiling-mounted OR equipment boom with integrated gas, electrical, and data connections for surgical suite organization.',
+        brand: { '@type': 'Brand', name: 'Skytron' },
+        offers: { '@type': 'Offer', seller: { '@id': `${site.url}#organization` }, areaServed: 'Southeast Texas', availability: 'https://schema.org/InStock', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'USD' } },
+      },
+    },
+    {
+      '@type': 'ListItem',
+      position: 4,
+      item: {
+        '@type': 'Product',
+        name: 'Skytron SkyVision OR Integration',
+        description:
+          'Complete hybrid OR AV integration system — 4K display switching, room-level control, and data routing for modern surgical suites.',
+        brand: { '@type': 'Brand', name: 'Skytron' },
+        offers: { '@type': 'Offer', seller: { '@id': `${site.url}#organization` }, areaServed: 'Southeast Texas', availability: 'https://schema.org/InStock', priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'USD' } },
+      },
+    },
+  ],
 };
 
 const breadcrumbSchema = {
@@ -71,13 +218,15 @@ const breadcrumbSchema = {
     { '@type': 'ListItem', position: 3, name: 'Skytron', item: `${site.url}/products/skytron` },
   ],
 };
+
 ---
 <BaseLayout
-  title="Skytron Surgical Equipment | Authorized Dealer Houston TX | Surgiquip"
-  description="Authorized Skytron dealer for Southeast Texas. Surgical tables, lights, booms, and complete OR integration solutions. Sales, installation, and service."
+  title="Skytron Surgical Equipment | 6700B, Aurora LED, Booms | Authorized Dealer Houston TX"
+  description="Authorized Skytron dealer for Southeast Texas. Surgical tables (6700B, 6701, 3600), Aurora LED lights, Center Mount Booms, and SkyVision OR integration. Sales, installation, and service since 1983."
   schema={[productSchema, breadcrumbSchema]}
   preloadImage="/images/products/skytron-hero.webp"
 >
+  <!-- ── Hero ── -->
   <section class="bg-[var(--color-navy)] text-white overflow-hidden">
     <div class="container-x py-20">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -90,13 +239,13 @@ const breadcrumbSchema = {
             <span class="text-white/90">Skytron</span>
           </nav>
           <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-3 py-1 text-xs font-bold tracking-widest uppercase text-white/80 mb-4">
-            Authorized Dealer
+            Authorized Dealer · Southeast Texas
           </div>
           <h1 class="font-display text-4xl md:text-5xl font-bold mt-2 text-white leading-tight">
-            Skytron® Surgical Equipment for Southeast Texas
+            Skytron® Surgical Equipment
           </h1>
           <p class="mt-5 text-lg text-white/85 max-w-xl leading-relaxed">
-            As Skytron's exclusive authorized dealer for Southeast Texas, we provide the full product line — sales, installation, training, and ongoing service support backed by 43 years of expertise.
+            The full Skytron line — 6700B tables, Aurora LED lights, Center Mount Booms, and SkyVision OR integration. Factory-authorized sales, installation, and service for Southeast Texas hospitals and surgical centers since 1983.
           </p>
           <div class="mt-6 flex flex-wrap gap-3">
             <a href="/quote" class="btn-primary">Request a Quote</a>
@@ -109,7 +258,7 @@ const breadcrumbSchema = {
         <div class="hidden lg:block">
           <img
             src="/images/products/skytron-hero.webp"
-            alt="Premium Skytron surgical suite — OR lights, equipment booms, and surgical table setup"
+            alt="Skytron surgical suite — 6700B table, Aurora LED lights, Center Mount Booms"
             class="rounded-2xl shadow-2xl object-cover w-full aspect-[4/3]"
             loading="eager"
             decoding="async"
@@ -121,107 +270,266 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <!-- Why Skytron Banner -->
+  <!-- ── Badge bar ── -->
   <section class="bg-[var(--color-surface-alt)] border-b border-[var(--color-border)]">
-    <div class="container-x py-6">
-      <div class="flex flex-wrap items-center gap-6 text-sm text-[var(--color-text-muted)]">
+    <div class="container-x py-5">
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[var(--color-text-muted)]">
         <div class="flex items-center gap-2 font-semibold text-[var(--color-navy)]">
           <svg class="w-5 h-5 text-[var(--color-blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke-linecap="round"/></svg>
           Factory Authorized
         </div>
         <div class="w-px h-4 bg-[var(--color-border)] hidden sm:block" aria-hidden="true"></div>
-        <span>Exclusive Southeast Texas dealer</span>
+        <span>Tables: 6700B · 6701 · 3600 series</span>
         <div class="w-px h-4 bg-[var(--color-border)] hidden sm:block" aria-hidden="true"></div>
-        <span>Full product line: tables, lights, booms, OR integration</span>
+        <span>Lights: Aurora LED · Stellar · AR24 · Mini Argos</span>
         <div class="w-px h-4 bg-[var(--color-border)] hidden sm:block" aria-hidden="true"></div>
-        <span>Factory-certified installation &amp; service</span>
+        <span>Booms: Center Mount · SkyVision integration</span>
       </div>
     </div>
   </section>
 
-  <!-- Products Grid -->
+  <!-- ── Section nav anchor targets ── -->
+  <div id="tables" class="h-0 overflow-hidden" aria-hidden="true"></div>
+
+  <!-- ── Surgical Tables ── -->
   <section class="container-x py-16">
-    <div class="max-w-2xl mb-12">
-      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Product Line</div>
-      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">The Complete Skytron Catalog</h2>
+    <div class="max-w-2xl mb-10">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Surgical Tables</div>
+      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Skytron Operating Tables</h2>
       <p class="mt-3 text-[var(--color-text-muted)]">
-        Every product we sell is backed by factory-authorized installation, training, and ongoing service. No gray-market equipment. No unauthorized dealers.
+        From the flagship 6700B to the imaging-optimized 6701 and the versatile 3600 series — Surgiquip provides the complete Skytron table line with factory-certified installation and service.
       </p>
     </div>
 
-    <div class="grid gap-12 md:gap-16">
-      {products.map((product, i) => (
-        <div class={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12`}>
-          <div class="w-full md:w-1/2">
-            <img
-              src={product.image}
-              alt={`Skytron ${product.name} — Surgiquip Solutions`}
-              class="w-full rounded-xl shadow-lg border border-[var(--color-border)]"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <div class="w-full md:w-1/2">
-            <h2 class="text-2xl md:text-3xl font-bold text-[var(--color-navy)]">Skytron {product.name}</h2>
-            <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">{product.description}</p>
-            <div class="mt-6 flex flex-wrap gap-3">
-              <a href="/quote" class="inline-flex items-center gap-2 btn-primary text-sm">
-                Request Quote
-                <svg class="w-4 h-4" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-              </a>
-              <a href="/services/service-and-repair" class="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-[var(--color-border)] text-sm font-semibold text-[var(--color-navy)] hover:border-[var(--color-navy)] transition">
-                Service &amp; Repair
-              </a>
+    <div class="grid gap-6 md:grid-cols-2">
+      {tableModels.map((t) => (
+        <div class="bg-white rounded-2xl border border-[var(--color-border)] p-6 hover:shadow-md transition">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <span class="inline-block text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-[var(--color-navy)] text-white mb-2">{t.badge}</span>
+              <h3 class="text-xl font-bold text-[var(--color-navy)]">Skytron {t.model}</h3>
+              <p class="text-sm text-[var(--color-text-muted)] mt-1">{t.tagline}</p>
             </div>
+          </div>
+
+          <!-- Specs grid -->
+          <div class="grid grid-cols-2 gap-2 mb-4">
+            {t.specs.map((s) => (
+              <div class="bg-[var(--color-surface-alt)] rounded-lg px-3 py-2">
+                <div class="text-[10px] font-bold tracking-wide uppercase text-[var(--color-text-muted)]">{s.label}</div>
+                <div class="text-sm font-semibold text-[var(--color-navy)] mt-0.5">{s.value}</div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Highlights -->
+          <ul class="space-y-1.5 mb-4">
+            {t.highlights.map((h) => (
+              <li class="flex gap-2 text-sm text-[var(--color-text-muted)]">
+                <svg class="w-4 h-4 text-[var(--color-blue)] flex-shrink-0 mt-0.5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0a8 8 0 110 16A8 8 0 018 0zm3.78 5.22a.75.75 0 00-1.06 0L7 8.94 5.28 7.22a.75.75 0 10-1.06 1.06l2.25 2.25a.75.75 0 001.06 0l4.25-4.25a.75.75 0 000-1.06z"/></svg>
+                {h}
+              </li>
+            ))}
+          </ul>
+
+          <div class="border-t border-[var(--color-border)] pt-4 mt-4">
+            <p class="text-xs text-[var(--color-text-muted)]"><strong class="text-[var(--color-navy)]">Typical use:</strong> {t.use}</p>
           </div>
         </div>
       ))}
     </div>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="/quote" class="btn-primary">
+        Request a Table Quote
+      </a>
+      <a href="/blog/skytron-surgical-table-comparison-guide-texas-hospitals" class="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-[var(--color-border)] text-sm font-semibold text-[var(--color-navy)] hover:border-[var(--color-navy)] transition">
+        Compare Table Models →
+      </a>
+    </div>
   </section>
 
-  <!-- Dealer Credentials -->
+  <!-- ── Surgical Lights ── -->
+  <div id="lights" class="h-0 overflow-hidden" aria-hidden="true"></div>
   <section class="bg-[var(--color-surface-alt)] py-16">
     <div class="container-x">
-      <div class="text-center mb-10">
-        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Why Buy from Surgiquip</div>
-        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Authorized Means Protected</h2>
-        <p class="mt-3 text-[var(--color-text-muted)] max-w-xl mx-auto">
-          Purchasing Skytron equipment from an authorized dealer protects your warranty, your Joint Commission status, and your investment.
+      <div class="max-w-2xl mb-10">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Surgical Lights</div>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Skytron Lighting Systems</h2>
+        <p class="mt-3 text-[var(--color-text-muted)]">
+          From the Aurora LED's CRI 97+ performance to purpose-built LDRP lights and portable exam models — Skytron's lighting line covers every care environment.
         </p>
       </div>
-      <div class="grid gap-6 md:grid-cols-3">
-        {[
-          {
-            title: 'Factory Warranty',
-            desc: "All Skytron equipment sold by Surgiquip carries full factory warranty. Unauthorized resellers cannot offer this protection.",
-            icon: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" stroke="currentColor" stroke-width="1.5" fill="none"/>',
-          },
-          {
-            title: 'Certified Installation',
-            desc: 'Our technicians are factory-trained and certified for every Skytron product we sell. Installation is performed to manufacturer specifications.',
-            icon: '<path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
-          },
-          {
-            title: 'Ongoing Service Access',
-            desc: 'As the local authorized dealer, we stock Skytron parts and can dispatch factory-trained service technicians faster than any out-of-market provider.',
-            icon: '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
-          },
-        ].map((item) => (
-          <div class="bg-white rounded-xl border border-[var(--color-border)] p-6 hover:shadow-md transition">
-            <div class="w-10 h-10 rounded-lg bg-[var(--color-surface-alt)] flex items-center justify-center text-[var(--color-navy)] mb-4">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" set:html={item.icon} />
+
+      <!-- Aurora LED featured -->
+      <div class="bg-white rounded-2xl border-2 border-[var(--color-blue)] p-6 md:p-8 mb-6">
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="md:w-2/5">
+            <img
+              src="/images/products/surgical-light.webp"
+              alt="Skytron Aurora LED surgical light — CRI 97+ with optional in-light camera"
+              class="w-full rounded-xl shadow object-cover aspect-[4/3]"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="md:w-3/5">
+            <span class="inline-block text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-[var(--color-blue)] text-white mb-3">Featured · Primary OR Light</span>
+            <h3 class="text-2xl font-bold text-[var(--color-navy)]">Skytron Aurora LED</h3>
+            <p class="mt-3 text-[var(--color-text-muted)] leading-relaxed">
+              The Aurora LED delivers <strong class="text-[var(--color-navy)]">CRI 97+</strong> and <strong class="text-[var(--color-navy)]">R9 95+</strong> color rendering for accurate tissue differentiation — critical for oncology, neuro, and robotic-assist cases. No IR heat at the field. Available with an integrated in-light camera for documentation and remote viewing, eliminating a separate camera arm.
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-4">
+              {lightModels[0].specs.map((s) => (
+                <div class="bg-[var(--color-surface-alt)] rounded-lg px-3 py-2">
+                  <div class="text-[10px] font-bold tracking-wide uppercase text-[var(--color-text-muted)]">{s.label}</div>
+                  <div class="text-sm font-semibold text-[var(--color-navy)] mt-0.5">{s.value}</div>
+                </div>
+              ))}
             </div>
-            <h3 class="font-bold text-[var(--color-navy)] mb-2">{item.title}</h3>
-            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
+            <p class="mt-4 text-xs text-[var(--color-text-muted)]"><strong class="text-[var(--color-navy)]">Installed in:</strong> MH Orthopedic &amp; Spine, MH HVI, Clear Lake Regional, UTMB John Sealy, Methodist Sugar Land</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other light models -->
+      <div class="grid gap-4 md:grid-cols-3">
+        {lightModels.slice(1).map((l) => (
+          <div class="bg-white rounded-xl border border-[var(--color-border)] p-5 hover:shadow-md transition">
+            <span class="inline-block text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-[var(--color-navy)] text-white mb-3">{l.badge}</span>
+            <h3 class="text-lg font-bold text-[var(--color-navy)]">Skytron {l.model}</h3>
+            <p class="text-sm text-[var(--color-text-muted)] mt-1 mb-3">{l.description}</p>
+            <div class="border-t border-[var(--color-border)] pt-3">
+              <p class="text-xs text-[var(--color-text-muted)]"><strong class="text-[var(--color-navy)]">Use:</strong> {l.use}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
+  <!-- ── Center Mount Booms ── -->
+  <div id="booms" class="h-0 overflow-hidden" aria-hidden="true"></div>
+  <section class="container-x py-16">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Equipment Booms</div>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Skytron Center Mount Booms</h2>
+        <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+          Skytron Center Mount Booms are ceiling-mounted equipment management systems that integrate medical gas (O₂, Air, N₂O, vacuum), electrical outlets, data, and AV routing into a single articulating arm. They free the OR floor, reduce trip hazards, and support multi-team room configurations — critical for hybrid OR, robotic-assist, and cardiac catheterization suites.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {[
+            'Integrated gas, electrical, data, and AV on one arm',
+            'NFPA 99 Category 1 compliant — required for hospital ORs',
+            'Center-mount configuration ideal for bilateral surgeon access',
+            'Compatible with SkyVision AV integration',
+            'Custom arm configurations for robotic, biplane, and imaging suites',
+            'Preventive maintenance programs with documented compliance records',
+          ].map((item) => (
+            <li class="flex gap-3 text-sm text-[var(--color-text-muted)]">
+              <svg class="w-4 h-4 text-[var(--color-blue)] flex-shrink-0 mt-0.5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0a8 8 0 110 16A8 8 0 018 0zm3.78 5.22a.75.75 0 00-1.06 0L7 8.94 5.28 7.22a.75.75 0 10-1.06 1.06l2.25 2.25a.75.75 0 001.06 0l4.25-4.25a.75.75 0 000-1.06z"/></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <div class="mt-6 bg-[var(--color-surface-alt)] rounded-xl p-4 text-sm">
+          <p class="font-semibold text-[var(--color-navy)] mb-1">Installed at:</p>
+          <p class="text-[var(--color-text-muted)]">MH Heart &amp; Vascular Institute · Methodist Sugar Land · MH Northeast · MH Southeast · MH Sugar Land · Clear Lake Regional · North Cypress · UTMB John Sealy</p>
+        </div>
+      </div>
+      <div>
+        <img
+          src="/images/products/equipment-boom.webp"
+          alt="Skytron Center Mount Boom system in a hybrid OR — equipment management with gas and data integration"
+          class="w-full rounded-2xl shadow-xl border border-[var(--color-border)]"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SkyVision OR Integration ── -->
+  <div id="or-integration" class="h-0 overflow-hidden" aria-hidden="true"></div>
+  <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1">
+          <img
+            src="/images/products/or-integration.webp"
+            alt="SkyVision OR integration system — 4K AV switching and unified room control"
+            class="w-full rounded-2xl shadow-xl border border-[var(--color-border)]"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="order-1 md:order-2">
+          <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">OR Integration</div>
+          <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Skytron SkyVision</h2>
+          <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+            SkyVision is Skytron's integrated OR control and AV routing platform — connecting surgical displays, camera systems, boom-mounted monitors, and documentation systems into a unified room environment. Designed for hybrid OR, robotic-assist, and imaging suites where multiple video sources need to be managed in real time.
+          </p>
+          <ul class="mt-6 space-y-3">
+            {[
+              '4K-capable AV switching across all OR displays',
+              'Integrates with boom-mounted monitors and overhead lights',
+              'Control panel for room lighting, AV routing, and camera views',
+              'Compatible with Stryker, Arthrex, and major endoscope platforms',
+              'Used in MH Sugar Land hybrid OR (8 OR + 1 Endo Suite)',
+            ].map((item) => (
+              <li class="flex gap-3 text-sm text-[var(--color-text-muted)]">
+                <svg class="w-4 h-4 text-[var(--color-blue)] flex-shrink-0 mt-0.5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0a8 8 0 110 16A8 8 0 018 0zm3.78 5.22a.75.75 0 00-1.06 0L7 8.94 5.28 7.22a.75.75 0 10-1.06 1.06l2.25 2.25a.75.75 0 001.06 0l4.25-4.25a.75.75 0 000-1.06z"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Dealer Credentials ── -->
+  <section class="container-x py-16">
+    <div class="text-center mb-10">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Why Buy from Surgiquip</div>
+      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Authorized Means Protected</h2>
+      <p class="mt-3 text-[var(--color-text-muted)] max-w-xl mx-auto">
+        Purchasing Skytron equipment from an authorized dealer protects your warranty, your Joint Commission status, and your investment.
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      {[
+        {
+          title: 'Factory Warranty',
+          desc: "All Skytron equipment sold by Surgiquip carries full factory warranty. Unauthorized resellers cannot offer this protection.",
+          icon: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" stroke="currentColor" stroke-width="1.5" fill="none"/>',
+        },
+        {
+          title: 'Certified Installation',
+          desc: 'Our technicians are factory-trained and certified for every Skytron product. Installation is performed to manufacturer specifications — documented for TJC and DNV surveys.',
+          icon: '<path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
+        },
+        {
+          title: 'Local Parts & Service',
+          desc: 'Houston-based. We stock Skytron OEM parts and dispatch factory-trained technicians faster than any out-of-market provider. Same-day service available.',
+          icon: '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+        },
+      ].map((item) => (
+        <div class="bg-[var(--color-surface-alt)] rounded-xl border border-[var(--color-border)] p-6">
+          <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-[var(--color-navy)] mb-4 shadow-sm">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" set:html={item.icon} />
+          </div>
+          <h3 class="font-bold text-[var(--color-navy)] mb-2">{item.title}</h3>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
   <CTASection
-    heading="Need Help Choosing the Right Skytron Configuration?"
-    subhead="Our team can assess your facility's needs and recommend the ideal setup. 43 years of Skytron expertise at your service."
+    heading="Ready to Spec Your Skytron Configuration?"
+    subhead="From single-room table replacements to full hybrid OR builds — our team will assess your facility and recommend the right Skytron setup. No pressure. 43 years of expertise."
     primaryLabel="Request a Quote"
     primaryHref="/quote"
     secondaryLabel={`Call ${site.phone}`}
