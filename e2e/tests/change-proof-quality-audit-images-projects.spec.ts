@@ -202,12 +202,12 @@ test('change-proof-quality-audit-images-projects', async ({ page }) => {
   await expectText(lightingH1, /Surgical Lighting|Aurora/i, 'Surgical lighting article title');
 
   await smoothScroll(page, 1000, 260, 500);
-  await showPhaseLabel(page, '📋 Lighting Guide — Aurora LED & Technical Sections');
+  await showPhaseLabel(page, '📋 Lighting Guide — Skytron LED Systems Section');
   await page.waitForTimeout(1000);
 
-  const auroraSection = page.locator('text=Aurora').first();
-  await auroraSection.scrollIntoViewIfNeeded();
-  await expectVisible(auroraSection, 'Aurora LED section visible in lighting article');
+  const skytronLightingSection = page.locator('text=Skytron Surgical Lighting').first();
+  await skytronLightingSection.scrollIntoViewIfNeeded();
+  await expectVisible(skytronLightingSection, 'Skytron Surgical Lighting section visible in lighting article');
 
   // ═══════════════════════════════════════════════════════════════════════════
   // FINAL — Quality audit verified
