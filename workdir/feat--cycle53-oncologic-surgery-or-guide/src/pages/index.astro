@@ -1,0 +1,137 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Hero from '~/components/Hero.astro';
+import StatBar from '~/components/StatBar.astro';
+import EquipmentShowcase from '~/components/EquipmentShowcase.astro';
+import ServicesGrid from '~/components/ServicesGrid.astro';
+import PartnerLogos from '~/components/PartnerLogos.astro';
+import FAQSection from '~/components/FAQSection.astro';
+import CTASection from '~/components/CTASection.astro';
+import CapabilitiesStrip from '~/components/CapabilitiesStrip.astro';
+import { site } from '~/data/site';
+
+// ---------------------------------------------------------------------------
+// Homepage FAQ — 6 grounded questions about Surgiquip's services.
+// Matching FAQPage JSON-LD below (faqSchema) enables Google FAQ rich results.
+// ---------------------------------------------------------------------------
+const homepageFAQs = [
+  {
+    q: 'What types of medical equipment does Surgiquip Solutions sell and service?',
+    a: 'Surgiquip Solutions specializes in surgical suite equipment — including surgical tables, operating room lights, ceiling-mounted equipment booms, and hybrid OR AV integration systems. We are an authorized <a href="/products/skytron" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">Skytron</a> dealer and also sell and service equipment from <a href="/products/hsi" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">HSI Hospital Systems, Inc.</a> and <a href="/products/knight" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">Knight</a> instrument cleaning systems.',
+  },
+  {
+    q: 'What areas of Texas does Surgiquip serve?',
+    a: 'Surgiquip Solutions is based in Houston, TX, and serves healthcare facilities throughout <strong>South Texas and Southeast Texas</strong>. We work with hospitals, ambulatory surgery centers, and outpatient facilities across the greater Houston area and the surrounding region. <a href="/service-areas" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">View our service area coverage.</a>',
+  },
+  {
+    q: 'Is Surgiquip an authorized Skytron dealer?',
+    a: 'Yes. Surgiquip Solutions is the <strong>authorized Skytron dealer for Southeast Texas</strong>. Our technicians are factory-trained and certified by Skytron to sell, install, and service the full Skytron product line — including surgical tables, surgical lights, and ceiling-mounted OR booms.',
+  },
+  {
+    q: 'How quickly can Surgiquip respond to a service or repair request?',
+    a: `Our team prioritizes rapid response for service and repair needs. We are available <strong>Monday through Friday, 7:30 AM to 4:30 PM</strong>, and dispatch factory-trained technicians as quickly as possible — same-day service is available when scheduling allows. For urgent needs, call us directly at <a href="tel:${site.phoneE164}" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">${site.phone}</a>.`,
+  },
+  {
+    q: 'What does a preventive maintenance program for surgical equipment include?',
+    a: 'A Surgiquip preventive maintenance program includes <strong>scheduled inspections, calibration verification, safety testing, lubrication, and parts replacement</strong> per manufacturer recommendations — all documented for your records and accreditation surveys. Programs are tailored to your facility\'s specific equipment inventory and clinical schedule. <a href="/services/preventive-maintenance" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">Learn more about our PM programs.</a>',
+  },
+  {
+    q: 'Does Surgiquip manage the full operating room installation process?',
+    a: 'Yes. Surgiquip provides <strong>turnkey OR installation services</strong>, coordinating with your architects, general contractors, and biomedical engineering team from the initial facility assessment through equipment installation, commissioning, and staff training. We handle surgical tables, lights, booms, and hybrid OR AV integration — all under one project. <a href="/services/or-installation" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">See our OR installation process.</a>',
+  },
+];
+
+const HERO_LCP_IMAGE = '/images/hero/hero-or-suite.webp';
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'MedicalBusiness'],
+  '@id': `${site.url}#organization`,
+  name: site.brand,
+  alternateName: site.short,
+  url: site.url,
+  logo: `${site.url}/favicon.svg`,
+  description: 'Houston-based medical equipment sales and service. 43 years serving hospitals, surgical centers, and healthcare facilities across Texas. Authorized Skytron dealer for Southeast Texas.',
+  foundingDate: '1983',
+  telephone: site.phoneE164,
+  faxNumber: '+17139578355',
+  email: site.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  // Full OpeningHoursSpecification object (richer than plain string — enables
+  // Google Business-style hours display in Knowledge Panel and SERP rich results)
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '07:30',
+      closes: '16:30',
+    },
+  ],
+  areaServed: [
+    { '@type': 'State', name: 'Texas' },
+    { '@type': 'City', name: 'Houston' },
+  ],
+  sameAs: [site.social.linkedin, site.social.youtube],
+  slogan: site.tagline,
+  knowsAbout: [
+    'Skytron Surgical Tables',
+    'Hybrid Operating Room Installation',
+    'Surgical Equipment Repair',
+    'OR Integration',
+    'Preventive Maintenance for Medical Devices',
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${site.url}#website`,
+  url: site.url,
+  name: site.brand,
+  publisher: { '@id': `${site.url}#organization` },
+  inLanguage: 'en-US',
+};
+
+// FAQPage JSON-LD — matches the visible FAQSection below.
+// Enables Google FAQ rich results (collapsible accordion in SERPs).
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homepageFAQs.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      // Strip HTML tags for the machine-readable text version
+      text: item.a.replace(/<[^>]+>/g, ''),
+    },
+  })),
+};
+---
+<BaseLayout
+  title={`${site.brand} | Medical Equipment Sales & Service in Houston, TX`}
+  description="Surgiquip Solutions has provided medical equipment sales, service, OR installation, and preventive maintenance to Texas healthcare facilities for 43 years. Authorized Skytron dealer for Southeast Texas."
+  schema={[orgSchema, websiteSchema, faqSchema]}
+  preloadImage={HERO_LCP_IMAGE}
+>
+  <Hero />
+  <StatBar />
+  <CapabilitiesStrip />
+  <EquipmentShowcase />
+  <ServicesGrid />
+  <PartnerLogos />
+  <FAQSection
+    eyebrow="Common Questions"
+    heading="Everything You Need to Know"
+    items={homepageFAQs}
+    bg="alt"
+  />
+  <CTASection />
+</BaseLayout>

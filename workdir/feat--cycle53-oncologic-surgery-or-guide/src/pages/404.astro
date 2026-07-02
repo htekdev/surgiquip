@@ -1,0 +1,70 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { site } from '~/data/site';
+---
+
+<BaseLayout
+  title="Page Not Found | Surgiquip Solutions"
+  description="The page you're looking for doesn't exist. Find surgical equipment, services, and project information at Surgiquip Solutions."
+  noindex={true}
+>
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-24 text-center">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/10 mb-6">
+        <svg class="w-10 h-10 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <div class="text-7xl font-display font-bold text-white/20 mb-4" aria-hidden="true">404</div>
+      <h1 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+        Page Not Found
+      </h1>
+      <p class="text-lg text-white/75 max-w-md mx-auto leading-relaxed mb-10">
+        The page you're looking for doesn't exist or may have moved. Let's get you to the right place.
+      </p>
+      <a href="/" class="btn-primary inline-flex">Back to Homepage</a>
+    </div>
+  </section>
+
+  {/* Quick links */}
+  <section class="container-x py-16">
+    <h2 class="font-display text-2xl font-bold text-[var(--color-navy)] text-center mb-10">
+      Popular Pages
+    </h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-3xl mx-auto">
+      {[
+        { href: '/products', label: 'Products', desc: 'Skytron & HSI equipment', icon: '🏥' },
+        { href: '/services', label: 'Services', desc: 'Sales, repair, OR installation', icon: '🔧' },
+        { href: '/projects', label: 'Projects', desc: 'Case studies & past work', icon: '📋' },
+        { href: '/service-areas', label: 'Service Areas', desc: 'Houston & Southeast Texas', icon: '📍' },
+        { href: '/about', label: 'About Us', desc: 'In business since 1983', icon: '🏢' },
+        { href: '/quote', label: 'Request Quote', desc: 'Get a project estimate', icon: '💬' },
+      ].map((link) => (
+        <a
+          href={link.href}
+          class="flex items-start gap-4 p-5 rounded-xl border border-[var(--color-border)] hover:border-[var(--color-blue)] hover:shadow-sm transition group"
+        >
+          <span class="text-2xl" aria-hidden="true">{link.icon}</span>
+          <div>
+            <div class="font-semibold text-[var(--color-navy)] group-hover:text-[var(--color-blue)] transition text-sm">{link.label}</div>
+            <div class="text-xs text-[var(--color-text-muted)] mt-0.5">{link.desc}</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {/* Contact strip */}
+  <section class="bg-[var(--color-surface-alt)] border-y border-[var(--color-border)]">
+    <div class="container-x py-10 flex flex-col sm:flex-row items-center justify-center gap-6 text-center sm:text-left">
+      <div>
+        <div class="font-display font-bold text-[var(--color-navy)]">Need Help?</div>
+        <div class="text-sm text-[var(--color-text-muted)]">Our team is available Mon–Fri 7:30am–4:30pm</div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href={`tel:${site.phoneE164}`} class="btn-primary text-sm">{site.phone}</a>
+        <a href="/contact" class="btn-outline text-sm">Contact Form</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

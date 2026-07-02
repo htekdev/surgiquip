@@ -1,0 +1,68 @@
+---
+import { site } from '~/data/site';
+import Logo from './Logo.astro';
+---
+<footer class="bg-[var(--color-navy-dark)] text-white mt-20">
+  <div class="container-x py-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1.3fr]">
+    <div>
+      <div class="flex items-center gap-3">
+        <Logo class="h-12 w-auto" variant="white" />
+        <div class="leading-tight">
+          <div class="font-display text-xl font-extrabold tracking-tight">Surgiquip</div>
+          <div class="text-xs opacity-70">Solutions, Inc.</div>
+          <div class="text-[10px] italic opacity-70">"{site.tagline}"</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-xs font-bold tracking-widest uppercase text-white/70 mb-4">Quick Links</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/products" class="hover:underline text-white/90 hover:text-white">Products</a></li>
+        <li><a href="/services" class="hover:underline text-white/90 hover:text-white">Services</a></li>
+        <li><a href="/projects" class="hover:underline text-white/90 hover:text-white">Projects</a></li>
+        <li><a href="/service-areas" class="hover:underline text-white/90 hover:text-white">Service Areas</a></li>
+        <li><a href="/blog" class="hover:underline text-white/90 hover:text-white">Blog</a></li>
+        <li><a href="/quote" class="hover:underline text-white/90 hover:text-white">Request Quote</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-xs font-bold tracking-widest uppercase text-white/70 mb-4">Contact Us</h3>
+      <ul class="space-y-2 text-sm">
+        <li class="flex items-start gap-2"><span>📞</span><a href={`tel:${site.phoneE164}`} class="hover:underline text-white">{site.phone}</a></li>
+        <li class="flex items-start gap-2"><span>📠</span><span>{site.fax}</span></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-xs font-bold tracking-widest uppercase text-white/70 mb-4">Headquarters</h3>
+      <ul class="space-y-2 text-sm">
+        <li class="flex items-start gap-2"><span>📍</span><span>{site.address.street}<br/>{site.address.city}, {site.address.region} {site.address.postalCode}</span></li>
+        <li class="flex items-start gap-2"><span>🕐</span><span>{site.hours}</span></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-xs font-bold tracking-widest uppercase text-white/70 mb-4">Serving Texas and Beyond</h3>
+      <p class="text-sm opacity-90 mb-4">
+        Providing hospitals, surgical centers, and healthcare facilities with innovative equipment and exceptional service since 1983.
+      </p>
+      <div class="flex items-center gap-3">
+        <a href={site.social.linkedin} aria-label="LinkedIn" class="w-9 h-9 inline-flex items-center justify-center rounded bg-white/10 hover:bg-white/20 transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.4.86 3.4 3.86z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/15">
+    <div class="container-x py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs opacity-80">
+      <div>© {new Date().getFullYear()} {site.brand} All rights reserved.</div>
+      <div class="flex items-center gap-5">
+        <a href="/privacy" class="hover:underline text-white">Privacy Policy</a>
+        <a href="/terms" class="hover:underline text-white">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>

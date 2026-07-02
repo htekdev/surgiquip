@@ -1,0 +1,236 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: `${site.url}/service-areas` },
+  ],
+};
+
+const serviceAreaSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'MedicalBusiness'],
+  '@id': `${site.url}#organization`,
+  name: site.brand,
+  description:
+    'Authorized Skytron dealer serving Texas statewide — OR equipment sales, installation, service, and preventive maintenance for hospitals and surgery centers across Houston, San Antonio, Corpus Christi, Lubbock, and the Gulf Coast.',
+  url: site.url,
+  telephone: site.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  areaServed: { '@type': 'State', name: 'Texas' },
+};
+
+const areas = [
+  {
+    href: '/service-areas/houston-tx',
+    title: 'Houston, TX',
+    subtitle: 'Harris, Fort Bend, Montgomery & Brazoria Counties',
+    desc: 'Our home base since 1983. Factory-trained technicians, local parts inventory, and four decades of relationships across the Houston healthcare market.',
+    badge: 'Primary Market',
+    icon: '<path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+  },
+  {
+    href: '/service-areas/beaumont-tx',
+    title: 'Beaumont, TX',
+    subtitle: 'Jefferson, Orange & Hardin Counties — Golden Triangle',
+    desc: 'Dedicated landing page for Golden Triangle hospitals and ASCs — Beaumont, Port Arthur, and Orange. Factory-authorized Skytron service in Southeast Texas.',
+    badge: 'Golden Triangle',
+  },
+  {
+    href: '/service-areas/corpus-christi-tx',
+    title: 'Corpus Christi, TX',
+    subtitle: 'Nueces, San Patricio, Aransas & Kleberg Counties — Coastal Bend',
+    desc: 'Dedicated coverage for Coastal Bend hospitals and ASCs — CHRISTUS Spohn, Driscoll Health, and the growing South Texas market. Factory-authorized Skytron service.',
+    badge: 'Coastal Bend',
+  },
+  {
+    href: '/service-areas/victoria-tx',
+    title: 'Victoria, TX',
+    subtitle: 'Golden Crescent — Victoria · Calhoun · Jackson · DeWitt Counties',
+    desc: 'Golden Crescent anchor market serving DeTar Healthcare System, Citizens Medical Center, and regional ASCs — authorized Skytron sales, OR installation, and service.',
+    badge: 'Golden Crescent',
+    icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/>',
+  },
+  {
+    href: '/service-areas/southeast-texas',
+    title: 'Southeast Texas',
+    subtitle: 'Beaumont · Galveston · Gulf Coast · Lufkin · Lake Charles',
+    desc: 'The full Southeast Texas service territory — hospitals, ASCs, and specialty clinics across the region from the Golden Triangle to the Gulf Coast.',
+    badge: 'Full Territory',
+    icon: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
+  },
+  {
+    href: '/service-areas/san-antonio-tx',
+    title: 'San Antonio, TX',
+    subtitle: 'Bexar · Comal · Guadalupe · Medina · Atascosa · Wilson Counties',
+    desc: "South Texas's largest healthcare market — University Health, Methodist Healthcare, CHRISTUS Santa Rosa, Baptist Health, and the Hill Country region. Authorized Skytron service for Bexar County and surrounding communities.",
+    badge: 'South Texas',
+    icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
+  },
+  {
+    href: '/service-areas/lubbock-tx',
+    title: 'Lubbock, TX',
+    subtitle: 'South Plains — Lubbock · Hale · Lynn · Garza · Crosby Counties',
+    desc: "West Texas's healthcare hub — UMC Health System (Level 1 Trauma), Covenant Health (CommonSpirit), and Texas Tech University Health Sciences Center. Authorized Skytron sales, OR installation, and service for the South Plains region.",
+    badge: 'West Texas',
+    icon: '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>',
+  },
+];
+
+const cityLinks = [
+  { city: 'Houston', href: '/service-areas/houston-tx' },
+  { city: 'Beaumont', href: '/service-areas/beaumont-tx' },
+  { city: 'Port Arthur', href: '/service-areas/beaumont-tx' },
+  { city: 'Orange', href: '/service-areas/beaumont-tx' },
+  { city: 'Galveston', href: '/service-areas/southeast-texas' },
+  { city: 'Victoria', href: '/service-areas/victoria-tx' },
+  { city: 'Port Lavaca', href: '/service-areas/victoria-tx' },
+  { city: 'Cuero', href: '/service-areas/victoria-tx' },
+  { city: 'Corpus Christi', href: '/service-areas/corpus-christi-tx' },
+  { city: 'Rockport', href: '/service-areas/corpus-christi-tx' },
+  { city: 'Kingsville', href: '/service-areas/corpus-christi-tx' },
+  { city: 'Lufkin', href: '/service-areas/southeast-texas' },
+  { city: 'Nacogdoches', href: '/service-areas/southeast-texas' },
+  { city: 'Lake Charles, LA', href: '/service-areas/southeast-texas' },
+  { city: 'Sugar Land', href: '/service-areas/houston-tx' },
+  { city: 'The Woodlands', href: '/service-areas/houston-tx' },
+  { city: 'Pasadena', href: '/service-areas/houston-tx' },
+  { city: 'San Antonio', href: '/service-areas/san-antonio-tx' },
+  { city: 'New Braunfels', href: '/service-areas/san-antonio-tx' },
+  { city: 'Seguin', href: '/service-areas/san-antonio-tx' },
+  { city: 'Lubbock', href: '/service-areas/lubbock-tx' },
+  { city: 'Plainview', href: '/service-areas/lubbock-tx' },
+  { city: 'Levelland', href: '/service-areas/lubbock-tx' },
+];
+---
+
+<BaseLayout
+  title="Service Areas — Surgical Equipment Across Texas | Surgiquip Solutions"
+  description="Surgiquip Solutions serves hospitals and surgery centers across Texas — Houston, Beaumont, Galveston, Victoria, San Antonio, Lubbock, and beyond. Authorized Skytron dealer since 1983."
+  schema={[serviceAreaSchema, breadcrumbSchema]}
+  canonical={`${site.url}/service-areas`}
+>
+  <!-- Hero -->
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Home</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">Service Areas</span>
+      </nav>
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Service Areas</div>
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-3xl">
+        Serving Texas Healthcare — Houston to Lubbock
+      </h1>
+      <p class="mt-6 text-xl text-white/85 max-w-2xl leading-relaxed">
+        Surgiquip Solutions is headquartered in Houston and operates as the authorized Skytron dealer for Texas — serving hospitals, surgery centers, and specialty clinics across Southeast Texas, South Texas, West Texas, and beyond since 1983.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="/quote" class="btn-primary px-7 py-3.5">Request a Quote</a>
+        <a href={`tel:${site.phoneE164}`} class="inline-flex items-center gap-2 px-7 py-3.5 rounded-md border border-white/40 font-semibold text-white hover:bg-white/10 transition">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1l-2.3 2.3z"/>
+          </svg>
+          {site.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service area cards -->
+  <section class="container-x py-16">
+    <div class="text-center mb-12">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Where We Work</div>
+      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Our Service Territory</h2>
+      <p class="mt-3 text-[var(--color-text-muted)] max-w-xl mx-auto">
+        Select a region to learn more about Surgiquip's presence, capabilities, and response times in your area.
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
+      {areas.map((a) => (
+        <a href={a.href} class="group relative block bg-white border border-[var(--color-border)] rounded-xl p-8 hover:border-[var(--color-blue)] hover:shadow-lg transition">
+          <div class="absolute top-4 right-4">
+            <span class="inline-block px-3 py-1 text-xs font-bold bg-[var(--color-navy)]/10 text-[var(--color-navy)] rounded-full">{a.badge}</span>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-[var(--color-surface-alt)] flex items-center justify-center text-[var(--color-navy)] mb-5">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" set:html={a.icon} />
+          </div>
+          <h2 class="font-display text-2xl font-bold text-[var(--color-navy)] group-hover:text-[var(--color-blue)] transition">{a.title}</h2>
+          <div class="text-xs font-semibold text-[var(--color-blue)] mt-1 mb-3">{a.subtitle}</div>
+          <p class="text-[var(--color-text-muted)] leading-relaxed text-sm">{a.desc}</p>
+          <span class="inline-flex items-center gap-1 mt-5 text-sm font-semibold text-[var(--color-blue)]">
+            Learn more
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- City list (SEO internal links) -->
+  <section class="bg-[var(--color-surface-alt)] py-12">
+    <div class="container-x">
+      <div class="text-center mb-8">
+        <h2 class="font-display text-2xl font-bold text-[var(--color-navy)]">Cities &amp; Markets We Serve</h2>
+        <p class="mt-2 text-[var(--color-text-muted)]">Don't see your city? Contact us — if you're in Southeast Texas, we likely cover your area.</p>
+      </div>
+      <ul class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto" role="list">
+        {cityLinks.map((c) => (
+          <li>
+            <a href={c.href} class="inline-block px-4 py-2 rounded-full border border-[var(--color-border)] bg-white text-sm font-medium text-[var(--color-navy)] hover:border-[var(--color-blue)] hover:text-[var(--color-blue)] transition">
+              {c.city}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Trust block -->
+  <section class="container-x py-16">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Why Surgiquip</div>
+      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">
+        Local to Texas. Backed by 43 Years.
+      </h2>
+      <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
+        Surgiquip Solutions isn't a national company with a regional rep. We're a Houston-based business — founded in 1983, BBB A+ accredited, and staffed by factory-trained technicians who live and work in Texas. When you need service, you get a team that knows your facility and your equipment.
+      </p>
+      <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+        {[
+          ['43 Years', 'In Southeast Texas'],
+          ['500+', 'Facilities Served'],
+          ['A+ BBB', 'Accredited Business'],
+          ['Skytron', 'Authorized Dealer'],
+        ].map(([val, label]) => (
+          <div class="p-5 bg-[var(--color-surface-alt)] rounded-xl border border-[var(--color-border)] text-center">
+            <div class="font-display text-2xl font-bold text-[var(--color-navy)]">{val}</div>
+            <div class="text-xs text-[var(--color-text-muted)] mt-1">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Have a Facility in Texas?"
+    subhead="Tell us where you are and what you need — we'll confirm coverage and respond within one business day."
+    primaryLabel="Contact Our Team"
+    primaryHref="/contact"
+    secondaryLabel="Request a Quote"
+  />
+</BaseLayout>

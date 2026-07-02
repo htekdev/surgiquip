@@ -2,7 +2,7 @@
 title: "Surgical Lighting in Texas ORs: A Complete Guide for Hospital Facilities Managers"
 description: "A technical guide to selecting, specifying, and maintaining overhead surgical lighting systems for Texas hospitals and surgery centers — covering LED specs, configuration options, PM requirements, and upgrade ROI."
 publishDate: 2026-06-27
-image: "/images/services/or-installation-hero.png"
+image: "/images/services/or-installation-hero.webp"
 tags: ["surgical lighting", "OR equipment", "Texas hospitals", "Skytron", "preventive maintenance", "operating room"]
 ---
 

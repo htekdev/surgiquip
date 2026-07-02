@@ -1,0 +1,286 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const { title, description, publishDate, updatedDate, tags, image } = entry.data;
+
+const slug = entry.id;
+const canonicalUrl = `${site.url}/blog/${slug}`;
+const pageTitle = `${title} | Surgiquip Solutions`;
+
+/** Estimate reading time from raw markdown body */
+function readingTime(body: string): string {
+  const words = body.trim().split(/\s+/).length;
+  const minutes = Math.max(1, Math.round(words / 200));
+  return `${minutes} min read`;
+}
+
+const estimatedReadTime = readingTime(entry.body ?? '');
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+// Article JSON-LD
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished: publishDate.toISOString(),
+  dateModified: (updatedDate ?? publishDate).toISOString(),
+  url: canonicalUrl,
+  mainEntityOfPage: canonicalUrl,
+  ...(image ? { image: `${site.url}${image}` } : {}),
+  author: {
+    '@type': 'Organization',
+    name: site.brand,
+    url: site.url,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: site.brand,
+    url: site.url,
+  },
+  about: {
+    '@type': 'LocalBusiness',
+    name: site.brand,
+    url: site.url,
+    telephone: site.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: site.address.street,
+      addressLocality: site.address.city,
+      addressRegion: site.address.region,
+      postalCode: site.address.postalCode,
+      addressCountry: site.address.country,
+    },
+  },
+};
+
+// BreadcrumbList JSON-LD
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${site.url}/blog` },
+    { '@type': 'ListItem', position: 3, name: title, item: canonicalUrl },
+  ],
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  canonical={canonicalUrl}
+  image={image}
+  schema={[articleSchema, breadcrumbSchema]}
+>
+  {/* Post hero */}
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-16 md:py-20">
+      {/* Breadcrumb */}
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="/" class="hover:text-white transition">Home</a></li>
+          <li aria-hidden="true" class="text-white/40">›</li>
+          <li><a href="/blog" class="hover:text-white transition">Blog</a></li>
+          <li aria-hidden="true" class="text-white/40">›</li>
+          <li class="text-white/90 truncate max-w-[200px]" aria-current="page">{title}</li>
+        </ol>
+      </nav>
+
+      {/* Tags */}
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-4">
+          {tags.map((tag) => (
+            <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-white/10 text-white/80">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <h1 class="font-display text-3xl md:text-5xl font-bold text-white leading-tight max-w-3xl">
+        {title}
+      </h1>
+
+      <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/60 border-t border-white/20 pt-6">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <time datetime={publishDate.toISOString()}>{formatDate(publishDate)}</time>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+          <span>Surgiquip Solutions, Inc.</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          <span>{estimatedReadTime}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Hero image — full-width banner below the dark header */}
+  {image && (
+    <div class="w-full overflow-hidden bg-[var(--color-surface-alt)]" style="max-height: 480px;">
+      <img
+        src={image}
+        alt={title}
+        width="1536"
+        height="1024"
+        loading="eager"
+        decoding="async"
+        class="w-full object-cover"
+        style="max-height: 480px;"
+      />
+    </div>
+  )}
+
+  {/* Article body + sidebar */}
+  <section class="container-x py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 items-start">
+
+      {/* Article content */}
+      <article class="blog-body prose prose-lg max-w-none">
+        <Content />
+      </article>
+
+      {/* Sidebar */}
+      <aside class="space-y-6">
+
+        {/* About the author */}
+        <div class="bg-[var(--color-surface-alt)] rounded-xl border border-[var(--color-border)] p-6">
+          <h2 class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">About Surgiquip</h2>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
+            Surgiquip Solutions has provided surgical equipment sales, installation, and service to Texas hospitals since 1983 — as the authorized Skytron dealer for Southeast Texas.
+          </p>
+        </div>
+
+        {/* CTA card */}
+        <div class="bg-[var(--color-navy)] rounded-xl p-6 text-white">
+          <h2 class="font-display text-lg font-bold mb-2">Need Expert Guidance?</h2>
+          <p class="text-sm text-white/80 mb-4 leading-relaxed">
+            Our team responds within one business day. Tell us about your facility and project scope.
+          </p>
+          <a
+            href="/quote"
+            class="block w-full text-center bg-[var(--color-blue)] hover:bg-[var(--color-blue-light,#3a8aee)] text-white font-semibold text-sm rounded-md px-4 py-3 transition"
+          >
+            Request a Quote
+          </a>
+          <a
+            href="/contact"
+            class="block w-full text-center mt-2 border border-white/30 hover:border-white/60 text-white/90 hover:text-white font-medium text-sm rounded-md px-4 py-3 transition"
+          >
+            Contact Us
+          </a>
+        </div>
+
+        {/* Related resources */}
+        <div class="bg-white rounded-xl border border-[var(--color-border)] p-6">
+          <h2 class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-4">Explore More</h2>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/services" class="text-[var(--color-navy)] hover:text-[var(--color-blue)] transition font-medium">Our Services →</a></li>
+            <li><a href="/products" class="text-[var(--color-navy)] hover:text-[var(--color-blue)] transition font-medium">Equipment Brands →</a></li>
+            <li><a href="/projects" class="text-[var(--color-navy)] hover:text-[var(--color-blue)] transition font-medium">Project Case Studies →</a></li>
+            <li><a href="/service-areas" class="text-[var(--color-navy)] hover:text-[var(--color-blue)] transition font-medium">Service Areas →</a></li>
+          </ul>
+        </div>
+
+        {/* Back link */}
+        <a href="/blog" class="flex items-center gap-2 text-sm text-[var(--color-blue)] hover:text-[var(--color-navy)] font-medium transition group">
+          <svg class="w-4 h-4 transition group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          All Articles
+        </a>
+      </aside>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Ready to Discuss Your Project?"
+    subhead="Surgiquip Solutions serves hospitals and surgical centers across Southeast Texas with sales, installation, and service expertise since 1983."
+    primaryLabel="Request a Quote"
+    primaryHref="/quote"
+    secondaryLabel="Call (713) 681-6362"
+    secondaryHref="tel:+17136816362"
+  />
+</BaseLayout>
+
+<style>
+  .blog-body :global(h2) {
+    font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .blog-body :global(h3) {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .blog-body :global(p) {
+    color: var(--color-text);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+  .blog-body :global(ul), .blog-body :global(ol) {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+  .blog-body :global(li) {
+    line-height: 1.7;
+    margin-bottom: 0.35rem;
+  }
+  .blog-body :global(strong) {
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+  .blog-body :global(a) {
+    color: var(--color-blue);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .blog-body :global(a:hover) {
+    color: var(--color-navy);
+  }
+  .blog-body :global(hr) {
+    border-color: var(--color-border);
+    margin: 2rem 0;
+  }
+  .blog-body :global(blockquote) {
+    border-left: 3px solid var(--color-blue);
+    padding-left: 1rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin: 1.5rem 0;
+  }
+</style>

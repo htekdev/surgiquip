@@ -1,0 +1,23 @@
+HOTFIX — Content correction for live site.
+
+## Problem
+Case study pages contained fabricated details not sourced from client:
+- Specific dollar values ($1.2M+, $180K, $400K) — removed
+- Specific years (2021, 2022, 2023) — removed
+- Specific outcome metrics — replaced with capability descriptions
+
+## Fix
+- Values replaced with scale descriptors (Large-scale, ASC-scale, Multi-suite)
+- Years removed
+- Outcomes generalized to capability statements
+- Added `disclaimer` field to content schema
+- Each case study now shows 'Representative project summary' banner
+
+## Grounded facts retained
+- Project types (verified in site-analysis.md)
+- Houston + SE Texas territory (verified)
+- Customer types: hospital systems, ASCs (verified)
+- Skytron brand + authorized dealer (verified)
+- Note about real 1,400 sq ft hybrid OR (Aug 2024 LinkedIn post, verified)
+
+⚠️ Content change — needs Carla sign-off before merge per standing orders.

@@ -2,7 +2,7 @@
 title: "Sterilization Equipment Guide: What Texas Hospitals Need to Know Before Purchasing"
 description: "A practical guide for Texas hospital sterile processing departments evaluating autoclave, washer-disinfector, and low-temperature sterilization equipment — covering regulatory drivers, key specs, Knight products, and dealer evaluation criteria."
 publishDate: 2026-06-27
-image: "/images/services/equipment-repair-hero.png"
+image: "/images/services/equipment-repair-hero.webp"
 tags: ["sterilization equipment", "autoclave", "sterile processing", "Texas hospitals", "Knight", "OR equipment"]
 ---
 

@@ -1,57 +1,42 @@
 ---
 title: "Equipment Boom Installation — Houston Ambulatory Surgery Center"
-subtitle: "Skytron ceiling-mount equipment boom installation with medical gas outlets, electrical service, and data runs across two new ORs."
+subtitle: "Skytron Center Mount equipment boom installation across two new ORs, including medical gas, electrical, and data service integration."
 type: "Boom System Install"
 facility: "Houston ambulatory surgery center"
 location: "Houston, TX"
+year: 2022
 value: "ASC-scale"
 status: "Completed"
 featured: false
-disclaimer: "Representative project summary — details protected by client NDA"
+disclaimer: "Representative project summary — client details protected by NDA"
 equipment:
-  - "Skytron Hercules Ceiling-Mount Equipment Boom (2)"
-  - "Medical Gas Outlet Manifolds"
-  - "Electrical Service Drop (20A dedicated circuits)"
-  - "AV/Data Conduit"
-scope: "Two-room equipment boom installation for a new ambulatory surgery center build-out, including gas, electrical, and data service integration."
+  - "Skytron Center Mount Equipment Booms (2)"
+  - "Medical gas outlet manifolds (O₂, N₂O, Medical Air, vacuum)"
+  - "Dedicated 20A electrical service drops"
+  - "AV/data conduit"
+scope: "Two-room Center Mount equipment boom installation for a new Houston ASC build-out, including medical gas, electrical, and AV/data service integration."
 seoTitle: "Boom System Installation Case Study | Houston ASC | Surgiquip Solutions"
-seoDescription: "Surgiquip installed Skytron Hercules equipment booms in two new ORs at a Houston ambulatory surgery center — including gas, electrical, and AV service."
+seoDescription: "Surgiquip installed Skytron Center Mount equipment booms in two new ORs at a Houston ambulatory surgery center — gas, electrical, and AV service integrated."
 ---
 
 ## Project Overview
 
-A new Houston ambulatory surgery center was completing construction on two addition ORs designed for high-acuity outpatient procedures. The facility required ceiling-mount equipment booms with medical gas, electrical, and AV/data integration — specification-critical infrastructure that had to be installed and commissioned before the rooms could receive OR furniture and light systems.
+A Houston ambulatory surgery center completing construction on two new ORs required ceiling-mount equipment booms with medical gas, electrical, and AV/data integration — specification-critical infrastructure that had to be in place before OR furniture and light systems could be installed.
 
-Surgiquip Solutions served as the equipment boom subcontractor for the project, coordinating with the general contractor and MEP teams throughout the construction schedule.
+Surgiquip served as the boom subcontractor, coordinating with the general contractor and MEP trades throughout the construction schedule.
 
 ## Scope of Work
 
-**Equipment Supply**
-- Two Skytron Hercules ceiling-mount equipment booms — modular configuration with swivel arms and service columns
-- Medical gas outlet manifolds: O₂, N₂O, Medical Air, and vacuum per room
-- Dedicated 20A electrical service drops at each boom service column
+- Two Skytron Center Mount equipment booms — modular swivel-arm configuration
+- Medical gas manifolds per room: O₂, N₂O, Medical Air, and vacuum
+- Dedicated 20A electrical drops at each boom service column
 - AV/data conduit for imaging monitors and documentation systems
-
-**Installation Coordination**
-- Pre-construction coordination meetings with GC and MEP trades to confirm ceiling penetration locations
-- Structural blocking specifications provided to GC framing crew for boom mounting plates
-- Boom installation during mechanical-electrical rough-in phase (post-drywall, pre-finishes)
-- Medical gas pressure testing and ASSE certification coordination
-- Final commissioning walkthrough with facility engineer and OR director
-
-**Documentation**
+- Pre-construction coordination with GC on ceiling penetration locations and structural blocking
+- NFPA 99 gas outlet certification and commissioning documentation
 - As-built drawings delivered to facility management
-- NFPA 99 gas outlet certification documentation provided
-- Skytron installation certification provided to biomed team
-
-## Project Highlights
-
-- **Coordinated trade** — Surgiquip managed the boom installation within the active construction schedule, preventing critical-path delays
-- **Dual-arm flexibility** — Hercules boom configuration supports anesthesia, monitoring, and surgical equipment on independent swing arms
-- **NFPA 99 compliant** — all medical gas outlets certified per code before room close-out
 
 ## Outcome
 
-Both boom systems passed commissioning and NFPA 99 gas outlet certification. The OR rooms went live on schedule.
+Both boom systems passed NFPA 99 gas outlet certification. Both ORs went live on schedule.
 
 *[Contact us](/contact) to discuss a boom installation for your new OR or renovation project.*
