@@ -2,6 +2,7 @@
  * Change Proof E2E Spec — Cycle 53: Oncologic Surgery Suite Equipment Guide
  * ONE SINGLE test() block = ONE continuous video
  * Proof keyword: change-proof
+ * Re-triggered: push after PR creation to ensure video comment posted on PR #64
  */
 import { test, type Page } from '@playwright/test';
 import {
