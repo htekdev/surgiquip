@@ -9,10 +9,10 @@ export const site = {
   fax: '(713) 957-8355',
   email: 'info@surgiquipsolutions.com',
   address: {
-    street: '2020 Johanna Drive',
+    street: '10653 Kinghurst Drive',
     city: 'Houston',
     region: 'TX',
-    postalCode: '77055',
+    postalCode: '77099',
     country: 'US',
   },
   hours: 'Mon–Fri 7:30am–4:30pm',
