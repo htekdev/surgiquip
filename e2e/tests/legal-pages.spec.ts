@@ -128,7 +128,7 @@ test.describe('Footer Content', () => {
     const servicesLink = footer.locator('a[href="/services"]').first();
     await expectVisible(servicesLink, 'Services in footer');
 
-    const contactLink = footer.locator('a[href="/contact"]').first();
-    await expectVisible(contactLink, 'Contact in footer');
+    const productsLink = footer.locator('a[href="/products"]').first();
+    await expectVisible(productsLink, 'Products in footer');
   });
 });
