@@ -129,7 +129,7 @@ test('change-proof-cycle54-womens-health-or-guide', async ({ page }) => {
   await showPhaseLabel(page, '🏨 Women\'s Health Installations Across SE Texas');
   await page.waitForTimeout(1200);
 
-  const installsSection = page.locator('text=Women\'s Health Installations Across Southeast').first();
+  const installsSection = page.locator('h2').filter({ hasText: /Women.*Health.*Installations/i }).first();
   await installsSection.scrollIntoViewIfNeeded();
   await expectVisible(installsSection, 'Women\'s Health Installations section heading');
 
@@ -162,7 +162,7 @@ test('change-proof-cycle54-womens-health-or-guide', async ({ page }) => {
   await showPhaseLabel(page, '📞 Planning a Women\'s Health OR Suite Section');
   await page.waitForTimeout(1200);
 
-  const planningSection = page.locator('text=Planning a Women\'s Health OR Suite').first();
+  const planningSection = page.locator('h2').filter({ hasText: /Planning a Women/i }).first();
   await planningSection.scrollIntoViewIfNeeded();
   await expectVisible(planningSection, 'Planning section heading');
 
