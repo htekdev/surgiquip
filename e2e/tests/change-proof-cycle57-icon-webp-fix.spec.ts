@@ -114,7 +114,7 @@ test('change-proof-cycle57-icon-webp-fix', async ({ page }) => {
   const sterilization = page.locator('text=Sterilization').first();
   await expectVisible(sterilization, 'Sterilization label');
 
-  const serviceRepair = page.locator('text=Service & Repair').first();
+  const serviceRepair = page.locator('a').filter({ hasText: /Service.*Repair/i }).first();
   await expectVisible(serviceRepair, 'Service & Repair label');
 
   await showPhaseLabel(page, '✅ Cycle 57 — Icon WebP Fix VERIFIED');
