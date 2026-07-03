@@ -121,13 +121,13 @@ test.describe('Thank-You Page', () => {
 
   test('should have explore links for services and products', async ({ page }) => {
     await showPhaseLabel(page, '🔗 Explore Links');
-    const orLink = page.locator('a[href="/services/or-installation"]').first();
+    const orLink = page.locator('main a[href="/services/or-installation"]').first();
     await expectVisible(orLink, 'OR Installation link');
 
-    const skytronLink = page.locator('a[href="/products/skytron"]').first();
+    const skytronLink = page.locator('main a[href="/products/skytron"]').first();
     await expectVisible(skytronLink, 'Skytron link');
 
-    const projectsLink = page.locator('a[href="/projects"]').first();
+    const projectsLink = page.locator('main a[href="/projects"]').first();
     await expectVisible(projectsLink, 'Case Studies link');
   });
 });
