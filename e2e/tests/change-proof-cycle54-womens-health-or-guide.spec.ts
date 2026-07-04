@@ -141,9 +141,12 @@ test('change-proof-cycle54-womens-health-or-guide', async ({ page }) => {
   await showPhaseLabel(page, '🏥 Woman\'s Hospital of Texas — 35 LDRP');
   await page.waitForTimeout(1000);
 
-  const womansHospital = page.locator('h3').filter({ hasText: /Woman/ }).first();
+  // Article renders "Woman's Hospital of Texas" as bold text (**...**) inside a <p>,
+  // NOT as an h3. Scope to .blog-body strong to find the bold installation reference.
+  const womansHospital = page.locator('.blog-body strong').filter({ hasText: /Woman.*Hospital/i }).first();
+  await womansHospital.waitFor({ state: 'visible', timeout: 15000 });
   await womansHospital.scrollIntoViewIfNeeded();
-  await expectVisible(womansHospital, 'Woman\'s Hospital of Texas section heading');
+  await expectVisible(womansHospital, 'Woman\'s Hospital of Texas bold reference');
 
   // ═══════════════════════════════════════════════════════════════════════════
   // PART 9 — UTMB John Sealy reference
