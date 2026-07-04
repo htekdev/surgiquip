@@ -129,7 +129,10 @@ test('change-proof-cycle54-womens-health-or-guide', async ({ page }) => {
   await showPhaseLabel(page, '🏨 Women\'s Health Installations Across SE Texas');
   await page.waitForTimeout(1200);
 
-  const installsSection = page.locator('h2').filter({ hasText: /Women.*Health.*Installations/i }).first();
+  // Scope to .blog-body to avoid hidden nav elements; use simple pattern to sidestep
+  // smart-quote encoding issues with "Women's" in regex filtering on remote CI runners.
+  const installsSection = page.locator('.blog-body h2').filter({ hasText: /Installations Across/i }).first();
+  await installsSection.waitFor({ state: 'visible', timeout: 20000 });
   await installsSection.scrollIntoViewIfNeeded();
   await expectVisible(installsSection, 'Women\'s Health Installations section heading');
 
