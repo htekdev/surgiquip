@@ -80,7 +80,19 @@ test('change-proof-cycle57-icon-webp-fix', async ({ page }) => {
   await page.waitForTimeout(800);
 
   // PART 5 — Verify icon images loaded via network (check naturalWidth > 0)
-  await showPhaseLabel(page, '📡 Verifying icon images actually loaded');
+  // Uses waitForFunction to poll — lazy-loaded images may not have their bytes fetched yet
+  // even after scrollIntoViewIfNeeded, so page.evaluate() alone is too early.
+  await showPhaseLabel(page, '📡 Waiting for all icon images to fully load');
+
+  await page.waitForFunction(
+    () => {
+      const imgs = Array.from(
+        document.querySelectorAll<HTMLImageElement>('img[src*="/images/icons/"]')
+      );
+      return imgs.length >= 4 && imgs.every((img) => img.complete && img.naturalWidth > 0);
+    },
+    { timeout: 20000 }
+  );
 
   const allIconsLoaded = await page.evaluate(() => {
     const imgs = document.querySelectorAll<HTMLImageElement>('img[src*="/images/icons/"]');
@@ -114,7 +126,8 @@ test('change-proof-cycle57-icon-webp-fix', async ({ page }) => {
   const sterilization = page.locator('text=Sterilization').first();
   await expectVisible(sterilization, 'Sterilization label');
 
-  const serviceRepair = page.locator('a').filter({ hasText: /Service.*Repair/i }).first();
+  // Scope to main — nav header also has a "Service & Repair" link (hidden, causes false match)
+  const serviceRepair = page.locator('main a[href="/services/service-and-repair"]').first();
   await expectVisible(serviceRepair, 'Service & Repair label');
 
   await showPhaseLabel(page, '✅ Cycle 57 — Icon WebP Fix VERIFIED');
