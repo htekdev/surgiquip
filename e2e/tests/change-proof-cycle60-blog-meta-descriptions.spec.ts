@@ -28,7 +28,7 @@ test('cycle60 — blog meta descriptions ≤155 chars', async ({ page }) => {
     await page.goto(`/blog/${slug}`);
 
     // Verify page loads
-    await expectVisible(page, 'h1');
+    await expectVisible(page.locator('h1').first(), `${slug} h1`);
 
     // Verify meta description exists and is ≤155 chars
     const metaDesc = page.locator('meta[name="description"]');
@@ -53,5 +53,5 @@ test('cycle60 — blog meta descriptions ≤155 chars', async ({ page }) => {
   // Sanity check blog index
   await showPhaseLabel(page, 'Blog index integrity');
   await page.goto('/blog');
-  await expectVisible(page, 'h1');
+  await expectVisible(page.locator('h1').first(), 'blog index h1');
 });
