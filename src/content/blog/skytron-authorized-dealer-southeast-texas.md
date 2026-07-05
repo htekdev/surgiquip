@@ -1,5 +1,6 @@
 ---
 title: "Why Choosing a Factory-Authorized Skytron Dealer Matters for Your Surgical Lighting System"
+seoTitle: "Authorized Skytron Dealer | Houston TX"
 description: "Understanding the difference between authorized and non-authorized Skytron dealers — and why it matters for installation quality, warranty coverage, and long-term OR performance in Texas."
 publishDate: 2026-06-18
 image: "/images/blog/skytron-authorized-dealer-hero.webp"

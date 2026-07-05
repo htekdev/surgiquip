@@ -1,5 +1,6 @@
 ---
 title: "OR Installation Planning Guide: What Texas Hospitals Need to Know Before Breaking Ground"
+seoTitle: "OR Installation Planning Guide | Texas"
 description: "A practical planning guide for hospital facilities managers and perioperative directors preparing for an operating room installation or upgrade in Texas."
 publishDate: 2026-06-10
 image: "/images/blog/or-installation-planning-hero.webp"

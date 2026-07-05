@@ -1,5 +1,6 @@
 ---
 title: "Surgical Lighting in Texas ORs: A Complete Guide for Hospital Facilities Managers"
+seoTitle: "Surgical Lighting Guide | Texas ORs"
 description: "A technical guide to selecting, specifying, and maintaining overhead surgical lighting systems for Texas hospitals and surgery centers — covering LED specs, configuration options, PM requirements, and upgrade ROI."
 publishDate: 2026-06-27
 image: "/images/blog/surgical-lighting-hero.webp"
