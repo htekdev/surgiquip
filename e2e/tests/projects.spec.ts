@@ -22,6 +22,7 @@ test.describe('Projects Index Page', () => {
     const projectLinks = page.locator('main a[href*="/projects/"]');
     const count = await projectLinks.count();
     // Must have at least one project card
+    expect(count).toBeGreaterThan(0);
     const firstCard = projectLinks.first();
     await expectVisible(firstCard, 'First project card link');
   });

@@ -35,8 +35,9 @@ test.describe('Service Area — Corpus Christi TX', () => {
   test('should show Coastal Bend region reference', async ({ page }) => {
     await page.goto('/service-areas/corpus-christi-tx');
     await showPhaseLabel(page, '🌊 Coastal Bend Content');
-    const body = page.locator('main');
-    await expectVisible(body, 'Page body');
+    const coastalRef = page.locator('main').filter({ hasText: /Coastal Bend/i }).first();
+    await coastalRef.waitFor({ state: 'visible' });
+    await expectVisible(coastalRef, 'Coastal Bend region reference');
   });
 
   test('should have JSON-LD schema', async ({ page }) => {
