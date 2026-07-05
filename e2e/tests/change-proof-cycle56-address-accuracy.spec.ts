@@ -3,6 +3,7 @@
  * Verifies the correct address (10653 Kinghurst Drive, Houston TX 77099) appears
  * throughout the site — footer, contact page, and homepage JSON-LD schema.
  * Previously site.ts had wrong address: 2020 Johanna Drive, 77055.
+ * CI retrigger: 2026-07-04
  * ONE SINGLE test() block = ONE continuous video
  * Proof keyword: change-proof
  */
