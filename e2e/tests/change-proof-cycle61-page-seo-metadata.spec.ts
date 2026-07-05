@@ -45,7 +45,7 @@ test('cycle61 — page title tags ≤60 chars and meta descriptions ≤155 chars
     await page.goto(path);
 
     // Page loads
-    await expectVisible(page, 'h1');
+    await expectVisible(page.locator('h1').first(), `${label} h1`);
 
     // Title tag ≤60 chars
     const title = await page.title();
