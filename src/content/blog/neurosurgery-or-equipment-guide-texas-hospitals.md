@@ -1,7 +1,7 @@
 ---
 title: "Neurosurgery Suite Equipment Guide: What Texas Hospitals Need to Know"
 seoTitle: "Texas Neurosurgery OR Equipment Guide"
-description: "A practical guide for Texas hospital administrators and OR directors evaluating surgical tables, boom systems, and lighting for neurosurgery suites — covering C-arm clearance, prone positioning, and real Texas installations."
+description: "Texas neurosurgery OR guide: surgical tables, boom systems, and lighting. Covers C-arm clearance, prone positioning, and real Texas installations."
 publishDate: 2026-07-01
 image: "/images/blog/neurosurgery-or-suite-hero.webp"
 tags: ["neurosurgery OR equipment", "surgical tables neurosurgery", "spine surgery OR setup", "Texas hospitals", "Skytron", "OR equipment Houston"]
