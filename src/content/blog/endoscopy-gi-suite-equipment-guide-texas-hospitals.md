@@ -2,7 +2,7 @@
 title: "GI & Endoscopy Suite Equipment Guide: Boom Systems, Scope Reprocessing, and Infrastructure for Texas Hospitals and Surgery Centers"
 description: "A comprehensive guide for Texas hospital administrators and GI suite planners evaluating ceiling-mount boom systems, procedure lighting, scope reprocessing infrastructure, and endoscopy suite equipment from an authorized Skytron dealer serving Southeast Texas."
 publishDate: 2026-07-01
-image: "/images/blog/or-installation-planning-hero.webp"
+image: "/images/blog/endoscopy-gi-suite-hero.webp"
 tags: ["endoscopy suite equipment", "scope reprocessing", "GI suite boom systems", "Texas hospitals", "Houston", "ambulatory surgery center"]
 ---
 
