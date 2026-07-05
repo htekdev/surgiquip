@@ -1,5 +1,6 @@
 ---
 title: "Ambulatory Surgery Center Equipment Guide: What Texas ASCs Need to Know Before Purchasing"
+seoTitle: "Texas ASC Equipment Guide"
 description: "A practical guide for Texas ASC administrators and clinical directors evaluating surgical tables, OR lighting, sterilization equipment, and service contracts — covering CMS CoP requirements, AAAHC accreditation, and vendor criteria."
 publishDate: 2026-06-28
 image: "/images/services/equipment-repair-hero.webp"

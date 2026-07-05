@@ -1,5 +1,6 @@
 ---
 title: "OR Table Selection Guide: What Texas Hospitals Need to Know Before Purchasing"
+seoTitle: "Surgical Table Selection Guide | Texas"
 description: "A practical guide to selecting surgical tables for Texas hospitals and surgery centers — covering table types, imaging compatibility, weight capacity, Skytron configurations, and dealer evaluation criteria."
 publishDate: 2026-06-27
 image: "/images/services/equipment-sales-hero.webp"

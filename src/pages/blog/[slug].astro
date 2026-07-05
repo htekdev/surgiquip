@@ -15,11 +15,12 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
-const { title, description, publishDate, updatedDate, tags, image } = entry.data;
+const { title, seoTitle, description, publishDate, updatedDate, tags, image } = entry.data;
 
 const slug = entry.id;
 const canonicalUrl = `${site.url}/blog/${slug}`;
-const pageTitle = `${title} | Surgiquip Solutions`;
+// Use seoTitle (≤60 chars with suffix) for <title> tag; keep full title for H1 heading
+const pageTitle = `${seoTitle ?? title} | Surgiquip Solutions`;
 
 /** Estimate reading time from raw markdown body */
 function readingTime(body: string): string {
