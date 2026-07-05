@@ -100,7 +100,6 @@ const lightModels = [
   {
     model: 'Stellar LED',
     badge: 'Standard OR Light',
-    image: '/images/products/surgical-light.webp',
     tagline: 'Reliable LED performance for general surgery',
     description:
       'The Stellar provides high-quality LED surgical lighting with adjustable intensity and color temperature. A cost-effective solution for general OR suites that demand reliable, low-maintenance illumination without the in-light camera option.',
@@ -115,7 +114,6 @@ const lightModels = [
   {
     model: 'AR24 Birthing Light',
     badge: 'Women\'s Health',
-    image: '/images/products/surgical-light.webp',
     tagline: 'Purpose-built for LDRP and birthing suites',
     description:
       'The AR24 is designed specifically for labor, delivery, recovery, and postpartum (LDRP) environments. Provides focused exam and delivery lighting without the intensity of a full OR overhead — appropriate for the patient-centered environment of a birthing suite.',
@@ -130,7 +128,6 @@ const lightModels = [
   {
     model: 'Mini Argos',
     badge: 'Exam Light',
-    image: '/images/products/surgical-light.webp',
     tagline: 'Portable exam and procedure light',
     description:
       'The Mini Argos is a compact, portable LED exam light for procedure rooms, patient rooms, and secondary lighting in clinical environments. Bright, focused spot with no shadow artifacts.',
@@ -343,7 +340,7 @@ const breadcrumbSchema = {
       <a href="/quote" class="btn-primary">
         Request a Table Quote
       </a>
-      <a href="/blog/skytron-surgical-table-comparison-guide-texas-hospitals" class="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-[var(--color-border)] text-sm font-semibold text-[var(--color-navy)] hover:border-[var(--color-navy)] transition">
+      <a href="/blog/or-table-selection-guide-texas-hospitals" class="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-[var(--color-border)] text-sm font-semibold text-[var(--color-navy)] hover:border-[var(--color-navy)] transition">
         Compare Table Models →
       </a>
     </div>
@@ -380,7 +377,7 @@ const breadcrumbSchema = {
               The Aurora LED delivers <strong class="text-[var(--color-navy)]">CRI 97+</strong> and <strong class="text-[var(--color-navy)]">R9 95+</strong> color rendering for accurate tissue differentiation — critical for oncology, neuro, and robotic-assist cases. No IR heat at the field. Available with an integrated in-light camera for documentation and remote viewing, eliminating a separate camera arm.
             </p>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-4">
-              {lightModels[0].specs.map((s) => (
+              {lightModels.find((l) => l.model === 'Aurora LED')!.specs.map((s) => (
                 <div class="bg-[var(--color-surface-alt)] rounded-lg px-3 py-2">
                   <div class="text-[10px] font-bold tracking-wide uppercase text-[var(--color-text-muted)]">{s.label}</div>
                   <div class="text-sm font-semibold text-[var(--color-navy)] mt-0.5">{s.value}</div>
