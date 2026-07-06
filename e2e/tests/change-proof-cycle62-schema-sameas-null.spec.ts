@@ -73,7 +73,7 @@ test('change-proof-cycle62-schema-sameas-null', async ({ page }) => {
   await expectURL(page, /surgiquip|vercel\.app/i);
   const homeH1 = page.locator('h1').first();
   await expectVisible(homeH1, 'Homepage H1');
-  await expectText(homeH1, /Houston|Surgiquip|OR Equipment/i, 'Homepage H1 text');
+  await expectText(homeH1, /Medical Equipment|Excellence|Sales.*Service/i, 'Homepage H1 text');
 
   await verifySchemaNoNull(page, 'Homepage');
   await showPhaseLabel(page, '✅ Homepage: sameAs has NO null values');
