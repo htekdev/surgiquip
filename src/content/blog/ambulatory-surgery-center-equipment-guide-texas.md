@@ -3,7 +3,7 @@ title: "Ambulatory Surgery Center Equipment Guide: What Texas ASCs Need to Know 
 seoTitle: "Texas ASC Equipment Guide"
 description: "Texas ASC administrators: evaluate surgical tables, OR lighting, and sterilization. Covers CMS CoP, AAAHC accreditation, and service contract criteria."
 publishDate: 2026-06-28
-image: "/images/services/equipment-repair-hero.webp"
+image: "/images/blog/ambulatory-surgery-center-hero.webp"
 tags: ["ambulatory surgery center", "ASC equipment", "surgical equipment Texas", "Skytron", "OR equipment", "outpatient surgery"]
 ---
 
