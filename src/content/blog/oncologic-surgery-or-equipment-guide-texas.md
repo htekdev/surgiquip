@@ -1,7 +1,7 @@
 ---
 title: "Oncologic Surgery OR Equipment Guide: Texas Hospital Cancer Suite Setup"
 seoTitle: "Oncologic Surgery OR Equipment | Texas"
-description: "A practical guide for Texas hospital administrators and OR directors evaluating surgical tables, lighting, and boom systems for oncology suites — covering long-case performance, Aurora LED tumor margin visualization, and real Texas cancer surgery installations."
+description: "Texas oncology OR guide: surgical tables, Aurora LED, and boom systems for cancer surgery. Covers long-case performance and real Texas installations."
 publishDate: 2026-07-01
 image: "/images/blog/oncology-or-suite-hero.webp"
 tags: ["oncologic surgery OR equipment", "cancer surgery surgical lights", "surgical tables oncology", "Texas hospitals", "Skytron", "Aurora LED Houston"]

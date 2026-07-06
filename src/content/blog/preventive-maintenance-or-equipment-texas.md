@@ -1,7 +1,7 @@
 ---
 title: "Preventive Maintenance for OR Equipment: A Texas Hospital Guide to Reducing Downtime"
 seoTitle: "OR Equipment Preventive Maintenance TX"
-description: "How a structured PM program for surgical tables, lights, and ceiling booms protects patient safety, extends equipment life, and reduces total cost of ownership for Texas hospitals."
+description: "PM programs for Texas OR equipment: surgical tables, lights, and booms. Protects safety, extends equipment life, and reduces total cost of ownership."
 publishDate: 2026-06-20
 image: "/images/services/preventive-maintenance-hero.webp"
 tags: ["preventive maintenance", "surgical equipment", "Texas", "OR equipment", "hospital biomed"]
