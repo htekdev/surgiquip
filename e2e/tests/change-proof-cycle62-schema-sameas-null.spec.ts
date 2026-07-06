@@ -70,7 +70,7 @@ test('change-proof-cycle62-schema-sameas-null', async ({ page }) => {
   await showPhaseLabel(page, '🏥 Surgiquip — Homepage (Schema Fix)');
   await page.waitForTimeout(1200);
 
-  await expectURL(page, /^\//);
+  await expectURL(page, /surgiquip|vercel\.app/i);
   const homeH1 = page.locator('h1').first();
   await expectVisible(homeH1, 'Homepage H1');
   await expectText(homeH1, /Houston|Surgiquip|OR Equipment/i, 'Homepage H1 text');
