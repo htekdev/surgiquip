@@ -8,6 +8,7 @@
  *     After:  /images/blog/preventive-maintenance-hero.webp (unique AI-generated blog hero)
  *
  * Proof keyword: change-proof
+ * Retrigger: v2 — ensure E2E video comment is posted to PR
  */
 
 import { test, type Page } from '@playwright/test';
