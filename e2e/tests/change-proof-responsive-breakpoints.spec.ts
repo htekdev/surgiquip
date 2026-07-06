@@ -49,7 +49,7 @@ test('change-proof-responsive-breakpoints', async ({ page }) => {
 
   const heroH1 = page.locator('h1').first();
   await expectVisible(heroH1, 'Homepage H1 at 768px');
-  await expectText(heroH1, /Surgiquip|OR Equipment|Surgical/i, 'Homepage hero heading');
+  await expectText(heroH1, /Medical Equipment|Excellence/i, 'Homepage hero heading');
 
   // Header should be visible at tablet
   const header = page.locator('header').first();
