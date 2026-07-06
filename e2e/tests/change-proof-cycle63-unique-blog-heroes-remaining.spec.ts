@@ -150,3 +150,4 @@ test('change-proof-cycle63-unique-blog-heroes-remaining', async ({ page }) => {
   await showPhaseLabel(page, '✅ Cycle 63 Complete — All 3 Blog Articles Now Have Unique Hero Images');
   await page.waitForTimeout(2000);
 });
+// retrigger: 2026-07-06
