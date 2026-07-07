@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import CTASection from '~/components/CTASection.astro';
+import FAQSection from '~/components/FAQSection.astro';
 import { site } from '~/data/site';
 
 const serviceSchema = {
@@ -64,11 +65,44 @@ const responseProcess = [
   ['Repair & Certification', 'Repair completed on-site where possible; full service report provided.'],
   ['Documentation', 'Compliance-ready service records delivered to your biomedical team.'],
 ];
+
+// Service & Repair FAQ — 4 questions for FAQPage schema + visible accordion.
+const repairFAQs = [
+  {
+    q: 'How quickly can you respond to an OR equipment emergency?',
+    a: `Our 24-hour emergency line connects you directly to a factory-trained technician. For emergencies, we dispatch same-day. Our process starts with a phone triage so we arrive with the right parts and tools — minimizing the window your OR is out of service. Call us any time at <a href="tel:${site.phoneE164}" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">${site.phone}</a>.`,
+  },
+  {
+    q: 'What brands of surgical equipment do you service and repair?',
+    a: 'We service all major surgical equipment brands found in Texas ORs. Our Skytron factory authorization means full OEM support, direct access to technical bulletins, and manufacturer-approved parts. Beyond Skytron, our technicians are trained on the major surgical table, light, and boom brands — and every repair is documented to OEM specifications for your compliance records.',
+  },
+  {
+    q: 'Do you provide compliance documentation for Joint Commission and DNV surveys?',
+    a: 'Yes. Every service call produces compliance-ready documentation: detailed service reports, repair certifications, and records formatted for Joint Commission standard EC.02.04.01, DNV GL Healthcare, and CMS Conditions of Participation. Your biomedical team receives exactly what they need for equipment files and survey preparation — delivered with every repair.',
+  },
+  {
+    q: 'Can you service equipment your company did not originally sell or install?',
+    a: 'Absolutely. We service all major surgical equipment brands in Texas ORs, regardless of who sold or installed the equipment. Our factory authorization covers Skytron comprehensively, and our technicians are experienced with the full range of surgical tables, overhead lights, and equipment booms from all major manufacturers. If your OR has it, we can service it.',
+  },
+];
+
+const repairFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: repairFAQs.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a.replace(/<[^>]+>/g, ''),
+    },
+  })),
+};
 ---
 <BaseLayout
   title="Medical Equipment Service & Repair | Surgiquip Solutions"
   description="Factory-trained technicians for surgical table, light, and boom repair in Texas. 24-hour emergency response. Authorized Skytron service center."
-  schema={[serviceSchema, breadcrumbSchema]}
+  schema={[serviceSchema, breadcrumbSchema, repairFaqSchema]}
 >
   <section class="bg-[var(--color-navy)] text-white overflow-hidden">
     <div class="container-x py-20">
@@ -182,6 +216,13 @@ const responseProcess = [
       </div>
     </div>
   </section>
+
+  <FAQSection
+    eyebrow="Service & Repair FAQ"
+    heading="Common Questions About OR Equipment Service"
+    items={repairFAQs}
+    bg="white"
+  />
 
   <CTASection
     heading="Equipment Down? Let's Fix It."

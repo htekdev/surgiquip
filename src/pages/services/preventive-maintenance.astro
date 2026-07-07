@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import CTASection from '~/components/CTASection.astro';
+import FAQSection from '~/components/FAQSection.astro';
 import { site } from '~/data/site';
 
 const serviceSchema = {
@@ -65,11 +66,44 @@ const complianceItems = [
   'Manufacturer service interval specifications',
   'Texas Department of Health facility regulations',
 ];
+
+// Preventive Maintenance FAQ — 4 questions for FAQPage schema + visible accordion.
+const pmFAQs = [
+  {
+    q: 'What is included in a Surgiquip preventive maintenance program?',
+    a: 'Every PM visit includes: scheduled inspections (semi-annual or annual, coordinated around your OR calendar), proactive replacement of wear parts before they become failure points, full performance testing of all table articulations and light intensity levels, compliance-ready PM certificates, and priority dispatch status for any service calls between scheduled visits. We also provide equipment lifecycle planning so you can anticipate capital replacement needs.',
+  },
+  {
+    q: 'How often should surgical equipment receive preventive maintenance?',
+    a: 'Most manufacturers specify annual minimum intervals, with semi-annual recommended for high-volume facilities. Joint Commission standard EC.02.04.01 requires documented maintenance at manufacturer-specified frequencies. Surgiquip implements Skytron\'s factory-recommended intervals for all Skytron equipment and applies the same rigor to all other brands we maintain — so your PM records are audit-ready regardless of the accreditation framework.',
+  },
+  {
+    q: 'Does your PM documentation satisfy Joint Commission, DNV, and CMS requirements?',
+    a: 'Yes. Our PM certificates and service records are formatted for Joint Commission EC.02.04.01, DNV GL Healthcare accreditation, and CMS Conditions of Participation. We also cover NFPA 99 medical gas testing documentation, DSHS Texas facility regulations, and manufacturer interval specifications. Your biomedical director has everything they need on survey day — no last-minute scrambles.',
+  },
+  {
+    q: 'What is the advantage of a PM contract over calling for repairs as-needed?',
+    a: `PM contract clients receive scheduled visits, proactive parts replacement, compliance documentation included, and priority dispatch status for service calls — repairs jump to the front of our queue. On-demand repair is reactive, typically costs more per event, and tends to happen at the worst possible time. Facilities with PM programs consistently see fewer unplanned OR cancellations and more predictable capital budgets. <a href="/quote" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">Request a PM proposal</a> to see what a program costs for your facility.`,
+  },
+];
+
+const pmFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: pmFAQs.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a.replace(/<[^>]+>/g, ''),
+    },
+  })),
+};
 ---
 <BaseLayout
   title="OR Equipment Preventive Maintenance | Surgiquip"
   description="Planned maintenance programs for surgical tables, lights, and OR equipment in Texas. Compliance documentation included. Authorized Skytron service."
-  schema={[serviceSchema, breadcrumbSchema]}
+  schema={[serviceSchema, breadcrumbSchema, pmFaqSchema]}
 >
   <section class="bg-[var(--color-navy)] text-white overflow-hidden">
     <div class="container-x py-20">
@@ -188,6 +222,13 @@ const complianceItems = [
       </div>
     </div>
   </section>
+
+  <FAQSection
+    eyebrow="Preventive Maintenance FAQ"
+    heading="Common Questions About OR Equipment PM Programs"
+    items={pmFAQs}
+    bg="white"
+  />
 
   <CTASection
     heading="Protect Your OR Investment"
