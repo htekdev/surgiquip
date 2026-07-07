@@ -1,0 +1,196 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'MedicalBusiness'],
+  '@id': `${site.url}#organization`,
+  name: site.brand,
+  description:
+    'Authorized Skytron dealer serving Sugar Land, TX hospitals and surgery centers since 1983. OR equipment sales, installation, service, and preventive maintenance in Fort Bend County.',
+  url: `${site.url}/service-areas/sugar-land-tx`,
+  telephone: site.phone,
+  email: site.email,
+  foundingDate: '1983',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 29.5197,
+    longitude: -95.5353,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '07:30',
+    closes: '16:30',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Sugar Land', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'County', name: 'Fort Bend County', containedInPlace: { '@type': 'State', name: 'Texas' } },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'OR Equipment & Services — Sugar Land, TX',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Surgical Equipment Sales' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'OR Installation & Integration' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hybrid OR Integration' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Preventive Maintenance Programs' } },
+    ],
+  },
+  sameAs: [site.social.linkedin, site.social.youtube],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: `${site.url}/service-areas` },
+    { '@type': 'ListItem', position: 3, name: 'Sugar Land, TX', item: `${site.url}/service-areas/sugar-land-tx` },
+  ],
+};
+
+const markets = [
+  {
+    name: 'Hospitals & Health Systems',
+    desc: 'Full-service OR equipment programs for Fort Bend County acute care hospitals — from capital planning through lifecycle maintenance.',
+  },
+  {
+    name: 'Ambulatory Surgery Centers',
+    desc: 'Right-sized OR equipment packages for Sugar Land ASCs — Skytron tables and lights, fast installation, minimal downtime.',
+  },
+  {
+    name: 'Cardiovascular & Hybrid OR',
+    desc: 'Proven hybrid OR integrations with Siemens, Philips, and GE imaging systems — ceiling-mount boom configurations and AV routing.',
+  },
+  {
+    name: 'Cath Labs & Procedure Rooms',
+    desc: 'Equipment carrier and boom solutions engineered around bi-plane and single-plane C-arm systems for cardiac and vascular programs.',
+  },
+];
+---
+<BaseLayout
+  title="Surgical Equipment — Sugar Land, TX | Surgiquip Solutions"
+  description="Surgiquip Solutions serves Sugar Land, TX — authorized Skytron dealer for Fort Bend County. OR equipment sales, hybrid OR integration, service and preventive maintenance. Houston Methodist Sugar Land reference site."
+  schema={[localBusinessSchema, breadcrumbSchema]}
+>
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/service-areas" class="hover:text-white/90">Service Areas</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">Sugar Land, TX</span>
+      </nav>
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Fort Bend County</div>
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-white leading-tight max-w-2xl">
+        Surgical Equipment Service — Sugar Land, TX
+      </h1>
+      <p class="mt-5 text-lg text-white/85 max-w-xl">
+        Authorized Skytron dealer serving Fort Bend County hospitals and surgery centers since 1983.
+        From 18-OR hospital builds to hybrid OR integrations — Sugar Land is proven Surgiquip territory.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="/quote" class="inline-flex items-center gap-2 bg-[var(--color-blue)] hover:bg-[var(--color-blue-light)] text-white font-semibold px-6 py-3 rounded-lg transition">
+          Request Quote
+        </a>
+        <a href={`tel:${site.phone}`} class="inline-flex items-center gap-2 border border-white/30 hover:border-white text-white font-semibold px-6 py-3 rounded-lg transition">
+          {site.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Reference Installation ─────────────────────────────────────────────── -->
+  <section class="bg-[var(--color-surface-alt)] py-14 border-b border-[var(--color-border)]">
+    <div class="container-x">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Reference Installation</div>
+        <h2 class="font-display text-2xl md:text-3xl font-bold text-[var(--color-navy)] mb-4">
+          Houston Methodist Sugar Land Hospital
+        </h2>
+        <p class="text-[var(--color-text-muted)] leading-relaxed mb-6">
+          Surgiquip Solutions equipped Houston Methodist Sugar Land Hospital — one of the most comprehensive
+          full-hospital OR builds in the Greater Houston area. The project included 18 standard ORs,
+          4 cardiovascular ORs, 2 hybrid ORs integrated with Siemens Zeego imaging, 1 catheterization
+          lab, 4 trauma rooms, and 12 emergency bays. Every room was outfitted with Center Mount Booms,
+          Aurora LED surgical lights, 6700B Skytron tables, and SkyVision integration — all coordinated
+          and installed by Surgiquip through a complex phased construction schedule.
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            ['18', 'Standard ORs'],
+            ['4', 'Cardiovascular ORs'],
+            ['2', 'Hybrid ORs'],
+            ['1', 'Cath Lab'],
+          ].map(([num, label]) => (
+            <div class="bg-white rounded-lg border border-[var(--color-border)] p-4 text-center">
+              <div class="font-display text-3xl font-bold text-[var(--color-navy)]">{num}</div>
+              <div class="text-xs text-[var(--color-text-muted)] mt-1">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Markets Served ─────────────────────────────────────────────────────── -->
+  <section class="container-x py-16">
+    <div class="text-center mb-10">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Why Surgiquip</div>
+      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Fort Bend County Healthcare</h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {markets.map((m) => (
+        <div class="bg-[var(--color-surface-alt)] rounded-xl border border-[var(--color-border)] p-6">
+          <h3 class="font-bold text-[var(--color-navy)] mb-2">{m.name}</h3>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{m.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── Services ──────────────────────────────────────────────────────────── -->
+  <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x">
+      <div class="text-center mb-10">
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Services in Sugar Land</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {[
+          { href: '/services/equipment-sales', title: 'Equipment Sales', body: 'Authorized dealer for Skytron, HSI, and Knight. Surgical tables, OR lights, and equipment booms.' },
+          { href: '/services/or-installation', title: 'OR Installation', body: 'Turnkey OR and hybrid OR builds — ceiling mount booms, lighting, and AV integration.' },
+          { href: '/services/service-and-repair', title: 'Service & Repair', body: 'Factory-certified technicians for Skytron, Midmark, and Tuttnauer equipment.' },
+          { href: '/services/preventive-maintenance', title: 'Preventive Maintenance', body: 'Scheduled PM programs that keep Joint Commission documentation current.' },
+          { href: '/products/skytron', title: 'Skytron Products', body: 'Authorized Skytron dealer — Aurora LED lights, surgical tables, and equipment booms.' },
+          { href: '/projects', title: 'Project Portfolio', body: 'See real OR installations across Sugar Land, Houston, and Southeast Texas.' },
+        ].map((s) => (
+          <a href={s.href} class="bg-white rounded-xl border border-[var(--color-border)] p-6 hover:shadow-md transition group">
+            <h3 class="font-bold text-[var(--color-navy)] mb-2 group-hover:text-[var(--color-blue)] transition">{s.title}</h3>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{s.body}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Serving Sugar Land & Fort Bend County"
+    subhead={`Contact Surgiquip Solutions at ${site.phone} — authorized Skytron dealer for Southeast Texas since 1983.`}
+    primaryLabel="Request a Quote"
+    primaryHref="/quote"
+    secondaryLabel="Contact Us"
+    secondaryHref="/contact"
+  />
+</BaseLayout>

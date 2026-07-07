@@ -1,0 +1,153 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'MedicalBusiness'],
+  '@id': `${site.url}#organization`,
+  name: site.brand,
+  description:
+    'Authorized Skytron dealer serving League City, TX hospitals and specialty care centers since 1983. OR equipment sales, installation, service, and preventive maintenance in Galveston County.',
+  url: `${site.url}/service-areas/league-city-tx`,
+  telephone: site.phone,
+  email: site.email,
+  foundingDate: '1983',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 29.5077,
+    longitude: -95.0949,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '07:30',
+    closes: '16:30',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'League City', containedInPlace: { '@type': 'State', name: 'Texas' } },
+    { '@type': 'County', name: 'Galveston County', containedInPlace: { '@type': 'State', name: 'Texas' } },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'OR Equipment & Services — League City, TX',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Surgical Equipment Sales' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'OR Installation & Integration' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Equipment Service & Repair' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Preventive Maintenance Programs' } },
+    ],
+  },
+  sameAs: [site.social.linkedin, site.social.youtube],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: `${site.url}/service-areas` },
+    { '@type': 'ListItem', position: 3, name: 'League City, TX', item: `${site.url}/service-areas/league-city-tx` },
+  ],
+};
+---
+<BaseLayout
+  title="Surgical Equipment — League City, TX | Surgiquip Solutions"
+  description="Surgiquip Solutions serves League City, TX — authorized Skytron dealer for Galveston County. OR equipment sales, specialty care center outfitting, service and preventive maintenance. UTMB Victory Lakes reference site."
+  schema={[localBusinessSchema, breadcrumbSchema]}
+>
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-20">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/service-areas" class="hover:text-white/90">Service Areas</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">League City, TX</span>
+      </nav>
+      <div class="text-xs font-bold tracking-widest uppercase text-white/70 mb-3">Galveston County · Bay Area Houston</div>
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-white leading-tight max-w-2xl">
+        Surgical Equipment Service — League City, TX
+      </h1>
+      <p class="mt-5 text-lg text-white/85 max-w-xl">
+        Authorized Skytron dealer serving Galveston County and Bay Area Houston healthcare facilities since 1983.
+        UTMB specialty care outfitting at Victory Lakes demonstrates our full-suite OR capabilities in League City.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="/quote" class="inline-flex items-center gap-2 bg-[var(--color-blue)] hover:bg-[var(--color-blue-light)] text-white font-semibold px-6 py-3 rounded-lg transition">
+          Request Quote
+        </a>
+        <a href={`tel:${site.phone}`} class="inline-flex items-center gap-2 border border-white/30 hover:border-white text-white font-semibold px-6 py-3 rounded-lg transition">
+          {site.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Reference Installation ─────────────────────────────────────────────── -->
+  <section class="bg-[var(--color-surface-alt)] py-14 border-b border-[var(--color-border)]">
+    <div class="container-x">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Reference Installation</div>
+        <h2 class="font-display text-2xl md:text-3xl font-bold text-[var(--color-navy)] mb-4">
+          UTMB Specialty Care Center at Victory Lakes
+        </h2>
+        <p class="text-[var(--color-text-muted)] leading-relaxed">
+          Surgiquip Solutions equipped the UTMB Health Specialty Care Center at Victory Lakes with
+          Center Mount Booms, Stellar OR lights, nurse documentation centers, and stainless steel
+          storage cabinets across 4 operating rooms. As UTMB Health expands its outpatient surgical
+          presence in Galveston County, Surgiquip provides the same quality of OR infrastructure
+          deployed at the flagship UTMB John Sealy Hospital campus in Galveston.
+        </p>
+        <div class="mt-6">
+          <div class="bg-white rounded-lg border border-[var(--color-border)] p-4 inline-flex items-center gap-4">
+            <div class="font-display text-3xl font-bold text-[var(--color-navy)]">4</div>
+            <div>
+              <div class="font-bold text-[var(--color-navy)] text-sm">Operating Rooms</div>
+              <div class="text-xs text-[var(--color-text-muted)]">UTMB Victory Lakes Specialty Care Center</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Markets Grid ───────────────────────────────────────────────────────── -->
+  <section class="container-x py-16">
+    <div class="text-center mb-10">
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Why Surgiquip</div>
+      <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">League City Healthcare Market</h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {[
+        { name: 'Specialty Care Centers', desc: 'OR equipment for UTMB and other specialty care outpatient surgical facilities in League City.' },
+        { name: 'Hospitals', desc: 'Full-service OR programs for Galveston County acute care facilities.' },
+        { name: 'Surgery Centers', desc: 'Right-sized OR packages for Bay Area Houston ambulatory surgery centers.' },
+        { name: 'Service & PM', desc: 'Preventive maintenance and repair for Skytron equipment in Galveston County.' },
+      ].map((m) => (
+        <div class="bg-[var(--color-surface-alt)] rounded-xl border border-[var(--color-border)] p-6">
+          <h3 class="font-bold text-[var(--color-navy)] mb-2">{m.name}</h3>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{m.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CTASection
+    heading="Serving League City & Galveston County"
+    subhead={`Contact Surgiquip Solutions at ${site.phone} — authorized Skytron dealer for Southeast Texas since 1983.`}
+    primaryLabel="Request a Quote"
+    primaryHref="/quote"
+    secondaryLabel="Contact Us"
+    secondaryHref="/contact"
+  />
+</BaseLayout>
