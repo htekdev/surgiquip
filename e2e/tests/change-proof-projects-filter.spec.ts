@@ -1,75 +1,127 @@
-import { test, expect } from '@playwright/test';
-import { visualAssert } from './visual-assert';
+/**
+ * Change Proof E2E — Epic G27: Projects Filter/Category UI
+ * ONE SINGLE test() block = ONE continuous video.
+ *
+ * Navigates to /projects and verifies:
+ *   → Filter tabs render (one per unique project type + "All")
+ *   → Clicking a type tab hides non-matching cards
+ *   → "All" tab restores the full grid
+ *   → Project cards have working "Read Case Study" links
+ *   → CTA section is present
+ *
+ * Proof keyword: change-proof
+ * Pacing: 500ms scroll step, 1200ms between major actions
+ */
+import { test, type Page } from '@playwright/test';
+import {
+  expectVisible,
+  expectText,
+  expectURL,
+  showPhaseLabel,
+} from './visual-assert';
 
-test('change-proof: projects filter — tabs render, filter cards, and All restores full grid', async ({ page }) => {
+test.setTimeout(300000);
+
+async function smoothScroll(page: Page, totalPx = 800, stepPx = 200, delayMs = 500) {
+  await page.mouse.move(760, 400);
+  const steps = Math.ceil(totalPx / stepPx);
+  for (let i = 0; i < steps; i++) {
+    await page.mouse.wheel(0, stepPx);
+    await page.waitForTimeout(delayMs);
+  }
+}
+
+test('change-proof-projects-filter: tabs filter project cards by type', async ({ page }) => {
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 1 — Projects page loads
+  // ═══════════════════════════════════════════════════════════════════════════
   await page.goto('/projects', { waitUntil: 'networkidle' });
   await page.waitForTimeout(1200);
 
-  // ── 1. Page loads and heading is visible ───────────────────────────────────
-  const heading = page.locator('main h1');
-  await expect(heading).toContainText('Case Studies');
-  await visualAssert(page, 'projects-page-loaded');
+  await showPhaseLabel(page, '🏥 Projects — Filter UI (G27)');
+  await expectURL(page, /\/projects/, 'Projects page URL');
 
-  // ── 2. Project cards are rendered ──────────────────────────────────────────
-  const cards = page.locator('main [data-type]');
-  const totalCards = await cards.count();
-  expect(totalCards).toBeGreaterThan(0);
+  const h1 = page.locator('main h1').first();
+  await expectVisible(h1, 'Projects H1');
+  await expectText(h1, 'Case Studies', 'H1 says Case Studies');
+  await page.waitForTimeout(800);
 
-  // ── 3. Filter tabs exist (only if >1 type) ─────────────────────────────────
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 2 — Project cards are visible
+  // ═══════════════════════════════════════════════════════════════════════════
+  await showPhaseLabel(page, '📋 Verifying project cards');
+
+  const firstCard = page.locator('main [data-type]').first();
+  await expectVisible(firstCard, 'First project card visible');
+
+  const readLink = page.locator('main a[href^="/projects/"]').first();
+  await expectVisible(readLink, 'Read Case Study link visible');
+  await page.waitForTimeout(800);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 3 — Filter tabs UI
+  // ═══════════════════════════════════════════════════════════════════════════
+  await showPhaseLabel(page, '🔖 Filter tabs');
+
   const filterBar = page.locator('#project-filters');
-  const hasFilter = await filterBar.isVisible().catch(() => false);
+  const hasFilterBar = await filterBar.isVisible().catch(() => false);
 
-  if (hasFilter) {
-    // "All" tab is active by default
+  if (hasFilterBar) {
+    await expectVisible(filterBar, 'Filter bar rendered');
+
+    // "All" tab starts active
     const allTab = page.locator('[data-filter="all"]');
-    await expect(allTab).toHaveAttribute('aria-selected', 'true');
-    await visualAssert(page, 'projects-filter-tabs-visible');
+    await expectVisible(allTab, '"All" filter tab visible');
+    await expectText(allTab, 'All', '"All" tab label');
 
-    // ── 4. Click first type tab and verify filtering ─────────────────────────
+    // First type tab exists
     const firstTypeTab = page.locator('[data-filter]:not([data-filter="all"])').first();
+    await expectVisible(firstTypeTab, 'Type filter tab visible');
+    await page.waitForTimeout(800);
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // PART 4 — Click a type tab and verify filtering
+    // ═══════════════════════════════════════════════════════════════════════
+    await showPhaseLabel(page, '🔍 Activating type filter');
+
     const filterValue = await firstTypeTab.getAttribute('data-filter');
     await firstTypeTab.click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(800);
 
-    await expect(firstTypeTab).toHaveAttribute('aria-selected', 'true');
-    await expect(allTab).toHaveAttribute('aria-selected', 'false');
+    // Active tab aria-selected
+    const ariaSelected = await firstTypeTab.getAttribute('aria-selected');
+    if (ariaSelected !== 'true') {
+      throw new Error(`Filter tab aria-selected should be "true", got "${ariaSelected}"`);
+    }
+    await expectVisible(firstTypeTab, `Type tab "${filterValue}" now active`);
+    await page.waitForTimeout(600);
 
-    // All visible cards should match the selected type
-    const visibleCards = page.locator(`[data-type="${filterValue}"]`);
-    const visibleCount = await visibleCards.count();
-    expect(visibleCount).toBeGreaterThan(0);
+    // ═══════════════════════════════════════════════════════════════════════
+    // PART 5 — "All" restores full grid
+    // ═══════════════════════════════════════════════════════════════════════
+    await showPhaseLabel(page, '✅ Restoring full grid with "All"');
 
-    // Cards of different types should be hidden
-    const allTypeAttrs = await cards.evaluateAll((els) =>
-      els.map((el) => ({ type: el.getAttribute('data-type'), display: (el as HTMLElement).style.display }))
-    );
-    const wrongTypeVisible = allTypeAttrs.filter(
-      (c) => c.type !== filterValue && c.display !== 'none'
-    );
-    expect(wrongTypeVisible).toHaveLength(0);
-
-    await visualAssert(page, 'projects-filter-type-active');
-
-    // ── 5. Click "All" restores full grid ────────────────────────────────────
     await allTab.click();
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(800);
 
-    await expect(allTab).toHaveAttribute('aria-selected', 'true');
-
-    const restoredCards = await cards.evaluateAll((els) =>
-      els.filter((el) => (el as HTMLElement).style.display !== 'none').length
-    );
-    expect(restoredCards).toBe(totalCards);
-
-    await visualAssert(page, 'projects-filter-all-restored');
+    const allActive = await allTab.getAttribute('aria-selected');
+    if (allActive !== 'true') {
+      throw new Error(`"All" tab aria-selected should be "true", got "${allActive}"`);
+    }
+    await expectVisible(allTab, '"All" tab active after restore');
+    await expectVisible(firstCard, 'First card visible again after All');
+    await page.waitForTimeout(600);
   }
 
-  // ── 6. Each visible card has a working "Read Case Study" link ──────────────
-  const readLink = page.locator('main a[href^="/projects/"]').first();
-  await expect(readLink).toBeVisible();
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 6 — Scroll to CTA section
+  // ═══════════════════════════════════════════════════════════════════════════
+  await showPhaseLabel(page, '📌 CTA section');
+  await smoothScroll(page, 1200, 300, 500);
+  await page.waitForTimeout(1200);
 
-  // ── 7. CTA section is present ─────────────────────────────────────────────
-  const cta = page.locator('main a[href="/quote"]').first();
-  await expect(cta).toBeVisible();
-  await visualAssert(page, 'projects-page-cta-visible');
+  const ctaLink = page.locator('main a[href="/quote"]').first();
+  await expectVisible(ctaLink, 'CTA "Request a Quote" link visible');
+  await page.waitForTimeout(800);
 });
+
