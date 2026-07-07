@@ -1,16 +1,16 @@
 /**
- * Change Proof E2E Spec — PR #66: Quality Audit — broken images + projects accuracy + content trim
- * ONE SINGLE test() block = ONE continuous video proving the quality audit changes are live
+ * Change Proof E2E Spec — Quality Audit + Epic G Real Projects
+ * ONE SINGLE test() block = ONE continuous video proving real project content is live
  *
  * Flow:
  *   → Homepage (establish context)
- *   → Projects index — scroll to see all four project cards
- *   → boom-system-install-houston-asc — verify "Center Mount Equipment Booms" (2022)
- *   → hybrid-or-houston — verify "Center Mount Equipment Booms" (2023)
- *   → multi-suite-upgrade-southeast-texas — verify "6701" + "Aurora LED" (2021)
- *   → pm-program-regional-health-system — verify "Aurora LED" (2020)
- *   → Blog — ambulatory-surgery-center article — verify page renders (image fixed .png → .webp)
- *   → Blog — surgical-lighting article — verify page renders (image fixed .png → .webp)
+ *   → Projects index — scroll to see project cards
+ *   → memorial-hermann-hvi — verify "Center Mount Equipment Booms" + "6700B"
+ *   → memorial-hermann-tmc-sarofim — verify "Center Mount Equipment Booms" + "Aurora LED"
+ *   → memorial-hermann-northeast — verify "6701" + "Aurora LED" (Humble TX)
+ *   → utmb-john-sealy-hospital — verify "360°" + "Center Mount Equipment Booms" (Galveston)
+ *   → Blog — ambulatory-surgery-center article — verify page renders
+ *   → Blog — surgical-lighting article — verify page renders
  *
  * Proof keyword: change-proof
  */
@@ -64,103 +64,112 @@ test('change-proof-quality-audit-images-projects', async ({ page }) => {
   await expectVisible(projectsH1, 'Projects index H1');
 
   await smoothScroll(page, 600, 260, 450);
-  await showPhaseLabel(page, '🔍 Project Cards — Four Case Studies');
+  await showPhaseLabel(page, '🔍 Project Cards — Real Portfolio');
   await page.waitForTimeout(800);
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PART 3 — Boom System Install: Houston ASC (year: 2022, Center Mount Booms)
+  // PART 3 — Memorial Hermann HVI (Center Mount + 6700B + Aurora LED)
   // ═══════════════════════════════════════════════════════════════════════════
 
-  await showPhaseLabel(page, '⚙️ Opening Boom System Install — Houston ASC →');
+  await showPhaseLabel(page, '❤️ Opening Memorial Hermann HVI — Cardiac Hybrid OR →');
   await page.waitForTimeout(700);
-  await page.goto('/projects/boom-system-install-houston-asc');
+  await page.goto('/projects/memorial-hermann-hvi');
   await page.waitForLoadState('networkidle');
 
-  await expectURL(page, /boom-system-install-houston-asc/);
-  await showPhaseLabel(page, '🔩 Boom System Install — Houston ASC (2022)');
+  await expectURL(page, /memorial-hermann-hvi/);
+  await showPhaseLabel(page, '🔬 HVI — 4 CV ORs + Hybrid OR (Siemens Integration)');
   await page.waitForTimeout(1200);
 
-  const boomH1 = page.locator('h1').first();
-  await expectVisible(boomH1, 'Boom System project H1');
+  const hviH1 = page.locator('h1').first();
+  await expectVisible(hviH1, 'HVI project H1');
 
-  const centerMountRef = page.locator('text=Center Mount').first();
-  await expectVisible(centerMountRef, '"Center Mount" product name visible');
+  const hviCenterMount = page.locator('text=Center Mount').first();
+  await expectVisible(hviCenterMount, '"Center Mount" booms visible in HVI');
+
+  const hvi6700B = page.locator('text=6700B').first();
+  await expectVisible(hvi6700B, '"6700B" Skytron table model visible');
 
   await smoothScroll(page, 800, 260, 500);
-  await showPhaseLabel(page, '📋 Boom System — Equipment List & Scope');
+  await showPhaseLabel(page, '📋 HVI — Cardiac OR Equipment & Integration');
   await page.waitForTimeout(1000);
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PART 4 — Hybrid OR Houston (year: 2023, Center Mount Booms)
+  // PART 4 — TMC Sarofim (Center Mount + Aurora LED + 36 ORs)
   // ═══════════════════════════════════════════════════════════════════════════
 
-  await showPhaseLabel(page, '🏥 Opening Hybrid OR — Houston Area Hospital →');
+  await showPhaseLabel(page, '🏆 Opening TMC Sarofim — Crown Jewel (36 ORs) →');
   await page.waitForTimeout(700);
-  await page.goto('/projects/hybrid-or-houston');
+  await page.goto('/projects/memorial-hermann-tmc-sarofim');
   await page.waitForLoadState('networkidle');
 
-  await expectURL(page, /hybrid-or-houston/);
-  await showPhaseLabel(page, '🔬 Hybrid OR — Houston Hospital (2023)');
+  await expectURL(page, /memorial-hermann-tmc-sarofim/);
+  await showPhaseLabel(page, '🏥 TMC Sarofim Pavilion — 36 ORs + 3 Hybrid Suites');
   await page.waitForTimeout(1200);
 
-  const hybridH1 = page.locator('h1').first();
-  await expectVisible(hybridH1, 'Hybrid OR project H1');
-  await expectText(hybridH1, /Hybrid OR/i, 'Hybrid OR project title');
+  const sarofimH1 = page.locator('h1').first();
+  await expectVisible(sarofimH1, 'Sarofim project H1');
+  await expectText(sarofimH1, 'Sarofim', 'Sarofim title text');
 
-  const hybridCenterMount = page.locator('text=Center Mount').first();
-  await expectVisible(hybridCenterMount, '"Center Mount" booms visible in Hybrid OR');
+  const sarofimCenterMount = page.locator('text=Center Mount').first();
+  await expectVisible(sarofimCenterMount, '"Center Mount" booms visible in Sarofim');
+
+  const sarofimAurora = page.locator('text=Aurora LED').first();
+  await expectVisible(sarofimAurora, '"Aurora LED" lights visible in Sarofim');
 
   await smoothScroll(page, 800, 260, 500);
-  await showPhaseLabel(page, '📋 Hybrid OR — Equipment & Integration Details');
+  await showPhaseLabel(page, '📋 Sarofim — Full Campus Equipment & Scale');
   await page.waitForTimeout(1000);
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PART 5 — Multi-Suite Upgrade Southeast Texas (year: 2021, 6701 + Aurora LED)
+  // PART 5 — Memorial Hermann Northeast (6701 + Aurora LED + Center Mount)
   // ═══════════════════════════════════════════════════════════════════════════
 
-  await showPhaseLabel(page, '🔧 Opening 4-OR Suite Upgrade — SE Texas →');
+  await showPhaseLabel(page, '🏥 Opening MH Northeast — Humble TX Hybrid OR →');
   await page.waitForTimeout(700);
-  await page.goto('/projects/multi-suite-upgrade-southeast-texas');
+  await page.goto('/projects/memorial-hermann-northeast');
   await page.waitForLoadState('networkidle');
 
-  await expectURL(page, /multi-suite-upgrade-southeast-texas/);
-  await showPhaseLabel(page, '🏥 4-OR Upgrade — SE Texas Surgery Center (2021)');
+  await expectURL(page, /memorial-hermann-northeast/);
+  await showPhaseLabel(page, '🏥 MH Northeast — 6701 Tables + Aurora LED (Humble TX)');
   await page.waitForTimeout(1200);
 
-  const multiH1 = page.locator('h1').first();
-  await expectVisible(multiH1, 'Multi-suite upgrade project H1');
+  const northeastH1 = page.locator('h1').first();
+  await expectVisible(northeastH1, 'Northeast project H1');
 
-  const skytron6701Ref = page.locator('text=6701').first();
-  await expectVisible(skytron6701Ref, '"6701" Skytron table model visible');
+  const northeast6701 = page.locator('text=6701').first();
+  await expectVisible(northeast6701, '"6701" Skytron table model visible');
 
-  const auroraLEDRef = page.locator('text=Aurora LED').first();
-  await expectVisible(auroraLEDRef, '"Aurora LED" product name visible');
+  const northeastAurora = page.locator('text=Aurora LED').first();
+  await expectVisible(northeastAurora, '"Aurora LED" product name visible');
 
   await smoothScroll(page, 900, 260, 500);
-  await showPhaseLabel(page, '📋 Multi-Suite — Table Fleet & Lighting Details');
+  await showPhaseLabel(page, '📋 Northeast — Table Fleet & Hybrid OR Details');
   await page.waitForTimeout(1000);
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PART 6 — PM Program Regional Health System (year: 2020, Aurora LED)
+  // PART 6 — UTMB John Sealy (360° Center Mount + Stellar Lights)
   // ═══════════════════════════════════════════════════════════════════════════
 
-  await showPhaseLabel(page, '📋 Opening PM Program — Regional TX Health System →');
+  await showPhaseLabel(page, '🏥 Opening UTMB John Sealy — 360° Boom Solution →');
   await page.waitForTimeout(700);
-  await page.goto('/projects/pm-program-regional-health-system');
+  await page.goto('/projects/utmb-john-sealy-hospital');
   await page.waitForLoadState('networkidle');
 
-  await expectURL(page, /pm-program-regional-health-system/);
-  await showPhaseLabel(page, '🛠 PM Program — Regional TX Health System (2020)');
+  await expectURL(page, /utmb-john-sealy-hospital/);
+  await showPhaseLabel(page, '🏥 UTMB John Sealy — 32 ORs + 360° Center Mount (Galveston)');
   await page.waitForTimeout(1200);
 
-  const pmH1 = page.locator('h1').first();
-  await expectVisible(pmH1, 'PM Program project H1');
+  const utmbH1 = page.locator('h1').first();
+  await expectVisible(utmbH1, 'UTMB project H1');
 
-  const pmAuroraRef = page.locator('text=Aurora LED').first();
-  await expectVisible(pmAuroraRef, '"Aurora LED" visible in PM Program project');
+  const utmb360 = page.locator('text=360°').first();
+  await expectVisible(utmb360, '"360°" boom configuration visible');
+
+  const utmbCenterMount = page.locator('text=Center Mount').first();
+  await expectVisible(utmbCenterMount, '"Center Mount" booms visible in UTMB');
 
   await smoothScroll(page, 800, 260, 500);
-  await showPhaseLabel(page, '📋 PM Program — Multi-Campus Contract Details');
+  await showPhaseLabel(page, '📋 UTMB — 32 ORs + LDRP Suite + Cath Lab');
   await page.waitForTimeout(1000);
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -213,6 +222,6 @@ test('change-proof-quality-audit-images-projects', async ({ page }) => {
   // FINAL — Quality audit verified
   // ═══════════════════════════════════════════════════════════════════════════
 
-  await showPhaseLabel(page, '✅ Quality Audit Changes Fully Verified — Images + Projects Accurate');
+  await showPhaseLabel(page, '✅ Real Projects + Real Equipment Names Fully Verified');
   await page.waitForTimeout(1500);
 });

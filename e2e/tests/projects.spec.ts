@@ -43,9 +43,9 @@ test.describe('Projects Index Page', () => {
 // ─── Project Detail Page ──────────────────────────────────────────────────────
 
 test.describe('Project Detail Page', () => {
-  // Uses the hybrid-or-houston project which exists on main
+  // Uses the TMC Sarofim project — crown jewel, featured
   test.beforeEach(async ({ page }) => {
-    await page.goto('/projects/hybrid-or-houston');
+    await page.goto('/projects/memorial-hermann-tmc-sarofim');
   });
 
   test('should render project detail heading', async ({ page }) => {
@@ -85,13 +85,13 @@ test.describe('Project Detail Page', () => {
 
 // ─── Second Project Slug ──────────────────────────────────────────────────────
 
-test.describe('Project Slug — Boom System', () => {
-  test('should load boom-system project page', async ({ page }) => {
-    await page.goto('/projects/boom-system-install-houston-asc');
-    await showPhaseLabel(page, '🏗️ Boom System Project');
+test.describe('Project Slug — Park 10 Surgical Center', () => {
+  test('should load park-10-surgical-center project page', async ({ page }) => {
+    await page.goto('/projects/park-10-surgical-center');
+    await showPhaseLabel(page, '🏗️ Park 10 Surgical Center Project');
     const heading = page.locator('h1').first();
-    await expectVisible(heading, 'Boom system project heading');
-    await expectURL(page, /\/projects\/boom-system-install-houston-asc/);
+    await expectVisible(heading, 'Park 10 project heading');
+    await expectURL(page, /\/projects\/park-10-surgical-center/);
   });
 });
 
