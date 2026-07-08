@@ -1,5 +1,6 @@
 ---
 title: "Multi-Brand OR Equipment Service & Repair: What Texas Hospitals Need From a Service Partner"
+seoTitle: "Multi-Brand OR Service & Repair TX"
 description: "A practical guide for Texas hospital facilities managers evaluating surgical equipment service providers — covering multi-brand repair capabilities, service response, OEM vs. ISO service decisions, and how to choose a partner that supports your entire OR fleet."
 publishDate: 2026-07-01
 image: "/images/services/service-repair-hero.webp"

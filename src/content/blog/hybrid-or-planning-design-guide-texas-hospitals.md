@@ -1,5 +1,6 @@
 ---
 title: "Hybrid OR Planning Guide: Design, Equipment, and Integration for Texas Hospitals"
+seoTitle: "Hybrid OR Planning Guide | Texas"
 description: "A comprehensive planning guide for Texas hospital facilities directors and perioperative leaders considering a hybrid OR installation — covering structural requirements, imaging integration, boom design, and lessons from Southeast Texas projects."
 publishDate: 2026-06-30
 image: "/images/blog/or-installation-planning-hero.webp"

@@ -1,5 +1,6 @@
 ---
 title: "Skytron Surgical Tables: Model Comparison Guide for Texas Hospitals and Surgery Centers"
+seoTitle: "Skytron Table Comparison | Texas"
 description: "A complete comparison of Skytron's surgical table lineup — 6000, 6500, 6700, and 7000 series — to help Texas hospital administrators and OR directors match the right table to their case mix, imaging needs, and budget."
 publishDate: 2026-06-30
 image: "/images/products/skytron-hero.webp"

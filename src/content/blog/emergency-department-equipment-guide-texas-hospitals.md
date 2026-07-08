@@ -1,5 +1,6 @@
 ---
 title: "Emergency Department Equipment Guide: Boom Systems, Lighting, and Infrastructure for Texas EDs and Trauma Bays"
+seoTitle: "ED & Trauma Bay Equipment | Texas"
 description: "A comprehensive guide for Texas hospital facilities directors and ED planners evaluating ceiling-mount boom systems, Aurora LED exam lights, and equipment infrastructure for emergency departments, trauma bays, and critical care rooms."
 publishDate: 2026-06-30
 image: "/images/blog/or-installation-planning-hero.webp"
