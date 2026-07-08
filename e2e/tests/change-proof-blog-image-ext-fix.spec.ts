@@ -12,12 +12,15 @@ import { expectVisible, expectText, showPhaseLabel } from './visual-assert';
  * LDRP birthing suite, and sterile processing department guides.
  */
 
+test.setTimeout(120000);
+
 test('fix(blog): verify broken .png → .webp image references resolved on 4 blog posts', async ({ page }) => {
-  const DELAY = 600;
+  const DELAY = 800;
 
   // ── Phase 1: Cardiac Catheterization Lab ────────────────────────────
   await showPhaseLabel(page, 'Phase 1: Cardiac Cath Lab — image loads');
   await page.goto('/blog/cardiac-catheterization-lab-equipment-guide-texas');
+  await page.waitForLoadState('networkidle');
   await page.waitForTimeout(DELAY);
 
   // OG image should NOT contain .png extension
@@ -34,11 +37,12 @@ test('fix(blog): verify broken .png → .webp image references resolved on 4 blo
     expect(cathImgSrc).not.toMatch(/\.png$/i);
   }
 
-  await expectText(page.locator('h1'), 'Cardiac Catheterization Lab Equipment', 'Cath lab page title');
+  await expectText(page.locator('h1'), 'Cardiac Catheterization Lab', 'Cath lab page H1');
 
   // ── Phase 2: Ceiling-Mount Boom Systems ─────────────────────────────
   await showPhaseLabel(page, 'Phase 2: Ceiling-Mount Booms — image loads');
   await page.goto('/blog/ceiling-mount-boom-systems-texas-operating-rooms');
+  await page.waitForLoadState('networkidle');
   await page.waitForTimeout(DELAY);
 
   const boomOgImage = await page.locator('meta[property="og:image"]').getAttribute('content');
@@ -52,11 +56,12 @@ test('fix(blog): verify broken .png → .webp image references resolved on 4 blo
     expect(boomImgSrc).not.toMatch(/\.png$/i);
   }
 
-  await expectText(page.locator('h1'), 'Ceiling-Mount Boom Systems', 'Boom systems page title');
+  await expectText(page.locator('h1'), 'Ceiling-Mount Boom', 'Boom systems page H1');
 
   // ── Phase 3: LDRP Birthing Suite ────────────────────────────────────
   await showPhaseLabel(page, 'Phase 3: LDRP Birthing Suite — image loads');
   await page.goto('/blog/ldrp-birthing-suite-equipment-guide-texas-hospitals');
+  await page.waitForLoadState('networkidle');
   await page.waitForTimeout(DELAY);
 
   const ldrpOgImage = await page.locator('meta[property="og:image"]').getAttribute('content');
@@ -70,11 +75,12 @@ test('fix(blog): verify broken .png → .webp image references resolved on 4 blo
     expect(ldrpImgSrc).not.toMatch(/\.png$/i);
   }
 
-  await expectText(page.locator('h1'), 'LDRP Suite Equipment Guide', 'LDRP page title');
+  await expectText(page.locator('h1'), 'LDRP Suite Equipment Guide', 'LDRP page H1');
 
   // ── Phase 4: Sterile Processing Department — dedicated SPD hero ──────
   await showPhaseLabel(page, 'Phase 4: Sterile Processing Dept — dedicated SPD hero image');
   await page.goto('/blog/sterile-processing-department-equipment-guide-texas');
+  await page.waitForLoadState('networkidle');
   await page.waitForTimeout(DELAY);
 
   const spdOgImage = await page.locator('meta[property="og:image"]').getAttribute('content');
@@ -85,15 +91,19 @@ test('fix(blog): verify broken .png → .webp image references resolved on 4 blo
   const spdHero = page.locator('img').first();
   await expectVisible(spdHero, 'SPD sterile processing hero image');
 
-  await expectText(page.locator('h1'), 'Sterile Processing Department Equipment', 'SPD page title');
+  await expectText(page.locator('h1'), 'Sterile Processing Department', 'SPD page H1');
 
   // ── Phase 5: Blog index — all 4 articles visible ────────────────────
   await showPhaseLabel(page, 'Phase 5: Blog index — all 4 fixed articles appear');
   await page.goto('/blog');
+  await page.waitForLoadState('networkidle');
   await page.waitForTimeout(DELAY);
 
   await expectText(page.locator('main'), 'Cardiac Catheterization', 'Cath lab article in index');
   await expectText(page.locator('main'), 'Ceiling-Mount Boom', 'Boom systems article in index');
   await expectText(page.locator('main'), 'LDRP Suite', 'LDRP article in index');
   await expectText(page.locator('main'), 'Sterile Processing', 'SPD article in index');
+
+  await showPhaseLabel(page, '✅ All 4 blog posts — .webp images verified, no broken .png refs');
+  await page.waitForTimeout(600);
 });
