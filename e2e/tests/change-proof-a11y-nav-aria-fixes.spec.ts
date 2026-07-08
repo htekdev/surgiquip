@@ -72,15 +72,18 @@ test('change-proof: Header a11y ARIA fixes — no role=region, aria-expanded, ke
   // Open the mobile menu
   await toggle.click();
   await page.waitForTimeout(300);
-  // Use string 'hidden' (not regex /hidden/) — #mobile-menu always has lg:hidden in its
-  // class list (Tailwind responsive utility). The JS toggle only adds/removes 'hidden'.
-  // Regex /hidden/ would match 'lg:hidden' and produce a false failure.
-  await expect(mobileMenuDiv, 'Mobile menu should be visible after click — hidden class removed').not.toHaveClass('hidden');
+  // Use classList.contains() — not toHaveClass() — because #mobile-menu always has
+  // 'lg:hidden' in its class list (Tailwind responsive utility). Playwright's toHaveClass()
+  // does a substring/regex check on the full class string, so it would match 'lg:hidden'
+  // and incorrectly fail. classList.contains() does exact class token matching.
+  const isHiddenAfterOpen = await mobileMenuDiv.evaluate((el: HTMLElement) => el.classList.contains('hidden'));
+  expect(isHiddenAfterOpen, 'Mobile menu should be visible after click — hidden class removed').toBe(false);
 
   // Press Escape — menu should close
   await page.keyboard.press('Escape');
   await page.waitForTimeout(300);
-  await expect(mobileMenuDiv, 'Mobile menu should close on Escape — hidden class re-added').toHaveClass('hidden');
+  const isHiddenAfterEscape = await mobileMenuDiv.evaluate((el: HTMLElement) => el.classList.contains('hidden'));
+  expect(isHiddenAfterEscape, 'Mobile menu should close on Escape — hidden class re-added').toBe(true);
 
   // ── 8. CapabilitiesStrip icons render (no 404s) ───────────────────────────
   // Navigate back to homepage in case we're on a different page
