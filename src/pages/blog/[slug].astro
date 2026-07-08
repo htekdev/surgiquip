@@ -35,10 +35,10 @@ function formatDate(date: Date) {
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-// Article JSON-LD
+// BlogPosting JSON-LD (more specific than Article — preferred by Google for blog content)
 const articleSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
+  '@type': 'BlogPosting',
   headline: title,
   description,
   datePublished: publishDate.toISOString(),
@@ -46,6 +46,7 @@ const articleSchema = {
   url: canonicalUrl,
   mainEntityOfPage: canonicalUrl,
   ...(image ? { image: `${site.url}${image}` } : {}),
+  ...(tags && tags.length > 0 ? { keywords: tags.join(', ') } : {}),
   author: {
     '@type': 'Organization',
     name: site.brand,
@@ -55,6 +56,10 @@ const articleSchema = {
     '@type': 'Organization',
     name: site.brand,
     url: site.url,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${site.url}/images/logo.svg`,
+    },
   },
   about: {
     '@type': 'LocalBusiness',
