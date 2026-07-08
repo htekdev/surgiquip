@@ -2,7 +2,7 @@
 title: "Cardiac Catheterization Lab Equipment: Installation & Service Guide for Texas Hospitals"
 description: "A technical guide for Texas hospital facilities directors and cardiovascular program directors planning a cardiac catheterization lab — covering boom engineering, lighting, tables, NFPA 99 compliance, and Surgiquip's Southeast Texas installation track record."
 publishDate: 2026-06-30
-image: "/images/services/or-installation-hero.png"
+image: "/images/services/or-installation-hero.webp"
 tags: ["cardiac cath lab", "catheterization lab", "OR equipment", "Texas hospitals", "Skytron", "cardiovascular", "Houston"]
 ---
 
