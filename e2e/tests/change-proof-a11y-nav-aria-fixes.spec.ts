@@ -72,12 +72,15 @@ test('change-proof: Header a11y ARIA fixes — no role=region, aria-expanded, ke
   // Open the mobile menu
   await toggle.click();
   await page.waitForTimeout(300);
-  await expect(mobileMenuDiv, 'Mobile menu should be visible after click').not.toHaveClass(/hidden/);
+  // Use string 'hidden' (not regex /hidden/) — #mobile-menu always has lg:hidden in its
+  // class list (Tailwind responsive utility). The JS toggle only adds/removes 'hidden'.
+  // Regex /hidden/ would match 'lg:hidden' and produce a false failure.
+  await expect(mobileMenuDiv, 'Mobile menu should be visible after click — hidden class removed').not.toHaveClass('hidden');
 
   // Press Escape — menu should close
   await page.keyboard.press('Escape');
   await page.waitForTimeout(300);
-  await expect(mobileMenuDiv, 'Mobile menu should close on Escape').toHaveClass(/hidden/);
+  await expect(mobileMenuDiv, 'Mobile menu should close on Escape — hidden class re-added').toHaveClass('hidden');
 
   // ── 8. CapabilitiesStrip icons render (no 404s) ───────────────────────────
   // Navigate back to homepage in case we're on a different page
