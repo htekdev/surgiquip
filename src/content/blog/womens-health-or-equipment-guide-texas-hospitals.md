@@ -2,7 +2,7 @@
 title: "Women's Health OR Equipment Guide: GYN Surgical Suites, Robotic Hysterectomy Setup, and Minimally Invasive Surgery Infrastructure for Texas Hospitals"
 description: "A comprehensive guide for Texas hospital facilities directors and women's health OR planners on surgical table selection, lighting configuration, boom system design, and robotic surgery integration for GYN and reproductive surgery suites."
 publishDate: 2026-07-01
-image: "/images/blog/or-installation-planning-hero.webp"
+image: "/images/blog/womens-health-or-suite-hero.webp"
 tags: ["women's health OR equipment", "GYN surgery equipment Texas", "robotic hysterectomy setup", "minimally invasive surgery OR", "surgical tables GYN", "Houston hospitals", "Texas women's health"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Orthopedic OR Equipment Guide: Surgical Tables, Boom Systems, and Lighting for Texas Orthopedic ORs"
 description: "A comprehensive guide for Texas hospital facilities directors and orthopedic OR planners evaluating surgical tables, ceiling-mount boom systems, Aurora LED lighting, and OR infrastructure for orthopedic and spine surgery suites."
 publishDate: 2026-07-01
-image: "/images/blog/or-installation-planning-hero.webp"
+image: "/images/blog/orthopedic-or-suite-hero.webp"
 tags: ["orthopedic OR equipment", "surgical tables Texas", "ceiling mount booms", "Aurora LED", "Texas hospitals", "Houston"]
 ---
 
