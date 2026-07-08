@@ -3,6 +3,43 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import CTASection from '~/components/CTASection.astro';
 import { site } from '~/data/site';
 
+const aboutPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'Our Story — 43 Years of Service to Texas Healthcare',
+  description:
+    'The history of Surgiquip Solutions, Inc. — from a small Houston surgical equipment dealer in 1983 to Southeast Texas\'s most trusted Skytron authorized partner and OR installation company.',
+  url: `${site.url}/about/our-story`,
+  mainEntity: {
+    '@type': 'Organization',
+    '@id': `${site.url}/#organization`,
+    name: site.brand,
+    foundingDate: '1983',
+    foundingLocation: {
+      '@type': 'Place',
+      name: 'Houston, Texas',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Houston',
+        addressRegion: 'TX',
+        addressCountry: 'US',
+      },
+    },
+    description:
+      'Surgiquip Solutions, Inc. has served Texas healthcare facilities since 1983, specializing in Skytron surgical tables, lights, booms, and OR integration for hospitals and surgery centers across Southeast Texas.',
+    url: site.url,
+    telephone: site.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: site.address.street,
+      addressLocality: site.address.city,
+      addressRegion: site.address.region,
+      postalCode: site.address.postalCode,
+      addressCountry: site.address.country,
+    },
+  },
+};
+
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -16,7 +53,7 @@ const breadcrumbSchema = {
 <BaseLayout
   title="Our Story | Surgiquip Solutions"
   description="From a small Houston dealer in 1983 to Southeast Texas's trusted Skytron partner. 43 years of OR equipment expertise, installation, and service."
-  schema={breadcrumbSchema}
+  schema={[aboutPageSchema, breadcrumbSchema]}
 >
   <section class="bg-[var(--color-navy)] text-white">
     <div class="container-x py-20">
