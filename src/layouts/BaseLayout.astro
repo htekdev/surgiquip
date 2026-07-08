@@ -24,9 +24,15 @@ export interface Props {
   noindex?: boolean;
   /** Absolute path to preload as LCP image hint (e.g. "/images/hero/hero-or-suite.webp") */
   preloadImage?: string;
+  /**
+   * Open Graph type — defaults to "website".
+   * Pass "article" for blog posts so social platforms display article metadata
+   * (publish date, author) instead of generic website cards.
+   */
+  ogType?: 'website' | 'article';
 }
 
-const { title, description, canonical, image = '/og-default.png', schema, noindex = false, preloadImage } = Astro.props;
+const { title, description, canonical, image = '/og-default.png', schema, noindex = false, preloadImage, ogType = 'website' } = Astro.props;
 
 const fullTitle = title.includes(site.short) ? title : `${title} | ${site.brand}`;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site.url).toString();
@@ -51,7 +57,7 @@ const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#0a2c5e" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
