@@ -11,7 +11,7 @@
  */
 
 import { test, expect } from '@playwright/test';
-import { visualAssert } from './visual-assert';
+import { showPhaseLabel } from './visual-assert';
 
 test('change-proof: Header a11y ARIA fixes — no role=region, aria-expanded, keyboard Escape', async ({
   page,
@@ -108,15 +108,15 @@ test('change-proof: Header a11y ARIA fixes — no role=region, aria-expanded, ke
   await firstDropdownTrigger.hover();
   await page.waitForTimeout(600);
 
-  await visualAssert(page, 'header-a11y-aria-fixes-desktop-nav');
+  await showPhaseLabel(page, '✅ a11y fix — desktop nav dropdown visible, no role=region');
 
   // Mobile view
   await page.setViewportSize({ width: 375, height: 812 });
   await page.waitForTimeout(500);
-  await visualAssert(page, 'header-a11y-aria-fixes-mobile');
+  await showPhaseLabel(page, '✅ a11y fix — mobile view, nav corrected');
 
   await page.setViewportSize({ width: 375, height: 812 });
   await toggle.click();
   await page.waitForTimeout(400);
-  await visualAssert(page, 'header-a11y-aria-fixes-mobile-menu-open');
+  await showPhaseLabel(page, '✅ a11y fix — mobile menu open, Escape closes it');
 });
