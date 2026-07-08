@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import CTASection from '~/components/CTASection.astro';
+import FAQSection from '~/components/FAQSection.astro';
 import { site } from '~/data/site';
 
 const serviceSchema = {
@@ -74,11 +75,44 @@ const whyItems = [
   'No-pressure consultation — we match equipment to your needs',
   'Same team handles your install and future service calls',
 ];
+
+// Equipment Sales FAQ — 4 questions for FAQPage schema + visible accordion.
+const salesFAQs = [
+  {
+    q: 'Is Surgiquip an authorized Skytron dealer?',
+    a: 'Yes. Surgiquip Solutions has been the authorized Skytron dealer for Southeast Texas since the 1980s. Authorization means direct factory pricing, factory-trained application specialists who know every product configuration, access to OEM parts, and warranty-backed service — not the secondhand support you get from a reseller.',
+  },
+  {
+    q: 'What surgical equipment brands does Surgiquip carry?',
+    a: 'Our primary line is Skytron — the full catalog of surgical tables, overhead lights, ceiling-mount booms, and OR integration systems. We also carry HSI (Hospital Systems Inc.) and Knight (instrument cleaning and sterile processing equipment), giving you a single source for comprehensive OR setup from operating surface to sterilization.',
+  },
+  {
+    q: 'Do you sell certified pre-owned surgical equipment?',
+    a: 'Yes. We periodically have certified pre-owned Skytron equipment — tables, lights, and accessories — fully refurbished and recertified to manufacturer specifications. Pre-owned Skytron is an excellent option for facilities that want the reliability of a premium brand at a reduced capital cost. Contact us to ask about current inventory.',
+  },
+  {
+    q: 'What support does Surgiquip provide after an equipment purchase?',
+    a: `Every purchase includes the full lifecycle: factory-certified installation coordinated around your OR schedule, hands-on staff orientation at handoff, access to our preventive maintenance programs, and rapid service and repair by the same factory-trained technicians who installed the equipment. You're not buying a product — you're starting a service relationship. Call us at <a href="tel:${site.phoneE164}" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">${site.phone}</a> to discuss your equipment needs.`,
+  },
+];
+
+const salesFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: salesFAQs.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a.replace(/<[^>]+>/g, ''),
+    },
+  })),
+};
 ---
 <BaseLayout
   title="Medical Equipment Sales | Surgiquip Solutions Houston TX"
   description="Authorized Skytron dealer for Southeast Texas. Surgical tables, lights, booms, OR integration, HSI, and Knight equipment. 43 years serving Texas."
-  schema={[serviceSchema, breadcrumbSchema]}
+  schema={[serviceSchema, breadcrumbSchema, salesFaqSchema]}
 >
   <section class="bg-[var(--color-navy)] text-white overflow-hidden">
     <div class="container-x py-20">
@@ -191,6 +225,13 @@ const whyItems = [
       </div>
     </div>
   </section>
+
+  <FAQSection
+    eyebrow="Equipment Sales FAQ"
+    heading="Common Questions About Buying Surgical Equipment"
+    items={salesFAQs}
+    bg="white"
+  />
 
   <CTASection
     heading="Ready to Spec Your Next OR?"
