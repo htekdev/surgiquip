@@ -62,6 +62,10 @@ test('change-proof: Header a11y ARIA fixes — no role=region, aria-expanded, ke
   ).toBe(0);
 
   // ── 7. Keyboard: Escape closes mobile menu ────────────────────────────────
+  // Mobile menu toggle is lg:hidden — must set mobile viewport first
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.waitForTimeout(300);
+
   const toggle = page.locator('#mobile-menu-toggle');
   const mobileMenuDiv = page.locator('#mobile-menu');
 
