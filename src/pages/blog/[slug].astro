@@ -95,6 +95,8 @@ const breadcrumbSchema = {
   canonical={canonicalUrl}
   image={image}
   schema={[articleSchema, breadcrumbSchema]}
+  ogType="article"
+  preloadImage={image ?? undefined}
 >
   {/* Post hero */}
   <section class="bg-[var(--color-navy)] text-white">
