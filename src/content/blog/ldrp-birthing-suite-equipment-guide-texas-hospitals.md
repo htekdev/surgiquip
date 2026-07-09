@@ -3,7 +3,7 @@ title: "LDRP Suite Equipment Guide: What Texas Women's Hospitals Need to Know"
 seoTitle: "LDRP Suite Equipment Guide | TX"
 description: "A practical guide for Texas women's hospital administrators and clinical directors evaluating ceiling lighting, boom systems, and OR equipment for Labor, Delivery, Recovery, and Postpartum suites — with real-world installation data from 95+ Texas LDRP rooms."
 publishDate: 2026-07-01
-image: "/images/services/or-installation-hero.png"
+image: "/images/services/or-installation-hero.webp"
 tags: ["LDRP", "birthing suite", "women's hospital", "labor delivery", "birthing lights", "Texas", "OR equipment", "hospital equipment Houston"]
 ---
 
