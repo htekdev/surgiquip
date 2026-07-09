@@ -2,7 +2,7 @@
 title: "Sterile Processing Department Equipment: A Technical Guide for Texas Hospitals"
 description: "A practical guide for Texas hospital SPD directors and perioperative managers covering instrument washer-disinfectors, sterilizer selection, AAMI ST79 compliance, and Surgiquip's certified service approach across Southeast Texas."
 publishDate: 2026-06-30
-image: "/images/services/or-installation-hero.png"
+image: "/images/blog/sterilization-equipment-guide-hero.webp"
 tags: ["sterile processing", "SPD equipment", "sterilizers", "Texas hospitals", "AAMI ST79", "Tuttnauer", "Houston", "instrument washer"]
 ---
 
