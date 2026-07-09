@@ -36,6 +36,25 @@ function incrementCount(page: Page): number {
   return count;
 }
 
+/**
+ * Safely extract the Page from a Locator.
+ *
+ * Playwright < 1.50: locator.page() is a method.
+ * Playwright ≥ 1.50: locator.page() was removed — the property may not exist.
+ * This helper handles both versions gracefully.
+ */
+function getPage(locator: Locator): Page | undefined {
+  const pageProp = (locator as any).page;
+  if (typeof pageProp === 'function') {
+    try { return pageProp.call(locator) as Page; } catch { return undefined; }
+  }
+  if (pageProp && typeof pageProp === 'object' && typeof (pageProp as any).evaluate === 'function') {
+    // It's already a Page object exposed as a getter property
+    return pageProp as Page;
+  }
+  return undefined;
+}
+
 interface HighlightOptions {
   color?: string;
   label?: string;
@@ -74,19 +93,22 @@ async function highlight(locator: Locator, options: HighlightOptions = {}) {
   }
 
   // Inject pulsing keyframe animation if not already present
-  await locator.page().evaluate(() => {
-    if (!document.getElementById('__e2e_pulse_style')) {
-      const style = document.createElement('style');
-      style.id = '__e2e_pulse_style';
-      style.textContent = `
-        @keyframes e2ePulse {
-          0%, 100% { box-shadow: 0 0 4px 2px currentColor; }
-          50% { box-shadow: 0 0 12px 6px currentColor; }
-        }
-      `;
-      document.head.appendChild(style);
-    }
-  }).catch(() => {});
+  const page = getPage(locator);
+  if (page) {
+    await page.evaluate(() => {
+      if (!document.getElementById('__e2e_pulse_style')) {
+        const style = document.createElement('style');
+        style.id = '__e2e_pulse_style';
+        style.textContent = `
+          @keyframes e2ePulse {
+            0%, 100% { box-shadow: 0 0 4px 2px currentColor; }
+            50% { box-shadow: 0 0 12px 6px currentColor; }
+          }
+        `;
+        document.head.appendChild(style);
+      }
+    }).catch(() => {});
+  }
 
   await locator.evaluate(
     (el, { color, label }) => {
@@ -115,7 +137,12 @@ async function highlight(locator: Locator, options: HighlightOptions = {}) {
     { color, label }
   ).catch(() => {});
 
-  await locator.page().waitForTimeout(duration);
+  // Wait for highlight duration — use page.waitForTimeout if available, else setTimeout
+  if (page) {
+    await page.waitForTimeout(duration);
+  } else {
+    await new Promise<void>((r) => setTimeout(r, duration));
+  }
 }
 
 async function removeHighlight(locator: Locator) {
@@ -137,7 +164,12 @@ async function flashResult(locator: Locator, passed: boolean) {
     },
     color
   ).catch(() => {});
-  await locator.page().waitForTimeout(FLASH_DURATION);
+  const page = getPage(locator);
+  if (page) {
+    await page.waitForTimeout(FLASH_DURATION);
+  } else {
+    await new Promise<void>((r) => setTimeout(r, FLASH_DURATION));
+  }
   await removeHighlight(locator);
 }
 
@@ -147,11 +179,13 @@ async function flashResult(locator: Locator, passed: boolean) {
  * Assert element is visible with green pulsing highlight in video.
  */
 export async function expectVisible(locator: Locator, label?: string) {
-  const page = locator.page();
+  const page = getPage(locator);
   await highlight(locator, { color: '#00ff00', label: label || '✓ visible' });
   await expect(locator).toBeVisible();
-  const count = incrementCount(page);
-  await updateAssertionCounter(page, count);
+  if (page) {
+    const count = incrementCount(page);
+    await updateAssertionCounter(page, count);
+  }
   await flashResult(locator, true);
 }
 
@@ -159,25 +193,29 @@ export async function expectVisible(locator: Locator, label?: string) {
  * Assert element is NOT visible.
  */
 export async function expectHidden(locator: Locator, label?: string) {
-  const page = locator.page();
+  const page = getPage(locator);
   await expect(locator).not.toBeVisible();
-  const count = incrementCount(page);
-  await updateAssertionCounter(page, count);
+  if (page) {
+    const count = incrementCount(page);
+    await updateAssertionCounter(page, count);
+  }
 }
 
 /**
  * Assert element contains specific text with blue pulsing highlight.
  */
 export async function expectText(locator: Locator, text: string | RegExp, label?: string) {
-  const page = locator.page();
+  const page = getPage(locator);
   await highlight(locator, { color: '#3b82f6', label: label || `✓ "${text}"` });
   if (typeof text === 'string') {
     await expect(locator).toContainText(text);
   } else {
     await expect(locator).toHaveText(text);
   }
-  const count = incrementCount(page);
-  await updateAssertionCounter(page, count);
+  if (page) {
+    const count = incrementCount(page);
+    await updateAssertionCounter(page, count);
+  }
   await flashResult(locator, true);
 }
 
@@ -185,11 +223,13 @@ export async function expectText(locator: Locator, text: string | RegExp, label?
  * Assert element has a specific attribute value with magenta pulsing highlight.
  */
 export async function expectAttribute(locator: Locator, attr: string, value: string | RegExp, label?: string) {
-  const page = locator.page();
+  const page = getPage(locator);
   await highlight(locator, { color: '#e879f9', label: label || `✓ ${attr}` });
   await expect(locator).toHaveAttribute(attr, value);
-  const count = incrementCount(page);
-  await updateAssertionCounter(page, count);
+  if (page) {
+    const count = incrementCount(page);
+    await updateAssertionCounter(page, count);
+  }
   await flashResult(locator, true);
 }
 
@@ -206,11 +246,13 @@ export async function expectURL(page: Page, pattern: string | RegExp, label?: st
  * Assert element has a specific CSS class with yellow pulsing highlight.
  */
 export async function expectClass(locator: Locator, classPattern: RegExp, label?: string) {
-  const page = locator.page();
+  const page = getPage(locator);
   await highlight(locator, { color: '#fbbf24', label: label || '✓ class' });
   await expect(locator).toHaveClass(classPattern);
-  const count = incrementCount(page);
-  await updateAssertionCounter(page, count);
+  if (page) {
+    const count = incrementCount(page);
+    await updateAssertionCounter(page, count);
+  }
   await flashResult(locator, true);
 }
 
@@ -218,10 +260,12 @@ export async function expectClass(locator: Locator, classPattern: RegExp, label?
  * Assert a count of elements matching a locator.
  */
 export async function expectCount(locator: Locator, count: number, label?: string) {
-  const page = locator.page();
+  const page = getPage(locator);
   await expect(locator).toHaveCount(count);
-  const c = incrementCount(page);
-  await updateAssertionCounter(page, c);
+  if (page) {
+    const c = incrementCount(page);
+    await updateAssertionCounter(page, c);
+  }
 }
 
 /**
