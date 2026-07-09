@@ -15,10 +15,11 @@ import Logo from './Logo.astro';
 
     <nav aria-label="Primary navigation" class="hidden lg:flex items-center gap-7 text-sm font-medium text-[var(--color-text)]">
       {nav.map((item) => (
-        <div class="relative group">
+        <div class="relative group" data-nav-item>
           <a
             href={item.href}
             aria-haspopup={item.children ? "true" : undefined}
+            aria-expanded={item.children ? "false" : undefined}
             class="hover:text-[var(--color-blue)] transition flex items-center gap-1"
           >
             {item.label}
@@ -29,17 +30,18 @@ import Logo from './Logo.astro';
             )}
           </a>
           {item.children && (
-            <div
-              role="region"
-              aria-label={`${item.label} submenu`}
-              class="absolute top-full left-0 mt-2 min-w-[220px] bg-white border border-[var(--color-border)] rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition"
+            <ul
+              role="list"
+              class="absolute top-full left-0 mt-2 min-w-[220px] bg-white border border-[var(--color-border)] rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition py-1"
             >
               {item.children.map((child) => (
-                <a href={child.href} class="block px-4 py-2.5 text-sm hover:bg-[var(--color-surface-alt)] hover:text-[var(--color-blue)]">
-                  {child.label}
-                </a>
+                <li>
+                  <a href={child.href} class="block px-4 py-2.5 text-sm hover:bg-[var(--color-surface-alt)] hover:text-[var(--color-blue)]">
+                    {child.label}
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
         </div>
       ))}
@@ -67,8 +69,8 @@ import Logo from './Logo.astro';
     </div>
   </div>
 
-  <div id="mobile-menu" class="hidden lg:hidden border-t border-[var(--color-border)] bg-white" role="navigation" aria-label="Mobile navigation">
-    <nav class="container-x py-4 flex flex-col gap-1">
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-[var(--color-border)] bg-white">
+    <nav aria-label="Mobile navigation" class="container-x py-4 flex flex-col gap-1">
       {nav.map((item) => (
         <div>
           <a href={item.href} class="block py-2.5 px-3 rounded font-medium hover:bg-[var(--color-surface-alt)]">{item.label}</a>
@@ -90,6 +92,7 @@ import Logo from './Logo.astro';
 </header>
 
 <script>
+  // ── Mobile menu toggle ────────────────────────────────────────────────────
   const toggle = document.getElementById('mobile-menu-toggle');
   const menu = document.getElementById('mobile-menu');
 
@@ -110,11 +113,49 @@ import Logo from './Logo.astro';
     isOpen ? closeMenu() : openMenu();
   });
 
-  // Close mobile menu on Escape key (WCAG 2.1 SC 2.1.2 — keyboard trap prevention)
+  // ── Desktop nav dropdown: aria-expanded + Escape key support ─────────────
+  // Each [data-nav-item] with a child <ul> tracks expanded state via
+  // focus-within CSS and aria-expanded on the parent <a> for screen readers.
+  const navItems = document.querySelectorAll<HTMLElement>('[data-nav-item]');
+
+  navItems.forEach((item) => {
+    const trigger = item.querySelector<HTMLAnchorElement>('a[aria-haspopup]');
+    const dropdown = item.querySelector<HTMLUListElement>('ul[role="list"]');
+    if (!trigger || !dropdown) return;
+
+    // Update aria-expanded whenever focus enters/leaves the group
+    item.addEventListener('focusin', () => {
+      trigger.setAttribute('aria-expanded', 'true');
+    });
+    item.addEventListener('focusout', (e) => {
+      // Only collapse when focus leaves the entire nav item
+      if (!item.contains((e as FocusEvent).relatedTarget as Node)) {
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // ── Escape key: close both mobile menu and desktop dropdowns ─────────────
+  // WCAG 2.1 SC 2.1.2 — keyboard trap prevention
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !menu?.classList.contains('hidden')) {
+    if (e.key !== 'Escape') return;
+
+    // Close mobile menu if open
+    if (menu && !menu.classList.contains('hidden')) {
       closeMenu();
       toggle?.focus();
+      return;
+    }
+
+    // Collapse any open desktop dropdown (return focus to its trigger)
+    const focused = document.activeElement as HTMLElement | null;
+    const activeItem = focused?.closest<HTMLElement>('[data-nav-item]');
+    if (activeItem) {
+      const trigger = activeItem.querySelector<HTMLAnchorElement>('a[aria-haspopup]');
+      if (trigger) {
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.focus();
+      }
     }
   });
 </script>
