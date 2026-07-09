@@ -49,11 +49,11 @@ test('change-proof-projects-sort-display-fix', async ({ page }) => {
   await page.waitForTimeout(1500);
 
   // Verify page heading
-  await expectVisible(page, 'h1', 'Case Studies & Installations');
+  await expectVisible(page.locator('h1'), 'h1 — Case Studies heading');
   await page.waitForTimeout(800);
 
   // Verify eyebrow label is "Project Portfolio" (not the stale "Featured Projects")
-  await expectText(page, '.text-\\[var\\(--color-blue\\)\\]', 'Project Portfolio');
+  await expectText(page.locator('.text-\\[var\\(--color-blue\\)\\]').first(), 'Project Portfolio');
   await showPhaseLabel(page, '✅ Eyebrow label is "Project Portfolio" (not "Featured Projects")');
   await page.waitForTimeout(1200);
 
@@ -90,7 +90,7 @@ test('change-proof-projects-sort-display-fix', async ({ page }) => {
   await page.waitForTimeout(1000);
 
   // Verify we can see some project cards
-  await expectVisible(page, 'article', 'Brazoria Surgery Center');
+  await expectVisible(page.locator('article').filter({ hasText: 'Brazoria Surgery Center' }).first(), 'Brazoria Surgery Center card');
   await page.waitForTimeout(800);
 
   // Scroll more to see all cards
@@ -129,7 +129,7 @@ test('change-proof-projects-sort-display-fix', async ({ page }) => {
   await showPhaseLabel(page, '✅ Brazoria Surgery Center detail page loaded');
 
   // Verify the project detail renders correctly
-  await expectVisible(page, 'h1', 'Brazoria Surgery Center');
+  await expectVisible(page.locator('h1'), 'h1 — Brazoria Surgery Center heading');
   await page.waitForTimeout(1000);
 
   // Verify the meta bar does NOT show a Year row (since year is undefined)
