@@ -6,11 +6,20 @@ import { site } from '~/data/site';
 
 // Fetch all projects from content collection
 const allProjects = await getCollection('projects');
-// Sort: featured first, then by year descending
+// Sort: featured first → dated entries descending → undated entries alphabetically by facility
 const projects = allProjects.sort((a, b) => {
   if (a.data.featured && !b.data.featured) return -1;
   if (!a.data.featured && b.data.featured) return 1;
-  return b.data.year - a.data.year;
+  const ay = a.data.year ?? null;
+  const by = b.data.year ?? null;
+  // Both have years — descending
+  if (ay !== null && by !== null) return by - ay;
+  // Only a has a year — a comes first
+  if (ay !== null) return -1;
+  // Only b has a year — b comes first
+  if (by !== null) return 1;
+  // Neither has a year — stable alphabetical by facility
+  return a.data.facility.localeCompare(b.data.facility);
 });
 
 const pageSchema = {
@@ -62,7 +71,7 @@ const statusClasses = (status: string) =>
 
   <section class="container-x py-16">
     <div class="max-w-3xl mb-12">
-      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Featured Projects</div>
+      <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Project Portfolio</div>
       <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">What We've Built and Serviced</h2>
       <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
         Our project portfolio ranges from single-room surgical table replacements to complete hybrid OR integration builds. Detailed case studies with client data are shared under NDA — contact us and we'll provide references appropriate to your project scope.
@@ -99,7 +108,7 @@ const statusClasses = (status: string) =>
           <div class="flex items-center justify-between text-xs text-[var(--color-text-muted)] border-t border-[var(--color-border)] pt-4 mt-auto">
             <div>
               <span class="block">{project.data.facility}</span>
-              <span class="block">{project.data.location} · {project.data.year}</span>
+              <span class="block">{project.data.location}{project.data.year != null ? ` · ${project.data.year}` : ''}</span>
             </div>
             <span class="font-semibold text-[var(--color-navy)] text-sm">{project.data.value}</span>
           </div>
