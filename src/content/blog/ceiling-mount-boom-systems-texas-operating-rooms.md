@@ -1,5 +1,6 @@
 ---
 title: "Ceiling-Mount Boom Systems for Texas Operating Rooms: A Specification & Installation Guide"
+seoTitle: "Ceiling Boom Systems Guide | Texas"
 description: "A technical guide for Texas hospital facilities managers and perioperative directors evaluating ceiling-mount OR boom systems — covering center-mount vs. pendant configurations, SkyVision integration, installation standards, and preventive maintenance."
 publishDate: 2026-07-01
 image: "/images/products/equipment-boom.webp"
