@@ -191,7 +191,7 @@ A specialty table like the 6700 requires factory-trained service to maintain war
 When evaluating vendors — whether Surgiquip or any other authorized Skytron dealer — ask:
 
 1. **Are your service technicians Skytron factory-trained?** Only factory-trained technicians can perform OEM PM procedures and maintain warranty validity. Ask for documentation.
-2. **What is your average response time for corrective maintenance in our area?** For Southeast Texas facilities, Surgiquip's Houston-based technicians provide same-day or next-day response.
+2. **What is your average response time for corrective maintenance in our area?** For Southeast Texas facilities, Surgiquip's Houston-based technicians provide rapid response.
 3. **Do you stock Skytron parts locally?** Waiting for parts from Michigan adds downtime. Local parts inventory matters.
 4. **Can you provide references from similar facilities in our market?** Peer references from facilities with comparable case mix are the most reliable indicator of service quality.
 5. **What does your PM contract include?** Confirm: all scheduled labor, travel, OEM parts consumption during PM, and documented PM completion reports compatible with TJC survey requirements.

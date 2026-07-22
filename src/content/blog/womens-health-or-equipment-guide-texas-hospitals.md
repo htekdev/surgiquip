@@ -113,7 +113,7 @@ At **Brazoria Surgery Center** in Brazoria, TX — a 4-OR + 2-Procedure facility
 
 The operational lifetime of a GYN OR installation extends 15–20 years for major installed infrastructure. Table hydraulics, light head components, and boom system articulation joints are all mechanical systems with maintenance schedules and failure mode profiles. A GYN program that cannot obtain rapid service for a table that loses Trendelenburg or a boom that loses gas supply is an OR that cannot run its robotic case that morning.
 
-Surgiquip's Southeast Texas service territory covers the primary GYN program concentrations in the region — Harris County, Fort Bend County, Brazoria County, Galveston County, and Montgomery County. Service response for critical equipment failures (table positioning failures, boom gas supply loss) is same-day for the facilities in this territory.
+Surgiquip's Southeast Texas service territory covers the primary GYN program concentrations in the region — Harris County, Fort Bend County, Brazoria County, Galveston County, and Montgomery County. Service response for critical equipment failures (table positioning failures, boom gas supply loss) is prioritized for the facilities in this territory.
 
 **Factory certification coverage for GYN OR equipment:**
 - **Skytron** — primary surgical tables and ceiling-mount boom systems (factory-certified dealer and servicer)

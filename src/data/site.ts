@@ -9,16 +9,16 @@ export const site = {
   fax: '(713) 957-8355',
   email: 'info@surgiquipsolutions.com',
   address: {
-    street: '10653 Kinghurst Drive',
+    street: '2020 Johanna Drive',
     city: 'Houston',
     region: 'TX',
-    postalCode: '77099',
+    postalCode: '77055',
     country: 'US',
   },
   hours: 'Mon–Fri 7:30am–4:30pm',
   hoursSchema: 'Mo-Fr 07:30-16:30',
   social: {
-    linkedin: 'https://www.linkedin.com/company/surgiquip-solutions-inc-',
+    linkedin: 'https://www.linkedin.com/company/surgiquip-solutions-incorporated',
   },
   url: 'https://surgiquip.com',
 } as const;
@@ -29,7 +29,6 @@ export const nav = [
     href: '/products',
     children: [
       { label: 'Skytron', href: '/products/skytron' },
-      { label: 'HSI', href: '/products/hsi' },
     ],
   },
   {
@@ -67,11 +66,13 @@ export const stats = [
   { value: '43 Years', label: 'Serving Healthcare', sub: 'Since 1983' },
   { value: 'A+ BBB', label: 'Accredited Business', sub: 'Since 1983' },
   { value: '500+ Facilities', label: 'Hospitals & Surgical', sub: 'Centers Served' },
-  { value: 'Same-Day', label: 'Dispatch Available', sub: 'Mon–Fri' },
+  { value: 'Rapid', label: 'Response Times', sub: 'Mon–Fri' },
 ];
 
 export const partners = [
   { name: 'Skytron', label: 'SKYTRON®' },
-  { name: 'HSI', label: 'HSI Hospital Systems, Inc.' },
+  { name: 'Wassenberg', label: 'Wassenberg' },
+  { name: 'Infinitus', label: 'Infinitus' },
+  { name: 'WEG', label: 'WEG' },
   { name: 'BBB', label: 'BBB Accredited Business' },
 ];

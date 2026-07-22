@@ -155,7 +155,7 @@ When evaluating a surgical table purchase for a Texas hospital or surgery center
 
 1. **What Skytron factory training do your technicians hold?** — Factory certification means access to OEM technical resources, service bulletins, and parts ordering. Generic medical equipment distributors often lack this.
 
-2. **What is your local parts inventory for this table model?** — Parts availability in Houston or Beaumont means same-day service; national parts ordering typically means 3–5 business day delays.
+2. **What is your local parts inventory for this table model?** — Parts availability in Houston or Beaumont means faster service; national parts ordering typically means 3–5 business day delays.
 
 3. **Can you coordinate installation with our facilities team and GC?** — Table installation involves floor anchor point verification, electrical rough-in coordination, and post-installation positioning checkout. An experienced dealer handles this directly.
 

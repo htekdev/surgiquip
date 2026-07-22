@@ -65,4 +65,4 @@ Look for suppliers with demonstrated accountability:
 
 📞 [(713) 681-6362](tel:+17136816362)  
 ✉️ [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com)  
-📍 10653 Kinghurst Drive, Houston, TX 77099
+📍 2020 Johanna Drive, Houston, TX 77055
