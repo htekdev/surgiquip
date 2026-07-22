@@ -1,0 +1,87 @@
+{
+  "forms": {
+    "contactForm": {
+      "name": "Surgiquip Contact Form",
+      "actions": [
+        {
+          "type": "email",
+          "to": "info@surgiquipsolutions.com"
+        }
+      ],
+      "fields": {
+        "name": {
+          "type": "text",
+          "required": true,
+          "maxlength": 128
+        },
+        "email": {
+          "type": "email",
+          "required": true,
+          "maxlength": 128
+        },
+        "organization": {
+          "type": "text",
+          "maxlength": 128
+        },
+        "phone": {
+          "type": "text",
+          "maxlength": 32
+        },
+        "message": {
+          "type": "textarea",
+          "required": true,
+          "maxlength": 5000
+        },
+        "source": {
+          "type": "text"
+        }
+      }
+    },
+    "quoteForm": {
+      "name": "Surgiquip Quote Request",
+      "actions": [
+        {
+          "type": "email",
+          "to": "info@surgiquipsolutions.com"
+        }
+      ],
+      "fields": {
+        "name": {
+          "type": "text",
+          "required": true,
+          "maxlength": 128
+        },
+        "email": {
+          "type": "email",
+          "required": true,
+          "maxlength": 128
+        },
+        "organization": {
+          "type": "text",
+          "required": true,
+          "maxlength": 128
+        },
+        "phone": {
+          "type": "text",
+          "maxlength": 32
+        },
+        "interest": {
+          "type": "text",
+          "maxlength": 256
+        },
+        "timeline": {
+          "type": "text",
+          "maxlength": 128
+        },
+        "message": {
+          "type": "textarea",
+          "required": true,
+          "maxlength": 5000
+        },
+        "source": {
+          "type": "text"
+        }
+      }
+    }
+  }
+}

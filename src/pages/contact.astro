@@ -152,7 +152,9 @@ const mapsEmbedUrl =
     <div>
       <h2 class="text-2xl font-bold text-[var(--color-navy)]">Send a Message</h2>
       <p class="text-sm text-[var(--color-text-muted)] mt-2">Use the quote form for equipment requests, or message us below for general inquiries. We respond within one business day.</p>
-      <form action="/api/quote-request" method="POST" class="mt-6 space-y-4" novalidate>
+      <form action="https://formspree.io/f/CONTACT_FORM_ID" method="POST" class="mt-6 space-y-4" novalidate>
+        <!-- Formspree: replace CONTACT_FORM_ID with hashid from `npx @formspree/cli deploy` -->
+        <input type="hidden" name="_next" value="/thank-you" />
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label for="contact-name" class="block text-sm font-medium text-[var(--color-navy)] mb-1">Your Name <span aria-hidden="true">*</span></label>
@@ -181,9 +183,10 @@ const mapsEmbedUrl =
             class="w-full rounded-md border border-[var(--color-border)] px-4 py-3 focus:border-[var(--color-blue)] focus:outline-none text-[var(--color-text)]"></textarea>
         </div>
         <!-- Source identifier -->
+        <input type="hidden" name="_subject" value="New Contact Message — Surgiquip Website" />
         <input type="hidden" name="source" value="contact" />
-        <!-- Honeypot -->
-        <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+        <!-- Honeypot (Formspree convention) -->
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
         <button type="submit" class="btn-primary w-full md:w-auto">Send Message</button>
       </form>
     </div>
