@@ -144,6 +144,6 @@ A structured PM program with a qualified service partner converts unpredictable 
 
 ---
 
-**Surgiquip Solutions** has served as the authorized Skytron dealer for Southeast Texas since the 1980s, providing factory-trained PM service for surgical tables, overhead lights, and ceiling-mount booms. Our technicians hold OEM certifications and maintain service records suitable for Joint Commission survey documentation.
+**Surgiquip Solutions** has served as the authorized Skytron dealer for South Texas since the 1980s, providing factory-trained PM service for surgical tables, overhead lights, and ceiling-mount booms. Our technicians hold OEM certifications and maintain service records suitable for Joint Commission survey documentation.
 
 📞 [(713) 681-6362](tel:+17136816362) · [Request a PM Quote](/quote) · [View Our Services](/services/preventive-maintenance)

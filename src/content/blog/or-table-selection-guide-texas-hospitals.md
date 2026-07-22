@@ -113,7 +113,7 @@ Ask the vendor for positioning protocol sheets for the specific procedures your 
 
 ## Skytron Surgical Tables in Southeast Texas
 
-Surgiquip Solutions is the **authorized Skytron dealer for Southeast Texas** — covering Houston, Beaumont, Victoria, Corpus Christi, and the full Gulf Coast region with factory-certified technicians and direct OEM support.
+Surgiquip Solutions is the **authorized Skytron dealer for South Texas** — covering Houston, Beaumont, Victoria, Corpus Christi, and the full Gulf Coast region with factory-certified technicians and direct OEM support.
 
 Skytron's current surgical table line includes configurations relevant to Texas hospital markets:
 

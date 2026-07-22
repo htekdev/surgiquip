@@ -17,7 +17,7 @@ Not all medical equipment resellers are created equal. **Authorized dealers** re
 - Do your technicians hold **factory certifications** for the equipment brands you carry?
 - Can you provide **OEM parts** on emergency orders?
 
-Surgiquip Solutions has served as the **authorized Skytron dealer for Southeast Texas** since the 1980s — one of a small number of dealers in the region with full factory authorization.
+Surgiquip Solutions has served as the **authorized Skytron dealer for South Texas** since the 1980s — one of a small number of dealers in the region with full factory authorization.
 
 ## Service & Repair Capability
 

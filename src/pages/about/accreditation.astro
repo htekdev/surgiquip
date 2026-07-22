@@ -40,25 +40,13 @@ const organizationSchema = {
       name: 'Texas DSHS Salvage Establishment License',
       recognizedBy: { '@type': 'Organization', name: 'Texas Department of State Health Services' },
     },
-    {
-      '@type': 'EducationalOccupationalCredential',
-      credentialCategory: 'certification',
-      name: 'Texas Certified HUB Vendor',
-      recognizedBy: { '@type': 'Organization', name: 'Texas Comptroller of Public Accounts' },
-    },
   ],
-  memberOf: [
-    {
-      '@type': 'Organization',
-      name: 'Memorial Hermann Integrated Delivery Network',
-      description: 'Vital Affiliate — Memorial Hermann IDN',
-    },
-  ],
+  memberOf: [],
 };
 ---
 <BaseLayout
   title="Accreditation & Awards | Surgiquip Solutions"
-  description="BBB A+ rated. Torch Award for Ethics 2014-2018 (5 consecutive years). Texas Certified HUB Vendor. DSHS-licensed distributor. Authorized Skytron dealer. Factory-certified for Skytron, Midmark, Tuttnauer."
+  description="BBB A+ rated. Torch Award for Ethics 2014-2018 (5 consecutive years). DSHS-licensed distributor. Authorized Skytron dealer for South Texas. Factory-certified for Skytron, Midmark, Tuttnauer."
   schema={[breadcrumbSchema, organizationSchema]}
 >
   <section class="bg-[var(--color-navy)] text-white">
@@ -128,18 +116,13 @@ const organizationSchema = {
         },
         {
           badge: 'Authorized',
-          title: 'Authorized Skytron Dealer — Southeast Texas',
-          body: 'Skytron grants exclusive dealerships to a small number of partners per region. Our authorization for Southeast Texas means direct factory oversight: certified technicians, manufacturer parts, and technical support unavailable to independent distributors.',
+          title: 'Authorized Skytron Dealer — South Texas',
+          body: 'Skytron grants exclusive dealerships to a small number of partners per region. Our authorization for South Texas means direct factory oversight: certified technicians, manufacturer parts, and technical support unavailable to independent distributors.',
         },
         {
           badge: 'Certified',
           title: 'Factory-Certified Technicians',
           body: 'Our service team holds factory certifications from Skytron, Midmark, and Tuttnauer — three distinct manufacturer programs. Each certification requires ongoing training and renewal. Every repair follows OEM procedures with documentation acceptable for Joint Commission surveys.',
-        },
-        {
-          badge: 'Texas HUB',
-          title: 'Texas Certified HUB Vendor',
-          body: 'Surgiquip Solutions is a Texas-certified Historically Underutilized Business (HUB) vendor. This state certification allows Texas public health systems, university medical centers, and government hospitals to count Surgiquip toward their HUB procurement goals — expanding our reach in public sector healthcare.',
         },
         {
           badge: 'DSHS Licensed',
@@ -150,11 +133,6 @@ const organizationSchema = {
           badge: 'DSHS Licensed',
           title: 'Texas DSHS: Salvage Establishment License',
           body: 'DSHS-licensed salvage establishment — authorizing us to handle, refurbish, and resell medical equipment within Texas regulatory guidelines. This license is critical for used equipment programs and decommissioning services we provide to healthcare facilities.',
-        },
-        {
-          badge: 'Network Affiliate',
-          title: 'Vital Affiliate — Memorial Hermann IDN',
-          body: 'Surgiquip Solutions holds Vital Affiliate status within the Memorial Hermann Integrated Delivery Network — the largest health system in Southeast Texas. This affiliation reflects a multi-decade, multi-facility supply relationship across more than 10 Memorial Hermann facilities throughout Greater Houston.',
         },
       ].map((item) => (
         <div class="bg-white rounded-xl border border-[var(--color-border)] p-6 hover:shadow-md transition">

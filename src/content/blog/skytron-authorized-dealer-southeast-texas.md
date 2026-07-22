@@ -66,6 +66,6 @@ Before signing a purchase order or service contract, ask:
 
 ---
 
-**Surgiquip Solutions** is the authorized Skytron dealer for Southeast Texas, with over 40 years of installation and service experience. We stock OEM Skytron parts and field factory-trained technicians throughout the greater Houston area.
+**Surgiquip Solutions** is the authorized Skytron dealer for South Texas, with over 40 years of installation and service experience. We stock OEM Skytron parts and field factory-trained technicians throughout the greater Houston area.
 
 📞 [(713) 681-6362](tel:+17136816362) · [Skytron Products](/products/skytron) · [Service & Repair](/services/service-and-repair)

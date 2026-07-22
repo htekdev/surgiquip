@@ -10,7 +10,7 @@ A surgical table is one of the most consequential capital equipment decisions an
 
 For Texas hospitals, surgery centers, and specialty facilities evaluating Skytron surgical tables, this guide provides a side-by-side comparison of the full product lineup — 6000, 6500, 6700, and 7000 series — and the practical framework for matching the right model to your clinical environment.
 
-Surgiquip Solutions is the authorized Skytron dealer for Southeast Texas, with more than 200 Skytron installations across Houston-area health systems, Southeast Texas medical centers, and regional surgery centers since 1983.
+Surgiquip Solutions is the authorized Skytron dealer for South Texas, with more than 200 Skytron installations across Houston-area health systems, Southeast Texas medical centers, and regional surgery centers since 1983.
 
 ---
 
@@ -200,7 +200,7 @@ When evaluating vendors — whether Surgiquip or any other authorized Skytron de
 
 ## Working With Surgiquip as Your Authorized Skytron Dealer
 
-Surgiquip Solutions has been the authorized Skytron dealer for Southeast Texas since 1983 — more than four decades of OR equipment expertise in the Houston metro, Beaumont, Corpus Christi, Victoria, and across the Texas Gulf Coast region.
+Surgiquip Solutions has been the authorized Skytron dealer for South Texas since 1983 — more than four decades of OR equipment expertise in the Houston metro, Beaumont, Corpus Christi, Victoria, and across the Texas Gulf Coast region.
 
 Our surgical table services include:
 

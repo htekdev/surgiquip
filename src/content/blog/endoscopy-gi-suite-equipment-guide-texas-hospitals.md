@@ -128,7 +128,7 @@ Surgiquip has equipped scope reprocessing infrastructure at multiple Texas ASCs 
 
 **Brazoria Surgery Center** (Brazoria, TX — 4 OR + 2 Procedure rooms) includes instrument reprocessing equipment — washers, sterilizers — that serve both the OR suite and the procedure rooms where GI cases are performed. The Brazoria installation is notable as one of Surgiquip's southernmost Southeast Texas installations, demonstrating the company's service footprint below Houston.
 
-**Memorial Hermann Kingsland Surgery Center** (Houston, TX — 4 OR + 2 Procedure rooms) includes sterilizers and instrument washers integrated into the OR and procedure room infrastructure. MH Kingsland is one of several Memorial Hermann network ASCs where Surgiquip serves as the preferred equipment vendor, consistent with the company's Vital Affiliate status within the Memorial Hermann Integrated Delivery Network.
+**Memorial Hermann Kingsland Surgery Center** (Houston, TX — 4 OR + 2 Procedure rooms) includes sterilizers and instrument washers integrated into the OR and procedure room infrastructure. MH Kingsland is one of several Memorial Hermann network ASCs where Surgiquip serves as the preferred equipment vendor.
 
 **CHRISTUS St. Catherine Surgery Center** (Houston, TX — 4 OR) includes Center Mount Booms, 6700B Tables, Stellar lights, sterilizers, scrub sinks, and instrument washer — a full-package installation that includes reprocessing infrastructure alongside OR equipment.
 
@@ -154,4 +154,4 @@ Whether your project is a new-construction GI lab embedded in a hospital expansi
 
 Reach Surgiquip Solutions at **(713) 681-6362**, Monday through Friday, 7:30 AM to 4:30 PM, or submit a request through our [contact page](/contact).
 
-*Surgiquip Solutions — Dedicated to Excellence since 1983. BBB A+ Accredited. Texas HUB Certified. Authorized Skytron Dealer and Service Provider for Southeast Texas.*
+*Surgiquip Solutions — Dedicated to Excellence since 1983. BBB A+ Accredited. Authorized Skytron Dealer and Service Provider for South Texas.*

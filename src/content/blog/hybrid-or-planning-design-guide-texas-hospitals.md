@@ -182,4 +182,4 @@ Surgiquip Solutions has installed hybrid ORs in multiple Houston-area hospital s
 
 ---
 
-*Surgiquip Solutions is the authorized Skytron dealer for Southeast Texas. We have served hospitals and surgical centers across the Houston metro area and Gulf Coast region since 1983. Contact us at [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com) or [(713) 681-6362](tel:+17136816362).*
+*Surgiquip Solutions is the authorized Skytron dealer for South Texas. We have served hospitals and surgical centers across the Houston metro area and Gulf Coast region since 1983. Contact us at [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com) or [(713) 681-6362](tel:+17136816362).*

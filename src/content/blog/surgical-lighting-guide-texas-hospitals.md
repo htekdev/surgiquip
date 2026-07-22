@@ -62,7 +62,7 @@ Single-head rooms are typically appropriate for lower-acuity procedures or proce
 
 ## Skytron Surgical Lighting Systems in Southeast Texas
 
-Surgiquip Solutions is the **authorized Skytron dealer for Southeast Texas** — a designation that reflects factory-level training and direct OEM service access for the full Skytron surgical lighting line.
+Surgiquip Solutions is the **authorized Skytron dealer for South Texas** — a designation that reflects factory-level training and direct OEM service access for the full Skytron surgical lighting line.
 
 Skytron's current LED product family includes:
 
