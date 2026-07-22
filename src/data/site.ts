@@ -40,7 +40,6 @@ export const nav = [
       { label: 'Preventive Maintenance', href: '/services/preventive-maintenance' },
     ],
   },
-  { label: 'Projects', href: '/projects' },
   { label: 'Blog', href: '/blog' },
   {
     label: 'About',
