@@ -32,7 +32,8 @@ import Logo from './Logo.astro';
           {item.children && (
             <ul
               role="list"
-              class="absolute top-full left-0 pt-2 min-w-[220px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150"
+              class="absolute top-full left-0 pt-2 min-w-[220px] opacity-0 invisible transition-all duration-150 pointer-events-none"
+              data-dropdown
             >
               <div class="bg-white border border-[var(--color-border)] rounded-md shadow-lg py-1">
               {item.children.map((child) => (
@@ -115,49 +116,104 @@ import Logo from './Logo.astro';
     isOpen ? closeMenu() : openMenu();
   });
 
-  // ── Desktop nav dropdown: aria-expanded + Escape key support ─────────────
-  // Each [data-nav-item] with a child <ul> tracks expanded state via
-  // focus-within CSS and aria-expanded on the parent <a> for screen readers.
+  // ── Desktop dropdown hover-intent system ──────────────────────────────────
+  // Uses a close delay so the dropdown stays open while the cursor moves
+  // from the trigger to the submenu items. This prevents the "disappears
+  // before I can click" bug that pure CSS :hover solutions suffer from.
+  const OPEN_DELAY = 0;     // open immediately on hover
+  const CLOSE_DELAY = 300;  // 300ms grace period before closing
+
   const navItems = document.querySelectorAll<HTMLElement>('[data-nav-item]');
 
   navItems.forEach((item) => {
     const trigger = item.querySelector<HTMLAnchorElement>('a[aria-haspopup]');
-    const dropdown = item.querySelector<HTMLUListElement>('ul[role="list"]');
+    const dropdown = item.querySelector<HTMLUListElement>('[data-dropdown]');
     if (!trigger || !dropdown) return;
 
-    // Update aria-expanded whenever focus enters/leaves the group
-    item.addEventListener('focusin', () => {
+    let closeTimer: ReturnType<typeof setTimeout> | null = null;
+    let openTimer: ReturnType<typeof setTimeout> | null = null;
+
+    function show() {
+      if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+      if (openTimer) { clearTimeout(openTimer); openTimer = null; }
+      // Close all other dropdowns first
+      navItems.forEach((other) => {
+        if (other === item) return;
+        const otherDD = other.querySelector<HTMLElement>('[data-dropdown]');
+        const otherTrigger = other.querySelector<HTMLAnchorElement>('a[aria-haspopup]');
+        if (otherDD) {
+          otherDD.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+          otherDD.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
+        }
+        otherTrigger?.setAttribute('aria-expanded', 'false');
+      });
+      dropdown.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
+      dropdown.classList.add('opacity-100', 'visible', 'pointer-events-auto');
       trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function hide() {
+      closeTimer = setTimeout(() => {
+        dropdown.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+        dropdown.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
+        trigger.setAttribute('aria-expanded', 'false');
+        closeTimer = null;
+      }, CLOSE_DELAY);
+    }
+
+    // Mouse events on the entire nav item (trigger + dropdown)
+    item.addEventListener('mouseenter', show);
+    item.addEventListener('mouseleave', hide);
+
+    // Keep open while interacting with dropdown via keyboard
+    item.addEventListener('focusin', () => {
+      if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+      show();
     });
     item.addEventListener('focusout', (e) => {
-      // Only collapse when focus leaves the entire nav item
       if (!item.contains((e as FocusEvent).relatedTarget as Node)) {
-        trigger.setAttribute('aria-expanded', 'false');
+        hide();
       }
     });
   });
 
   // ── Escape key: close both mobile menu and desktop dropdowns ─────────────
-  // WCAG 2.1 SC 2.1.2 — keyboard trap prevention
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
 
-    // Close mobile menu if open
     if (menu && !menu.classList.contains('hidden')) {
       closeMenu();
       toggle?.focus();
       return;
     }
 
-    // Collapse any open desktop dropdown (return focus to its trigger)
     const focused = document.activeElement as HTMLElement | null;
     const activeItem = focused?.closest<HTMLElement>('[data-nav-item]');
     if (activeItem) {
       const trigger = activeItem.querySelector<HTMLAnchorElement>('a[aria-haspopup]');
-      if (trigger) {
+      const dropdown = activeItem.querySelector<HTMLElement>('[data-dropdown]');
+      if (trigger && dropdown) {
+        dropdown.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+        dropdown.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
         trigger.setAttribute('aria-expanded', 'false');
         trigger.focus();
       }
+    }
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest('[data-nav-item]')) {
+      navItems.forEach((item) => {
+        const dd = item.querySelector<HTMLElement>('[data-dropdown]');
+        const tr = item.querySelector<HTMLAnchorElement>('a[aria-haspopup]');
+        if (dd) {
+          dd.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+          dd.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
+        }
+        tr?.setAttribute('aria-expanded', 'false');
+      });
     }
   });
 </script>
