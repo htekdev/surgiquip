@@ -18,7 +18,7 @@ export const site = {
   hours: 'Mon–Fri 7:30am–4:30pm',
   hoursSchema: 'Mo-Fr 07:30-16:30',
   social: {
-    linkedin: 'https://www.linkedin.com/company/surgiquip-solutions-incorporated',
+    linkedin: 'https://www.linkedin.com/company/surgiquip-solutions-inc/',
   },
   url: 'https://surgiquip.com',
 } as const;
