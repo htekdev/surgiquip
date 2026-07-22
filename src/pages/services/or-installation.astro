@@ -9,7 +9,7 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Operating Room Installation & Integration',
   provider: { '@id': `${site.url}#organization` },
-  description: 'Turnkey operating room installation and hybrid OR integration in Texas. Surgical tables, lights, booms, AV systems, and complete OR builds from planning to go-live.',
+  description: 'Turnkey operating room installation and hybrid OR video integration in Texas. Surgical tables, lights, booms, video systems, and complete OR builds from planning to go-live.',
   areaServed: [{ '@type': 'State', name: 'Texas' }],
   serviceType: 'Operating Room Installation',
   url: `${site.url}/services/or-installation`,
@@ -20,11 +20,11 @@ const serviceSchema = {
 const orFAQs = [
   {
     q: 'What is included in a turnkey OR installation by Surgiquip?',
-    a: 'A Surgiquip turnkey OR installation covers the full project lifecycle: facility assessment and planning, equipment selection, coordination with your architect and GC, delivery staging, certified installation of surgical tables, lights, and booms, AV system commissioning for hybrid ORs, as-built documentation, and staff training. We manage every phase so your team can focus on clinical preparation.',
+    a: 'A Surgiquip turnkey OR installation covers the full project lifecycle: facility assessment and planning, equipment selection, coordination with your architect and GC, delivery staging, certified installation of surgical tables, lights, and booms, video system commissioning for hybrid ORs, as-built documentation, and staff training. We manage every phase so your team can focus on clinical preparation.',
   },
   {
     q: 'How long does an operating room installation take?',
-    a: 'Project timelines vary based on scope. A single-room surgical table and light installation can be completed in one to three days. A full hybrid OR build — including AV integration, multiple boom systems, and documentation packages — typically spans four to twelve weeks depending on construction schedule, equipment lead times, and facility access windows. We provide a detailed schedule at project kickoff.',
+    a: 'Project timelines vary based on scope. A single-room surgical table and light installation can be completed in one to three days. A full hybrid OR build — including video integration, multiple boom systems, and documentation packages — typically spans four to twelve weeks depending on construction schedule, equipment lead times, and facility access windows. We provide a detailed schedule at project kickoff.',
   },
   {
     q: 'Does Surgiquip coordinate with our architects and general contractors?',
@@ -82,8 +82,8 @@ const deliverables = [
   },
   {
     icon: '<rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
-    title: 'Hybrid OR AV Integration',
-    desc: '4K display mounting and commissioning, HDMI/SDI signal routing, AV switching systems, and OR-grade video distribution for procedures and remote viewing.',
+    title: 'Hybrid OR Video Integration',
+    desc: '4K display mounting and commissioning, HDMI/SDI signal routing, video switching systems, and OR-grade video distribution for procedures and remote viewing.',
   },
   {
     icon: '<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
@@ -97,7 +97,7 @@ const projectPhases = [
   ['Design', 'Equipment layout, MEP coordination, submittal packages for GC and architect.'],
   ['Pre-Installation', 'Factory order, delivery staging, and pre-installation coordination with GC.'],
   ['Installation', 'Certified installation with daily progress updates to your facilities team.'],
-  ['Commissioning', 'Full functional testing of all systems — tables, lights, booms, AV, gas outlets.'],
+  ['Commissioning', 'Full functional testing of all systems — tables, lights, booms, and video systems.'],
   ['Training', 'Staff orientation for OR nursing, biomedical, and facilities teams.'],
   ['Go-Live Support', '30-day go-live period with priority response for any adjustments needed.'],
 ];
@@ -112,17 +112,12 @@ const howToSchema = {
   description:
     'A proven 7-phase process for turnkey operating room installation — from initial facility assessment and equipment selection through staff training and 30-day go-live support. Used by Surgiquip Solutions for OR installations across Texas since 1983.',
   totalTime: 'PT4W',
-  estimatedCost: {
-    '@type': 'MonetaryAmount',
-    currency: 'USD',
-    minValue: 30000,
-    maxValue: 2000000,
-  },
+  estimatedCost: undefined,
   tool: [
     { '@type': 'HowToTool', name: 'Skytron Surgical Table' },
     { '@type': 'HowToTool', name: 'Surgical Overhead Lights' },
     { '@type': 'HowToTool', name: 'Ceiling Equipment Booms' },
-    { '@type': 'HowToTool', name: 'Hybrid OR AV Integration System' },
+    { '@type': 'HowToTool', name: 'Hybrid OR Video Integration System' },
   ],
   step: projectPhases.map(([name, text], idx) => ({
     '@type': 'HowToStep',
@@ -136,7 +131,7 @@ const howToSchema = {
 ---
 <BaseLayout
   title="OR Installation Services | Surgiquip Solutions"
-  description="Turnkey operating room installation in Texas. Surgical tables, lights, booms, and hybrid OR AV integration. Factory-certified by Surgiquip Solutions."
+  description="Turnkey operating room installation in Texas. Surgical tables, lights, booms, and hybrid OR video integration. Factory-certified by Surgiquip Solutions."
   preloadImage="/images/services/or-installation-hero.webp"
   schema={[serviceSchema, orFaqSchema, breadcrumbSchema, howToSchema]}
 >
@@ -156,7 +151,7 @@ const howToSchema = {
             OR Installation & Integration
           </h1>
           <p class="mt-6 text-xl text-white/85 max-w-xl leading-relaxed">
-            Turnkey operating room builds from planning through go-live — surgical tables, lights, booms, hybrid OR AV integration, and documentation. {site.yearsInBusiness} years of Houston healthcare installations.
+            Turnkey operating room builds from planning through go-live — surgical tables, lights, booms, hybrid OR video integration, and documentation. {site.yearsInBusiness} years of Houston healthcare installations.
           </p>
           <div class="mt-8 flex flex-wrap gap-4">
             <a href="/quote" class="btn-primary px-7 py-3.5">Plan Your OR Project</a>
@@ -188,7 +183,7 @@ const howToSchema = {
         Complete OR Builds. No Shortcuts.
       </h2>
       <p class="mt-4 text-lg text-[var(--color-text-muted)] leading-relaxed">
-        A surgical suite is one of the most complex built environments in healthcare. Every component — the table, the lights, the booms, the AV systems — must work as a system. Surgiquip has managed OR builds from $30,000 single-room refreshes to $2M+ hybrid OR installations across Texas hospitals and surgery centers.
+        A surgical suite is one of the most complex built environments in healthcare. Every component — the table, the lights, the booms, the video systems — must work as a system. Surgiquip has managed OR builds across Texas hospitals and surgery centers for over {site.yearsInBusiness} years.
       </p>
       <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
         We coordinate with your architects, general contractors, and biomedical engineers throughout the project — not just on installation day. The result is a room that works exactly as specified and a team that knows every system in it.
@@ -228,7 +223,7 @@ const howToSchema = {
         </p>
         <div class="mt-6 grid grid-cols-2 gap-4">
           {[
-            ['$30K–$2M+', 'Project range'],
+            ['Turnkey', 'Project management'],
             [site.yearsInBusiness + ' Years', 'OR build experience'],
             ['500+', 'Facilities served'],
             ['Factory', 'Certified installs'],

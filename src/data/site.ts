@@ -35,7 +35,6 @@ export const nav = [
     label: 'Services',
     href: '/services',
     children: [
-      { label: 'Equipment Sales', href: '/services/equipment-sales' },
       { label: 'Service & Repair', href: '/services/service-and-repair' },
       { label: 'OR Installation', href: '/services/or-installation' },
       { label: 'Preventive Maintenance', href: '/services/preventive-maintenance' },
@@ -56,7 +55,6 @@ export const nav = [
 ];
 
 export const services = [
-  { slug: 'equipment-sales', title: 'Equipment Sales', blurb: 'Premium medical equipment from industry-leading manufacturers, including Skytron.', icon: 'cart' },
   { slug: 'service-and-repair', title: 'Service & Repair', blurb: 'Factory-trained technicians providing fast, reliable repair and support.', icon: 'wrench' },
   { slug: 'or-installation', title: 'OR Installation', blurb: 'Turnkey OR integration and installation with precision and expertise.', icon: 'gear' },
   { slug: 'preventive-maintenance', title: 'Preventive Maintenance', blurb: 'Planned maintenance programs to maximize uptime and protect your investment.', icon: 'shield' },
