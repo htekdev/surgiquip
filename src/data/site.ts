@@ -27,10 +27,6 @@ export const nav = [
   {
     label: 'Products',
     href: '/products',
-    children: [
-      { label: 'Skytron', href: '/products/skytron' },
-      { label: 'HSI', href: '/products/hsi' },
-    ],
   },
   {
     label: 'Services',
