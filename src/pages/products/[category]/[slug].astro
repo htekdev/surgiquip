@@ -1,0 +1,309 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import CTASection from '~/components/CTASection.astro';
+import { site } from '~/data/site';
+import {
+  categories,
+  products,
+  getProductsByCategory,
+  getCategoryBySlug,
+  getProductBySlug,
+} from '~/data/products';
+import type { SpecItem } from '~/data/products';
+
+// ---------------------------------------------------------------------------
+// Static paths — generate one page per product
+// ---------------------------------------------------------------------------
+export function getStaticPaths() {
+  return products.map((p) => ({
+    params: { category: p.category, slug: p.slug },
+  }));
+}
+
+const { category: categorySlug, slug } = Astro.params;
+const product = getProductBySlug(slug!)!;
+const category = getCategoryBySlug(categorySlug!)!;
+const categoryProducts = getProductsByCategory(categorySlug!);
+
+// Related products in same category (excluding current)
+const relatedProducts = categoryProducts.filter((p) => p.slug !== product.slug);
+
+// ---------------------------------------------------------------------------
+// Schema.org — Product + BreadcrumbList
+// ---------------------------------------------------------------------------
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: product.name,
+  description: product.description,
+  image: `${site.url}${product.image}`,
+  brand: { '@type': 'Brand', name: product.brand },
+  category: category.name,
+  offers: {
+    '@type': 'Offer',
+    seller: {
+      '@type': 'LocalBusiness',
+      '@id': `${site.url}#organization`,
+      name: site.brand,
+    },
+    areaServed: 'South Texas',
+    availability: 'https://schema.org/InStock',
+    priceSpecification: {
+      '@type': 'PriceSpecification',
+      priceCurrency: 'USD',
+    },
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: `${site.url}/products` },
+    { '@type': 'ListItem', position: 3, name: category.name, item: `${site.url}/products/${category.slug}` },
+    { '@type': 'ListItem', position: 4, name: product.name, item: `${site.url}/products/${category.slug}/${product.slug}` },
+  ],
+};
+---
+<BaseLayout
+  title={`${product.name} | ${category.name} | Surgiquip Solutions`}
+  description={`${product.tagline}. ${product.use ? `Used for ${product.use}.` : ''} Authorized dealer for South Texas hospitals since 1983.`}
+  schema={[productSchema, breadcrumbSchema]}
+>
+  <!-- ── Hero ── -->
+  <section class="bg-[var(--color-navy)] text-white">
+    <div class="container-x py-14 md:py-16">
+      <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
+        <a href="/" class="hover:text-white/90">Surgiquip</a>
+        <span class="mx-2">/</span>
+        <a href="/products" class="hover:text-white/90">Products</a>
+        <span class="mx-2">/</span>
+        <a href={`/products/${category.slug}`} class="hover:text-white/90">{category.name}</a>
+        <span class="mx-2">/</span>
+        <span class="text-white/90">{product.name}</span>
+      </nav>
+
+      <div class="flex items-center gap-3 mb-4">
+        <span class="rounded-full bg-white/15 px-3 py-0.5 text-[11px] font-bold tracking-widest uppercase backdrop-blur-sm">
+          {product.brand}
+        </span>
+        {product.badge && (
+          <span class="rounded-full bg-[var(--color-blue)] px-3 py-0.5 text-[11px] font-bold tracking-widest uppercase">
+            {product.badge}
+          </span>
+        )}
+      </div>
+
+      <h1 class="max-w-3xl font-display text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl">
+        {product.name}
+      </h1>
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-white/80">
+        {product.tagline}
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Product Detail ── -->
+  <section class="container-x py-16">
+    <div class="grid gap-12 lg:grid-cols-2">
+      <!-- Product Image -->
+      <div class="relative">
+        <img
+          src={product.image}
+          alt={product.alt}
+          class="w-full rounded-2xl shadow-xl border border-[var(--color-border)]"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+
+      <!-- Product Info -->
+      <div>
+        <h2 class="font-display text-2xl font-bold text-[var(--color-navy)] md:text-3xl">
+          About this Product
+        </h2>
+        <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed text-base">
+          {product.description}
+        </p>
+
+        {/* Spec Table */}
+        {product.specTable && product.specTable.length > 0 && (
+          <div class="mt-8">
+            <h3 class="text-sm font-bold tracking-widest uppercase text-[var(--color-blue)] mb-4">
+              Specifications
+            </h3>
+            <div class="overflow-hidden rounded-xl border border-[var(--color-border)]">
+              <table class="w-full text-sm">
+                <tbody>
+                  {product.specTable.map((spec: SpecItem, i: number) => (
+                    <tr class={i % 2 === 0 ? 'bg-[var(--color-surface-alt)]' : 'bg-white'}>
+                      <td class="px-4 py-3 font-semibold text-[var(--color-navy)] w-2/5">
+                        {spec.label}
+                      </td>
+                      <td class="px-4 py-3 text-[var(--color-text-muted)]">
+                        {spec.value}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* CTA */}
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a
+            href="/quote"
+            class="btn-primary inline-flex items-center justify-center gap-2"
+          >
+            Request a Quote
+            <svg class="h-4 w-4" viewBox="0 0 12 12" aria-hidden="true">
+              <path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" />
+            </svg>
+          </a>
+          <a
+            href={`tel:${site.phoneE164}`}
+            class="inline-flex items-center justify-center gap-2 rounded-md border border-[var(--color-border)] px-5 py-3 text-sm font-semibold text-[var(--color-navy)] transition hover:border-[var(--color-navy)]"
+          >
+            Call {site.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Features + Use Cases */}
+  {(product.features || product.use) && (
+    <section class="bg-[var(--color-surface-alt)] py-16">
+      <div class="container-x">
+        <div class="grid gap-12 lg:grid-cols-2">
+          {/* Features */}
+          {product.features && product.features.length > 0 && (
+            <div>
+              <h3 class="text-sm font-bold tracking-widest uppercase text-[var(--color-blue)] mb-4">
+                Key Features
+              </h3>
+              <ul class="space-y-3">
+                {product.features.map((feature: string) => (
+                  <li class="flex gap-3 text-sm text-[var(--color-text-muted)]">
+                    <svg class="w-4 h-4 text-[var(--color-blue)] flex-shrink-0 mt-0.5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                      <path d="M8 0a8 8 0 110 16A8 8 0 018 0zm3.78 5.22a.75.75 0 00-1.06 0L7 8.94 5.28 7.22a.75.75 0 10-1.06 1.06l2.25 2.25a.75.75 0 001.06 0l4.25-4.25a.75.75 0 000-1.06z"/>
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Typical Use */}
+          {product.use && (
+            <div>
+              <h3 class="text-sm font-bold tracking-widest uppercase text-[var(--color-blue)] mb-4">
+                Typical Applications
+              </h3>
+              <div class="bg-white rounded-xl border border-[var(--color-border)] p-6">
+                <p class="text-[var(--color-text-muted)] leading-relaxed">
+                  {product.use}
+                </p>
+              </div>
+
+              <div class="mt-6 bg-white rounded-xl border border-[var(--color-border)] p-6">
+                <p class="text-xs font-bold tracking-widest uppercase text-[var(--color-navy)] mb-2">
+                  Authorized Dealer
+                </p>
+                <p class="text-sm text-[var(--color-text-muted)]">
+                  Surgiquip Solutions is the authorized {product.brand} dealer for South Texas.
+                  All equipment includes factory warranty, installation, and ongoing service support.
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* Related Products in Same Category */}
+  {relatedProducts.length > 0 && (
+    <section class="container-x py-16">
+      <h2 class="font-display text-2xl font-bold text-[var(--color-navy)] mb-8">
+        More {category.name}
+      </h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {relatedProducts.map((p) => (
+          <a
+            href={`/products/${p.category}/${p.slug}`}
+            class="group flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-[var(--color-blue)]/40"
+          >
+            <div class="relative aspect-[4/3] overflow-hidden bg-[var(--color-surface-alt)]">
+              <img
+                src={p.image}
+                alt={p.alt}
+                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="absolute top-3 left-3 rounded-full bg-[var(--color-navy)]/90 px-2.5 py-0.5 text-[10px] font-bold tracking-widest uppercase text-white backdrop-blur-sm">
+                {p.brand}
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="text-base font-bold text-[var(--color-navy)] group-hover:text-[var(--color-blue)] transition-colors">
+                {p.name}
+              </h3>
+              <p class="mt-1 text-sm text-[var(--color-text-muted)] line-clamp-2">{p.tagline}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-8 text-center">
+        <a
+          href={`/products/${category.slug}`}
+          class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-blue)] hover:underline"
+        >
+          <svg class="h-4 w-4" viewBox="0 0 12 12" aria-hidden="true">
+            <path d="M10 6H3M6 9L3 6l3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" />
+          </svg>
+          All {category.name}
+        </a>
+      </div>
+    </section>
+  )}
+
+  <!-- ── Navigation ── -->
+  <section class="border-t border-[var(--color-border)]">
+    <div class="container-x py-8 flex flex-wrap items-center justify-between gap-4">
+      <a
+        href={`/products/${category.slug}`}
+        class="inline-flex items-center gap-2 rounded-md border border-[var(--color-border)] px-5 py-3 text-sm font-semibold text-[var(--color-navy)] transition hover:border-[var(--color-navy)]"
+      >
+        <svg class="h-4 w-4" viewBox="0 0 12 12" aria-hidden="true">
+          <path d="M10 6H3M6 9L3 6l3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" />
+        </svg>
+        Back to {category.name}
+      </a>
+      <a
+        href="/products"
+        class="inline-flex items-center gap-2 rounded-md border border-[var(--color-border)] px-5 py-3 text-sm font-semibold text-[var(--color-navy)] transition hover:border-[var(--color-navy)]"
+      >
+        <svg class="h-4 w-4" viewBox="0 0 12 12" aria-hidden="true">
+          <path d="M10 6H3M6 9L3 6l3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" />
+        </svg>
+        All Product Categories
+      </a>
+    </div>
+  </section>
+
+  <CTASection
+    heading={`Need a Quote for ${product.name}?`}
+    subhead={`Tell us about your facility requirements and we'll recommend the right ${product.name} configuration for your project.`}
+    primaryLabel="Request a Quote"
+    primaryHref="/quote"
+    secondaryLabel={`Call ${site.phone}`}
+    secondaryHref={`tel:${site.phoneE164}`}
+  />
+</BaseLayout>

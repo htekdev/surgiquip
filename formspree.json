@@ -28,7 +28,7 @@
           "maxlength": 32
         },
         "message": {
-          "type": "textarea",
+          "type": "text",
           "required": true,
           "maxlength": 5000
         },
@@ -74,7 +74,7 @@
           "maxlength": 128
         },
         "message": {
-          "type": "textarea",
+          "type": "text",
           "required": true,
           "maxlength": 5000
         },
