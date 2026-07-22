@@ -1,5 +1,9 @@
-// Vercel serverless function — quote request / contact handler
-// Delivers form submissions to info@surgiquipsolutions.com via Resend API.
+// ⚠️ DEPRECATED — Forms now use Formspree (browser → Formspree directly).
+// This serverless function is no longer referenced by any form on the site.
+// Kept for reference only. Safe to delete once Formspree is confirmed working.
+//
+// Previously: Vercel serverless function — quote request / contact handler
+// Delivered form submissions to info@surgiquipsolutions.com via Resend API.
 //
 // Required env var: RESEND_API_KEY  (add to Vercel project → Settings → Environment Variables)
 //   From email:  Surgiquip Website <noreply@htek.dev>      (htek.dev is Hector's verified Resend domain)

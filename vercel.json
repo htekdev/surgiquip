@@ -1,5 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/products/knight", "destination": "/products", "statusCode": 301 },
+    { "source": "/products/hsi", "destination": "/products", "statusCode": 301 },
+    { "source": "/services/equipment-sales", "destination": "/products", "statusCode": 301 }
+  ],
   "headers": [
     {
       "source": "/(.*)",

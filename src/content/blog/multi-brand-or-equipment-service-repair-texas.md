@@ -16,7 +16,7 @@ The challenge is not the diversity of equipment. The challenge is finding a serv
 
 Hospital purchasing teams are sometimes advised to standardize around a single manufacturer — tables, lights, booms, sterilizers — to simplify training and reduce the number of service relationships. This works well on paper and occasionally in practice. In the real world, hospitals accumulate equipment across budget cycles, clinical champions advocate for specific products they used during fellowship, group purchasing agreements shift every three years, and renovation projects are often funded in phases.
 
-The result: most Texas hospital OR departments are managing a mix of Skytron tables alongside Steris or Stryker units acquired a decade earlier. Skytron Aurora LED lights installed during a recent renovation paired with older Berchtold pendants that still work fine and are not worth replacing. A Knight instrument washer next to a Tuttnauer autoclave purchased directly from the manufacturer's distributor.
+The result: most Texas hospital OR departments are managing a mix of Skytron tables alongside Steris or Stryker units acquired a decade earlier. Skytron Aurora LED lights installed during a recent renovation paired with older Berchtold pendants that still work fine and are not worth replacing. An instrument washer next to a Tuttnauer autoclave purchased directly from the manufacturer's distributor.
 
 When any of those units needs repair, the facilities manager needs someone who can respond — and who is not going to recommend replacement simply because the unit in question is outside their catalog.
 
@@ -48,7 +48,7 @@ When a piece of OR equipment needs attention, the facilities team is working thr
 
 ### Is This an Emergency or a Scheduled Repair?
 
-Emergency repairs — a table that fails to lock position mid-procedure, a sterilizer that generates a fault code during a high-volume OR day, a boom arm that will not retract — require a partner with geographic proximity and dispatch capability. At Surgiquip's response window, most Houston-area facilities can have a technician on-site the same day for urgent situations. UTMB John Sealy in Galveston, North Cypress Medical Center in Cypress, and Memorial Hermann Northeast in Humble are all within the service corridor where rapid response is realistic.
+Emergency repairs — a table that fails to lock position mid-procedure, a sterilizer that generates a fault code during a high-volume OR day, a boom arm that will not retract — require a partner with geographic proximity and dispatch capability. At Surgiquip's response window, most Houston-area facilities can have a technician on-site quickly for urgent situations. UTMB John Sealy in Galveston, North Cypress Medical Center in Cypress, and Memorial Hermann Northeast in Humble are all within the service corridor where rapid response is realistic.
 
 Non-emergency repairs allow time to compare service options, obtain quotes, and schedule around the OR's case volume. This is where multi-year preventive maintenance agreements provide the most value — because the same partner managing your scheduled PMs already has baseline documentation on your equipment and is the natural first call when unplanned repairs arise.
 
@@ -125,7 +125,7 @@ Key sterilization equipment service requirements:
 
 **Documentation standards:** Every service event must be documented with date, technician credentials, work performed, parts replaced, and test results. AAMI ST79 is the applicable standard for documentation requirements.
 
-**Biological indicator response:** When a sterilizer fails a biological indicator test, the response protocol requires immediate load recall, sterilizer quarantine, technical inspection, and corrective action documentation before return to service. Having a service partner on call with same-day response capability is the difference between a controlled event and a clinical operations disruption.
+**Biological indicator response:** When a sterilizer fails a biological indicator test, the response protocol requires immediate load recall, sterilizer quarantine, technical inspection, and corrective action documentation before return to service. Having a service partner on call with rapid response capability is the difference between a controlled event and a clinical operations disruption.
 
 ## Building a Service Partnership That Covers the Whole Fleet
 
@@ -145,7 +145,7 @@ What this looks like in practice at Surgiquip's client facilities:
 
 ## Surgiquip's Service Coverage in Southeast Texas
 
-Surgiquip Solutions has serviced OR equipment across the Houston metropolitan area and Southeast Texas for more than 40 years. Our factory-trained technicians are based in Houston (10653 Kinghurst Drive), enabling same-day dispatch to facilities throughout Harris County, Fort Bend County, Brazoria County, Galveston County, and Montgomery County.
+Surgiquip Solutions has serviced OR equipment across the Houston metropolitan area and Southeast Texas for more than 40 years. Our factory-trained technicians are based in Houston, enabling rapid dispatch to facilities throughout Harris County, Fort Bend County, Brazoria County, Galveston County, and Montgomery County.
 
 Current service relationships include facilities across:
 

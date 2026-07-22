@@ -141,7 +141,7 @@ If your hospital or health system in Southeast Texas is planning a new cath lab 
 4. **Specify PM coverage in the equipment contract**, not as an afterthought 12 months post-installation.
 5. **Validate table compatibility** with the specific imaging isocenter geometry before purchase.
 
-Surgiquip Solutions is the authorized Skytron dealer for Southeast Texas and has direct experience with every step of this process in real Houston-area cath lab installations. Our team can provide pre-construction planning consultation, equipment specification support, and turnkey installation across boom systems, surgical lighting, and procedure tables.
+Surgiquip Solutions is the authorized Skytron dealer for South Texas and has direct experience with every step of this process in real Houston-area cath lab installations. Our team can provide pre-construction planning consultation, equipment specification support, and turnkey installation across boom systems, surgical lighting, and procedure tables.
 
 ---
 

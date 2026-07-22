@@ -9,7 +9,7 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Preventive Maintenance for Medical Equipment',
   provider: { '@id': `${site.url}#organization` },
-  description: 'Planned preventive maintenance programs for surgical tables, lights, booms, and OR equipment in Texas. Compliance documentation included.',
+  description: 'Planned preventive maintenance programs for surgical tables, lights, booms, washers, sterilizers, and OR equipment in Texas. Service reports and documentation included.',
   areaServed: [{ '@type': 'State', name: 'Texas' }],
   serviceType: 'Preventive Maintenance',
   url: `${site.url}/services/preventive-maintenance`,
@@ -29,7 +29,7 @@ const pmIncludes = [
   {
     icon: '<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
     title: 'Scheduled Inspections',
-    desc: 'Semi-annual or annual inspection visits coordinated around your OR schedule — no surprise shutdowns.',
+    desc: 'Quarterly, semi-annual, or annual inspection visits coordinated around your OR schedule — frequency matched to each piece of equipment.',
   },
   {
     icon: '<path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-3 3-2.4-2.4 3-3z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>',
@@ -38,13 +38,13 @@ const pmIncludes = [
   },
   {
     icon: '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
-    title: 'Performance Testing',
-    desc: 'Full functional testing of every table articulation, light intensity level, boom outlet, and AV signal path — documented before we leave.',
+    title: 'Functional Testing',
+    desc: 'Functional testing per manufacturer-recommended preventative maintenance schedules — documented before we leave.',
   },
   {
     icon: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
-    title: 'Compliance Certificates',
-    desc: 'PM completion certificates and service records formatted for Joint Commission, DNV, and CMS survey readiness.',
+    title: 'Service Reports',
+    desc: 'Detailed reports after every PM visit documenting what was inspected, tested, replaced, and recommended — ready for your biomedical records.',
   },
   {
     icon: '<rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
@@ -58,32 +58,23 @@ const pmIncludes = [
   },
 ];
 
-const complianceItems = [
-  'Joint Commission equipment maintenance standards (EC.02.04.01)',
-  'DNV GL — Healthcare accreditation requirements',
-  'CMS Conditions of Participation for surgical facilities',
-  'NFPA 99 medical gas system testing requirements',
-  'Manufacturer service interval specifications',
-  'Texas Department of Health facility regulations',
-];
-
 // Preventive Maintenance FAQ — 4 questions for FAQPage schema + visible accordion.
 const pmFAQs = [
   {
     q: 'What is included in a Surgiquip preventive maintenance program?',
-    a: 'Every PM visit includes: scheduled inspections (semi-annual or annual, coordinated around your OR calendar), proactive replacement of wear parts before they become failure points, full performance testing of all table articulations and light intensity levels, compliance-ready PM certificates, and priority dispatch status for any service calls between scheduled visits. We also provide equipment lifecycle planning so you can anticipate capital replacement needs.',
+    a: 'Every PM visit includes: scheduled inspections (quarterly, semi-annual, or annual, coordinated around your OR calendar), proactive replacement of wear parts before they become failure points, functional testing per manufacturer-recommended schedules, detailed service reports for your biomedical records, and priority dispatch status for any service calls between scheduled visits. We also provide equipment lifecycle planning so you can anticipate capital replacement needs.',
   },
   {
     q: 'How often should surgical equipment receive preventive maintenance?',
-    a: 'Most manufacturers specify annual minimum intervals, with semi-annual recommended for high-volume facilities. Joint Commission standard EC.02.04.01 requires documented maintenance at manufacturer-specified frequencies. Surgiquip implements Skytron\'s factory-recommended intervals for all Skytron equipment and applies the same rigor to all other brands we maintain — so your PM records are audit-ready regardless of the accreditation framework.',
+    a: 'Most manufacturers specify annual minimum intervals, with semi-annual or quarterly recommended for high-volume facilities. Surgiquip implements the factory-recommended intervals for all Skytron equipment and applies the same rigor to all other brands we maintain — so your PM records reflect manufacturer best practices.',
   },
   {
-    q: 'Does your PM documentation satisfy Joint Commission, DNV, and CMS requirements?',
-    a: 'Yes. Our PM certificates and service records are formatted for Joint Commission EC.02.04.01, DNV GL Healthcare accreditation, and CMS Conditions of Participation. We also cover NFPA 99 medical gas testing documentation, DSHS Texas facility regulations, and manufacturer interval specifications. Your biomedical director has everything they need on survey day — no last-minute scrambles.',
+    q: 'Does your PM documentation satisfy Joint Commission and CMS requirements?',
+    a: 'Yes. Our PM service reports and documentation are formatted to support Joint Commission and CMS requirements. Your biomedical director receives detailed records of every inspection, test, and parts replacement — ready for survey day.',
   },
   {
     q: 'What is the advantage of a PM contract over calling for repairs as-needed?',
-    a: `PM contract clients receive scheduled visits, proactive parts replacement, compliance documentation included, and priority dispatch status for service calls — repairs jump to the front of our queue. On-demand repair is reactive, typically costs more per event, and tends to happen at the worst possible time. Facilities with PM programs consistently see fewer unplanned OR cancellations and more predictable capital budgets. <a href="/quote" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">Request a PM proposal</a> to see what a program costs for your facility.`,
+    a: `PM contract clients receive scheduled visits, proactive parts replacement, detailed service reports, and priority dispatch status for service calls — repairs jump to the front of our queue. On-demand repair is reactive, typically costs more per event, and tends to happen at the worst possible time. Facilities with PM programs consistently see fewer unplanned OR cancellations and more predictable capital budgets. <a href="/quote" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">Request a PM proposal</a> to see what a program costs for your facility.`,
   },
 ];
 
@@ -102,7 +93,7 @@ const pmFaqSchema = {
 ---
 <BaseLayout
   title="OR Equipment Preventive Maintenance | Surgiquip"
-  description="Planned maintenance programs for surgical tables, lights, and OR equipment in Texas. Compliance documentation included. Authorized Skytron service."
+  description="Planned maintenance programs for surgical tables, lights, washers, sterilizers, and OR equipment in Texas. All brands serviced. Authorized Skytron service."
   schema={[serviceSchema, breadcrumbSchema, pmFaqSchema]}
   preloadImage="/images/services/preventive-maintenance-hero.webp"
 >
@@ -122,7 +113,7 @@ const pmFaqSchema = {
             Preventive Maintenance
           </h1>
           <p class="mt-6 text-xl text-white/85 max-w-xl leading-relaxed">
-            Maximize uptime, extend equipment life, and stay survey-ready with a managed PM program from Surgiquip — the same team that installed and services your OR.
+            Maximize uptime, extend equipment life, and stay survey-ready with a managed PM program from Surgiquip — factory-trained technicians maintaining all brands of OR equipment across Texas.
           </p>
           <div class="mt-8 flex flex-wrap gap-4">
             <a href="/quote" class="btn-primary px-7 py-3.5">Request PM Proposal</a>
@@ -157,7 +148,7 @@ const pmFaqSchema = {
         Emergency repairs cost more, take longer, and happen at the worst possible time. A managed PM program with Surgiquip keeps your OR equipment performing at specification, your records survey-ready, and your capital budget predictable.
       </p>
       <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
-        Our PM programs cover the equipment we sell and install — Skytron tables, surgical lights, equipment booms, and hybrid OR systems — maintained by the same factory-trained technicians who put them in. No learning curve. No guesswork.
+        Our PM programs cover all brands of surgical equipment — whether we sold it, installed it, or inherited it from another provider. Skytron tables, surgical lights, equipment booms, washers, sterilizers, and hybrid OR systems — all maintained by factory-trained technicians who know the equipment inside and out.
       </p>
     </div>
   </section>
@@ -185,23 +176,32 @@ const pmFaqSchema = {
   <section class="container-x py-16">
     <div class="grid gap-12 lg:grid-cols-2 items-start">
       <div>
-        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Compliance Coverage</div>
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">How It Works</div>
         <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">
-          Stay Survey-Ready Year-Round
+          Our PM Process
         </h2>
         <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
-          Healthcare accreditation surveys don't announce themselves. Our PM documentation is formatted to satisfy the most common compliance frameworks so your biomedical team has exactly what they need — when they need it.
+          From initial inquiry to post-visit reporting, here's how a Surgiquip preventive maintenance engagement works — clear steps, no surprises.
         </p>
-        <ul class="mt-6 space-y-3">
-          {complianceItems.map((item) => (
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-[var(--color-blue)] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none">
-                <path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span class="text-[var(--color-text-muted)] text-sm">{item}</span>
+        <ol class="mt-6 space-y-4">
+          {[
+            ['Inquiry', 'You call or request a PM proposal — we learn about your facility and equipment.'],
+            ['Equipment Assessment', 'We inventory every piece of equipment and document current condition and service history.'],
+            ['Frequency Planning', 'We determine the right PM schedule for each item — quarterly, semi-annual, or annual — based on equipment type and manufacturer recommendations.'],
+            ['Proposal', 'You receive a detailed proposal with each piece of equipment broken out by visit frequency and cost.'],
+            ['Sign-Off', 'Once approved, we schedule your first PM visit around your OR calendar.'],
+            ['Scheduled PM Visits', 'Our technicians follow the manufacturer\'s suggested preventative maintenance schedule for each item — inspections, testing, parts replacement, and calibration.'],
+            ['Post-Visit Report', 'After every visit, you receive a detailed report of what was inspected, tested, replaced, and recommended.'],
+          ].map(([title, desc], i) => (
+            <li class="flex gap-4">
+              <div class="shrink-0 w-8 h-8 rounded-full bg-[var(--color-blue)] text-white flex items-center justify-center text-sm font-bold">{i + 1}</div>
+              <div>
+                <div class="font-semibold text-[var(--color-navy)]">{title}</div>
+                <div class="text-xs text-[var(--color-text-muted)] mt-0.5">{desc}</div>
+              </div>
             </li>
           ))}
-        </ul>
+        </ol>
       </div>
       <div class="space-y-4">
         {[
@@ -233,7 +233,7 @@ const pmFaqSchema = {
 
   <CTASection
     heading="Protect Your OR Investment"
-    subhead="Get a PM proposal for your facility. We'll inventory your equipment and recommend the right program — annual, semi-annual, or custom."
+    subhead="Get a PM proposal for your facility. We'll inventory your equipment and recommend the right program — quarterly, semi-annual, or annual."
     primaryLabel="Request PM Proposal"
   />
 </BaseLayout>

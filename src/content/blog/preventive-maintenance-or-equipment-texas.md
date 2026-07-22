@@ -17,7 +17,7 @@ Surgical tables, overhead lighting systems, and ceiling-mount equipment booms ar
 
 - **Mechanical complexity** — Surgical tables have hydraulic systems, articulation motors, and precise weight-rating mechanisms. Overhead lights have multi-axis repositioning systems and LED thermal management. Booms carry live gas and electrical services through rotating joints.
 - **Life-safety classification** — Failures mid-procedure are not just inconveniences; they can constitute direct patient risk events.
-- **Regulatory visibility** — Joint Commission (TJC), DNV GL, and CMS surveys all include OR equipment maintenance documentation in their inspection scope.
+- **Regulatory visibility** — Joint Commission (TJC) and CMS surveys all include OR equipment maintenance documentation in their inspection scope.
 - **OEM PM requirements** — Most surgical equipment manufacturers specify PM intervals as a condition of warranty and as required for field software updates.
 
 A general biomedical team without factory training on these specific platforms can miss critical checkpoints.
@@ -125,7 +125,7 @@ Not all service providers have the same access or capability. When evaluating a 
 - For Houston-area facilities, a local authorized service partner with a parts inventory on-hand should be able to respond within hours — not days.
 
 **4. Documentation Delivery**
-- Do they provide PM records in a format your biomed team can file for TJC/DNV surveys?
+- Do they provide PM records in a format your biomed team can file for TJC surveys?
 - Records should include: equipment ID, serial number, date of service, technician certification, all checkpoints performed, findings, and corrective actions.
 
 **5. Historical Service Records**
@@ -144,6 +144,6 @@ A structured PM program with a qualified service partner converts unpredictable 
 
 ---
 
-**Surgiquip Solutions** has served as the authorized Skytron dealer for Southeast Texas since the 1980s, providing factory-trained PM service for surgical tables, overhead lights, and ceiling-mount booms. Our technicians hold OEM certifications and maintain service records suitable for TJC and DNV GL survey documentation.
+**Surgiquip Solutions** has served as the authorized Skytron dealer for South Texas since the 1980s, providing factory-trained PM service for surgical tables, overhead lights, and ceiling-mount booms. Our technicians hold OEM certifications and maintain service records suitable for Joint Commission survey documentation.
 
 📞 [(713) 681-6362](tel:+17136816362) · [Request a PM Quote](/quote) · [View Our Services](/services/preventive-maintenance)

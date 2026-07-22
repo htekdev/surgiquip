@@ -5,13 +5,8 @@ import Logo from './Logo.astro';
 <footer class="bg-[var(--color-navy-dark)] text-white mt-20">
   <div class="container-x py-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1.3fr]">
     <div>
-      <div class="flex items-center gap-3">
+      <div class="flex items-center">
         <Logo class="h-12 w-auto" variant="white" />
-        <div class="leading-tight">
-          <div class="font-display text-xl font-extrabold tracking-tight">Surgiquip</div>
-          <div class="text-xs opacity-70">Solutions, Inc.</div>
-          <div class="text-[10px] italic opacity-70">"{site.tagline}"</div>
-        </div>
       </div>
     </div>
 
@@ -20,7 +15,6 @@ import Logo from './Logo.astro';
       <ul class="space-y-2 text-sm">
         <li><a href="/products" class="hover:underline text-white/90 hover:text-white">Products</a></li>
         <li><a href="/services" class="hover:underline text-white/90 hover:text-white">Services</a></li>
-        <li><a href="/projects" class="hover:underline text-white/90 hover:text-white">Projects</a></li>
         <li><a href="/service-areas" class="hover:underline text-white/90 hover:text-white">Service Areas</a></li>
         <li><a href="/blog" class="hover:underline text-white/90 hover:text-white">Blog</a></li>
         <li><a href="/quote" class="hover:underline text-white/90 hover:text-white">Request Quote</a></li>

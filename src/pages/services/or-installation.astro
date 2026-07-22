@@ -9,7 +9,7 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Operating Room Installation & Integration',
   provider: { '@id': `${site.url}#organization` },
-  description: 'Turnkey operating room installation and hybrid OR integration in Texas. Surgical tables, lights, booms, AV systems, and complete OR builds from planning to go-live.',
+  description: 'Turnkey operating room installation and hybrid OR video integration in Texas. Surgical tables, lights, booms, video systems, and complete OR builds from planning to go-live.',
   areaServed: [{ '@type': 'State', name: 'Texas' }],
   serviceType: 'Operating Room Installation',
   url: `${site.url}/services/or-installation`,
@@ -20,11 +20,7 @@ const serviceSchema = {
 const orFAQs = [
   {
     q: 'What is included in a turnkey OR installation by Surgiquip?',
-    a: 'A Surgiquip turnkey OR installation covers the full project lifecycle: facility assessment and planning, equipment selection, coordination with your architect and GC, delivery staging, certified installation of surgical tables, lights, and booms, AV system commissioning for hybrid ORs, as-built documentation, and staff training. We manage every phase so your team can focus on clinical preparation.',
-  },
-  {
-    q: 'How long does an operating room installation take?',
-    a: 'Project timelines vary based on scope. A single-room surgical table and light installation can be completed in one to three days. A full hybrid OR build — including AV integration, multiple boom systems, and documentation packages — typically spans four to twelve weeks depending on construction schedule, equipment lead times, and facility access windows. We provide a detailed schedule at project kickoff.',
+    a: 'A Surgiquip turnkey OR installation covers the full project lifecycle: facility assessment and planning, equipment selection, coordination with your architect and GC, delivery staging, certified installation of surgical tables, lights, and booms, video system commissioning for hybrid ORs, as-built documentation, and staff training. We manage every phase so your team can focus on clinical preparation.',
   },
   {
     q: 'Does Surgiquip coordinate with our architects and general contractors?',
@@ -32,7 +28,7 @@ const orFAQs = [
   },
   {
     q: 'Do you service equipment after installation is complete?',
-    a: `Absolutely. Surgiquip provides ongoing service and repair, and preventive maintenance programs for all equipment we install. As the authorized Skytron dealer for Southeast Texas, our factory-trained technicians know every component of your surgical suite. Call us at <a href="tel:${site.phoneE164}" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">${site.phone}</a> or <a href="/services/preventive-maintenance" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">learn about our PM programs</a>.`,
+    a: `Absolutely. Surgiquip provides ongoing service and repair, and preventive maintenance programs for all equipment we install. As the Authorized Skytron dealer for South Texas, our factory-trained technicians know every component of your surgical suite. Call us at <a href="tel:${site.phoneE164}" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">${site.phone}</a> or <a href="/services/preventive-maintenance" class="text-[var(--color-blue)] underline underline-offset-2 hover:opacity-80">learn about our PM programs</a>.`,
   },
 ];
 
@@ -82,13 +78,13 @@ const deliverables = [
   },
   {
     icon: '<rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',
-    title: 'Hybrid OR AV Integration',
-    desc: '4K display mounting and commissioning, HDMI/SDI signal routing, AV switching systems, and OR-grade video distribution for procedures and remote viewing.',
+    title: 'Hybrid OR Video Integration',
+    desc: '4K display mounting and commissioning, HDMI/SDI signal routing, video switching systems, and OR-grade video distribution for procedures and remote viewing.',
   },
   {
     icon: '<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
     title: 'Documentation & Commissioning',
-    desc: "As-built drawings, equipment warranties, compliance documentation, and staff training materials — everything for your records and your first Joint Commission survey.",
+    desc: "As-built drawings, equipment warranties, compliance documentation, and staff training materials — a complete handoff package for your facilities and biomedical teams.",
   },
 ];
 
@@ -97,7 +93,7 @@ const projectPhases = [
   ['Design', 'Equipment layout, MEP coordination, submittal packages for GC and architect.'],
   ['Pre-Installation', 'Factory order, delivery staging, and pre-installation coordination with GC.'],
   ['Installation', 'Certified installation with daily progress updates to your facilities team.'],
-  ['Commissioning', 'Full functional testing of all systems — tables, lights, booms, AV, gas outlets.'],
+  ['Commissioning', 'Full functional testing of all systems — tables, lights, booms, and video systems.'],
   ['Training', 'Staff orientation for OR nursing, biomedical, and facilities teams.'],
   ['Go-Live Support', '30-day go-live period with priority response for any adjustments needed.'],
 ];
@@ -111,18 +107,11 @@ const howToSchema = {
   name: 'How to Plan and Execute an Operating Room Installation',
   description:
     'A proven 7-phase process for turnkey operating room installation — from initial facility assessment and equipment selection through staff training and 30-day go-live support. Used by Surgiquip Solutions for OR installations across Texas since 1983.',
-  totalTime: 'PT4W',
-  estimatedCost: {
-    '@type': 'MonetaryAmount',
-    currency: 'USD',
-    minValue: 30000,
-    maxValue: 2000000,
-  },
   tool: [
     { '@type': 'HowToTool', name: 'Skytron Surgical Table' },
     { '@type': 'HowToTool', name: 'Surgical Overhead Lights' },
     { '@type': 'HowToTool', name: 'Ceiling Equipment Booms' },
-    { '@type': 'HowToTool', name: 'Hybrid OR AV Integration System' },
+    { '@type': 'HowToTool', name: 'Hybrid OR Video Integration System' },
   ],
   step: projectPhases.map(([name, text], idx) => ({
     '@type': 'HowToStep',
@@ -136,7 +125,7 @@ const howToSchema = {
 ---
 <BaseLayout
   title="OR Installation Services | Surgiquip Solutions"
-  description="Turnkey operating room installation in Texas. Surgical tables, lights, booms, and hybrid OR AV integration. Factory-certified by Surgiquip Solutions."
+  description="Turnkey operating room installation in Texas. Surgical tables, lights, booms, and hybrid OR video integration. Factory-certified by Surgiquip Solutions."
   preloadImage="/images/services/or-installation-hero.webp"
   schema={[serviceSchema, orFaqSchema, breadcrumbSchema, howToSchema]}
 >
@@ -156,7 +145,7 @@ const howToSchema = {
             OR Installation & Integration
           </h1>
           <p class="mt-6 text-xl text-white/85 max-w-xl leading-relaxed">
-            Turnkey operating room builds from planning through go-live — surgical tables, lights, booms, hybrid OR AV integration, and documentation. {site.yearsInBusiness} years of Houston healthcare installations.
+            Turnkey operating room builds from planning through go-live — surgical tables, lights, booms, hybrid OR video integration, and documentation. {site.yearsInBusiness} years of Houston healthcare installations.
           </p>
           <div class="mt-8 flex flex-wrap gap-4">
             <a href="/quote" class="btn-primary px-7 py-3.5">Plan Your OR Project</a>
@@ -188,7 +177,7 @@ const howToSchema = {
         Complete OR Builds. No Shortcuts.
       </h2>
       <p class="mt-4 text-lg text-[var(--color-text-muted)] leading-relaxed">
-        A surgical suite is one of the most complex built environments in healthcare. Every component — the table, the lights, the booms, the AV systems — must work as a system. Surgiquip has managed OR builds from $30,000 single-room refreshes to $2M+ hybrid OR installations across Texas hospitals and surgery centers.
+        A surgical suite is one of the most complex built environments in healthcare. Every component — the table, the lights, the booms, the video systems — must work as a system. Surgiquip has managed OR builds across Texas hospitals and surgery centers for over {site.yearsInBusiness} years.
       </p>
       <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
         We coordinate with your architects, general contractors, and biomedical engineers throughout the project — not just on installation day. The result is a room that works exactly as specified and a team that knows every system in it.
@@ -217,6 +206,88 @@ const howToSchema = {
   </section>
 
   <section class="container-x py-16">
+    <div class="grid gap-12 lg:grid-cols-2 items-center">
+      <div>
+        <div class="inline-block bg-[var(--color-blue)]/10 text-[var(--color-blue)] text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-4">Featured: Skytron Freedom Air</div>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-[var(--color-navy)]">
+          Freedom Air Modular Ceiling System
+        </h2>
+        <p class="mt-4 text-lg text-[var(--color-text-muted)] leading-relaxed">
+          A single laminar diffuser system that keeps your OR clean by precisely controlling airflow — reducing the risk of surgical site infections. Originally engineered for microchip clean rooms, now purpose-built for operating rooms.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {[
+            'All mounts and structure included — gases, electrical, sprinkler, and lighting built into the ceiling system',
+            'Side-attach design streamlines the OR ceiling and simplifies construction',
+            'Reduces construction labor by 60–70% compared to traditional OR builds',
+            'Higher product cost offset by dramatically lower overall project cost',
+          ].map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[var(--color-blue)] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="text-[var(--color-text-muted)] text-sm">{item}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-8">
+          <a href="/quote" class="btn-primary px-7 py-3.5">Ask About Freedom Air</a>
+        </div>
+      </div>
+      <div class="bg-[var(--color-surface-alt)] rounded-xl p-8 border border-[var(--color-border)]">
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto rounded-full bg-[var(--color-blue)]/10 flex items-center justify-center text-[var(--color-blue)] mb-4">
+            <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-xl text-[var(--color-navy)] mb-3">Why Freedom Air?</h3>
+          <div class="space-y-4 text-left">
+            {[
+              ['60–70% Less Labor', 'Integrated ceiling structure eliminates separate trades for gas, electrical, sprinkler, and lighting rough-in.'],
+              ['Infection Control', 'Laminar airflow diffuser maintains positive pressure and reduces surgical site infection risk — clean room technology adapted for ORs.'],
+              ['Streamlined Ceiling', 'Side-attach design removes visual clutter and simplifies future service access.'],
+              ['Lower Total Cost', 'Higher product cost is more than offset by labor savings on even a single OR build.'],
+            ].map(([title, desc]) => (
+              <div class="p-4 bg-white rounded-lg border border-[var(--color-border)]">
+                <div class="font-semibold text-sm text-[var(--color-navy)]">{title}</div>
+                <div class="text-xs text-[var(--color-text-muted)] mt-1">{desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Equipment Staging</div>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">
+          Warehouse Staging & Just-in-Time Delivery
+        </h2>
+        <p class="mt-4 text-lg text-[var(--color-text-muted)] leading-relaxed">
+          Your equipment doesn't sit on a receiving dock for months waiting for construction to finish. Surgiquip maintains warehouse space where equipment is received, inspected, and staged until your site is ready.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
+        {[
+          ['Secure Storage', 'Equipment is received at our warehouse and stored securely — off your dock and out of construction zones.'],
+          ['Flexible Timing', 'If your project timeline shifts, your equipment delivery shifts with it. No wasted space, no storage fees at your facility.'],
+          ['Pre-Delivery Inspection', 'Every piece is inspected and verified before it leaves our warehouse — so installation day runs smoothly.'],
+        ].map(([title, desc]) => (
+          <div class="bg-white rounded-lg border border-[var(--color-border)] p-6 text-center">
+            <h3 class="font-bold text-[var(--color-navy)] mb-2">{title}</h3>
+            <p class="text-sm text-[var(--color-text-muted)]">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container-x py-16">
     <div class="grid gap-12 lg:grid-cols-2 items-start">
       <div>
         <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Project Lifecycle</div>
@@ -228,7 +299,7 @@ const howToSchema = {
         </p>
         <div class="mt-6 grid grid-cols-2 gap-4">
           {[
-            ['$30K–$2M+', 'Project range'],
+            ['Turnkey', 'Project management'],
             [site.yearsInBusiness + ' Years', 'OR build experience'],
             ['500+', 'Facilities served'],
             ['Factory', 'Certified installs'],

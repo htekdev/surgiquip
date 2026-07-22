@@ -113,7 +113,7 @@ At **Brazoria Surgery Center** in Brazoria, TX — a 4-OR + 2-Procedure facility
 
 The operational lifetime of a GYN OR installation extends 15–20 years for major installed infrastructure. Table hydraulics, light head components, and boom system articulation joints are all mechanical systems with maintenance schedules and failure mode profiles. A GYN program that cannot obtain rapid service for a table that loses Trendelenburg or a boom that loses gas supply is an OR that cannot run its robotic case that morning.
 
-Surgiquip's Southeast Texas service territory covers the primary GYN program concentrations in the region — Harris County, Fort Bend County, Brazoria County, Galveston County, and Montgomery County. Service response for critical equipment failures (table positioning failures, boom gas supply loss) is same-day for the facilities in this territory.
+Surgiquip's Southeast Texas service territory covers the primary GYN program concentrations in the region — Harris County, Fort Bend County, Brazoria County, Galveston County, and Montgomery County. Service response for critical equipment failures (table positioning failures, boom gas supply loss) is prioritized for the facilities in this territory.
 
 **Factory certification coverage for GYN OR equipment:**
 - **Skytron** — primary surgical tables and ceiling-mount boom systems (factory-certified dealer and servicer)
@@ -164,4 +164,4 @@ Surgiquip provides pre-installation planning support for new women's health OR p
 
 ---
 
-*Surgiquip Solutions, Inc. has been the authorized Skytron dealer for Southeast Texas for more than four decades. We are Skytron factory-certified for installation and service, Texas DSHS-licensed, BBB A+ rated with five Torch Awards for Ethics, and Vital Affiliate-credentialed with Memorial Hermann Integrated Delivery Network. Contact us at (713) 681-6362 or [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com) to discuss your women's health OR project.*
+*Surgiquip Solutions, Inc. has been the authorized Skytron dealer for South Texas for more than four decades. We are Skytron factory-certified for installation and service, Texas DSHS-licensed, BBB A+ rated with five Torch Awards for Ethics. Contact us at (713) 681-6362 or [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com) to discuss your women's health OR project.*
