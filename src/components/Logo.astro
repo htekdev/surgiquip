@@ -4,11 +4,14 @@ export interface Props {
   variant?: 'navy' | 'white';
 }
 const { class: className = '', variant = 'navy' } = Astro.props;
+const src = variant === 'white'
+  ? '/images/surgiquip-logo-header-white.webp'
+  : '/images/surgiquip-logo-header.webp';
 ---
 <img
-  src="/images/surgiquip-logo-header.webp"
+  src={src}
   alt="Surgiquip Solutions logo"
-  class:list={[className, { 'brightness-0 invert': variant === 'white' }]}
+  class={className}
   width="334"
   height="96"
   loading="eager"
