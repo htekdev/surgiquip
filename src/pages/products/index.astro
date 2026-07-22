@@ -3,36 +3,31 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import ProductCatalog from '~/components/ProductCatalog.astro';
 import CTASection from '~/components/CTASection.astro';
 import { site } from '~/data/site';
-import { products, productCategories, brands, serviceBrands } from '~/data/products';
+import { categories, getCategoriesWithCounts, serviceBrands } from '~/data/products';
+
+const categoriesWithCounts = getCategoriesWithCounts();
 
 // ---------------------------------------------------------------------------
-// Schema.org — ItemList for the flat product catalog
+// Schema.org — ItemList for categories
 // ---------------------------------------------------------------------------
-const productCatalogSchema = {
+const catalogSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Surgiquip Solutions Product Catalog',
+  name: 'Surgiquip Solutions Equipment Catalog',
   description:
-    'Surgical equipment catalog — tables, lights, equipment booms, and OR integration systems. Authorized Skytron dealer for Southeast Texas.',
+    'Surgical equipment categories — tables, lights, equipment booms, OR integration, OR furniture, and patient care. Authorized Skytron dealer for Southeast Texas.',
   url: `${site.url}/products`,
-  numberOfItems: products.length,
-  itemListElement: products.map((p, i) => ({
+  numberOfItems: categories.length,
+  itemListElement: categories.map((cat, i) => ({
     '@type': 'ListItem',
     position: i + 1,
-    url: `${site.url}${p.href}`,
-    name: p.name,
+    url: `${site.url}/products/${cat.slug}`,
+    name: cat.name,
     item: {
       '@type': 'Product',
-      name: p.name,
-      description: p.tagline,
-      image: `${site.url}${p.image}`,
-      brand: { '@type': 'Brand', name: p.brand },
-      offers: {
-        '@type': 'Offer',
-        seller: { '@id': `${site.url}#organization` },
-        areaServed: 'Southeast Texas',
-        availability: 'https://schema.org/InStock',
-      },
+      name: cat.name,
+      description: cat.description,
+      image: `${site.url}${cat.image}`,
     },
   })),
 };
@@ -48,10 +43,10 @@ const breadcrumbSchema = {
 ---
 <BaseLayout
   title="Medical Equipment Catalog | Surgiquip Solutions"
-  description="Browse surgical tables, lights, booms, and OR integration from Skytron and HSI. Authorized dealer for Southeast Texas hospitals and surgery centers since 1983."
-  schema={[productCatalogSchema, breadcrumbSchema]}
+  description="Surgical tables, lights, booms, and OR integration from Skytron and HSI. Browse by category. Authorized dealer for Southeast Texas since 1983."
+  schema={[catalogSchema, breadcrumbSchema]}
 >
-  <!-- ── Hero — Compact, store-like ── -->
+  <!-- ── Hero ── -->
   <section class="bg-[var(--color-navy)] text-white">
     <div class="container-x py-14 md:py-16">
       <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
@@ -63,19 +58,15 @@ const breadcrumbSchema = {
         Equipment Catalog
       </h1>
       <p class="mt-4 max-w-2xl text-lg leading-relaxed text-white/80">
-        Surgical tables, lights, booms, OR integration, and more — from Skytron, HSI, and the brands we service. Browse, filter, and find what your facility needs.
+        Browse our product categories below. Select a category to see individual models, specifications, and configuration options for your facility.
       </p>
     </div>
   </section>
 
-  <!-- ── Filterable Product Grid ── -->
-  <ProductCatalog
-    products={products}
-    categories={productCategories}
-    brands={brands}
-  />
+  <!-- ── Category Tiles ── -->
+  <ProductCatalog categories={categoriesWithCounts} />
 
-  <!-- ── Brands We Service (compact) ── -->
+  <!-- ── Brands We Service ── -->
   <section class="bg-[var(--color-surface-alt)] py-12">
     <div class="container-x">
       <div class="rounded-2xl border border-[var(--color-border)] bg-white p-8">
