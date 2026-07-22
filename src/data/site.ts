@@ -68,9 +68,9 @@ export const stats = [
 ];
 
 export const partners = [
-  { name: 'Skytron', label: 'SKYTRON®' },
-  { name: 'Wassenberg', label: 'Wassenberg' },
-  { name: 'Infinitus', label: 'Infinitus' },
-  { name: 'WEG', label: 'WEG' },
-  { name: 'BBB', label: 'BBB Accredited Business' },
+  { name: 'Skytron', label: 'SKYTRON®', logo: '/images/partners/skytron-logo.png' },
+  { name: 'Wassenburg', label: 'Wassenburg Medical', logo: '/images/partners/wassenburg-logo.png', invertOnLight: true },
+  { name: 'Infinitus', label: 'Infinitus', logo: '/images/partners/infinitus-logo.png' },
+  { name: 'WEG', label: 'WEG', logo: '/images/partners/weg-logo.png' },
+  { name: 'BBB', label: 'BBB Accredited Business', logo: '/images/partners/bbb-logo.svg' },
 ];
