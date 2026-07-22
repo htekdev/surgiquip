@@ -16,7 +16,7 @@ The challenge is not the diversity of equipment. The challenge is finding a serv
 
 Hospital purchasing teams are sometimes advised to standardize around a single manufacturer — tables, lights, booms, sterilizers — to simplify training and reduce the number of service relationships. This works well on paper and occasionally in practice. In the real world, hospitals accumulate equipment across budget cycles, clinical champions advocate for specific products they used during fellowship, group purchasing agreements shift every three years, and renovation projects are often funded in phases.
 
-The result: most Texas hospital OR departments are managing a mix of Skytron tables alongside Steris or Stryker units acquired a decade earlier. Skytron Aurora LED lights installed during a recent renovation paired with older Berchtold pendants that still work fine and are not worth replacing. A Knight instrument washer next to a Tuttnauer autoclave purchased directly from the manufacturer's distributor.
+The result: most Texas hospital OR departments are managing a mix of Skytron tables alongside Steris or Stryker units acquired a decade earlier. Skytron Aurora LED lights installed during a recent renovation paired with older Berchtold pendants that still work fine and are not worth replacing. An instrument washer next to a Tuttnauer autoclave purchased directly from the manufacturer's distributor.
 
 When any of those units needs repair, the facilities manager needs someone who can respond — and who is not going to recommend replacement simply because the unit in question is outside their catalog.
 

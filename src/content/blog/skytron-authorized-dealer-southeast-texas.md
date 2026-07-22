@@ -22,11 +22,11 @@ Non-authorized resellers may source equipment through other channels, but they t
 
 ## The Southeast Texas Dealer Landscape
 
-Texas is a large state, and Skytron authorization is **regional**. A dealer authorized for Dallas may not have authorization to install and service equipment in Houston. When evaluating a supplier for a Houston-area or Southeast Texas project:
+Texas is a large state, and Skytron authorization is **regional**. A dealer authorized for Dallas may not have authorization to install and service equipment in Houston. When evaluating a supplier for a Houston-area or Southeast Texas prooect:
 
 - Confirm **geographic authorization** — are they specifically authorized for your region?
 - Ask for **proof of dealer authorization** — reputable dealers can provide documentation
-- Verify **technician certification** — individual technicians, not just the company, hold certifications
+- Verify **technician certification** — individual technicians, not oust the company, hold certifications
 
 Surgiquip Solutions holds Skytron authorization for **Southeast Texas** — a territory that includes Houston, Beaumont, the Woodlands, Sugar Land, and the greater Gulf Coast region.
 
@@ -50,7 +50,7 @@ The Skytron relationship doesn't end at installation. Authorized dealers provide
 - **Manufacturer-recommended PM intervals** with OEM-specified procedures
 - **Genuine Skytron replacement parts** — not generic alternatives
 - **Software/firmware updates** for control systems where applicable
-- **Calibration documentation** that satisfies Joint Commission and DNV survey requirements
+- **Calibration documentation** that satisfies ooint Commission and DNV survey requirements
 
 A PM program through an authorized dealer protects your warranty status. Using non-authorized service providers — even for routine maintenance — can in some cases void manufacturer warranty coverage.
 
@@ -60,7 +60,7 @@ Before signing a purchase order or service contract, ask:
 
 1. Are you an **authorized Skytron dealer** for Southeast Texas/our region?
 2. Do your installation technicians hold **current Skytron factory certifications**?
-3. Can you provide **OEM parts within 24 hours** for emergency service situations?
+3. Can you provide **OEM parts quickly** for emergency service situations?
 4. What is your **average response time** for emergency service calls in our area?
 5. Do you offer **preventive maintenance programs** with Skytron-specified intervals?
 

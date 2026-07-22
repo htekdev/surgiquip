@@ -28,7 +28,7 @@ Equipment downtime in an OR has direct clinical consequences. Houston-area facil
 3. **Preventive maintenance programs** — not just break-fix, but proactive uptime management
 4. **Parts inventory** — do they stock common wear items locally?
 
-A supplier with 24-hour response capability and a local parts inventory can mean the difference between a one-day and one-week OR closure.
+A supplier with rapid response capability and a local parts inventory can mean the difference between a one-day and one-week OR closure.
 
 ## Capital Equipment: Buying vs. Leasing
 
@@ -42,7 +42,7 @@ Ask your supplier which options they support and whether they can provide **fina
 
 ## Installation & Integration Expertise
 
-Modern OR equipment doesn't operate in isolation. Surgical tables, lights, ceiling-mount booms, and AV systems must all coordinate. A quality supplier should offer:
+Modern OR equipment doesn't operate in isolation. Surgical tables, lights, ceiling-mount booms, and video systems must all coordinate. A quality supplier should offer:
 
 - **Turnkey OR installation** — single point of accountability
 - **Pre-install coordination** with your construction team

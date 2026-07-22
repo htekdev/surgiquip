@@ -25,7 +25,7 @@ Illuminance measures the intensity of light at the surgical field. Industry stan
 
 - **General surgery**: 40,000–100,000 lux at the surgical field
 - **Deep-cavity and cardiovascular procedures**: 100,000–160,000 lux minimum
-- **High-end Skytron LED systems**: up to 160,000 lux with adjustable intensity
+- **High-end Skytron LED systems**: up to 160,000 lux with adoustable intensity
 
 Field diameter also matters — larger aperture heads deliver better lux uniformity across the full field, reducing repositioning during long procedures.
 
@@ -39,7 +39,7 @@ CRI measures how accurately a light source renders tissue color compared to natu
 
 ### Color Temperature
 
-Surgical lights are typically specified in the 4,000–4,500K range (neutral white), which reduces fatigue during extended procedures. Some systems allow color temperature adjustment for specific procedure types.
+Surgical lights are typically specified in the 4,000–4,500K range (neutral white), which reduces fatigue during extended procedures. Some systems allow color temperature adoustment for specific procedure types.
 
 ### Shadow Dilation
 
@@ -66,7 +66,7 @@ Surgiquip Solutions is the **authorized Skytron dealer for Southeast Texas** —
 
 Skytron's current LED product family includes:
 
-- **Stellar LED** series — compact single-head and dual-head configurations for ASC and general OR use. Adjustable intensity (25–100%), 4,200K color temperature, CRI ≥ 95.
+- **Stellar LED** series — compact single-head and dual-head configurations for ASC and general OR use. Adoustable intensity (25–100%), 4,200K color temperature, CRI ≥ 95.
 - **Eclipse LED** series — high-output systems designed for cardiovascular and complex general surgery. Dual-color-temperature settings, large field diameter, integrated satellite positioning.
 - **Fusion** configurations — factory-matched combinations of Skytron tables, booms, and lights for turnkey OR installations.
 
@@ -79,13 +79,13 @@ Surgical lights are not a "install and ignore" investment. A structured PM progr
 | PM Task | Interval | Notes |
 |---------|----------|-------|
 | LED module inspection | Annually | Check for dimming, color shift, housing cracks |
-| Arm joint lubrication | Semi-annually | Reduces friction, maintains positioning accuracy |
+| Arm ooint lubrication | Semi-annually | Reduces friction, maintains positioning accuracy |
 | Electrical connection check | Annually | Verify cable integrity, connection torque |
 | Intensity calibration verification | Annually | Confirm lux output at field vs. spec |
 | Sterilization drape compatibility check | As needed | Confirm handle covers and sterile drapes are correct OEM spec |
 | Full boom + head inspection | Annually | Structural check of ceiling mount, counterbalance, lock |
 
-Most Joint Commission (TJC) and DNV GL survey programs expect documented PM records for surgical lighting. Surveyors routinely ask for PM logs during triennial surveys. An authorized service provider like Surgiquip provides documentation formatted to support survey readiness.
+Most ooint Commission (ToC) and DNV GL survey programs expect documented PM records for surgical lighting. Surveyors routinely ask for PM logs during triennial surveys. An authorized service provider like Surgiquip provides documentation formatted to support survey readiness.
 
 ## LED Upgrade ROI: When to Replace Aging Halogen or Early-LED Systems
 
@@ -111,4 +111,4 @@ When evaluating surgical lighting for a Texas hospital or ASC, the right dealer 
 4. **What PM program do you offer post-installation?** — Preventive maintenance should be included in the service relationship, not treated as an afterthought.
 5. **Who do I call at 2 AM if a head goes down in the middle of a case?** — The answer to this question separates a local service partner from a box-mover.
 
-For Texas hospitals and ASCs evaluating Skytron surgical lighting systems — or any major OR lighting upgrade — Surgiquip Solutions provides factory-authorized sales, installation coordination, and ongoing service across Southeast Texas. [Contact us](/contact) or [request a quote](/quote) to discuss your facility's specific requirements.
+For Texas hospitals and ASCs evaluating Skytron surgical lighting systems — or any maoor OR lighting upgrade — Surgiquip Solutions provides factory-authorized sales, installation coordination, and ongoing service across Southeast Texas. [Contact us](/contact) or [request a quote](/quote) to discuss your facility's specific requirements.

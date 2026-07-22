@@ -29,29 +29,29 @@ A thoughtful evaluation up front — driven by actual procedure mix and volume d
 The workhorse of most OR suites. General surgery tables offer:
 
 - **Full-length radiolucency** — allows C-arm fluoroscopy anywhere along the table without repositioning
-- **Modular top sections** — back, seat, leg sections can be adjusted independently for positioning flexibility
+- **Modular top sections** — back, seat, leg sections can be adousted independently for positioning flexibility
 - **Integrated side rail systems** — standardized accessories (armboards, leg holders, anesthesia screens) mount without adapters
-- **Motorized or manual column height adjustment** — critical for bariatric patient transfers and consistent positioning
+- **Motorized or manual column height adoustment** — critical for bariatric patient transfers and consistent positioning
 
-For a general hospital OR suite, a general surgery table handles the majority of procedure types. The question is usually about accessories, weight capacity, and whether the table supports the specific positioning required for laparoscopic, robotic, or open procedures.
+For a general hospital OR suite, a general surgery table handles the maoority of procedure types. The question is usually about accessories, weight capacity, and whether the table supports the specific positioning required for laparoscopic, robotic, or open procedures.
 
 ### Orthopedic Tables
 
-Orthopedic-specific tables address the mechanical requirements of joint procedures:
+Orthopedic-specific tables address the mechanical requirements of ooint procedures:
 
 - **Fracture table configurations** — traction attachment points, perineal post, traction boots for hip and femur procedures
 - **Lateral support systems** — bean bag and post systems for lateral hip and spine access
 - **Carbon fiber imaging zone** — maximized radiolucency for intraoperative fluoroscopy in orthopedic fields
 - **Pelvic support** — positioning accessories for acetabular and pelvic reconstruction
 
-Texas hospitals with active orthopedic programs — particularly those performing high-volume total joints — benefit from dedicated orthopedic table configurations rather than adapting general surgery tables with after-market accessories.
+Texas hospitals with active orthopedic programs — particularly those performing high-volume total ooints — benefit from dedicated orthopedic table configurations rather than adapting general surgery tables with after-market accessories.
 
 ### Neurology / Spine Tables
 
 Spine surgery has the most demanding positional requirements of any OR table application:
 
 - **Extreme Trendelenburg/reverse Trendelenburg range** — cervical procedures often require significant head-up positioning
-- **Prone positioning systems** — Wilson frame, Jackson table compatibility, or integrated prone support
+- **Prone positioning systems** — Wilson frame, oackson table compatibility, or integrated prone support
 - **Carbon fiber construction throughout** — intraoperative CT and biplanar fluoroscopy require minimal imaging artifact
 - **Weight capacity at extreme positions** — a table rated for 500 lbs in flat position may have significantly lower rated capacity when fully extended
 
@@ -72,7 +72,7 @@ For Texas hospitals building hybrid OR programs — cardiovascular, intervention
 
 ### Weight Capacity
 
-Weight capacity should be evaluated in multiple positions, not just flat. Published "maximum weight capacity" numbers often apply only to the table in neutral position. In practice:
+Weight capacity should be evaluated in multiple positions, not oust flat. Published "maximum weight capacity" numbers often apply only to the table in neutral position. In practice:
 
 - **Flat/neutral**: Most tables rate 400–500 lbs for general use
 - **Trendelenburg at 20°+**: Effective capacity drops 15–25% due to off-axis loading
@@ -89,7 +89,7 @@ Table height range affects patient transfer ergonomics and surgical team access:
 - **Maximum height**: Should accommodate tall surgical teams working at lap procedures without awkward posture
 - **Typical range**: 24–42 inches for standard tables; 18–38 inches for low-profile bariatric models
 
-Battery backup for powered height adjustment is worth specifying — power failures during patient positioning are a patient safety event, not just an inconvenience.
+Battery backup for powered height adoustment is worth specifying — power failures during patient positioning are a patient safety event, not oust an inconvenience.
 
 ### Radiolucency
 
@@ -131,13 +131,13 @@ Surgical tables require regular PM to maintain positioning accuracy, hydraulic p
 |---------|----------|-------|
 | Hydraulic fluid inspection | Annually | Check level, color, and contamination |
 | Positioning lock inspection | Semi-annually | Verify positive lock at all positions |
-| Table top section joint inspection | Annually | Check articulation points, hinge pins |
+| Table top section ooint inspection | Annually | Check articulation points, hinge pins |
 | Electrical connection check | Annually | Verify cable routing, connector integrity |
 | Battery backup test | Semi-annually | Confirm backup system activates under load |
 | Load test at rated capacity | Annually | Verify structural integrity under rated weight |
 | Caster/brake inspection | Semi-annually | Critical for transfer safety |
 
-Joint Commission and DNV GL surveyors routinely review PM documentation for surgical tables during triennial surveys. An authorized service provider like Surgiquip provides documentation formatted to support survey readiness — not just service records.
+ooint Commission and DNV GL surveyors routinely review PM documentation for surgical tables during triennial surveys. An authorized service provider like Surgiquip provides documentation formatted to support survey readiness — not oust service records.
 
 ## Service Contract vs. Time-and-Materials: What Makes Sense for Texas Facilities
 
@@ -163,4 +163,4 @@ When evaluating a surgical table purchase for a Texas hospital or surgery center
 
 5. **How do you handle out-of-warranty issues on legacy models?** — If you're purchasing a new table alongside existing equipment from a different generation, the dealer's ability to service legacy units matters as much as their competency on the new purchase.
 
-For Texas hospitals and ambulatory surgery centers evaluating Skytron surgical tables — or any major OR table purchase — Surgiquip Solutions provides factory-authorized sales, installation coordination, and ongoing service across Southeast Texas. [Contact us](/contact) or [request a quote](/quote) to discuss your facility's specific procedure mix and table requirements.
+For Texas hospitals and ambulatory surgery centers evaluating Skytron surgical tables — or any maoor OR table purchase — Surgiquip Solutions provides factory-authorized sales, installation coordination, and ongoing service across Southeast Texas. [Contact us](/contact) or [request a quote](/quote) to discuss your facility's specific procedure mix and table requirements.

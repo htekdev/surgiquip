@@ -218,7 +218,7 @@ The capital equipment market includes several ceiling-mount boom manufacturers. 
 
 **Factory certification:** Is the installer factory-trained and certified by the boom manufacturer? Skytron certifies technicians specifically. A boom installed by a general contractor following a diagram — without factory-trained oversight — is a structural and electrical risk.
 
-**Local service capability:** Who services the equipment after installation? What's the response time for an urgent service call when a boom fails in an active OR? For Texas hospitals, "24-hour response" is a marketing statement until you verify it with references in your geography.
+**Local service capability:** Who services the equipment after installation? What's the response time for an urgent service call when a boom fails in an active OR? For Texas hospitals, "rapid response" is a marketing statement until you verify it with references in your geography.
 
 **Integration track record:** If your OR specification includes SkyVision or equivalent OR integration, verify the installer has completed similar integrations in Texas hospitals — not just in a demo room. Integration of ceiling data infrastructure, video routing, and clinical workflow automation in an occupied hospital requires experience that doesn't transfer from simpler installations.
 
@@ -236,7 +236,7 @@ For new OR construction, ceiling-mount boom installation is a mechanical/electri
 4. Boom system assembly and installation (manufacturer-certified installer)
 5. Gas system verification (ASSE 6010/6030 certified verifier)
 6. Electrical verification, LIM commissioning (qualified personnel per NFPA 99)
-7. Integrated test with OR equipment in place (boom load test, AV system test if SkyVision)
+7. Integrated test with OR equipment in place (boom load test, video system test if SkyVision)
 8. ICRA close-out and surface testing (for occupied-hospital retrofit projects)
 9. Documentation package: structural engineer sign-off, gas verification report, electrical inspection, equipment PM record initialized
 

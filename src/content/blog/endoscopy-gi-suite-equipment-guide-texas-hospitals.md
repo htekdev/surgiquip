@@ -112,7 +112,7 @@ The Society of Gastroenterology Nurses and Associates (SGNA) publishes additiona
 
 The Sugar Land installation demonstrates the operational advantage of using the same boom and lighting platform across both the OR suite and the adjacent endo lab: the facilities team manages a single vendor relationship, a single PM protocol, and a single service call process for equipment across both spaces. Nursing staff trained on the boom controls in the OR can orient quickly to the endo suite configuration because the control interface is identical.
 
-The SkyVision integration at Sugar Land — Skytron's in-room display management system, which aggregates scope camera, monitoring, and documentation feeds on a single room display infrastructure — is particularly valuable in the endo suite, where multiple video sources (scope camera, patient monitoring, documentation system) must be managed simultaneously without a cluttered cart-mounted AV setup.
+The SkyVision integration at Sugar Land — Skytron's in-room display management system, which aggregates scope camera, monitoring, and documentation feeds on a single room display infrastructure — is particularly valuable in the endo suite, where multiple video sources (scope camera, patient monitoring, documentation system) must be managed simultaneously without a cluttered cart-mounted video setup.
 
 ### Memorial Hermann Southeast — Cystoscopy Suite
 
