@@ -30,7 +30,7 @@ const productListSchema = {
   itemListElement: categoryProducts.map((p, i) => ({
     '@type': 'ListItem',
     position: i + 1,
-    url: `${site.url}${p.href}`,
+    url: `${site.url}/products/${p.category}/${p.slug}`,
     name: p.name,
     item: {
       '@type': 'Product',
@@ -90,7 +90,7 @@ const breadcrumbSchema = {
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {categoryProducts.map((product) => (
         <a
-          href={product.href}
+          href={`/products/${product.category}/${product.slug}`}
           class="group flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-[var(--color-blue)]/40"
         >
           {/* Product image */}
