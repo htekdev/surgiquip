@@ -46,11 +46,11 @@ const capabilities = [
           href={cap.href}
           class="group flex flex-col items-center text-center gap-4 p-5 rounded-xl border border-transparent hover:border-[var(--color-border)] hover:shadow-md transition-all"
         >
-          <div class="w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden shadow-sm group-hover:shadow-md transition-shadow flex-shrink-0">
+          <div class="w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden shadow-sm group-hover:shadow-md transition-shadow flex-shrink-0 bg-[var(--color-navy)]">
             <img
               src={cap.image}
               alt={cap.description}
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              class="w-[140%] h-[140%] object-cover -ml-[20%] -mt-[20%] group-hover:scale-105 transition-transform duration-300"
               loading="lazy"
               decoding="async"
               width="96"
