@@ -1,0 +1,81 @@
+---
+/**
+ * ProductCatalog.astro — Visual product category grid
+ *
+ * Inspired by Innovative Medical USA's visual-first product layout.
+ * Shows all product categories in a clean image-grid format so hospital
+ * purchasing teams can quickly identify what they need at a glance.
+ */
+
+interface ProductCategory {
+  name: string;
+  href: string;
+  image: string;
+  alt: string;
+  description: string;
+  badge?: string;
+}
+
+interface Props {
+  categories: ProductCategory[];
+}
+
+const { categories } = Astro.props;
+---
+
+<section class="container-x py-16">
+  <div class="max-w-3xl mb-10">
+    <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">
+      Equipment Catalog
+    </div>
+    <h2 class="font-display text-3xl font-bold text-[var(--color-navy)] md:text-4xl">
+      Browse by Product Category
+    </h2>
+    <p class="mt-4 text-lg text-[var(--color-text-muted)] leading-relaxed">
+      Select a category to explore specifications, models, and configuration options for your facility.
+    </p>
+  </div>
+
+  <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    {categories.map((cat) => (
+      <a
+        href={cat.href}
+        class="group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-[var(--color-blue)]/40"
+      >
+        {/* Image container — fixed aspect ratio for visual consistency */}
+        <div class="relative aspect-[4/3] overflow-hidden bg-[var(--color-surface-alt)]">
+          <img
+            src={cat.image}
+            alt={cat.alt}
+            class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
+          />
+          {/* Gradient overlay for readability */}
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          {cat.badge && (
+            <div class="absolute top-3 left-3 rounded-full bg-[var(--color-blue)] px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-white shadow-sm">
+              {cat.badge}
+            </div>
+          )}
+        </div>
+
+        {/* Label area */}
+        <div class="flex flex-1 flex-col p-5">
+          <h3 class="text-lg font-bold text-[var(--color-navy)] group-hover:text-[var(--color-blue)] transition-colors">
+            {cat.name}
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-[var(--color-text-muted)] flex-1">
+            {cat.description}
+          </p>
+          <div class="mt-4 flex items-center gap-1.5 text-sm font-semibold text-[var(--color-blue)]">
+            View products
+            <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 12 12" aria-hidden="true">
+              <path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
