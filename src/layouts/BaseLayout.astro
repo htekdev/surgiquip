@@ -33,7 +33,7 @@ export interface Props {
   ogType?: 'website' | 'article';
 }
 
-const { title, description, canonical, image = '/og-default.png', schema, noindex = false, preloadImage, ogType = 'website' } = Astro.props;
+const { title, description, canonical, image = '/og-default.jpg', schema, noindex = false, preloadImage, ogType = 'website' } = Astro.props;
 
 const fullTitle = title.includes(site.short) ? title : `${title} | ${site.brand}`;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site.url).toString();
