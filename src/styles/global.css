@@ -11,17 +11,13 @@
   --color-text-muted: #5b6b85;
   --color-border: #e5e9f0;
 
-  /* Playfair Display — premium serif for display headlines (h1, h2) */
-  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  /* Inter Bold — clean modern sans-serif for display headlines (h1, h2) */
+  --font-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   /* Inter — clean sans-serif for body, UI, and smaller headings (h3–h5) */
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 /* Ensure fonts render without layout shift */
-@font-face {
-  font-family: "Playfair Display";
-  font-display: swap;
-}
 @font-face {
   font-family: "Inter";
   font-display: swap;
@@ -38,14 +34,14 @@
   }
   body { background: var(--color-surface); }
 
-  /* H1 + H2 — Playfair Display (premium serif, editorial display headlines) */
+  /* H1 + H2 — Inter Bold (clean, modern sans-serif for display headlines) */
   h1, h2 {
     font-family: var(--font-display);
     color: var(--color-navy);
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-weight: 800;
+    letter-spacing: -0.025em;
   }
-  h1 { letter-spacing: -0.025em; }
+  h1 { letter-spacing: -0.03em; }
 
   /* H3–H5 — Inter (clean sans-serif for UI subheadings, card titles, nav labels) */
   h3, h4, h5 {

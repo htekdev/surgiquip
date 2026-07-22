@@ -32,8 +32,9 @@ import Logo from './Logo.astro';
           {item.children && (
             <ul
               role="list"
-              class="absolute top-full left-0 mt-2 min-w-[220px] bg-white border border-[var(--color-border)] rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition py-1"
+              class="absolute top-full left-0 pt-2 min-w-[220px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150"
             >
+              <div class="bg-white border border-[var(--color-border)] rounded-md shadow-lg py-1">
               {item.children.map((child) => (
                 <li>
                   <a href={child.href} class="block px-4 py-2.5 text-sm hover:bg-[var(--color-surface-alt)] hover:text-[var(--color-blue)]">
@@ -41,6 +42,7 @@ import Logo from './Logo.astro';
                   </a>
                 </li>
               ))}
+              </div>
             </ul>
           )}
         </div>

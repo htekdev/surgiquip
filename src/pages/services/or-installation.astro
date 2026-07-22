@@ -206,6 +206,88 @@ const howToSchema = {
   </section>
 
   <section class="container-x py-16">
+    <div class="grid gap-12 lg:grid-cols-2 items-center">
+      <div>
+        <div class="inline-block bg-[var(--color-blue)]/10 text-[var(--color-blue)] text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-4">Featured: Skytron Freedom Air</div>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-[var(--color-navy)]">
+          Freedom Air Modular Ceiling System
+        </h2>
+        <p class="mt-4 text-lg text-[var(--color-text-muted)] leading-relaxed">
+          A single laminar diffuser system that keeps your OR clean by precisely controlling airflow — reducing the risk of surgical site infections. Originally engineered for microchip clean rooms, now purpose-built for operating rooms.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {[
+            'All mounts and structure included — gases, electrical, sprinkler, and lighting built into the ceiling system',
+            'Side-attach design streamlines the OR ceiling and simplifies construction',
+            'Reduces construction labor by 60–70% compared to traditional OR builds',
+            'Higher product cost offset by dramatically lower overall project cost',
+          ].map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-[var(--color-blue)] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="text-[var(--color-text-muted)] text-sm">{item}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-8">
+          <a href="/quote" class="btn-primary px-7 py-3.5">Ask About Freedom Air</a>
+        </div>
+      </div>
+      <div class="bg-[var(--color-surface-alt)] rounded-xl p-8 border border-[var(--color-border)]">
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto rounded-full bg-[var(--color-blue)]/10 flex items-center justify-center text-[var(--color-blue)] mb-4">
+            <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-xl text-[var(--color-navy)] mb-3">Why Freedom Air?</h3>
+          <div class="space-y-4 text-left">
+            {[
+              ['60–70% Less Labor', 'Integrated ceiling structure eliminates separate trades for gas, electrical, sprinkler, and lighting rough-in.'],
+              ['Infection Control', 'Laminar airflow diffuser maintains positive pressure and reduces surgical site infection risk — clean room technology adapted for ORs.'],
+              ['Streamlined Ceiling', 'Side-attach design removes visual clutter and simplifies future service access.'],
+              ['Lower Total Cost', 'Higher product cost is more than offset by labor savings on even a single OR build.'],
+            ].map(([title, desc]) => (
+              <div class="p-4 bg-white rounded-lg border border-[var(--color-border)]">
+                <div class="font-semibold text-sm text-[var(--color-navy)]">{title}</div>
+                <div class="text-xs text-[var(--color-text-muted)] mt-1">{desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[var(--color-surface-alt)] py-16">
+    <div class="container-x">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Equipment Staging</div>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">
+          Warehouse Staging & Just-in-Time Delivery
+        </h2>
+        <p class="mt-4 text-lg text-[var(--color-text-muted)] leading-relaxed">
+          Your equipment doesn't sit on a receiving dock for months waiting for construction to finish. Surgiquip maintains warehouse space where equipment is received, inspected, and staged until your site is ready.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
+        {[
+          ['Secure Storage', 'Equipment is received at our warehouse and stored securely — off your dock and out of construction zones.'],
+          ['Flexible Timing', 'If your project timeline shifts, your equipment delivery shifts with it. No wasted space, no storage fees at your facility.'],
+          ['Pre-Delivery Inspection', 'Every piece is inspected and verified before it leaves our warehouse — so installation day runs smoothly.'],
+        ].map(([title, desc]) => (
+          <div class="bg-white rounded-lg border border-[var(--color-border)] p-6 text-center">
+            <h3 class="font-bold text-[var(--color-navy)] mb-2">{title}</h3>
+            <p class="text-sm text-[var(--color-text-muted)]">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container-x py-16">
     <div class="grid gap-12 lg:grid-cols-2 items-start">
       <div>
         <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Project Lifecycle</div>
