@@ -42,10 +42,10 @@ test('change-proof-cycle55-skytron-real-product-models', async ({ page }) => {
   const productsH1 = page.locator('h1').first();
   await expectVisible(productsH1, 'Products index H1');
 
-  // Scope to main — header dropdown nav also has /products/skytron links that are hidden
-  const skytronLink = page.locator('main a[href="/products/skytron"]').first();
-  await skytronLink.scrollIntoViewIfNeeded();
-  await expectVisible(skytronLink, 'Skytron product link');
+  // Products index is category-first now; verify the category tiles render
+  const surgicalTablesTile = page.locator('main a[href="/products/surgical-tables"]').first();
+  await surgicalTablesTile.scrollIntoViewIfNeeded();
+  await expectVisible(surgicalTablesTile, 'Surgical Tables category tile');
 
   // PART 3 — Skytron page hero
   await showPhaseLabel(page, '🔭 Opening Skytron Product Page →');

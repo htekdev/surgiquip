@@ -1,9 +1,7 @@
 /**
- * Change Proof E2E Spec — Cycle 57: Icon WebP Optimization
- * Verifies CapabilitiesStrip on homepage uses .webp icons (not .png),
- * and that all 4 icon images load without 404.
- * Fixes: icon-surgical-light.png was broken (file was .webp), and
- * icon-or-table/sterilization/service-tech PNGs were 1MB+ each.
+ * Change Proof E2E Spec — Cycle 57: Homepage capability icons
+ * Verifies the homepage "Equipment We Sell & Service" strip renders the
+ * current 4 inline SVG capability icons and labels.
  * ONE SINGLE test() block = ONE continuous video
  * Proof keyword: change-proof
  */
@@ -45,91 +43,59 @@ test('change-proof-cycle57-icon-webp-fix', async ({ page }) => {
   await showPhaseLabel(page, '✅ CapabilitiesStrip Section Found');
   await page.waitForTimeout(1000);
 
-  // PART 3 — Verify all 4 icon images load (no broken image indicators)
-  await showPhaseLabel(page, '🖼️ Verifying 4 icon images load');
+  // PART 3 — Verify all 4 capability cards render with inline SVG icons
+  await showPhaseLabel(page, '🖼️ Verifying 4 capability cards + SVG icons');
 
-  // Check all 4 capability icons render via img elements pointing to .webp
-  const iconImgs = page.locator('img[src*="/images/icons/"]');
-  const count = await iconImgs.count();
+  const capabilitiesSection = page
+    .locator('section')
+    .filter({ hasText: 'Equipment We Sell & Service' })
+    .first();
 
-  // We expect exactly 4 icon images
-  if (count < 4) {
-    throw new Error(`Expected 4 capability icons, found ${count}`);
+  const capabilityCards = capabilitiesSection.locator('a');
+  const count = await capabilityCards.count();
+  if (count !== 4) {
+    throw new Error(`Expected 4 capability cards, found ${count}`);
   }
 
-  // Verify each icon image is visible
   for (let i = 0; i < count; i++) {
-    const img = iconImgs.nth(i);
-    await img.scrollIntoViewIfNeeded();
-    await expectVisible(img, `Icon image ${i + 1} of ${count} visible`);
+    const card = capabilityCards.nth(i);
+    await card.scrollIntoViewIfNeeded();
+    await expectVisible(card, `Capability card ${i + 1} of ${count} visible`);
+    await expectVisible(card.locator('svg').first(), `Capability icon ${i + 1} visible`);
   }
 
-  await showPhaseLabel(page, `✅ ${count}/4 icon images verified`);
+  await showPhaseLabel(page, `✅ ${count}/4 capability cards verified`);
   await page.waitForTimeout(800);
 
-  // PART 4 — Verify .webp extension on all icon src attributes (no .png references)
-  await showPhaseLabel(page, '🔧 Verifying .webp extension on all icon sources');
+  // PART 4 — Verify the old /images/icons assets are no longer used
+  await showPhaseLabel(page, '🔧 Verifying legacy icon image assets are gone');
 
-  const iconsWithPng = page.locator('img[src*="/images/icons/"][src$=".png"]');
-  const pngCount = await iconsWithPng.count();
-  if (pngCount > 0) {
-    throw new Error(`Found ${pngCount} icon(s) still referencing .png instead of .webp`);
+  const legacyIconImgs = page.locator('img[src*="/images/icons/"]');
+  const legacyCount = await legacyIconImgs.count();
+  if (legacyCount !== 0) {
+    throw new Error(`Expected 0 legacy /images/icons assets, found ${legacyCount}`);
   }
 
-  await showPhaseLabel(page, '✅ All icons use .webp — no .png references');
+  await showPhaseLabel(page, '✅ No legacy /images/icons references remain');
   await page.waitForTimeout(800);
 
-  // PART 5 — Verify icon images loaded via network (check naturalWidth > 0)
-  // Uses waitForFunction to poll — lazy-loaded images may not have their bytes fetched yet
-  // even after scrollIntoViewIfNeeded, so page.evaluate() alone is too early.
-  await showPhaseLabel(page, '📡 Waiting for all icon images to fully load');
-
-  await page.waitForFunction(
-    () => {
-      const imgs = Array.from(
-        document.querySelectorAll<HTMLImageElement>('img[src*="/images/icons/"]')
-      );
-      return imgs.length >= 4 && imgs.every((img) => img.complete && img.naturalWidth > 0);
-    },
-    { timeout: 20000 }
-  );
-
-  const allIconsLoaded = await page.evaluate(() => {
-    const imgs = document.querySelectorAll<HTMLImageElement>('img[src*="/images/icons/"]');
-    const results: Array<{ src: string; loaded: boolean; naturalWidth: number }> = [];
-    imgs.forEach((img) => {
-      results.push({ src: img.src, loaded: img.complete && img.naturalWidth > 0, naturalWidth: img.naturalWidth });
-    });
-    return results;
-  });
-
-  const failedIcons = allIconsLoaded.filter((r) => !r.loaded);
-  if (failedIcons.length > 0) {
-    const failList = failedIcons.map((r) => r.src).join(', ');
-    throw new Error(`Icon(s) failed to load (naturalWidth=0): ${failList}`);
-  }
-
-  await showPhaseLabel(page, `✅ All ${allIconsLoaded.length} icon images loaded successfully`);
-  await page.waitForTimeout(1000);
-
-  // PART 6 — Scroll down to verify icons visually (show all 4 labels)
+  // PART 5 — Scroll down to verify labels visually (show all 4 labels)
   await showPhaseLabel(page, '🏷️ Showing all 4 capability labels');
   await page.waitForTimeout(600);
 
-  const surgicalLighting = page.locator('text=Surgical Lighting').first();
+  const surgicalLighting = capabilitiesSection.locator('text=Surgical Lighting').first();
   await surgicalLighting.scrollIntoViewIfNeeded();
   await expectVisible(surgicalLighting, 'Surgical Lighting label');
 
-  const orTables = page.locator('text=OR Tables').first();
+  const orTables = capabilitiesSection.locator('text=OR Tables').first();
   await expectVisible(orTables, 'OR Tables label');
 
-  const sterilization = page.locator('text=Sterilization').first();
+  const sterilization = capabilitiesSection.locator('text=Sterilization').first();
   await expectVisible(sterilization, 'Sterilization label');
 
-  // Scope to main — nav header also has a "Service & Repair" link (hidden, causes false match)
-  const serviceRepair = page.locator('main a[href="/services/service-and-repair"]').first();
+  const serviceRepair = capabilitiesSection.locator('text=Service & Repair').first();
   await expectVisible(serviceRepair, 'Service & Repair label');
 
-  await showPhaseLabel(page, '✅ Cycle 57 — Icon WebP Fix VERIFIED');
+  await showPhaseLabel(page, '✅ Cycle 57 — Homepage capability icons VERIFIED');
   await page.waitForTimeout(1500);
 });

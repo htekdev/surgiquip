@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { expectVisible, expectText, showPhaseLabel, expectURL, expectJsonLd } from './visual-assert';
 
 test.describe('Homepage', () => {
@@ -36,9 +36,19 @@ test.describe('Homepage', () => {
     // Scope to the dedicated partners section to avoid matching EquipmentShowcase eyebrow
     const partnersSection = page.locator('section').filter({ hasText: 'Our Partners' });
     await expectVisible(partnersSection, 'Partners section');
-    // SKYTRON® label inside the partner grid
-    const skytron = partnersSection.locator('div').filter({ hasText: /SKYTRON/i }).first();
-    await expectVisible(skytron, 'Skytron partner label');
+
+    for (const altFragment of [
+      'SKYTRON',
+      'Wassenburg Medical',
+      'Infinitus',
+      'WEG',
+      'BBB Accredited Business',
+    ]) {
+      const logo = partnersSection.locator(`img[alt*="${altFragment}"]`).first();
+      await expectVisible(logo, `${altFragment} partner logo`);
+    }
+
+    await expect(partnersSection.locator('img[alt*="HSI"], img[alt*="Knight"]')).toHaveCount(0);
   });
 
   test('should render FAQ section', async ({ page }) => {
