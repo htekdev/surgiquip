@@ -25,21 +25,22 @@ import Logo from './Logo.astro';
             )}
           </a>
           {item.children && (
-            <ul
-              role="list"
+            <div
               class="absolute top-full left-0 pt-2 min-w-[220px] opacity-0 invisible transition-all duration-150 pointer-events-none"
               data-dropdown
             >
               <div class="bg-white border border-[var(--color-border)] rounded-md shadow-lg py-1">
-              {item.children.map((child) => (
-                <li>
-                  <a href={child.href} class="block px-4 py-2.5 text-sm hover:bg-[var(--color-surface-alt)] hover:text-[var(--color-blue)]">
-                    {child.label}
-                  </a>
-                </li>
-              ))}
+                <ul role="list">
+                  {item.children.map((child) => (
+                    <li>
+                      <a href={child.href} class="block px-4 py-2.5 text-sm hover:bg-[var(--color-surface-alt)] hover:text-[var(--color-blue)]">
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </ul>
+            </div>
           )}
         </div>
       ))}
@@ -122,7 +123,7 @@ import Logo from './Logo.astro';
 
   navItems.forEach((item) => {
     const trigger = item.querySelector<HTMLAnchorElement>('a[aria-haspopup]');
-    const dropdown = item.querySelector<HTMLUListElement>('[data-dropdown]');
+    const dropdown = item.querySelector<HTMLElement>('[data-dropdown]');
     if (!trigger || !dropdown) return;
 
     let closeTimer: ReturnType<typeof setTimeout> | null = null;
