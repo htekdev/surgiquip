@@ -22,13 +22,13 @@ const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'Knight Instrument Cleaning Equipment — Surgiquip Solutions Houston TX',
-  description: 'Knight sterile processing and instrument cleaning equipment. Authorized dealer in Southeast Texas. Sales, installation, and service by Surgiquip Solutions.',
+  description: 'Knight sterile processing and instrument cleaning equipment. Authorized dealer in South Texas. Sales, installation, and service by Surgiquip Solutions.',
   url: `${site.url}/products/knight`,
   provider: {
     '@type': 'LocalBusiness',
     '@id': `${site.url}#organization`,
     name: site.brand,
-    areaServed: 'Southeast Texas',
+    areaServed: 'South Texas',
   },
   itemListElement: products.map((p, i) => ({
     '@type': 'ListItem',
@@ -41,7 +41,7 @@ const productSchema = {
       offers: {
         '@type': 'Offer',
         seller: { '@id': `${site.url}#organization` },
-        areaServed: 'Southeast Texas',
+        areaServed: 'South Texas',
         availability: 'https://schema.org/InStock',
         priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'USD' },
       },
@@ -61,7 +61,7 @@ const breadcrumbSchema = {
 ---
 <BaseLayout
   title="Knight Sterile Processing | Surgiquip Solutions"
-  description="Knight sterile processing and instrument cleaning systems for surgical centers. Authorized dealer in Southeast Texas. Contact Surgiquip for a quote."
+  description="Knight sterile processing and instrument cleaning systems for surgical centers. Authorized dealer in South Texas. Contact Surgiquip for a quote."
   schema={[productSchema, breadcrumbSchema]}
   preloadImage="/images/products/knight-hero.webp"
 >

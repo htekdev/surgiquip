@@ -1,49 +1,33 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import ProductCatalog from '~/components/ProductCatalog.astro';
 import CTASection from '~/components/CTASection.astro';
 import { site } from '~/data/site';
+import { categories, getCategoriesWithCounts, serviceBrands } from '~/data/products';
 
-const partnerBrands = [
-  {
-    name: 'Skytron',
-    href: '/products/skytron',
-    eyebrow: 'Primary Partner',
-    summary: 'Surgical tables, lights, booms, OR integration — full line available.',
-    detail:
-      'The gold standard in surgical tables, lights, and equipment booms for operating rooms. As the authorized Skytron dealer for Southeast Texas, Surgiquip provides the full product line including surgical tables, surgical lighting systems, and ceiling-mount equipment booms.',
-    badge: 'Authorized Skytron Dealer',
-    highlight: true,
-  },
-  {
-    name: 'HSI Hospital Systems',
-    href: '/products/hsi',
-    eyebrow: 'Partner Brand',
-    summary: 'Boom systems, OR furniture, patient care equipment.',
-    detail:
-      'HSI equips surgical environments with boom systems, operating room furniture, and patient care equipment designed for workflow efficiency and long-term durability.',
-    badge: 'Sales + service support',
-  },
-] as const;
+const categoriesWithCounts = getCategoriesWithCounts();
 
-const serviceBrands = ['Steris', 'Stryker', 'Berchtold', 'Maquet', 'Trumpf'] as const;
-
-const productListSchema = {
+// ---------------------------------------------------------------------------
+// Schema.org — ItemList for categories
+// ---------------------------------------------------------------------------
+const catalogSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Surgiquip Solutions Equipment Partners',
+  name: 'Surgiquip Solutions Equipment Catalog',
   description:
-    'Medical equipment partner brands available from Surgiquip Solutions in Southeast Texas, led by Skytron as the authorized regional dealer.',
+    'Surgical equipment categories — tables, lights, equipment booms, and OR integration. Authorized Skytron dealer for South Texas.',
   url: `${site.url}/products`,
-  itemListElement: partnerBrands.map((brand, index) => ({
+  numberOfItems: categories.length,
+  itemListElement: categories.map((cat, i) => ({
     '@type': 'ListItem',
-    position: index + 1,
-    url: `${site.url}${brand.href}`,
-    name: brand.name,
+    position: i + 1,
+    url: `${site.url}/products/${cat.slug}`,
+    name: cat.name,
     item: {
-      '@type': 'Brand',
-      name: brand.name,
-      description: brand.summary,
-      url: `${site.url}${brand.href}`,
+      '@type': 'Product',
+      name: cat.name,
+      description: cat.description,
+      image: `${site.url}${cat.image}`,
     },
   })),
 };
@@ -58,140 +42,59 @@ const breadcrumbSchema = {
 };
 ---
 <BaseLayout
-  title="Medical Equipment Houston | Surgiquip Solutions"
-  description="Authorized Skytron dealer for Southeast Texas. Surgical tables, lights, booms, OR integration, plus HSI and Knight equipment. Serving Texas since 1983."
-  schema={[productListSchema, breadcrumbSchema]}
+  title="Medical Equipment Catalog | Surgiquip Solutions"
+  description="Surgical tables, lights, booms, and OR integration from Skytron. Browse by category. Authorized dealer for South Texas since 1983."
+  schema={[catalogSchema, breadcrumbSchema]}
 >
+  <!-- ── Hero ── -->
   <section class="bg-[var(--color-navy)] text-white">
-    <div class="container-x py-20">
+    <div class="container-x py-14 md:py-16">
       <nav aria-label="Breadcrumb" class="text-xs text-white/60 mb-4">
         <a href="/" class="hover:text-white/90">Surgiquip</a>
         <span class="mx-2">/</span>
         <span class="text-white/90">Products</span>
       </nav>
-      <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold tracking-[0.24em] uppercase text-white/80">
-        Equipment Partners
-      </div>
-      <h1 class="mt-5 max-w-4xl font-display text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
-        Medical Equipment From Industry Leaders
+      <h1 class="max-w-3xl font-display text-3xl font-bold leading-tight text-white md:text-4xl lg:text-5xl">
+        Equipment Catalog
       </h1>
-      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-white/85 md:text-xl">
-        Surgiquip represents proven surgical equipment partners for hospitals, surgery centers, and healthcare facilities across Southeast Texas — led by Skytron as the authorized regional dealer for tables, lights, booms, and OR integration.
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-white/80">
+        Browse our product categories below. Select a category to see individual models, specifications, and configuration options for your facility.
       </p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="/quote" class="btn-primary">Request Equipment Quote</a>
-        <a href="/products/skytron" class="inline-flex items-center gap-2 rounded-md border border-white/30 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
-          Explore Skytron
-        </a>
-      </div>
     </div>
   </section>
 
-  <section class="container-x py-16">
-    <div class="grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-start">
-      <div class="rounded-2xl border border-[var(--color-border)] bg-white p-8 shadow-sm md:p-10">
-        <div class="flex flex-wrap items-center gap-3">
-          <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)]">Primary Partner</div>
-          <div class="rounded-full bg-[var(--color-surface-alt)] px-3 py-1 text-xs font-semibold text-[var(--color-navy)]">
-            Authorized Skytron Dealer
+  <!-- ── Category Tiles ── -->
+  <ProductCatalog categories={categoriesWithCounts} />
+
+  <!-- ── Brands We Service ── -->
+  <section class="bg-[var(--color-surface-alt)] py-12">
+    <div class="container-x">
+      <div class="rounded-2xl border border-[var(--color-border)] bg-white p-8">
+        <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-2">Also Serviced</div>
+            <h2 class="font-display text-2xl font-bold text-[var(--color-navy)]">Brands we service but don't sell</h2>
+            <p class="mt-2 text-sm text-[var(--color-text-muted)]">
+              Our technicians also service equipment from these manufacturers. Can't find your brand? Call us.
+            </p>
           </div>
+          <a href="/quote" class="btn-primary shrink-0 text-sm">Request Service Quote</a>
         </div>
-        <h2 class="mt-4 font-display text-3xl font-bold text-[var(--color-navy)] md:text-4xl">Skytron</h2>
-        <p class="mt-5 text-lg leading-relaxed text-[var(--color-text-muted)]">
-          The gold standard in surgical tables, lights, and equipment booms for operating rooms. As the authorized Skytron dealer for Southeast Texas, Surgiquip provides the full product line including surgical tables, surgical lighting systems, and ceiling-mount equipment booms.
-        </p>
-        <div class="mt-8 grid gap-4 sm:grid-cols-3">
-          {['Surgical tables', 'Surgical lighting systems', 'Equipment booms + OR integration'].map((item) => (
-            <div class="rounded-xl bg-[var(--color-surface-alt)] p-4 text-sm font-semibold text-[var(--color-navy)]">
-              {item}
+        <div class="mt-6 flex flex-wrap gap-2">
+          {serviceBrands.map((brand) => (
+            <div class="rounded-full border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-1.5 text-sm font-semibold text-[var(--color-navy)]">
+              {brand}
             </div>
           ))}
         </div>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="/products/skytron" class="btn-primary text-sm">View Skytron Line</a>
-          <a href="/quote" class="inline-flex items-center gap-2 rounded-md border border-[var(--color-border)] px-5 py-3 text-sm font-semibold text-[var(--color-navy)] transition hover:border-[var(--color-navy)]">
-            Request Equipment Quote
-          </a>
-        </div>
-      </div>
-
-      <aside class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-8">
-        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)]">Why It Matters</div>
-        <h3 class="mt-3 font-display text-2xl font-bold text-[var(--color-navy)]">Factory-backed guidance, local accountability</h3>
-        <div class="mt-6 space-y-5 text-sm leading-relaxed text-[var(--color-text-muted)]">
-          <div>
-            <div class="font-semibold text-[var(--color-navy)]">Authorized representation</div>
-            <p class="mt-1">Your equipment planning, quoting, and follow-up support comes through an established local partner — not a distant distributor.</p>
-          </div>
-          <div>
-            <div class="font-semibold text-[var(--color-navy)]">Project-ready product mix</div>
-            <p class="mt-1">From one-room upgrades to multi-suite OR projects, Surgiquip can align equipment selection with installation and service realities.</p>
-          </div>
-          <div>
-            <div class="font-semibold text-[var(--color-navy)]">Service beyond the sale</div>
-            <p class="mt-1">Need an unsupported brand serviced? Our team also works on most major surgical equipment manufacturers across the region.</p>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <section class="bg-[var(--color-surface-alt)] py-16">
-    <div class="container-x">
-      <div class="max-w-3xl">
-        <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Partner Brands</div>
-        <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Equipment lines we represent</h2>
-        <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
-          Each brand page highlights the equipment categories Surgiquip actively supports today. Start with Skytron for flagship OR equipment, or review HSI and Knight for specialty lines.
-        </p>
-      </div>
-
-      <div class="mt-10 grid gap-6 lg:grid-cols-3">
-        {partnerBrands.map((brand) => (
-          <article class={`rounded-2xl border p-7 transition hover:-translate-y-0.5 hover:shadow-md ${brand.highlight ? 'border-[var(--color-blue)] bg-white shadow-sm' : 'border-[var(--color-border)] bg-white'}`}>
-            <div class="flex flex-wrap items-center gap-3">
-              <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)]">{brand.eyebrow}</div>
-              <div class="rounded-full bg-[var(--color-surface-alt)] px-3 py-1 text-xs font-semibold text-[var(--color-navy)]">{brand.badge}</div>
-            </div>
-            <h3 class="mt-4 font-display text-2xl font-bold text-[var(--color-navy)]">{brand.name}</h3>
-            <p class="mt-3 font-semibold text-[var(--color-navy)]">{brand.summary}</p>
-            <p class="mt-4 text-sm leading-relaxed text-[var(--color-text-muted)]">{brand.detail}</p>
-            <a href={brand.href} class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-blue)] hover:underline">
-              View brand page
-              <svg class="h-4 w-4" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-            </a>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="container-x py-16">
-    <div class="rounded-2xl border border-[var(--color-border)] bg-white p-8 md:p-10">
-      <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-        <div class="max-w-3xl">
-          <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Brands We Service</div>
-          <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">Support beyond the brands we sell</h2>
-          <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
-            Surgiquip also services equipment from Steris, Stryker, Berchtold, Maquet, and Trumpf. Can't find your brand? We service most major surgical equipment manufacturers.
-          </p>
-        </div>
-        <a href="/quote" class="btn-primary shrink-0">Request Equipment Quote</a>
-      </div>
-      <div class="mt-8 flex flex-wrap gap-3">
-        {serviceBrands.map((brand) => (
-          <div class="rounded-full border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-semibold text-[var(--color-navy)]">
-            {brand}
-          </div>
-        ))}
       </div>
     </div>
   </section>
 
   <CTASection
-    heading="Request Equipment Quote"
-    subhead="Tell us what your facility is planning, replacing, or expanding. We'll help you evaluate the right surgical equipment partner and scope the next step."
-    primaryLabel="Request Equipment Quote"
+    heading="Need Help Choosing Equipment?"
+    subhead="Tell us about your facility — room count, specialties, and budget. Our team will recommend the right configuration and prepare a custom quote."
+    primaryLabel="Request a Quote"
     primaryHref="/quote"
     secondaryLabel={`Call ${site.phone}`}
     secondaryHref={`tel:${site.phoneE164}`}

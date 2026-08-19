@@ -1,6 +1,7 @@
 ---
 title: "Women's Health OR Equipment Guide: GYN Surgical Suites, Robotic Hysterectomy Setup, and Minimally Invasive Surgery Infrastructure for Texas Hospitals"
-description: "A comprehensive guide for Texas hospital facilities directors and women's health OR planners on surgical table selection, lighting configuration, boom system design, and robotic surgery integration for GYN and reproductive surgery suites."
+seoTitle: "Women's Health OR Guide | Texas"
+description: "Texas guide to women's health OR equipment, including GYN surgical tables, lighting, boom design, and robotic suite planning."
 publishDate: 2026-07-01
 image: "/images/blog/womens-health-or-suite-hero.webp"
 tags: ["women's health OR equipment", "GYN surgery equipment Texas", "robotic hysterectomy setup", "minimally invasive surgery OR", "surgical tables GYN", "Houston hospitals", "Texas women's health"]
@@ -113,7 +114,7 @@ At **Brazoria Surgery Center** in Brazoria, TX — a 4-OR + 2-Procedure facility
 
 The operational lifetime of a GYN OR installation extends 15–20 years for major installed infrastructure. Table hydraulics, light head components, and boom system articulation joints are all mechanical systems with maintenance schedules and failure mode profiles. A GYN program that cannot obtain rapid service for a table that loses Trendelenburg or a boom that loses gas supply is an OR that cannot run its robotic case that morning.
 
-Surgiquip's Southeast Texas service territory covers the primary GYN program concentrations in the region — Harris County, Fort Bend County, Brazoria County, Galveston County, and Montgomery County. Service response for critical equipment failures (table positioning failures, boom gas supply loss) is same-day for the facilities in this territory.
+Surgiquip's Southeast Texas service territory covers the primary GYN program concentrations in the region — Harris County, Fort Bend County, Brazoria County, Galveston County, and Montgomery County. Service response for critical equipment failures (table positioning failures, boom gas supply loss) is prioritized for the facilities in this territory.
 
 **Factory certification coverage for GYN OR equipment:**
 - **Skytron** — primary surgical tables and ceiling-mount boom systems (factory-certified dealer and servicer)
@@ -164,4 +165,4 @@ Surgiquip provides pre-installation planning support for new women's health OR p
 
 ---
 
-*Surgiquip Solutions, Inc. has been the authorized Skytron dealer for Southeast Texas for more than four decades. We are Skytron factory-certified for installation and service, Texas DSHS-licensed, BBB A+ rated with five Torch Awards for Ethics, and Vital Affiliate-credentialed with Memorial Hermann Integrated Delivery Network. Contact us at (713) 681-6362 or [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com) to discuss your women's health OR project.*
+*Surgiquip Solutions, Inc. has been the authorized Skytron dealer for South Texas for more than four decades. We are Skytron factory-certified for installation and service, Texas DSHS-licensed, BBB A+ rated with five Torch Awards for Ethics. Contact us at (713) 681-6362 or [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com) to discuss your women's health OR project.*

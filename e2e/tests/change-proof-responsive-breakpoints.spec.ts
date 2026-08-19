@@ -58,9 +58,14 @@ test('change-proof-responsive-breakpoints', async ({ page }) => {
   await showPhaseLabel(page, '📱 Tablet — Scrolling homepage content');
   await smoothScroll(page, 1200, 240, 400);
 
-  // Services section visible
-  const servicesSection = page.locator('main section, main div').filter({ hasText: /OR Installation|Service & Repair|Preventive/i }).first();
+  // Services section visible with the current 3-card centered layout
+  const servicesSection = page.locator('#services');
   await expectVisible(servicesSection, 'Services section at 768px');
+  const servicesCards = servicesSection.locator('a[href^="/services/"]');
+  const servicesCardCount = await servicesCards.count();
+  if (servicesCardCount !== 3) {
+    throw new Error(`Expected 3 homepage service cards, found ${servicesCardCount}`);
+  }
 
   await showPhaseLabel(page, '✅ Tablet 768px — Homepage layout correct');
   await page.waitForTimeout(800);
@@ -101,9 +106,9 @@ test('change-proof-responsive-breakpoints', async ({ page }) => {
   await showPhaseLabel(page, '📱 Tablet — Products page layout');
   await smoothScroll(page, 700, 240, 400);
 
-  // Skytron link must be present
-  const skytronLink = page.locator('main a[href="/products/skytron"]').first();
-  await expectVisible(skytronLink, 'Skytron product link at 768px');
+  // Category tile must be present
+  const surgicalTablesTile = page.locator('main a[href="/products/surgical-tables"]').first();
+  await expectVisible(surgicalTablesTile, 'Surgical Tables category tile at 768px');
   await page.waitForTimeout(700);
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -150,8 +155,8 @@ test('change-proof-responsive-breakpoints', async ({ page }) => {
   await showPhaseLabel(page, '🖥️ 1440px — Scrolling full homepage');
   await smoothScroll(page, 1400, 280, 400);
 
-  // Stat bar should render prominently
-  const statBar = page.locator('main').filter({ hasText: /43 Years|Houston|Southeast Texas/i }).first();
+  // Stat bar should render prominently with current trust indicators
+  const statBar = page.locator('main section').filter({ hasText: /43 Years|A\+ BBB|500\+ Facilities|Rapid/i }).first();
   await expectVisible(statBar, 'Stat bar / trust indicators at 1440px');
 
   await showPhaseLabel(page, '✅ Large Desktop 1440px — Homepage premium layout');

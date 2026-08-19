@@ -1,8 +1,8 @@
 /**
  * Change Proof E2E Spec — Cycle 56: Address Accuracy Fix
- * Verifies the correct address (10653 Kinghurst Drive, Houston TX 77099) appears
+ * Verifies the correct address (2020 Johanna Drive, Houston TX 77055) appears
  * throughout the site — footer, contact page, and homepage JSON-LD schema.
- * Previously site.ts had wrong address: 2020 Johanna Drive, 77055.
+ * Older specs expected the retired Kinghurst address.
  * CI retrigger: 2026-07-04
  * ONE SINGLE test() block = ONE continuous video
  * Proof keyword: change-proof
@@ -38,14 +38,14 @@ test('change-proof-cycle56-address-accuracy', async ({ page }) => {
   await showPhaseLabel(page, '📍 Footer — Verifying Address');
   await page.waitForTimeout(1000);
 
-  // Footer should show correct address — 10653 Kinghurst Drive
-  const footerAddress = page.locator('footer').locator('text=10653 Kinghurst Drive').first();
+  // Footer should show correct address — 2020 Johanna Drive
+  const footerAddress = page.locator('footer').locator('text=2020 Johanna Drive').first();
   await footerAddress.scrollIntoViewIfNeeded();
-  await expectVisible(footerAddress, '10653 Kinghurst Drive in footer');
+  await expectVisible(footerAddress, '2020 Johanna Drive in footer');
 
-  const footerZip = page.locator('footer').locator('text=77099').first();
+  const footerZip = page.locator('footer').locator('text=77055').first();
   await footerZip.scrollIntoViewIfNeeded();
-  await expectVisible(footerZip, 'Zip code 77099 in footer');
+  await expectVisible(footerZip, 'Zip code 77055 in footer');
 
   // PART 2 — Homepage JSON-LD schema accuracy
   await showPhaseLabel(page, '🔍 Homepage JSON-LD Schema Check');
@@ -58,11 +58,11 @@ test('change-proof-cycle56-address-accuracy', async ({ page }) => {
   // Walk arrays or direct schema
   const org = Array.isArray(parsed) ? parsed.find((s: any) => s?.address?.streetAddress) : parsed;
   const streetAddress = org?.address?.streetAddress ?? parsed?.address?.streetAddress;
-  if (streetAddress !== '10653 Kinghurst Drive') {
-    throw new Error(`Wrong address in JSON-LD: expected "10653 Kinghurst Drive", got "${streetAddress}"`);
+  if (streetAddress !== '2020 Johanna Drive') {
+    throw new Error(`Wrong address in JSON-LD: expected "2020 Johanna Drive", got "${streetAddress}"`);
   }
 
-  await showPhaseLabel(page, '✅ JSON-LD streetAddress = 10653 Kinghurst Drive');
+  await showPhaseLabel(page, '✅ JSON-LD streetAddress = 2020 Johanna Drive');
   await page.waitForTimeout(1000);
 
   // PART 3 — Contact page display address
@@ -77,12 +77,12 @@ test('change-proof-cycle56-address-accuracy', async ({ page }) => {
   const contactAddress = page.locator('address').first();
   await contactAddress.scrollIntoViewIfNeeded();
   await expectVisible(contactAddress, 'Contact address element');
-  await expectText(contactAddress, /10653 Kinghurst/i, 'Contact address shows 10653 Kinghurst');
+  await expectText(contactAddress, /2020 Johanna/i, 'Contact address shows 2020 Johanna');
 
   // Maps link should reference the correct address
-  const mapsLink = page.locator('a[href*="10653"]').first();
+  const mapsLink = page.locator('a[href*="Johanna"]').first();
   await mapsLink.scrollIntoViewIfNeeded();
-  await expectVisible(mapsLink, 'Google Maps link with 10653 Kinghurst');
+  await expectVisible(mapsLink, 'Google Maps link with 2020 Johanna');
 
   // PART 4 — Scroll down to maps embed
   await smoothScroll(page, 1200, 300, 400);

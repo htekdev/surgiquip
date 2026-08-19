@@ -1,6 +1,7 @@
 ---
 title: "Cardiac Catheterization Lab Equipment: Installation & Service Guide for Texas Hospitals"
-description: "A technical guide for Texas hospital facilities directors and cardiovascular program directors planning a cardiac catheterization lab — covering boom engineering, lighting, tables, NFPA 99 compliance, and Surgiquip's Southeast Texas installation track record."
+seoTitle: "Texas Cath Lab Equipment Guide"
+description: "Planning a Texas cath lab? This guide covers booms, lighting, tables, NFPA 99 compliance, and service considerations for hospital teams."
 publishDate: 2026-06-30
 image: "/images/services/or-installation-hero.webp"
 tags: ["cardiac cath lab", "catheterization lab", "OR equipment", "Texas hospitals", "Skytron", "cardiovascular", "Houston"]
@@ -141,7 +142,7 @@ If your hospital or health system in Southeast Texas is planning a new cath lab 
 4. **Specify PM coverage in the equipment contract**, not as an afterthought 12 months post-installation.
 5. **Validate table compatibility** with the specific imaging isocenter geometry before purchase.
 
-Surgiquip Solutions is the authorized Skytron dealer for Southeast Texas and has direct experience with every step of this process in real Houston-area cath lab installations. Our team can provide pre-construction planning consultation, equipment specification support, and turnkey installation across boom systems, surgical lighting, and procedure tables.
+Surgiquip Solutions is the authorized Skytron dealer for South Texas and has direct experience with every step of this process in real Houston-area cath lab installations. Our team can provide pre-construction planning consultation, equipment specification support, and turnkey installation across boom systems, surgical lighting, and procedure tables.
 
 ---
 

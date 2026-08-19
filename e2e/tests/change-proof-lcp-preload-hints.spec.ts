@@ -3,7 +3,7 @@
  * ONE SINGLE test() block = ONE continuous video proving the fix
  *
  * Flow:
- *   → Visit each of the 5 pages that now have preloadImage
+ *   → Visit each of the 5 priority pages that now have preloadImage
  *   → Verify H1 visible (page renders)
  *   → Verify <link rel="preload" as="image"> is present in <head>
  *
@@ -31,11 +31,11 @@ interface PageSpec {
 }
 
 const pages: PageSpec[] = [
-  { path: '/services/service-and-repair',     label: 'Service & Repair',       heroImage: 'equipment-repair-hero.webp' },
-  { path: '/services/equipment-sales',        label: 'Equipment Sales',         heroImage: 'equipment-sales-hero.webp' },
+  { path: '/',                                label: 'Homepage',                heroImage: 'hero-or-suite.webp' },
+  { path: '/services/service-and-repair',     label: 'Service & Repair',        heroImage: 'equipment-repair-hero.webp' },
   { path: '/services/preventive-maintenance', label: 'Preventive Maintenance',  heroImage: 'preventive-maintenance-hero.webp' },
-  { path: '/products/hsi',                    label: 'HSI Products',            heroImage: 'hsi-hero.webp' },
-  { path: '/products/knight',                 label: 'Knight Products',         heroImage: 'knight-hero.webp' },
+  { path: '/services/or-installation',        label: 'OR Installation',         heroImage: 'or-installation-hero.webp' },
+  { path: '/products/skytron',                label: 'Skytron Brand Page',      heroImage: 'skytron-hero.webp' },
 ];
 
 test('change-proof-lcp-preload-hints', async ({ page }) => {
@@ -85,6 +85,6 @@ test('change-proof-lcp-preload-hints', async ({ page }) => {
   // ═══════════════════════════════════════════════════════════════════════════
 
   await page.goto('/');
-  await showPhaseLabel(page, '✅ All 5 LCP Preload Hints Verified — Epic K Complete');
+  await showPhaseLabel(page, '✅ All 5 priority LCP preload hints verified');
   await page.waitForTimeout(1200);
 });

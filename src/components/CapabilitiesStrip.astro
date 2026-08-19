@@ -9,27 +9,27 @@
 const capabilities = [
   {
     label: 'Surgical Lighting',
-    image: '/images/icons/icon-surgical-light.webp',
     href: '/products/skytron',
     description: 'Skytron overhead surgical lights',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="24" r="14"/><path d="M24 38h16"/><path d="M28 38v8h8v-8"/><line x1="32" y1="10" x2="32" y2="4"/><line x1="42" y1="14" x2="48" y2="8"/><line x1="22" y1="14" x2="16" y2="8"/><line x1="46" y1="24" x2="52" y2="24"/><line x1="18" y1="24" x2="12" y2="24"/><line x1="42" y1="34" x2="48" y2="40"/><line x1="22" y1="34" x2="16" y2="40"/></svg>`,
   },
   {
     label: 'OR Tables',
-    image: '/images/icons/icon-or-table.webp',
     href: '/products/skytron',
     description: 'Motorized surgical tables',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="20" width="48" height="6" rx="2"/><path d="M14 26v4"/><path d="M50 26v4"/><path d="M32 30v14"/><path d="M22 44h20"/><path d="M18 44v6"/><path d="M46 44v6"/><path d="M8 20l4-6h40l4 6"/></svg>`,
   },
   {
     label: 'Sterilization',
-    image: '/images/icons/icon-sterilization.webp',
-    href: '/products/knight',
+    href: '/services/service-and-repair',
     description: 'Sterile processing equipment',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="16" width="36" height="32" rx="3"/><path d="M14 24h36"/><circle cx="20" cy="20" r="1.5" fill="currentColor"/><circle cx="26" cy="20" r="1.5" fill="currentColor"/><path d="M24 34h16"/><path d="M24 40h16"/><path d="M32 34v6"/><path d="M14 48h36v4H14z"/></svg>`,
   },
   {
     label: 'Service & Repair',
-    image: '/images/icons/icon-service-tech.webp',
     href: '/services/service-and-repair',
     description: 'Biomedical equipment service',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M38 12a10 10 0 0 1 4 19.2L34 39.2V44h-4v-4.8l-8-8A10 10 0 0 1 38 12z"/><path d="M30 44h4v4h-4z"/><path d="M14 38l6-6"/><path d="M12 32h8"/><path d="M44 22h8"/><path d="M44 28l6 6"/><circle cx="36" cy="22" r="3"/></svg>`,
   },
 ];
 ---
@@ -46,17 +46,7 @@ const capabilities = [
           href={cap.href}
           class="group flex flex-col items-center text-center gap-4 p-5 rounded-xl border border-transparent hover:border-[var(--color-border)] hover:shadow-md transition-all"
         >
-          <div class="w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-sm group-hover:shadow-md transition-shadow flex-shrink-0">
-            <img
-              src={cap.image}
-              alt={cap.description}
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              loading="lazy"
-              decoding="async"
-              width="96"
-              height="96"
-            />
-          </div>
+          <div class="w-16 h-16 md:w-20 md:h-20 text-[var(--color-navy)] group-hover:text-[var(--color-blue)] transition-colors" set:html={cap.icon} />
           <div>
             <div class="font-bold text-sm md:text-base text-[var(--color-navy)] group-hover:text-[var(--color-blue)] transition-colors">
               {cap.label}

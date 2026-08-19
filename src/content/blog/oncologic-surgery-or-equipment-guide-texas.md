@@ -135,6 +135,5 @@ Hospital leaders should ask whether technicians are **certified**, whether PM do
 
 Preventive maintenance contracts are especially important in cancer suites because they turn service from a reactive cost center into a scheduling protection strategy. Documented PM on tables, lights, booms, and sterilization assets helps reduce unscheduled downtime and provides the paper trail surveyors expect in high-acuity perioperative environments.
 
-Surgiquip's status as a **Memorial Hermann IDN Vital Affiliate** also matters for administrators evaluating regional credibility. It signals alignment with one of the most influential health systems in Texas and reinforces the practical reality reflected in the installation history above: major Houston-area cancer and surgical programs already trust Surgiquip with mission-critical room infrastructure.
 
 If your Texas hospital is planning a new oncology suite, modernizing an existing cancer OR, or evaluating surgical tables, Aurora LED lighting, boom systems, and long-term preventive maintenance support as part of a cancer-center expansion, Surgiquip can help scope the project around real procedural demands rather than generic OR assumptions. Call **(713) 681-6362** to discuss your room requirements, installation timeline, and service coverage needs.

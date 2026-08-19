@@ -7,7 +7,8 @@
  *   3. aria-haspopup is present on triggers with children
  *   4. Mobile menu <nav> has aria-label (landmark duplication removed)
  *   5. Keyboard Escape key closes mobile menu and returns focus to toggle
- *   6. No broken icon images on homepage (CapabilitiesStrip icons resolve)
+ *   6. Desktop dropdowns stay open during the 300ms JS hover grace period
+ *   7. Homepage capabilities strip uses 4 inline SVG capability icons
  */
 
 import { test, expect } from '@playwright/test';
@@ -85,37 +86,60 @@ test('change-proof: Header a11y ARIA fixes — no role=region, aria-expanded, ke
   const isHiddenAfterEscape = await mobileMenuDiv.evaluate((el: HTMLElement) => el.classList.contains('hidden'));
   expect(isHiddenAfterEscape, 'Mobile menu should close on Escape — hidden class re-added').toBe(true);
 
-  // ── 8. CapabilitiesStrip icons render (no 404s) ───────────────────────────
-  // Navigate back to homepage in case we're on a different page
+  // ── 8. Desktop dropdown hover-intent JS sets aria-expanded correctly ──────
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.waitForTimeout(300);
+
+  const firstDropdownItem = page.locator('header [data-nav-item]').first();
+  const firstDropdownTrigger = firstDropdownItem.locator('a[aria-haspopup]').first();
+  const firstDropdownPanel = firstDropdownItem.locator('[data-dropdown]').first();
+
+  await expect(firstDropdownTrigger).toHaveAttribute('aria-expanded', 'false');
+  await firstDropdownTrigger.hover();
+  await page.waitForTimeout(150);
+  await expect(firstDropdownTrigger).toHaveAttribute('aria-expanded', 'true');
+  await expect(firstDropdownPanel).toHaveClass(/visible/);
+
+  // Close delay is 300ms — it should still be open briefly after moving away
+  await page.locator('body').hover();
+  await page.waitForTimeout(150);
+  await expect(firstDropdownTrigger).toHaveAttribute('aria-expanded', 'true');
+  await page.waitForTimeout(250);
+  await expect(firstDropdownTrigger).toHaveAttribute('aria-expanded', 'false');
+
+  // ── 9. CapabilitiesStrip renders 4 inline SVG capability icons ────────────
+  // Navigate back to homepage in case viewport/hover state changed
   await page.goto('/');
   await page.waitForLoadState('networkidle');
   await page.waitForTimeout(800);
 
-  // Check all 4 capability icons load successfully (status 200, not 404)
-  const iconImages = await page.locator('section img[src*="/images/icons/"]').all();
-  expect(iconImages.length, 'Homepage should have capability icon images').toBeGreaterThan(0);
+  const capabilitiesSection = page
+    .locator('section')
+    .filter({ hasText: 'Equipment We Sell & Service' })
+    .first();
+  await expect(capabilitiesSection).toBeVisible();
 
-  for (const img of iconImages) {
-    const src = await img.getAttribute('src');
-    if (!src) continue;
-    const response = await page.request.get(src);
-    expect(
-      response.status(),
-      `Icon image ${src} should return 200 (not 404)`,
-    ).toBe(200);
+  const capabilityCards = capabilitiesSection.locator('a');
+  expect(await capabilityCards.count(), 'Homepage should show 4 capability cards').toBe(4);
+
+  for (const label of ['Surgical Lighting', 'OR Tables', 'Sterilization', 'Service & Repair']) {
+    await expect(capabilitiesSection.locator(`text=${label}`).first()).toBeVisible();
   }
 
-  // ── 9. Screenshot proof ───────────────────────────────────────────────────
+  const svgIcons = capabilitiesSection.locator('a svg');
+  expect(await svgIcons.count(), 'Capability cards should render inline SVG icons').toBeGreaterThanOrEqual(4);
+
+  // ── 10. Screenshot proof ──────────────────────────────────────────────────
   await page.goto('/');
   await page.waitForLoadState('networkidle');
   await page.waitForTimeout(800);
   await page.setViewportSize({ width: 1280, height: 900 });
 
   // Hover over a nav item with children to show dropdown
-  const firstDropdownTrigger = page.locator(
+  const proofDropdownTrigger = page.locator(
     'header nav[aria-label="Primary navigation"] a[aria-haspopup]',
   ).first();
-  await firstDropdownTrigger.hover();
+  await proofDropdownTrigger.hover();
   await page.waitForTimeout(600);
 
   await showPhaseLabel(page, '✅ a11y fix — desktop nav dropdown visible, no role=region');

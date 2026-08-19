@@ -1,19 +1,15 @@
 ---
 import { site } from '~/data/site';
-// Playfair Display — display/headline font (spec: Playfair Display for H1/H2 headlines)
-import '@fontsource/playfair-display/600.css';
-import '@fontsource/playfair-display/700.css';
-import '@fontsource/playfair-display/800.css';
-import '@fontsource/playfair-display/400-italic.css';
-// Inter — body + UI font
+// Inter — used for both headlines and body. Headlines use 700/800 weights.
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/600.css';
 import '@fontsource/inter/700.css';
+import '@fontsource/inter/800.css';
 // K2: Critical font preload — Vite ?url resolves to content-hashed build path.
-// Preloading the two most-rendered weights (Playfair 700 for h1/h2, Inter 400 for body)
+// Preloading the two most-rendered weights (Inter 700 for h1/h2, Inter 400 for body)
 // eliminates FOIT on headline and body text — reduces CLS and improves FCP/LCP.
-import playfairLatin700Url from '@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2?url';
+import interLatin700Url from '@fontsource/inter/files/inter-latin-700-normal.woff2?url';
 import interLatin400Url from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 import '~/styles/global.css';
 import Header from '~/components/Header.astro';
@@ -37,7 +33,7 @@ export interface Props {
   ogType?: 'website' | 'article';
 }
 
-const { title, description, canonical, image = '/og-default.png', schema, noindex = false, preloadImage, ogType = 'website' } = Astro.props;
+const { title, description, canonical, image = '/og-default.jpg', schema, noindex = false, preloadImage, ogType = 'website' } = Astro.props;
 
 const fullTitle = title.includes(site.short) ? title : `${title} | ${site.brand}`;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site.url).toString();
@@ -53,7 +49,7 @@ const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     {/* K2: Font preload — critical path fonts for FCP/CLS improvement.
         crossorigin is required for same-origin font preloads (spec requirement).
         Preloading latin subset only — covers all US English content on this site. */}
-    <link rel="preload" as="font" type="font/woff2" crossorigin href={playfairLatin700Url} />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href={interLatin700Url} />
     <link rel="preload" as="font" type="font/woff2" crossorigin href={interLatin400Url} />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />

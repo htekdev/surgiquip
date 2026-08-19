@@ -5,17 +5,16 @@
  * PR-specific: navigates directly to /about/accreditation — the exact page changed.
  * Demonstrates:
  *   → BBB Torch Award section (2014-2018, five consecutive years) — NEW
- *   → Texas HUB Vendor credential — NEW
  *   → Texas DSHS Device Distributor license — NEW
  *   → Texas DSHS Salvage Establishment license — NEW
- *   → Vital Affiliate — Memorial Hermann IDN — NEW
- *   → Factory certs updated: Skytron, Midmark, Tuttnauer
+ *   → South Texas Skytron authorization visible
+ *   → Factory certs visible: Skytron, Midmark, Tuttnauer
  *   → Organization Schema with award[] and hasCredential[] — NEW
  *
  * Proof keyword: change-proof
  * Pacing: 500ms scroll step, 1200ms between major actions
  */
-import { test, type Page } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 import {
   expectVisible,
   expectText,
@@ -103,18 +102,23 @@ test('change-proof-accreditation-awards', async ({ page }) => {
   await page.waitForTimeout(1200);
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PART 4 — New Credential Cards
+  // PART 4 — Current credential cards
   // ═══════════════════════════════════════════════════════════════════════════
 
-  await showPhaseLabel(page, '📋 New Credentials — HUB, DSHS, Memorial Hermann IDN');
+  await showPhaseLabel(page, '📋 Current Credentials — BBB, South Texas, DSHS');
   await page.waitForTimeout(800);
 
   await smoothScroll(page, 800, 300, 500);
   await page.waitForTimeout(1200);
 
-  const hubCard = page.locator('text=Texas Certified HUB Vendor').first();
-  await hubCard.scrollIntoViewIfNeeded();
-  await expectVisible(hubCard, 'Texas HUB Vendor — NEW');
+  const bbbCard = page.locator('text=Better Business Bureau — A+ Accredited').first();
+  await bbbCard.scrollIntoViewIfNeeded();
+  await expectVisible(bbbCard, 'BBB A+ credential card');
+  await page.waitForTimeout(800);
+
+  const southTexasCard = page.locator('text=Authorized Skytron Dealer — South Texas').first();
+  await southTexasCard.scrollIntoViewIfNeeded();
+  await expectVisible(southTexasCard, 'South Texas Skytron authorization');
   await page.waitForTimeout(800);
 
   const dshsDevice = page.locator('text=Texas DSHS: Device Distributor License').first();
@@ -127,15 +131,25 @@ test('change-proof-accreditation-awards', async ({ page }) => {
   await expectVisible(dshsSalvage, 'DSHS Salvage Establishment — NEW');
   await page.waitForTimeout(800);
 
-  const mhidn = page.locator('text=Vital Affiliate').first();
-  await mhidn.scrollIntoViewIfNeeded();
-  await expectVisible(mhidn, 'Vital Affiliate Memorial Hermann IDN — NEW');
+  const factoryCertCard = page.locator('text=Factory-Certified Technicians').first();
+  await factoryCertCard.scrollIntoViewIfNeeded();
+  await expectVisible(factoryCertCard, 'Factory-certified technicians card');
   await page.waitForTimeout(800);
 
   const midmarkMention = page.locator('text=Midmark').first();
   await midmarkMention.scrollIntoViewIfNeeded();
-  await expectVisible(midmarkMention, 'Midmark certification listed — updated');
+  await expectVisible(midmarkMention, 'Midmark certification listed');
+  await page.waitForTimeout(400);
+
+  const tuttnauerMention = page.locator('text=Tuttnauer').first();
+  await tuttnauerMention.scrollIntoViewIfNeeded();
+  await expectVisible(tuttnauerMention, 'Tuttnauer certification listed');
   await page.waitForTimeout(800);
+
+  // Removed client-meeting content must stay gone
+  await expect(page.locator('text=Texas Certified HUB Vendor')).toHaveCount(0);
+  await expect(page.locator('text=Vital Affiliate')).toHaveCount(0);
+  await expect(page.locator('text=Memorial Hermann IDN')).toHaveCount(0);
 
   await showPhaseLabel(page, '📜 Scrolling compliance section');
   await page.waitForTimeout(800);

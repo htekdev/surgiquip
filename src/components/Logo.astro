@@ -4,20 +4,16 @@ export interface Props {
   variant?: 'navy' | 'white';
 }
 const { class: className = '', variant = 'navy' } = Astro.props;
-const color = variant === 'white' ? '#ffffff' : '#0a2c5e';
+const src = variant === 'white'
+  ? '/images/surgiquip-logo-header-white.webp'
+  : '/images/surgiquip-logo-header.webp';
 ---
-<svg
+<img
+  src={src}
+  alt="Surgiquip Solutions logo"
   class={className}
-  viewBox="0 0 100 110"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
-  role="img"
-  aria-label="Surgiquip Solutions logo"
->
-  <path d="M10 35 Q25 25 50 30 Q75 25 90 35 Q80 38 70 36 Q60 34 50 35 Q40 34 30 36 Q20 38 10 35Z" fill={color} opacity="0.85"/>
-  <path d="M12 42 Q28 35 50 38 Q72 35 88 42 Q78 44 68 43 Q58 41 50 42 Q42 41 32 43 Q22 44 12 42Z" fill={color} opacity="0.6"/>
-  <line x1="50" y1="20" x2="50" y2="90" stroke={color} stroke-width="3" stroke-linecap="round"/>
-  <path d="M50 35 Q40 42 50 50 Q60 58 50 65 Q40 72 50 80" stroke={color} stroke-width="2.5" fill="none" stroke-linecap="round"/>
-  <path d="M50 35 Q60 42 50 50 Q40 58 50 65 Q60 72 50 80" stroke={color} stroke-width="2.5" fill="none" stroke-linecap="round"/>
-  <polygon points="50,93 52,99 58,99 53,103 55,109 50,105 45,109 47,103 42,99 48,99" fill={color}/>
-</svg>
+  width="334"
+  height="96"
+  loading="eager"
+  decoding="async"
+/>

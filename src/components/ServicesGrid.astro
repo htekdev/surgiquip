@@ -14,7 +14,7 @@ const iconMap: Record<string, string> = {
       <h2 class="text-3xl md:text-4xl font-bold mt-3 text-[var(--color-navy)]">Comprehensive Solutions. Dependable Results.</h2>
     </div>
 
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
       {services.map((s) => (
         <a href={`/services/${s.slug}`} class="block bg-white rounded-lg border border-[var(--color-border)] p-6 hover:shadow-lg hover:border-[var(--color-blue)] transition group">
           <div class="w-12 h-12 rounded-full bg-[var(--color-surface-alt)] flex items-center justify-center text-[var(--color-navy)] mb-5 group-hover:bg-[var(--color-blue)] group-hover:text-white transition">

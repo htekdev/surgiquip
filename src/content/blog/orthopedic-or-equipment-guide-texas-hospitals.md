@@ -167,7 +167,7 @@ Surgiquip provides preventive maintenance contracts for all installed Skytron eq
 
 ## Working With Surgiquip on Your Texas Orthopedic OR Project
 
-Surgiquip Solutions has been equipping Texas orthopedic operating rooms since 1983. As the authorized Skytron dealer for Southeast Texas, Surgiquip provides direct access to the full Skytron surgical table platform lineup, Aurora LED surgical lighting, and ceiling-mount boom systems — the integrated equipment infrastructure that defines a high-performance orthopedic OR.
+Surgiquip Solutions has been equipping Texas orthopedic operating rooms since 1983. As the authorized Skytron dealer for South Texas, Surgiquip provides direct access to the full Skytron surgical table platform lineup, Aurora LED surgical lighting, and ceiling-mount boom systems — the integrated equipment infrastructure that defines a high-performance orthopedic OR.
 
 The company's installation history in dedicated orthopedic hospitals, multi-specialty academic medical centers, and ambulatory surgery centers across Southeast Texas provides a concrete reference base for facilities planning new orthopedic OR capacity or refreshing existing infrastructure.
 

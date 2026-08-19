@@ -143,7 +143,7 @@ Neurosurgery programs performing implant cases must maintain documented evidence
 
 The service implications of equipment failure in a neurosurgery suite are more severe than in most other OR contexts. A surgical light failure at hour four of a craniotomy, or a boom system malfunction during a spine fusion, is a patient safety event, not just a scheduling inconvenience.
 
-Service contracts for boom systems, surgical lights, and surgical tables in neurosurgery suites should include explicit response time commitments for critical failures — and vendors should be evaluated on whether they maintain local replacement inventory. Surgiquip's 24-hour response commitment and Houston-area parts inventory is specifically designed to support the neurosurgery and high-acuity OR programs that cannot wait for inter-state parts shipping.
+Service contracts for boom systems, surgical lights, and surgical tables in neurosurgery suites should include explicit response time commitments for critical failures — and vendors should be evaluated on whether they maintain local replacement inventory. Surgiquip's rapid response capability and Houston-area parts inventory is specifically designed to support the neurosurgery and high-acuity OR programs that cannot wait for inter-state parts shipping.
 
 ### Planned Maintenance in Long-Use ORs
 

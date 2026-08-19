@@ -108,9 +108,9 @@ These are starting points. The actual calculation requires knowing your instrume
 
 ASCs performing endoscopy, laparoscopy, or procedures involving camera systems need low-temperature sterilization capability. Hydrogen peroxide gas plasma (STERRAD-class systems) is the most common ASC solution: no toxic aeration requirement, 28–75 minute cycle times, and compatibility with most scopes and heat-sensitive instruments.
 
-**Knight sterilization equipment for ASCs:**
+**Sterilization equipment for ASCs:**
 
-Knight's product line — automated washers, ultrasonic cleaners, and instrument care systems — is well-matched to the throughput requirements and space constraints of Texas ASC sterile processing areas. Knight automated instrument washers provide validated cleaning documentation needed for AAAHC and TJC survey readiness without requiring a dedicated sterile processing technician for every cycle.
+Modern automated washers, ultrasonic cleaners, and instrument care systems are well-matched to the throughput requirements and space constraints of Texas ASC sterile processing areas. Automated instrument washers provide validated cleaning documentation needed for AAAHC and TJC survey readiness without requiring a dedicated sterile processing technician for every cycle.
 
 ## Capital Planning: Right-Sizing Equipment Investment for ASC Budgets
 
@@ -131,7 +131,7 @@ ASC biomedical staffing is almost always thin — few ASCs employ in-house biome
 
 **What ASC service contracts should include:**
 - Preventive maintenance visits at manufacturer-recommended intervals (typically annual for tables, lighting, and booms)
-- Priority response time guarantees (24-hour response is appropriate for most ASC situations; 4-hour response is warranted for facilities without equipment redundancy)
+- Priority response time guarantees (Rapid response commitments appropriate for your clinical needs; priority response is warranted for facilities without equipment redundancy)
 - PM documentation formatted for AAAHC and TJC audit readiness
 - Parts coverage (labor-only contracts shift parts cost risk to the ASC)
 
@@ -160,7 +160,7 @@ For an ASC where a single malfunctioning OR table can take a room offline — an
 
 ## Surgiquip Solutions for Texas ASCs
 
-Surgiquip Solutions has served Texas hospitals and surgery centers since 1983 — including ambulatory surgery centers across Houston and Southeast Texas. As an authorized Skytron dealer and Knight equipment partner, we provide:
+Surgiquip Solutions has served Texas hospitals and surgery centers since 1983 — including ambulatory surgery centers across Houston and Southeast Texas. As an authorized Skytron dealer, we provide:
 
 - Equipment right-sizing consultation for ASC case mix and room count
 - Turnkey OR installation and commissioning

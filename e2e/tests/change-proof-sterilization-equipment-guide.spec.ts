@@ -1,7 +1,8 @@
 /**
  * Change Proof E2E Spec — Sterilization Equipment Guide
  * Verifies the sterilization equipment article renders correctly:
- * page loads, H1 present, Knight section visible, regulatory section, CTA.
+ * page loads, H1 present, steam section visible, washer-disinfector section,
+ * regulatory section, CTA.
  * ONE SINGLE test() block = ONE continuous video
  * Proof keyword: change-proof
  */
@@ -51,22 +52,22 @@ test('change-proof-sterilization-equipment-guide', async ({ page }) => {
   await steamSection.scrollIntoViewIfNeeded();
   await expectVisible(steamSection, '"Steam Sterilization" section heading');
 
-  // PART 4 — Knight: sterile processing section
+  // PART 4 — Washer-disinfectors / sterile processing section
   await smoothScroll(page, 1200, 260, 400);
-  await showPhaseLabel(page, '⚙️ Knight Sterile Processing Section');
+  await showPhaseLabel(page, '⚙️ Washer-Disinfectors Section');
   await page.waitForTimeout(900);
 
-  const knightSection = page.locator('.blog-body h2').filter({ hasText: /Knight/i }).first();
-  await knightSection.waitFor({ state: 'visible', timeout: 20000 });
-  await knightSection.scrollIntoViewIfNeeded();
-  await expectVisible(knightSection, 'Knight sterile processing section');
+  const washerSection = page.locator('.blog-body h2').filter({ hasText: /Washer-Disinfectors/i }).first();
+  await washerSection.waitFor({ state: 'visible', timeout: 20000 });
+  await washerSection.scrollIntoViewIfNeeded();
+  await expectVisible(washerSection, 'Washer-Disinfectors section');
 
   // PART 5 — Regulatory compliance section
   await smoothScroll(page, 800, 260, 400);
   await showPhaseLabel(page, '📜 Regulatory Compliance Section');
   await page.waitForTimeout(900);
 
-  const regulatorySection = page.locator('.blog-body h2').filter({ hasText: /Regulatory/i }).first();
+  const regulatorySection = page.locator('.blog-body h2').filter({ hasText: /Regulatory Compliance Drivers/i }).first();
   await regulatorySection.waitFor({ state: 'visible', timeout: 20000 });
   await regulatorySection.scrollIntoViewIfNeeded();
   await expectVisible(regulatorySection, 'Regulatory Compliance section');

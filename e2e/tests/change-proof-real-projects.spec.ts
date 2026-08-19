@@ -58,17 +58,19 @@ test('change-proof-real-projects', async ({ page }) => {
   await page.waitForTimeout(1500);
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PART 2 — Navigate to Projects via nav
+  // PART 2 — Projects page is hidden from nav; open directly
   // ═══════════════════════════════════════════════════════════════════════════
 
-  await showPhaseLabel(page, '🔗 Navigating → Projects');
+  await showPhaseLabel(page, '🔗 Projects hidden from nav — opening direct URL');
   await page.waitForTimeout(800);
 
-  // Click Projects in nav
-  const projectsNavLink = page.locator('nav a[href="/projects"]').first();
-  await expectVisible(projectsNavLink, 'Projects nav link');
-  await page.waitForTimeout(600);
-  await projectsNavLink.click();
+  const projectsNavLink = page.locator('header a[href="/projects"]');
+  const navCount = await projectsNavLink.count();
+  if (navCount !== 0) {
+    throw new Error(`Projects nav link should be hidden from header navigation, found ${navCount}`);
+  }
+
+  await page.goto('/projects');
   await page.waitForLoadState('networkidle');
   await page.waitForTimeout(1200);
 

@@ -112,7 +112,7 @@ The Society of Gastroenterology Nurses and Associates (SGNA) publishes additiona
 
 The Sugar Land installation demonstrates the operational advantage of using the same boom and lighting platform across both the OR suite and the adjacent endo lab: the facilities team manages a single vendor relationship, a single PM protocol, and a single service call process for equipment across both spaces. Nursing staff trained on the boom controls in the OR can orient quickly to the endo suite configuration because the control interface is identical.
 
-The SkyVision integration at Sugar Land — Skytron's in-room display management system, which aggregates scope camera, monitoring, and documentation feeds on a single room display infrastructure — is particularly valuable in the endo suite, where multiple video sources (scope camera, patient monitoring, documentation system) must be managed simultaneously without a cluttered cart-mounted AV setup.
+The SkyVision integration at Sugar Land — Skytron's in-room display management system, which aggregates scope camera, monitoring, and documentation feeds on a single room display infrastructure — is particularly valuable in the endo suite, where multiple video sources (scope camera, patient monitoring, documentation system) must be managed simultaneously without a cluttered cart-mounted video setup.
 
 ### Memorial Hermann Southeast — Cystoscopy Suite
 
@@ -128,7 +128,7 @@ Surgiquip has equipped scope reprocessing infrastructure at multiple Texas ASCs 
 
 **Brazoria Surgery Center** (Brazoria, TX — 4 OR + 2 Procedure rooms) includes instrument reprocessing equipment — washers, sterilizers — that serve both the OR suite and the procedure rooms where GI cases are performed. The Brazoria installation is notable as one of Surgiquip's southernmost Southeast Texas installations, demonstrating the company's service footprint below Houston.
 
-**Memorial Hermann Kingsland Surgery Center** (Houston, TX — 4 OR + 2 Procedure rooms) includes sterilizers and instrument washers integrated into the OR and procedure room infrastructure. MH Kingsland is one of several Memorial Hermann network ASCs where Surgiquip serves as the preferred equipment vendor, consistent with the company's Vital Affiliate status within the Memorial Hermann Integrated Delivery Network.
+**Memorial Hermann Kingsland Surgery Center** (Houston, TX — 4 OR + 2 Procedure rooms) includes sterilizers and instrument washers integrated into the OR and procedure room infrastructure. MH Kingsland is one of several Memorial Hermann network ASCs where Surgiquip serves as the preferred equipment vendor.
 
 **CHRISTUS St. Catherine Surgery Center** (Houston, TX — 4 OR) includes Center Mount Booms, 6700B Tables, Stellar lights, sterilizers, scrub sinks, and instrument washer — a full-package installation that includes reprocessing infrastructure alongside OR equipment.
 
@@ -154,4 +154,4 @@ Whether your project is a new-construction GI lab embedded in a hospital expansi
 
 Reach Surgiquip Solutions at **(713) 681-6362**, Monday through Friday, 7:30 AM to 4:30 PM, or submit a request through our [contact page](/contact).
 
-*Surgiquip Solutions — Dedicated to Excellence since 1983. BBB A+ Accredited. Texas HUB Certified. Authorized Skytron Dealer and Service Provider for Southeast Texas.*
+*Surgiquip Solutions — Dedicated to Excellence since 1983. BBB A+ Accredited. Authorized Skytron Dealer and Service Provider for South Texas.*

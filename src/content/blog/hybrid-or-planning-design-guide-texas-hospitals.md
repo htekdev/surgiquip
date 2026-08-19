@@ -1,6 +1,7 @@
 ---
 title: "Hybrid OR Planning Guide: Design, Equipment, and Integration for Texas Hospitals"
-description: "A comprehensive planning guide for Texas hospital facilities directors and perioperative leaders considering a hybrid OR installation — covering structural requirements, imaging integration, boom design, and lessons from Southeast Texas projects."
+seoTitle: "Texas Hybrid OR Planning Guide"
+description: "Texas hybrid OR planning guide covering imaging integration, structural requirements, boom design, and equipment coordination."
 publishDate: 2026-06-30
 image: "/images/blog/or-installation-planning-hero.webp"
 tags: ["hybrid OR", "OR installation", "Texas", "cardiovascular", "Skytron"]
@@ -182,4 +183,4 @@ Surgiquip Solutions has installed hybrid ORs in multiple Houston-area hospital s
 
 ---
 
-*Surgiquip Solutions is the authorized Skytron dealer for Southeast Texas. We have served hospitals and surgical centers across the Houston metro area and Gulf Coast region since 1983. Contact us at [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com) or [(713) 681-6362](tel:+17136816362).*
+*Surgiquip Solutions is the authorized Skytron dealer for South Texas. We have served hospitals and surgical centers across the Houston metro area and Gulf Coast region since 1983. Contact us at [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com) or [(713) 681-6362](tel:+17136816362).*

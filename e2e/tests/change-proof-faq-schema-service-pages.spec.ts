@@ -3,7 +3,7 @@
  * ONE SINGLE test() block = ONE continuous video proving the change.
  *
  * What this proves:
- *   → /services/equipment-sales: FAQPage JSON-LD + FAQ accordion visible
+ *   → /services/equipment-sales now routes to /products (Equipment Sales removed from services)
  *   → /services/service-and-repair: FAQPage JSON-LD + FAQ accordion visible
  *   → /services/preventive-maintenance: FAQPage JSON-LD + FAQ accordion visible
  *
@@ -38,52 +38,32 @@ async function scrollToTop(page: Page) {
 
 test('change-proof-faq-schema-service-pages', async ({ page }) => {
   // ═══════════════════════════════════════════════════════════════════════════
-  // PART 1 — Equipment Sales: FAQPage schema + accordion
+  // PART 1 — Equipment Sales retired from Services → Products catalog
   // ═══════════════════════════════════════════════════════════════════════════
 
   await page.goto('/services/equipment-sales');
   await page.waitForLoadState('networkidle');
-  await showPhaseLabel(page, '🏥 Equipment Sales — FAQ Schema PR');
+  await showPhaseLabel(page, '🏥 Equipment Sales retired from Services → Products');
   await page.waitForTimeout(1200);
 
-  await expectURL(page, /\/services\/equipment-sales/, 'Equipment Sales URL');
+  await expectURL(page, /\/products$/, 'Equipment Sales route now lands on Products');
 
-  const salesH1 = page.locator('h1').first();
-  await expectVisible(salesH1, 'Equipment Sales H1');
-  await expectText(salesH1, 'Equipment Sales', 'H1 contains Equipment Sales');
+  const productsH1 = page.locator('h1').first();
+  await expectVisible(productsH1, 'Products catalog H1');
+  await expectText(productsH1, 'Equipment Catalog', 'H1 confirms product catalog');
   await page.waitForTimeout(800);
 
-  // Verify FAQPage JSON-LD in head
-  await expectJsonLd(page, 'Equipment Sales FAQPage schema');
-  await page.waitForTimeout(800);
-
-  // Scroll to FAQ section
-  await showPhaseLabel(page, '📋 Scrolling to Equipment Sales FAQ accordion');
-  await smoothScroll(page, 2400, 200, 500);
-  await page.waitForTimeout(1200);
-
-  // Verify FAQ heading is visible
-  const salesFaqH2 = page.locator('h2#faq-heading').first();
-  await salesFaqH2.scrollIntoViewIfNeeded();
-  await expectVisible(salesFaqH2, 'Equipment Sales FAQ heading');
-  await expectText(salesFaqH2, 'Common Questions', 'FAQ section h2 rendered');
-  await page.waitForTimeout(800);
-
-  // Verify first accordion item (authorized dealer question)
-  const salesFirstQuestion = page.locator('main summary').first();
-  await salesFirstQuestion.scrollIntoViewIfNeeded();
-  await expectVisible(salesFirstQuestion, 'First FAQ accordion item visible');
+  const surgicalTablesTile = page.locator('main a[href="/products/surgical-tables"]').first();
+  await surgicalTablesTile.scrollIntoViewIfNeeded();
+  await expectVisible(surgicalTablesTile, 'Surgical Tables category tile visible');
   await page.waitForTimeout(600);
 
-  // Click to open first FAQ
-  await salesFirstQuestion.click();
-  await page.waitForTimeout(800);
+  const brandsSection = page.locator('text=Brands we service but don\'t sell').first();
+  await brandsSection.scrollIntoViewIfNeeded();
+  await expectVisible(brandsSection, 'Products page replacement content visible');
+  await page.waitForTimeout(600);
 
-  const salesFirstAnswer = page.locator('main details').first();
-  await expectVisible(salesFirstAnswer, 'FAQ answer expanded');
-  await page.waitForTimeout(1000);
-
-  await showPhaseLabel(page, '✅ Equipment Sales — FAQPage schema + accordion verified');
+  await showPhaseLabel(page, '✅ Equipment Sales removed from Services — Products catalog verified');
   await page.waitForTimeout(1200);
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -133,7 +113,7 @@ test('change-proof-faq-schema-service-pages', async ({ page }) => {
   await page.waitForTimeout(1200);
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PART 3 — Preventive Maintenance: FAQPage schema + accordion
+  // PART 3 — Preventive Maintenance: FAQPage schema + overhauled PM content
   // ═══════════════════════════════════════════════════════════════════════════
 
   await page.goto('/services/preventive-maintenance');
@@ -147,6 +127,21 @@ test('change-proof-faq-schema-service-pages', async ({ page }) => {
   await expectVisible(pmH1, 'Preventive Maintenance H1');
   await expectText(pmH1, 'Preventive Maintenance', 'H1 text');
   await page.waitForTimeout(800);
+
+  const allBrandsCopy = page.locator('text=all brands of OR equipment across Texas').first();
+  await allBrandsCopy.scrollIntoViewIfNeeded();
+  await expectVisible(allBrandsCopy, 'PM hero copy reflects all-brands coverage');
+  await page.waitForTimeout(600);
+
+  const scheduledInspections = page.locator('h3').filter({ hasText: /Scheduled Inspections/i }).first();
+  await scheduledInspections.scrollIntoViewIfNeeded();
+  await expectVisible(scheduledInspections, 'Scheduled Inspections inclusion');
+  await page.waitForTimeout(600);
+
+  const functionalTesting = page.locator('h3').filter({ hasText: /Functional Testing/i }).first();
+  await functionalTesting.scrollIntoViewIfNeeded();
+  await expectVisible(functionalTesting, 'Functional Testing inclusion');
+  await page.waitForTimeout(600);
 
   // Verify FAQPage JSON-LD in head
   await expectJsonLd(page, 'Preventive Maintenance FAQPage schema');

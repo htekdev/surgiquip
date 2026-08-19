@@ -17,7 +17,7 @@ Not all medical equipment resellers are created equal. **Authorized dealers** re
 - Do your technicians hold **factory certifications** for the equipment brands you carry?
 - Can you provide **OEM parts** on emergency orders?
 
-Surgiquip Solutions has served as the **authorized Skytron dealer for Southeast Texas** since the 1980s — one of a small number of dealers in the region with full factory authorization.
+Surgiquip Solutions has served as the **authorized Skytron dealer for South Texas** since the 1980s — one of a small number of dealers in the region with full factory authorization.
 
 ## Service & Repair Capability
 
@@ -28,7 +28,7 @@ Equipment downtime in an OR has direct clinical consequences. Houston-area facil
 3. **Preventive maintenance programs** — not just break-fix, but proactive uptime management
 4. **Parts inventory** — do they stock common wear items locally?
 
-A supplier with 24-hour response capability and a local parts inventory can mean the difference between a one-day and one-week OR closure.
+A supplier with rapid response capability and a local parts inventory can mean the difference between a one-day and one-week OR closure.
 
 ## Capital Equipment: Buying vs. Leasing
 
@@ -42,7 +42,7 @@ Ask your supplier which options they support and whether they can provide **fina
 
 ## Installation & Integration Expertise
 
-Modern OR equipment doesn't operate in isolation. Surgical tables, lights, ceiling-mount booms, and AV systems must all coordinate. A quality supplier should offer:
+Modern OR equipment doesn't operate in isolation. Surgical tables, lights, ceiling-mount booms, and video systems must all coordinate. A quality supplier should offer:
 
 - **Turnkey OR installation** — single point of accountability
 - **Pre-install coordination** with your construction team
@@ -65,4 +65,4 @@ Look for suppliers with demonstrated accountability:
 
 📞 [(713) 681-6362](tel:+17136816362)  
 ✉️ [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com)  
-📍 10653 Kinghurst Drive, Houston, TX 77099
+📍 2020 Johanna Drive, Houston, TX 77055
