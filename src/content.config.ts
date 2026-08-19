@@ -6,6 +6,7 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     subtitle: z.string(),
+    image: z.string(),
     type: z.enum([
       'Hybrid OR Integration',
       'Full Campus Build-Out',
