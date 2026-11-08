@@ -80,6 +80,47 @@ test('change-proof-closeout-blog-seo-titles: six routes and unchanged article co
 
   expect(coverage).toHaveLength(6);
   expect(coverage.every((route) => route.titleLength <= 60)).toBe(true);
+
+  // Pre-existing Skytron comparison-table overflow found during final-site QA.
+  // This must use a real CSS viewport, not nominal device-emulation metadata.
+  await page.setViewportSize({ width: 375, height: 900 });
+  await page.goto('/blog/skytron-surgical-table-comparison-guide-texas');
+  expect(await page.evaluate(() => window.innerWidth)).toBe(375);
+  await expectTitle(page, 'Skytron Table Comparison | Texas | Surgiquip Solutions');
+  const regions = page.locator('main article .blog-table-scroll');
+  await expect(regions).not.toHaveCount(0);
+  for (const region of await regions.all()) {
+    await expect(region).toHaveAttribute('role', 'region');
+    await expect(region).toHaveAttribute('tabindex', '0');
+    await expect(region).toHaveAttribute('aria-label', /Skytron Surgical Tables.*Scroll horizontally/);
+  }
+  const region = regions.first();
+  await expectVisible(region, 'Mobile table has a keyboard-accessible scroll region');
+  const overflow = await page.evaluate(() => ({
+    documentWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }));
+  expect(overflow.scrollWidth).toBeLessThanOrEqual(overflow.documentWidth);
+  expect(await region.evaluate((element) => element.scrollWidth > element.clientWidth)).toBe(true);
+  await region.focus();
+  await expect(region).toBeFocused();
+  expect(await region.evaluate((element) => getComputedStyle(element).outlineStyle)).toBe('solid');
+  const beforeScroll = await region.evaluate((element) => element.scrollLeft);
+  for (let press = 0; press < 12; press++) await page.keyboard.press('ArrowRight');
+  await expect.poll(() => region.evaluate((element) => element.scrollLeft)).toBeGreaterThan(beforeScroll);
+  await expect.poll(() => region.evaluate((element) => {
+    const lastCell = element.querySelector('thead tr')?.lastElementChild;
+    if (!lastCell) return false;
+    const cell = lastCell.getBoundingClientRect();
+    const container = element.getBoundingClientRect();
+    return cell.right <= container.right + 1 && cell.left >= container.left - 1;
+  })).toBe(true);
+  await showPhaseLabel(page, '375px: no document overflow; keyboard reveals final table column', 1500);
+  await testInfo.attach('mobile-table-overflow', {
+    body: JSON.stringify({ viewport: 375, ...overflow, keyboardScrolling: true }),
+    contentType: 'application/json',
+  });
+
   await testInfo.attach('changed-route-coverage', {
     body: JSON.stringify({ coveredRoutes: 6, changedRoutes: 6, routes: coverage }, null, 2),
     contentType: 'application/json',
