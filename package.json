@@ -13,7 +13,8 @@
     "gen:favicons": "node scripts/gen-favicons.mjs",
     "test:e2e": "npx playwright test --config=e2e/playwright.config.ts",
     "test:e2e:ui": "npx playwright test --config=e2e/playwright.config.ts --ui",
-    "test:quality": "npx tsx scripts/validate-assertions.ts"
+    "test:quality": "npx tsx scripts/validate-assertions.ts",
+    "test:unit": "node --input-type=module -e \"import { mkdirSync } from 'node:fs'; mkdirSync('coverage', { recursive: true });\" && node --test --experimental-test-coverage --test-coverage-include=scripts/rehype-blog-tables.mjs --test-coverage-lines=80 --test-coverage-branches=75 --test-coverage-functions=80 --test-reporter=spec --test-reporter=lcov --test-reporter-destination=stdout --test-reporter-destination=coverage/lcov.info tests/rehype-blog-tables.test.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
