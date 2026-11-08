@@ -18,20 +18,22 @@ test.describe('Product Pages', () => {
     await expectText(heading, 'Skytron', 'Skytron brand name');
   });
 
-  test('should load HSI page', async ({ page }) => {
+  test('should redirect retired HSI page to current catalog', async ({ page }) => {
     await page.goto('/products/hsi');
-    await showPhaseLabel(page, '🏥 HSI');
+    await showPhaseLabel(page, 'Retired dealer page redirects to current catalog');
     const heading = page.locator('h1').first();
     await expectVisible(heading, 'Page heading');
-    await expectText(heading, 'HSI', 'HSI brand name');
+    await expectText(heading, 'Equipment Catalog', 'Current catalog after retirement');
+    await expectURL(page, /\/products\/?$/);
   });
 
-  test('should load Knight page', async ({ page }) => {
+  test('should redirect retired Knight page to current catalog', async ({ page }) => {
     await page.goto('/products/knight');
-    await showPhaseLabel(page, '🏥 Knight');
+    await showPhaseLabel(page, 'Retired dealer page redirects to current catalog');
     const heading = page.locator('h1').first();
     await expectVisible(heading, 'Page heading');
-    await expectText(heading, 'Knight', 'Knight brand name');
+    await expectText(heading, 'Equipment Catalog', 'Current catalog after retirement');
+    await expectURL(page, /\/products\/?$/);
   });
 
   test('should have JSON-LD schema on product pages', async ({ page }) => {

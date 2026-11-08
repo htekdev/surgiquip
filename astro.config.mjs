@@ -3,6 +3,7 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import rehypeBlogTables from './scripts/rehype-blog-tables.mjs';
+import { retiredPartnerRedirects, includeCurrentPage } from './scripts/retired-partner-routes.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,7 +12,8 @@ export default defineConfig({
   adapter: vercel({
     webAnalytics: { enabled: false },
   }),
-  integrations: [sitemap()],
+  redirects: retiredPartnerRedirects,
+  integrations: [sitemap({ filter: includeCurrentPage })],
   markdown: {
     rehypePlugins: [rehypeBlogTables],
   },

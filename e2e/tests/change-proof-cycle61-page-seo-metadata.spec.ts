@@ -21,8 +21,6 @@ test('cycle61 — page title tags ≤60 chars and meta descriptions ≤155 chars
     // Products
     { path: '/products', label: 'Products index' },
     { path: '/products/skytron', label: 'Skytron products' },
-    { path: '/products/hsi', label: 'HSI products' },
-    { path: '/products/knight', label: 'Knight products' },
     // Services
     { path: '/services', label: 'Services index' },
     { path: '/services/or-installation', label: 'OR Installation' },

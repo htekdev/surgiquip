@@ -1,0 +1,35 @@
+name: Closeout Factual Regression
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  closeout-facts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run test:quality
+      - run: npm run build
+      - run: npm run test:unit
+      - name: Factual contracts with enforced scoped coverage
+        run: >-
+          node --test --experimental-test-coverage
+          --test-coverage-include=scripts/retired-partner-routes.mjs
+          --test-coverage-lines=80 --test-coverage-branches=75 --test-coverage-functions=80
+          --test-reporter=spec --test-reporter=lcov
+          --test-reporter-destination=stdout
+          --test-reporter-destination=coverage/closeout-facts.lcov
+          tests/closeout-facts.test.mjs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: closeout-facts-coverage
+          path: coverage/
+          retention-days: 7
