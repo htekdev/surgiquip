@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
-import { retiredPartnerRedirects, includeCurrentPage } from '../scripts/retired-partner-routes.mjs';
+import { retiredPartnerRedirects, includeCurrentPage, containRetiredAliases } from '../scripts/retired-partner-routes.mjs';
 
 const read = (path) => readFileSync(path, 'utf8');
 const digest = (text) => createHash('sha256').update(text.replace(/\r\n/g, '\n')).digest('hex');
@@ -29,6 +29,23 @@ test('malformed sitemap input raises an error instead of silently filtering unre
   assert.throws(() => includeCurrentPage('not-an-absolute-url'), TypeError);
 });
 
+test('authoritative alias containment preserves other routes/settings and rejects malformed output', () => {
+  const existing = { version: 3, routes: [{ handle: 'filesystem' }], images: { sizes: [640] } };
+  const result = containRetiredAliases(existing);
+  assert.deepEqual(result.routes.slice(1), existing.routes);
+  assert.deepEqual(result.images, existing.images);
+  assert.equal(existing.routes.length, 1);
+  assert.throws(() => containRetiredAliases({ version: 2, routes: [] }), TypeError);
+  assert.throws(() => containRetiredAliases({ version: 3 }), TypeError);
+  const regex = new RegExp(result.routes[0].src);
+  for (const path of ['/products/hsi', '/products/hsi/', '/products/hsi/index.html', '/products/knight', '/products/knight/', '/products/knight/index.html']) {
+    assert.equal(regex.test(path), true, path);
+  }
+  for (const path of ['/products/hsi-other', '/products/skytron', '/projects', '/products/knights']) {
+    assert.equal(regex.test(path), false, path);
+  }
+});
+
 test('complete built public HTML/XML omits withdrawn dealer claims and obsolete processor', () => {
   let checked = 0;
   function scan(directory) {
@@ -51,7 +68,7 @@ test('complete built public HTML/XML omits withdrawn dealer claims and obsolete 
 
 test('Vercel build emits canonical 301s and project config covers retired slash/index aliases', () => {
   const output = JSON.parse(read('.vercel/output/config.json'));
-  for (const path of ['/products/hsi', '/products/knight']) {
+  for (const path of ['/products/hsi', '/products/hsi/', '/products/hsi/index.html', '/products/knight', '/products/knight/', '/products/knight/index.html']) {
     const rule = output.routes.find((route) => route.src && new RegExp(route.src).test(path) && route.status === 301);
     assert.ok(rule, `301 rule for ${path}`);
     assert.equal(rule.headers?.Location, '/products');
