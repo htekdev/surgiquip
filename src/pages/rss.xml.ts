@@ -24,8 +24,6 @@ export async function GET(context: APIContext) {
     })),
     customData: [
       '<language>en-us</language>',
-      `<managingEditor>info@surgiquipsolutions.com (${site.brand})</managingEditor>`,
-      `<webMaster>info@surgiquipsolutions.com (${site.brand})</webMaster>`,
       `<copyright>© ${new Date().getFullYear()} ${site.brand}. All rights reserved.</copyright>`,
       '<ttl>1440</ttl>',
     ].join('\n'),

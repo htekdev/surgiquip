@@ -214,7 +214,6 @@ Our surgical table services include:
 If your facility is evaluating a Skytron surgical table purchase, upgrade, or PM contract, contact Surgiquip Solutions for a no-obligation consultation.
 
 **Phone:** (713) 681-6362  
-**Email:** info@surgiquipsolutions.com  
 **Hours:** Monday–Friday, 7:30am–4:30pm
 
 *Surgiquip Solutions — Dedicated to Excellence. Serving Texas hospitals since 1983.*

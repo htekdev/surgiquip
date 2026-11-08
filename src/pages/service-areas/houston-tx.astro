@@ -13,7 +13,6 @@ const localBusinessSchema = {
     'Authorized Skytron dealer serving Houston, TX hospitals, surgery centers, and healthcare facilities since 1983. OR equipment sales, installation, service, and preventive maintenance.',
   url: `${site.url}/service-areas/houston-tx`,
   telephone: site.phone,
-  email: site.email,
   foundingDate: '1983',
   address: {
     '@type': 'PostalAddress',
@@ -289,13 +288,6 @@ const houstonStats = [
                 <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.4 21 3 13.6 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .7-.2 1l-2.3 2.3z"/>
               </svg>
               <a href={`tel:${site.phoneE164}`} class="font-semibold text-[var(--color-navy)] hover:text-[var(--color-blue)]">{site.phone}</a>
-            </div>
-            <div class="flex items-center gap-3">
-              <svg class="w-5 h-5 shrink-0 text-[var(--color-blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round" stroke-linejoin="round"/>
-                <polyline points="22,6 12,13 2,6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <a href={`mailto:${site.email}`} class="hover:text-[var(--color-blue)]">{site.email}</a>
             </div>
             <div class="flex items-center gap-3">
               <svg class="w-5 h-5 shrink-0 text-[var(--color-blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">

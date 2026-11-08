@@ -146,4 +146,4 @@ Surgiquip Solutions is the authorized Skytron dealer for South Texas and has dir
 
 ---
 
-*Surgiquip Solutions, Inc. has served Southeast Texas hospitals and surgery centers since 1983. Our cardiovascular OR and cardiac catheterization lab work spans major health systems including Memorial Hermann, Houston Methodist, and UTMB. Contact us at (713) 681-6362 or [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com) to discuss your cath lab equipment project.*
+*Surgiquip Solutions, Inc. has served Southeast Texas hospitals and surgery centers since 1983. Our cardiovascular OR and cardiac catheterization lab work spans major health systems including Memorial Hermann, Houston Methodist, and UTMB. Contact us at (713) 681-6362 to discuss your cath lab equipment project.*

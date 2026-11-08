@@ -64,5 +64,4 @@ Look for suppliers with demonstrated accountability:
 **Surgiquip Solutions, Inc.** has served Houston-area hospitals, surgical centers, and healthcare facilities since 1983. Contact us to discuss your facility's equipment needs.
 
 📞 [(713) 681-6362](tel:+17136816362)  
-✉️ [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com)  
 📍 2020 Johanna Drive, Houston, TX 77055

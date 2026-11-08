@@ -165,4 +165,4 @@ Surgiquip provides pre-installation planning support for new women's health OR p
 
 ---
 
-*Surgiquip Solutions, Inc. has been the authorized Skytron dealer for South Texas for more than four decades. We are Skytron factory-certified for installation and service, Texas DSHS-licensed, BBB A+ rated with five Torch Awards for Ethics. Contact us at (713) 681-6362 or [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com) to discuss your women's health OR project.*
+*Surgiquip Solutions, Inc. has been the authorized Skytron dealer for South Texas for more than four decades. We are Skytron factory-certified for installation and service, Texas DSHS-licensed, BBB A+ rated with five Torch Awards for Ethics. Contact us at (713) 681-6362 to discuss your women's health OR project.*

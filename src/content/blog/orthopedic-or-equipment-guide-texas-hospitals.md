@@ -174,4 +174,4 @@ The company's installation history in dedicated orthopedic hospitals, multi-spec
 
 If you are planning a new orthopedic surgery program, expanding existing orthopedic OR capacity, or evaluating surgical table or boom system replacements in a Texas facility, contact Surgiquip to discuss your equipment requirements and timeline.
 
-**Call:** (713) 681-6362 | **Email:** info@surgiquipsolutions.com | **Hours:** Monday–Friday, 7:30 AM–4:30 PM
+**Call:** (713) 681-6362 | **Hours:** Monday–Friday, 7:30 AM–4:30 PM
