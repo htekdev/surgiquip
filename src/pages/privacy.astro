@@ -1,11 +1,20 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { site } from '~/data/site';
-const updated = 'June 25, 2026';
+const updated = 'November 8, 2026';
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Privacy Policy', item: new URL('/privacy/', site.url).toString() },
+  ],
+};
 ---
 <BaseLayout
   title="Privacy Policy | Surgiquip Solutions"
   description="Surgiquip Solutions, Inc. Privacy Policy — how we collect, use, and protect your information."
+  schema={breadcrumbSchema}
 >
   <section class="bg-[var(--color-navy)] text-white">
     <div class="container-x py-16">
@@ -83,7 +92,7 @@ const updated = 'June 25, 2026';
           We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following limited circumstances:
         </p>
         <ul class="list-disc pl-6 mt-2 space-y-1 text-[var(--color-text-muted)]">
-          <li><strong>Service providers:</strong> We use Resend (email delivery) to route form submissions to our staff. These providers process data only on our behalf and are bound by confidentiality obligations.</li>
+          <li><strong>Service providers:</strong> Our contact and quote forms send submissions to Formspree for processing.</li>
           <li><strong>Manufacturer partners:</strong> If your inquiry relates to Skytron or other partner equipment, we may share relevant technical details with the manufacturer's authorized support team to provide accurate quotes or service.</li>
           <li><strong>Legal requirements:</strong> We may disclose information if required by law, court order, or to protect our legal rights.</li>
         </ul>

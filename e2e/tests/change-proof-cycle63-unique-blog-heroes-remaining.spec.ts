@@ -140,7 +140,7 @@ test('change-proof-cycle63-unique-blog-heroes-remaining', async ({ page }) => {
   await page.waitForTimeout(1000);
 
   await smoothScroll(page, 900, 260, 450);
-  await showPhaseLabel(page, '📋 Sterilization Guide — AAMI/TJC, Autoclave & Knight Equipment');
+  await showPhaseLabel(page, '📋 Sterilization Guide — AAMI/TJC and Autoclave Equipment');
   await page.waitForTimeout(800);
 
   // ═══════════════════════════════════════════════════════════════════════════

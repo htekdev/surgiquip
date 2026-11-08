@@ -3,6 +3,8 @@
   "redirects": [
     { "source": "/products/knight", "destination": "/products", "statusCode": 301 },
     { "source": "/products/hsi", "destination": "/products", "statusCode": 301 },
+    { "source": "/products/knight/:path*", "destination": "/products", "statusCode": 301 },
+    { "source": "/products/hsi/:path*", "destination": "/products", "statusCode": 301 },
     { "source": "/services/equipment-sales", "destination": "/products", "statusCode": 301 }
   ],
   "headers": [

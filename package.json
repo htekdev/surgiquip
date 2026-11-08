@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/contain-retired-aliases.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "gen:favicons": "node scripts/gen-favicons.mjs",
