@@ -157,6 +157,6 @@ Current service relationships include facilities across:
 - **Galveston County:** UTMB John Sealy Hospital, UTMB Specialty Care Center at Victory Lakes (League City)
 - **Humble / Northeast Houston:** Memorial Hermann Northeast
 
-If your facility is within this corridor and you are evaluating your current service arrangement — or dealing with a repair that your current vendor has not been able to resolve — contact our service team at [(713) 681-6362](tel:+17136816362) or [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com).
+If your facility is within this corridor and you are evaluating your current service arrangement — or dealing with a repair that your current vendor has not been able to resolve — contact our service team at [(713) 681-6362](tel:+17136816362).
 
 We will start with an honest assessment of the equipment, not a sales pitch for replacement.

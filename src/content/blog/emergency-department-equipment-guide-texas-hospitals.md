@@ -176,4 +176,4 @@ As the authorized Skytron dealer for South Texas, Surgiquip provides direct acce
 
 If you are planning an ED expansion, trauma bay upgrade, or new hospital construction project in Houston, Southeast Texas, or surrounding areas, contact Surgiquip to discuss your equipment requirements. The Surgiquip team provides specification consulting, installation coordination, and long-term service partnership for the full lifecycle of your emergency department infrastructure investment.
 
-**Call:** (713) 681-6362 | **Email:** info@surgiquipsolutions.com | **Hours:** Monday–Friday, 7:30 AM–4:30 PM
+**Call:** (713) 681-6362 | **Hours:** Monday–Friday, 7:30 AM–4:30 PM

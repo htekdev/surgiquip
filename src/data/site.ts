@@ -7,7 +7,6 @@ export const site = {
   phone: '(713) 681-6362',
   phoneE164: '+17136816362',
   fax: '(713) 957-8355',
-  email: 'info@surgiquipsolutions.com',
   address: {
     street: '2020 Johanna Drive',
     city: 'Houston',

@@ -187,4 +187,4 @@ For Texas hospital systems evaluating neurosurgery suite configuration — wheth
 
 Surgiquip has equipped 22 installations across the greater Houston region — from single-specialty spine surgery centers to 32-OR academic medical centers. That direct project experience in the Southeast Texas market, combined with Skytron factory authorization and multi-brand service capability, means your neurosurgery suite configuration is built on a regional reference base, not a national sales pitch.
 
-For a consultation on neurosurgery suite equipment selection or service contracts for your existing neuro OR infrastructure, contact Surgiquip Solutions at [(713) 681-6362](tel:7136816362) or [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com).
+For a consultation on neurosurgery suite equipment selection or service contracts for your existing neuro OR infrastructure, contact Surgiquip Solutions at [(713) 681-6362](tel:7136816362).

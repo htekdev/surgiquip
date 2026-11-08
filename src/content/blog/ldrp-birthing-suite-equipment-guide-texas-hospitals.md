@@ -171,4 +171,4 @@ The Texas market is large enough that women's hospitals have real choices in thi
 
 ---
 
-*Surgiquip Solutions has equipped more than 95 LDRP suites across Texas women's hospitals, including Woman's Hospital of Texas (35 suites), Memorial Hermann The Woodlands (34 suites), and Memorial Hermann Memorial City (26 suites). Our field service team is manufacturer-certified on Skytron, Midmark, and related ceiling equipment platforms. Contact us at [(713) 681-6362](tel:7136816362) or [info@surgiquipsolutions.com](mailto:info@surgiquipsolutions.com) to discuss your LDRP equipment program.*
+*Surgiquip Solutions has equipped more than 95 LDRP suites across Texas women's hospitals, including Woman's Hospital of Texas (35 suites), Memorial Hermann The Woodlands (34 suites), and Memorial Hermann Memorial City (26 suites). Our field service team is manufacturer-certified on Skytron, Midmark, and related ceiling equipment platforms. Contact us at [(713) 681-6362](tel:7136816362) to discuss your LDRP equipment program.*
