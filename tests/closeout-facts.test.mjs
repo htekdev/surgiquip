@@ -91,6 +91,36 @@ test('privacy change identifies the actual form processor, not new legal/analyti
   assert.match(privacy, /Google Analytics 4/);
 });
 
+test('Privacy structured breadcrumbs reflect visible names and configured canonical URL', () => {
+  const configured = read('astro.config.mjs').match(/site:\s*'([^']+)'/)[1];
+  const shared = read('src/data/site.ts').match(/url:\s*'([^']+)'/)[1];
+  assert.equal(shared, configured);
+  const html = read('dist/privacy/index.html');
+  const schemas = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)]
+    .flatMap((match) => JSON.parse(match[1]));
+  const breadcrumb = schemas.find((schema) => schema['@type'] === 'BreadcrumbList');
+  assert.ok(breadcrumb, 'Modified privacy page must emit BreadcrumbList');
+  const privacyUrl = new URL('/privacy/', configured).toString();
+  assert.deepEqual(breadcrumb.itemListElement, [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: shared },
+    { '@type': 'ListItem', position: 2, name: 'Privacy Policy', item: privacyUrl },
+  ]);
+  assert.match(html, new RegExp(`<link rel="canonical" href="${privacyUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
+});
+
+test('robots discovers generated sitemap on the configured canonical origin without altering crawl permissions', () => {
+  const configured = read('astro.config.mjs').match(/site:\s*'([^']+)'/)[1];
+  const robots = read('dist/robots.txt');
+  assert.match(robots, /^User-agent: \*$/m);
+  assert.match(robots, /^Allow: \/$/m);
+  assert.equal(robots.match(/^Sitemap:\s*(.+)$/m)[1].trim(), new URL('/sitemap-index.xml', configured).toString());
+  assert.match(read('dist/sitemap-index.xml'), /<sitemapindex\b/);
+  assert.ok(read('dist/sitemap-index.xml').includes(new URL('/sitemap-0.xml', configured).toString()));
+  for (const match of read('dist/sitemap-0.xml').matchAll(/<loc>([^<]+)<\/loc>/g)) {
+    assert.equal(new URL(match[1]).origin, new URL(configured).origin);
+  }
+});
+
 test('complete live form blocks and private provider files retain immutable baseline hashes', () => {
   const expected = {
     'src/pages/contact.astro': '49a0865ef699572ef4ac5e56d20b3d7d819b254db3029e014cc3ae010ef98c60',

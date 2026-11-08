@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { expectVisible, expectText, expectURL, showPhaseLabel } from './visual-assert';
+import { site } from '../../src/data/site';
 
 test('change-proof retired dealer bookmarks and factual form provider, with retained inquiry flows', async ({ page, request }) => {
   test.setTimeout(180000);
@@ -12,6 +13,18 @@ test('change-proof retired dealer bookmarks and factual form provider, with reta
   await page.goto('/');
   await showPhaseLabel(page, 'Existing footer privacy link');
   await page.locator('footer a[href="/privacy"]').click();
+  const schemas = await page.locator('script[type="application/ld+json"]').evaluateAll((elements) =>
+    elements.flatMap((element) => {
+      const parsed = JSON.parse(element.textContent || '');
+      return Array.isArray(parsed) ? parsed : [parsed];
+    }));
+  const breadcrumb = schemas.find((schema) => schema['@type'] === 'BreadcrumbList');
+  expect(breadcrumb, 'Visible Privacy breadcrumb has corresponding structured data').toBeDefined();
+  expect(breadcrumb.itemListElement).toEqual([
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'Privacy Policy', item: new URL('/privacy/', site.url).toString() },
+  ]);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', new URL('/privacy/', site.url).toString());
   const provider = page.locator('li').filter({ hasText: 'Our contact and quote forms send submissions to Formspree for processing.' });
   await provider.scrollIntoViewIfNeeded();
   await showPhaseLabel(page, 'Actual form provider, no new legal assurances');
@@ -40,6 +53,15 @@ test('change-proof retired dealer bookmarks and factual form provider, with reta
   const sitemap = await sitemapResponse.text();
   expect(sitemap).not.toMatch(/\/products\/(?:hsi|knight)(?:\/|<)/);
   expect(sitemap).toContain('/products/skytron');
+  const robotsResponse = await request.get('/robots.txt');
+  expect(robotsResponse.status()).toBe(200);
+  const robots = await robotsResponse.text();
+  expect(robots).toMatch(/^User-agent: \*$/m);
+  expect(robots).toMatch(/^Allow: \/$/m);
+  expect(robots.match(/^Sitemap:\s*(.+)$/m)?.[1].trim()).toBe(new URL('/sitemap-index.xml', site.url).toString());
+  const indexResponse = await request.get('/sitemap-index.xml');
+  expect(indexResponse.status()).toBe(200);
+  expect(await indexResponse.text()).toContain(new URL('/sitemap-0.xml', site.url).toString());
 
   // Verify existing available sales route and identity, not new partner products.
   await page.locator('[data-nav-item] > a[href="/products"][aria-haspopup]').hover();
