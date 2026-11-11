@@ -6,12 +6,22 @@ import { site } from '~/data/site';
 
 // Fetch all projects from content collection
 const allProjects = await getCollection('projects');
-// Sort: featured first, then by year descending
+// Sort: featured first, then by year descending (handle optional year gracefully)
 const projects = allProjects.sort((a, b) => {
   if (a.data.featured && !b.data.featured) return -1;
   if (!a.data.featured && b.data.featured) return 1;
-  return b.data.year - a.data.year;
+  return (b.data.year ?? 0) - (a.data.year ?? 0);
 });
+
+// Build the unique project types for filter tabs (preserving insertion order after sort)
+const uniqueTypes: string[] = [];
+for (const p of projects) {
+  if (!uniqueTypes.includes(p.data.type)) uniqueTypes.push(p.data.type);
+}
+// Count per type for badge labels
+const countByType = Object.fromEntries(
+  uniqueTypes.map((t) => [t, projects.filter((p) => p.data.type === t).length])
+);
 
 const pageSchema = {
   '@context': 'https://schema.org',
@@ -61,7 +71,7 @@ const statusClasses = (status: string) =>
   </section>
 
   <section class="container-x py-16">
-    <div class="max-w-3xl mb-12">
+    <div class="max-w-3xl mb-10">
       <div class="text-xs font-bold tracking-widest uppercase text-[var(--color-blue)] mb-3">Featured Projects</div>
       <h2 class="font-display text-3xl font-bold text-[var(--color-navy)]">What We've Built and Serviced</h2>
       <p class="mt-4 text-[var(--color-text-muted)] leading-relaxed">
@@ -69,9 +79,41 @@ const statusClasses = (status: string) =>
       </p>
     </div>
 
-    <div class="grid gap-6 md:grid-cols-2">
+    {/* --- Filter tabs (G27) — client-side, no page reload --- */}
+    {uniqueTypes.length > 1 && (
+      <div id="project-filters" class="flex flex-wrap gap-2 mb-8" role="tablist" aria-label="Filter projects by type">
+        <button
+          type="button"
+          role="tab"
+          data-filter="all"
+          aria-selected="true"
+          class="filter-tab px-4 py-2 text-sm font-semibold rounded-full border border-[var(--color-border)] bg-[var(--color-navy)] text-white transition"
+        >
+          All
+          <span class="ml-1.5 inline-flex items-center justify-center w-5 h-5 text-xs rounded-full bg-white/20">{projects.length}</span>
+        </button>
+        {uniqueTypes.map((type) => (
+          <button
+            type="button"
+            role="tab"
+            data-filter={type}
+            aria-selected="false"
+            class="filter-tab px-4 py-2 text-sm font-semibold rounded-full border border-[var(--color-border)] bg-white text-[var(--color-text)] hover:border-[var(--color-navy)] hover:text-[var(--color-navy)] transition"
+          >
+            {type}
+            <span class="ml-1.5 inline-flex items-center justify-center w-5 h-5 text-xs rounded-full bg-[var(--color-surface-alt)]">{countByType[type]}</span>
+          </button>
+        ))}
+      </div>
+    )}
+
+    {/* --- Project grid — data-type drives JS filter --- */}
+    <div id="projects-grid" class="grid gap-6 md:grid-cols-2">
       {projects.map((project) => (
-        <article class="bg-white rounded-xl border border-[var(--color-border)] p-6 hover:shadow-md transition flex flex-col">
+        <article
+          data-type={project.data.type}
+          class="project-card bg-white rounded-xl border border-[var(--color-border)] p-6 hover:shadow-md transition flex flex-col"
+        >
           <div class="flex items-start justify-between gap-2 mb-3 flex-wrap">
             <div class="flex items-center gap-2 flex-wrap">
               <span class="inline-block px-2 py-0.5 text-xs font-bold rounded bg-[var(--color-surface-alt)] text-[var(--color-navy)]">
@@ -99,7 +141,9 @@ const statusClasses = (status: string) =>
           <div class="flex items-center justify-between text-xs text-[var(--color-text-muted)] border-t border-[var(--color-border)] pt-4 mt-auto">
             <div>
               <span class="block">{project.data.facility}</span>
-              <span class="block">{project.data.location} · {project.data.year}</span>
+              <span class="block">
+                {project.data.location}{project.data.year != null ? ` · ${project.data.year}` : ''}
+              </span>
             </div>
             <span class="font-semibold text-[var(--color-navy)] text-sm">{project.data.value}</span>
           </div>
@@ -118,6 +162,11 @@ const statusClasses = (status: string) =>
       ))}
     </div>
 
+    {/* No-results message (hidden until JS sets it) */}
+    <p id="no-results" class="hidden text-center text-[var(--color-text-muted)] py-12 text-sm">
+      No projects found for this category. <a href="/contact" class="text-[var(--color-blue)] underline hover:opacity-80">Contact us</a> to discuss your project type.
+    </p>
+
     <div class="mt-10 p-6 bg-[var(--color-surface-alt)] rounded-xl border border-[var(--color-border)] max-w-2xl">
       <div class="font-bold text-[var(--color-navy)] mb-2">Detailed Case Studies Available On Request</div>
       <p class="text-sm text-[var(--color-text-muted)]">
@@ -133,4 +182,46 @@ const statusClasses = (status: string) =>
     primaryLabel="Discuss Your Project"
     primaryHref="/quote"
   />
+
+  <script>
+    // Projects filter — client-side tab switching.
+    // Works with any number of types; renders gracefully with JS disabled (shows all).
+    (function () {
+      const tabs = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+      const cards = document.querySelectorAll<HTMLElement>('[data-type]');
+      const noResults = document.getElementById('no-results');
+
+      if (!tabs.length) return; // only 1 type — no tabs rendered
+
+      function applyFilter(filter: string) {
+        let visible = 0;
+
+        cards.forEach((card) => {
+          const match = filter === 'all' || card.dataset.type === filter;
+          card.style.display = match ? '' : 'none';
+          if (match) visible++;
+        });
+
+        if (noResults) noResults.classList.toggle('hidden', visible > 0);
+
+        tabs.forEach((tab) => {
+          const active = tab.dataset.filter === filter;
+          tab.setAttribute('aria-selected', active ? 'true' : 'false');
+          if (active) {
+            tab.classList.add('bg-[var(--color-navy)]', 'text-white', 'border-[var(--color-navy)]');
+            tab.classList.remove('bg-white', 'text-[var(--color-text)]');
+          } else {
+            tab.classList.remove('bg-[var(--color-navy)]', 'text-white', 'border-[var(--color-navy)]');
+            tab.classList.add('bg-white', 'text-[var(--color-text)]');
+          }
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          applyFilter(tab.dataset.filter ?? 'all');
+        });
+      });
+    })();
+  </script>
 </BaseLayout>
